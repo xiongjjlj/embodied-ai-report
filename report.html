@@ -133,19 +133,29 @@
  .chart-title { font-weight: 600; font-size: 1.05rem; color: var(--primary); margin-bottom: 8px; }
  .chart-subtitle { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; }
  h1 { font-weight: 800; }
- h2 { font-weight: 700; color: var(--primary); margin-top: 48px; margin-bottom: 24px; font-size: 1.6rem; border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
+ h2 { font-weight: 700; color: var(--primary); margin-top: 56px; margin-bottom: 28px; font-size: 1.6rem; border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
  h2:first-child, .data-card > h2:first-child, section > div > h2:first-of-type { margin-top: 0; }
- h3 { font-weight: 700; color: var(--secondary); margin-top: 36px; margin-bottom: 20px; font-size: 1.25rem; }
+ h3 { font-weight: 700; color: var(--secondary); margin-top: 44px; margin-bottom: 24px; font-size: 1.25rem; }
  h3:first-child, .data-card > h3:first-child { margin-top: 12px; }
- h4 { font-weight: 600; color: var(--secondary); margin-top: 24px; margin-bottom: 14px; font-size: 1.05rem; }
+ h4 { font-weight: 600; color: var(--secondary); margin-top: 28px; margin-bottom: 16px; font-size: 1.05rem; }
  /* 卡片内首个标题不要顶部空 */
  .data-card h2 + p, .data-card h3 + p, h2 + p, h3 + p { margin-top: 0; }
  /* 连续标题之间收紧（避免 h2 margin-bottom + h3 margin-top 双重叠加产生过大空隙）*/
  h2 + h3 { margin-top: 16px; }
  h2 + h4, h3 + h4 { margin-top: 12px; }
- /* h3 后跟 div/ul/ol/table 时给一致的呼吸空间（Tailwind preflight 会清零它们的 margin-top）*/
- h3 + div, h3 + ul, h3 + ol, h3 + table, h3 + .overflow-x-auto { margin-top: 0; }
- h2 + div, h2 + ul, h2 + ol, h2 + table, h2 + .overflow-x-auto { margin-top: 0; }
+ /* 统一 h2/h3 后所有 block 元素的顶部间距：用 heading 的 margin-bottom 作为唯一来源 */
+ /* class 选择器特异性 (0,1,0) 高于 tag 选择器 (0,0,2)，必须显式枚举 box 类才能压制其 margin-top */
+ h3 + div, h3 + ul, h3 + ol, h3 + table,
+ h3 + .overflow-x-auto, h3 + .info-box, h3 + .warning-box,
+ h3 + .success-box, h3 + .insight-box, h3 + .data-card,
+ h3 + .chart-container, h3 + .limitation-note, h3 + .thesis-banner { margin-top: 0; }
+ h2 + div, h2 + ul, h2 + ol, h2 + table,
+ h2 + .overflow-x-auto, h2 + .info-box, h2 + .warning-box,
+ h2 + .success-box, h2 + .insight-box, h2 + .data-card,
+ h2 + .chart-container, h2 + .limitation-note, h2 + .thesis-banner { margin-top: 0; }
+ h4 + div, h4 + ul, h4 + ol, h4 + table,
+ h4 + .overflow-x-auto, h4 + .info-box, h4 + .warning-box,
+ h4 + .success-box, h4 + .insight-box, h4 + .limitation-note { margin-top: 0; }
  /* 强制顶部无间距（替代 inline style） */
  .\!mt-0 { margin-top: 0 !important; }
  /* 章节之间统一间距 */
