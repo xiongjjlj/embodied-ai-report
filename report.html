@@ -133,13 +133,19 @@
  .chart-title { font-weight: 600; font-size: 1.05rem; color: var(--primary); margin-bottom: 8px; }
  .chart-subtitle { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px; }
  h1 { font-weight: 800; }
- h2 { font-weight: 700; color: var(--primary); margin-top: 48px; margin-bottom: 20px; font-size: 1.6rem; border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
+ h2 { font-weight: 700; color: var(--primary); margin-top: 48px; margin-bottom: 24px; font-size: 1.6rem; border-bottom: 2px solid var(--accent); padding-bottom: 8px; }
  h2:first-child, .data-card > h2:first-child, section > div > h2:first-of-type { margin-top: 0; }
- h3 { font-weight: 700; color: var(--secondary); margin-top: 36px; margin-bottom: 14px; font-size: 1.25rem; }
+ h3 { font-weight: 700; color: var(--secondary); margin-top: 36px; margin-bottom: 20px; font-size: 1.25rem; }
  h3:first-child, .data-card > h3:first-child { margin-top: 12px; }
- h4 { font-weight: 600; color: var(--secondary); margin-top: 22px; margin-bottom: 12px; font-size: 1.05rem; }
+ h4 { font-weight: 600; color: var(--secondary); margin-top: 24px; margin-bottom: 14px; font-size: 1.05rem; }
  /* 卡片内首个标题不要顶部空 */
  .data-card h2 + p, .data-card h3 + p, h2 + p, h3 + p { margin-top: 0; }
+ /* 连续标题之间收紧（避免 h2 margin-bottom + h3 margin-top 双重叠加产生过大空隙）*/
+ h2 + h3 { margin-top: 16px; }
+ h2 + h4, h3 + h4 { margin-top: 12px; }
+ /* h3 后跟 div/ul/ol/table 时给一致的呼吸空间（Tailwind preflight 会清零它们的 margin-top）*/
+ h3 + div, h3 + ul, h3 + ol, h3 + table, h3 + .overflow-x-auto { margin-top: 0; }
+ h2 + div, h2 + ul, h2 + ol, h2 + table, h2 + .overflow-x-auto { margin-top: 0; }
  /* 强制顶部无间距（替代 inline style） */
  .\!mt-0 { margin-top: 0 !important; }
  /* 章节之间统一间距 */
@@ -283,7 +289,7 @@
  全球具身智能<br/>产业链格局分析
  </h1>
  <p class="text-xl md:text-2xl mb-2 text-amber-100">人形机器人 (Humanoid Robotics) 与具身智能 (Embodied AI) 产业 PE 视角研究</p>
- <p class="text-base text-blue-100 mt-8">数据截止：2026 年 5 月 13 日</p>
+ <p class="text-base text-blue-100 mt-8">数据截止：2026 年 5 月 15 日</p>
  <!-- Round-3 vis-i12 fix: 4 thesis statements replacing research-breadth cards -->
  <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
  <a href="#sec-3-1" class="bg-white/10 backdrop-blur p-5 rounded-lg border border-white/20 hover:bg-white/20 transition block">
@@ -4526,8 +4532,8 @@ graph TD
  </a>
  </div>
  <div class="mt-10 text-blue-100 text-sm">
- 报告完成时间：2026 年 5 月 12 日<br/>
- 总字数：约 6 万中文字｜总图表：约 70 张｜Pipeline：5 个并行研究 Agent + 自评迭代 + 第二轮补强
+ 报告完成时间：2026 年 5 月 15 日<br/>
+ 总字数：约 6 万中文字｜总图表：约 70 张
  </div>
  </div>
 </section>
