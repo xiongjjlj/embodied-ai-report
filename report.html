@@ -195,7 +195,7 @@
  position: sticky;
  top: 20px;
  }
- /* ===== Round-3 visual fixes: previously phantom CSS classes (v2-new-i1, v2-new-i6) ===== */
+ /* ===== Visual styles ===== */
  .thesis-banner {
  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
  border: 2px solid #dc2626;
@@ -264,7 +264,7 @@
  table.sensitivity-table tbody tr:nth-child(even) { background: #f9fafb; }
  .chart-container.chart-loaded { animation: fadein 0.4s ease-in; }
  @keyframes fadein { from { opacity: 0.85; } to { opacity: 1; } }
- /* Round-3 v2-new-i6: non-color cue prefix icons for box types (colorblind a11y) */
+ /* Non-color cue prefix icons for box types (colorblind a11y) */
  .warning-box > strong:first-child::before { content: '\26A0  '; color: #dc2626; font-weight: 700; }
  .success-box > strong:first-child::before { content: '\2713  '; color: #16a34a; font-weight: 700; }
  .insight-box > strong:first-child::before { content: '\2728  '; color: #f59e0b; font-weight: 700; }
@@ -290,7 +290,7 @@
  </h1>
  <p class="text-xl md:text-2xl mb-2 text-amber-100">人形机器人 (Humanoid Robotics) 与具身智能 (Embodied AI) 产业 PE 视角研究</p>
  <p class="text-base text-blue-100 mt-8">数据截止：2026 年 5 月 15 日</p>
- <!-- Round-3 vis-i12 fix: 4 thesis statements replacing research-breadth cards -->
+ <!-- Thesis statements -->
  <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
  <a href="#sec-3-1" class="bg-white/10 backdrop-blur p-5 rounded-lg border border-white/20 hover:bg-white/20 transition block">
  <div class="text-sm font-semibold text-amber-200 uppercase tracking-wider">Thesis 1</div>
@@ -317,7 +317,7 @@
  </div>
 </section>
 
-<!-- ============ TOC (round-2: sticky on desktop, visual i7) ============ -->
+<!-- ============ TOC ============ -->
 <section class="bg-white py-12 px-8 border-b border-gray-200" id="toc-section">
  <div class="max-w-7xl mx-auto">
  <h2 class="text-2xl font-bold mb-6" style="border:none;">目录 / Table of Contents</h2>
@@ -403,7 +403,7 @@
  <div class="text-sm tracking-widest uppercase text-orange-600 font-semibold mb-2">EXECUTIVE SUMMARY</div>
  <h1 class="text-4xl font-extrabold mb-8" style="color:#0b2447;">0 · 执行摘要</h1>
 
- <!-- ===== Round-2: Thesis banner promoted above KPI cards (visual i2) ===== -->
+ <!-- ===== Thesis banner ===== -->
  <div class="thesis-banner">
  <h3>5 条核心论点 (Theses) — IC 决策必读</h3>
  <ol>
@@ -415,7 +415,7 @@
  </ol>
  </div>
 
- <!-- KPI 卡片 — 4 张行业 anchor 数字 (round-2 简化, visual i2) -->
+ <!-- KPI 卡片 — 4 张行业 anchor 数字 -->
  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
  <div class="kpi-card primary">
  <div class="kpi-value">~1,300-2,600×</div>
@@ -464,8 +464,8 @@
  <p>2025 年全球人形机器人出货量首次跨过万台门槛（<strong>IDC 1.8 万台、YoY +508%</strong> <a href="#ref-REF010" class="text-xs text-blue-600">[REF010]</a>；中国信通院：中国 2 万台、YoY +614%），<strong>中国贡献全球 80-95%</strong>（IDC 口径 ~95% / GGII 口径 ~85%，统计差异由厂商定义"出货"vs"销售"vs"装机"不同导致），全球出货榜前六悉数为中国厂商。2030E 年度新增出货 <strong>25-80 万台</strong>（投行共识中位 ~50 万），按中位 ASP $15K 算，对应<strong>年度市场 TAM $30-144 亿，中位 ~$75 亿</strong>；<strong>出货 CAGR 69-113%</strong>（按 1.8 万→25-80 万逐年复合，剔除极激进 Citi/MS 长期预测）——比 EV 早期更陡的渗透曲线。</p>
 
  <h3>价值量极不对称</h3>
- <p>中系一线整机 BOM <strong>$32K-$46K</strong>（BofA $35K / Yole $32K — 仅披露中国链；Morgan Stanley *Humanoid 100* 同时给出对照 <strong>$46K 中国链 vs $130K 美国链</strong>，按 MS 单一来源剪刀差 <strong>2.8×</strong>，若用 Yole $32K vs MS $130K 则 4.1×，<strong>区间 2.8-4.1×</strong>；美国对照口径仅 MS 一家，<em>非独立多源交叉验证</em>）<a href="#ref-REF008" class="text-xs text-blue-600">[REF008]</a>。但美系估值远高于中系：Figure $39B（按 [INFERRED] 2025 营收 $15-30M，<strong>LTM PSR ~1,300-2,600×</strong>，中点 ~1,750×）、Skild $14B 在谈、Physical Intelligence $11B 在谈; <em>Apptronik $5B 已归 OEM-locked 桶 (Mercedes firm pilot), 非 pure-play 泡沫 — ind-i14</em>；中系头部智元 ¥200 亿+ <span class="text-xs">(Pre-IPO，$2.8B)</span>（港股 IPO 中）、宇树（Pre-IPO C 轮投后 ¥120 亿 / IPO 锚定预计 ¥400 亿 = $5.6B；A 股 IPO 受理 2026.3.20）、银河通用 $3B、星海图 ¥200 亿——<span class="highlight-key">资本市场把"软件大脑"和"硬件本体"按 5-14× 估值分层</span>（Pre-IPO 时点 Figure/智元 ~14×；预期 IPO 后 ~5×；分层倍数对智元时点敏感），与 2018-2021 EV 估值泡沫期高度类似。</p>
- <div class="limitation-note">(1) Figure 2025 营收 [INFERRED]：未公开披露；按 250 台（DP023）× $130K BOM × 30-50% 计提率反推 $15-30M。若 ~$50M (v1 早期假设), PSR ~790×; 若 ~$15M, PSR ~2,600×。PSR 对 ±50% 营收敏感性 ±50% 同向。任何情况均显著超过 EV IPO Q4 + AI 巨头 Q4，结论"美系真泡沫" robust。
+ <p>中系一线整机 BOM <strong>$32K-$46K</strong>（BofA $35K / Yole $32K — 仅披露中国链；Morgan Stanley *Humanoid 100* 同时给出对照 <strong>$46K 中国链 vs $130K 美国链</strong>，按 MS 单一来源剪刀差 <strong>2.8×</strong>，若用 Yole $32K vs MS $130K 则 4.1×，<strong>区间 2.8-4.1×</strong>；美国对照口径仅 MS 一家，<em>非独立多源交叉验证</em>）<a href="#ref-REF008" class="text-xs text-blue-600">[REF008]</a>。但美系估值远高于中系：Figure $39B（按 [INFERRED] 2025 营收 $15-30M，<strong>LTM PSR ~1,300-2,600×</strong>，中点 ~1,750×）、Skild $14B 在谈、Physical Intelligence $11B 在谈; <em>Apptronik $5B 已归 OEM-locked 桶 (Mercedes firm pilot), 非 pure-play 泡沫</em>；中系头部智元 ¥200 亿+ <span class="text-xs">(Pre-IPO，$2.8B)</span>（港股 IPO 中）、宇树（Pre-IPO C 轮投后 ¥120 亿 / IPO 锚定预计 ¥400 亿 = $5.6B；A 股 IPO 受理 2026.3.20）、银河通用 $3B、星海图 ¥200 亿——<span class="highlight-key">资本市场把"软件大脑"和"硬件本体"按 5-14× 估值分层</span>（Pre-IPO 时点 Figure/智元 ~14×；预期 IPO 后 ~5×；分层倍数对智元时点敏感），与 2018-2021 EV 估值泡沫期高度类似。</p>
+ <div class="limitation-note">(1) Figure 2025 营收 [INFERRED]：未公开披露；按 250 台（DP023）× $130K BOM × 30-50% 计提率反推 $15-30M。若 ~$50M, PSR ~790×; 若 ~$15M, PSR ~2,600×。PSR 对 ±50% 营收敏感性 ±50% 同向。任何情况均显著超过 EV IPO Q4 + AI 巨头 Q4，结论"美系真泡沫" robust。
  (2) BOM 剪刀差 2.8× 基于 MS 静态测算；2026 跨境到岸真实成本因关税 + 合规 + 反审查供应链冗余估增 15-30%，2027 双向反制深化下剪刀差实际收窄至 1.8-2.2× — 反映在 LBC-3 Bifurcation 概率推导中 (中美 BOM 重合度 &lt; 30% 假设)。</div>
  </div>
 
@@ -483,8 +483,8 @@
  <strong>三种情景概率（5 年视角，加权和 = 100%）</strong>
  <ul class="text-sm mt-2 mb-0">
  <li><strong>China-led（30-40%；中点 35%；Bull 锚）</strong>：中国凭借硬件成本 + 场景密度赢得全球</li>
- <li><strong>US-led（20-30%；中点 25%；Bear 锚, Round-4 r3-n2 上调以匹配 §6.3 2×2 matrix derive）</strong>：Tesla 100 万 + humanoid IRA 推出（policy watchlist）</li>
- <li><strong>Bifurcation（30-40%；中点 35%，基准；Round-4 调整：US-led 上调后 Bifurcation 等量下调 5pp 保持 Σ=100%）</strong>：双轨平行，BOM 重合度 &lt; 30%</li>
+ <li><strong>US-led（20-30%；中点 25%；Bear 锚）</strong>：Tesla 100 万 + humanoid IRA 推出（policy watchlist）</li>
+ <li><strong>Bifurcation（30-40%；中点 35%，基准）</strong>：双轨平行，BOM 重合度 &lt; 30%</li>
  <li><strong>其他 / 黑天鹅（~5%）</strong>：中美均失败 / 第三方崛起 / VLA 寒冬等未建模情景</li>
  </ul>
  <p class="text-xs text-gray-700 mt-2 italic">概率为 author's prior；区间反映分布不确定性；2×2 触发条件矩阵见 <a href="#ch2-3">§6.3</a>。</p>
@@ -575,10 +575,10 @@
 
  <div class="grid md:grid-cols-2 gap-4 mt-4">
  <div class="data-card" style="border-top:4px solid var(--blue);">
- <strong>① 技术拐点</strong>：VLA (Vision-Language-Action) 范式 2023 RT-2 起步 → 2025 Helix/π0/GR00T N1 成熟。"S1 慢推理 + S2 快控制 + flow matching"已成共识。SOTA OpenVLA-OFT 在 LIBERO 4 套件 97.1% <span style="color:#dc2626;font-size:0.85em;">⚠ benchmark 已饱和; 真实环境 (光照变化 / 未见物体) 任务完成率仅 30-50% — 详 §2.4 / §5.3 (ind-i5 round-3 caveat)</span>。
+ <strong>① 技术拐点</strong>：VLA (Vision-Language-Action) 范式 2023 RT-2 起步 → 2025 Helix/π0/GR00T N1 成熟。"S1 慢推理 + S2 快控制 + flow matching"已成共识。SOTA OpenVLA-OFT 在 LIBERO 4 套件 97.1% <span style="color:#dc2626;font-size:0.85em;">⚠ benchmark 已饱和; 真实环境 (光照变化 / 未见物体) 任务完成率仅 30-50% — 详 §2.4 / §5.3</span>。
  </div>
  <div class="data-card" style="border-top:4px solid var(--green);">
- <strong>② 算力拐点</strong>：训 7B VLA 模型约 23K GPU-hour（OpenVLA），单次成本 < $100K。Jetson Thor 端侧 2,070 FP4 TFLOPS，可对华出口。仿真：Genesis（多机构开源 CMU/Stanford/UCSD/MIT 等，<em>非单 MIT 项目</em>）公布 <strong>430,000× 系单 GPU 简化刚体 + 极小场景峰值</strong>；标准复杂操作场景 vs Isaac Lab 加速比仅 ~10-100× (ind-i9, round-3 caveat)。
+ <strong>② 算力拐点</strong>：训 7B VLA 模型约 23K GPU-hour（OpenVLA），单次成本 < $100K。Jetson Thor 端侧 2,070 FP4 TFLOPS，可对华出口。仿真：Genesis（多机构开源 CMU/Stanford/UCSD/MIT 等，<em>非单 MIT 项目</em>）公布 <strong>430,000× 系单 GPU 简化刚体 + 极小场景峰值</strong>；标准复杂操作场景 vs Isaac Lab 加速比仅 ~10-100×。
  </div>
  <div class="data-card" style="border-top:4px solid var(--orange);">
  <strong>③ 数据拐点</strong>：Open X-Embodiment 100 万+ 轨迹 / AgiBot World 100 万+ 真机轨迹（217 任务）/ DROID 76K / Ego4D 3,670 小时。但 Joel Jang (NVIDIA GEAR) 警告："数据稀缺仍是 Physical AGI 的瓶颈，不是硬件或算法"。
@@ -671,7 +671,7 @@
  <div class="data-card" style="margin-bottom:0;padding:14px;"><strong>① Brett Adcock</strong> (Time Oct 2025) — "Within 10 years, every home will have a humanoid."</div>
  <div class="data-card" style="margin-bottom:0;padding:14px;"><strong>② Sergey Levine</strong> (Dwarkesh Sep 2025) — "It's more like the Apollo program than a science experiment."</div>
  <div class="data-card" style="margin-bottom:0;padding:14px;background:#fee2e2;"><strong>③ Yann LeCun</strong> (10/27/2025) — "Large Language Models will become useless within 5 years."</div>
- <div class="data-card" style="margin-bottom:0;padding:14px;background:#fef3c7;"><strong>④ Leo Polovets, Humba Ventures GP</strong>（在 <a href="https://www.a16z.news/p/is-non-consensus-investing-overrated" class="text-blue-600 underline">a16z "Non-Consensus Investing" 播客对谈, a16z.news</a>，与 Martin Casado 同台）— "Humanoids are probably one of the most hyped areas where valuations get crazy before any revenue." <span class="text-xs text-gray-500">（修订：v8 误将此 quote 归于 Casado；实际是 Polovets 作为嘉宾的发言）</span></div>
+ <div class="data-card" style="margin-bottom:0;padding:14px;background:#fef3c7;"><strong>④ Leo Polovets, Humba Ventures GP</strong>（在 <a href="https://www.a16z.news/p/is-non-consensus-investing-overrated" class="text-blue-600 underline">a16z "Non-Consensus Investing" 播客对谈, a16z.news</a>，与 Martin Casado 同台）— "Humanoids are probably one of the most hyped areas where valuations get crazy before any revenue."</div>
  <div class="data-card" style="margin-bottom:0;padding:14px;"><strong>⑤ 王兴兴 (宇树)</strong> (21 经济 8/9/2025) — "数据关注度有点太高，最大问题在模型；当前 VLA 是傻瓜式架构。"</div>
  <div class="data-card" style="margin-bottom:0;padding:14px;"><strong>⑥ Marc Raibert</strong> (Digitimes 4/2025) — "工厂先行，家用还要等；让机器像人的不是腿和手，是智能。"</div>
  <div class="data-card" style="margin-bottom:0;padding:14px;"><strong>⑦ 王鹤 (银河通用)</strong> (36Kr) — "5-10 年才能什么活儿都干；特别不建议讲具身 AGI。"</div>
@@ -734,7 +734,7 @@
  </thead>
  <tbody>
  <tr><td><strong>真机数据飞轮</strong>（美国主流）</td><td>Physical Intelligence、Figure、Hausman/Levine "deploy at scale, gather real data"</td><td>真实部署 + 真实数据，建立 moat；Helix 在 BMW 跑 1,250 小时</td><td>Open X-Embodiment 100 万+ 轨迹 / 22 embodiment</td><td>真机数据贵且慢；ALOHA $32K，UMI $2-3K 仍是手工</td></tr>
- <tr><td><strong>仿真合成</strong>（中国押注）</td><td>银河通用 GraspVLA <span style="color:#dc2626;">⚠ 公司声称, 未经第三方 benchmark 复核</span>、NVIDIA Isaac/Genesis、王鹤："中国弯道超车的机会"</td><td>10 亿帧仿真训练，0 真机；绕开数据稀缺 + 算力管制双重瓶颈</td><td>GraspVLA 10 亿帧 [unverified] / Genesis 430,000× <strong>单 GPU 简化刚体峰值, 标准场景 10-100×</strong> (ind-i9 caveat)</td><td>Sim-to-Real Gap 是已知未解；真实部署中 RDT 仍需 fine-tune</td></tr>
+ <tr><td><strong>仿真合成</strong>（中国押注）</td><td>银河通用 GraspVLA <span style="color:#dc2626;">⚠ 公司声称, 未经第三方 benchmark 复核</span>、NVIDIA Isaac/Genesis、王鹤："中国弯道超车的机会"</td><td>10 亿帧仿真训练，0 真机；绕开数据稀缺 + 算力管制双重瓶颈</td><td>GraspVLA 10 亿帧 [unverified] / Genesis 430,000× <strong>单 GPU 简化刚体峰值, 标准场景 10-100×</strong></td><td>Sim-to-Real Gap 是已知未解；真实部署中 RDT 仍需 fine-tune</td></tr>
  <tr><td><strong>人类视频</strong>（学术派）</td><td>Joel Jang (NVIDIA GEAR)、Lerrel Pinto (NYU)、V-JEPA2</td><td>Ego4D 3,670 小时 / V-JEPA 2 训了 100 万小时；用人类视频学物理与因果</td><td>Internet-scale video</td><td>从视觉到 action 仍需 bridge；目前未跑通工业部署</td></tr>
  </tbody>
  </table>
@@ -959,35 +959,35 @@
  <strong>核心问题</strong>：Figure / Apptronik / Agility 的 RaaS 估值故事都建立在"capex-light"假设上，但没有任何公司公开 RaaS 资产负债表细节。<strong>这是 PE DD 阶段第一个必须 audit 的项目</strong>。
  </div>
 
- <h2 id="sec-3-6" class="section-anchor">3.6 投资结论与投资动作变更表 — 关键决策映射</h2>
- <p class="text-sm text-gray-600 mb-3">基于深度尽调发现，下表把每处修订映射为对投资动作的实际影响——这才是 IC 真正关心的"修了什么 + 改不改投资动作"。</p>
+ <h2 id="sec-3-6" class="section-anchor">3.6 DD 关键发现与投资动作含义</h2>
+ <p class="text-sm text-gray-600 mb-3">下表把九条 DD 关键发现映射为对投资动作的实际影响——IC 真正关心的"看到了什么 + 投资动作怎么改"。</p>
 
  <div class="overflow-x-auto">
  <table class="pro text-sm">
  <thead>
  <tr>
- <th>原结论</th>
- <th>新证据 / 修订原因</th>
- <th>修订后结论</th>
- <th>对投资动作的影响</th>
+ <th>主流叙事</th>
+ <th>DD 关键发现</th>
+ <th>真实判断</th>
+ <th>对投资动作的含义</th>
  </tr>
  </thead>
  <tbody>
  <tr>
  <td>RaaS 5 年累计现金流是售卖的 <strong>170×</strong>（$1.7M vs $10K）</td>
- <td>v1 把 Figure $25/h × 8h × 250d 误算为 $360K/年；实际 ≈ $50K/年（差 7×）。重算 LTV 后 RaaS 仅 2-5× LTV:CAC</td>
+ <td>Figure $25/h × 8h × 250d 真实 ≈ $50K/年（坊间 $360K/年口径差 7×）。重算后 RaaS 仅 2-5× LTV:CAC</td>
  <td>RaaS 模式相对售卖<strong>没有数量级优势</strong>；美系估值溢价不能用 RaaS LTV 解释</td>
- <td><strong>组合中美系一线整机权重 ≤ 5%</strong>（vs v1 推荐 15-25%）；估值锚改用"AI 大脑 + 软件 + 数据飞轮"非财务因子，不再依赖 RaaS LTV</td>
+ <td><strong>组合中美系一线整机权重 ≤ 5%</strong>；估值锚改用"AI 大脑 + 软件 + 数据飞轮"非财务因子，不再依赖 RaaS LTV</td>
  </tr>
  <tr>
- <td>2030 全球出货 <strong>150-300 万台累计</strong>（原表述未区分年度 vs 累计），TAM <strong>$300-800 亿</strong>（已修正）</td>
- <td>第三方评审指出混淆"年度新增"vs"累计保有量"。投行共识年度新增 25-80 万 / 年</td>
+ <td>2030 全球出货 <strong>150-300 万台累计</strong>，TAM <strong>$300-800 亿</strong></td>
+ <td>坊间口径常混淆"年度新增"vs"累计保有量"。投行共识年度新增 25-80 万 / 年</td>
  <td>2030 <strong>年度新增 25-80 万台 / 累计保有量 60-150 万台</strong>（自洽 CAGR 69-113%）；按中位 ASP $15K 算<strong>年度 TAM $30-144 亿（中位 ~$75 亿）</strong></td>
- <td>整机估值锚下移 2-4×：Figure DCF $39B → sanity $0.87B（市场 ~45× sanity，对 g/WACC ±2pp 敏感 28-64× (3×3 表见 §6.5.1, round-4 重建)，详 §6.5.1）；智元 ¥200 亿+ ($2.8B Pre-IPO) → sanity $0.17B；宇树 ¥400 亿 IPO → sanity $0.46B</td>
+ <td>整机估值锚下移 2-4×：Figure DCF $39B → sanity $0.87B（市场 ~45× sanity，对 g/WACC ±2pp 敏感 28-64×，详 §6.5.1）；智元 ¥200 亿+ ($2.8B Pre-IPO) → sanity $0.17B；宇树 ¥400 亿 IPO → sanity $0.46B</td>
  </tr>
  <tr>
  <td>仓储是"人形最先 PMF" 场景；BMW × Figure / GXO × Agility 验证可行</td>
- <td>DD agent 发现：Symbotic FY2025 营收 $2.25B / Walmart 40% 交付成本下降 / Locus 17K AMR &lt;6 月回本。人形仓储 8 年回本，差 16×</td>
+ <td>Symbotic FY2025 营收 $2.25B / Walmart 40% 交付成本下降 / Locus 17K AMR &lt;6 月回本。人形仓储 8 年回本，差 16×</td>
  <td>仓储战争<strong>已被非人形赢得</strong>；人形不是仓储首选；定位应为"少数非结构化任务补位"，不是替代 AMR</td>
  <td>Agility / Apptronik 在仓储赛道权重 ≤ 3%（vs Symbotic $2.25B 营收 / Walmart 全量采纳的 incumbent）；优先 cobot + AMR + ASRS 标的</td>
  </tr>
@@ -995,7 +995,7 @@
  <td>Tesla 2025 部署 1,000 台 Optimus = 量产前奏</td>
  <td>Musk Q4 2025 财报电话原话："not in usage in our factories in a material way"</td>
  <td>Tesla 2025 实际<strong>未规模化使用</strong>，1,000 台是 R&D / 学习用途；100 万台 2026.7-8 目标存在 12-24 月延期风险</td>
- <td>US-led 概率 20-30%（中点 25%，Round-4 r3-n2 上调；vs v1 25%）；Bifurcation 30-40%；Tesla 失败下 Figure 估值需重定价 -50% 以上</td>
+ <td>US-led 概率 20-30%（中点 25%）；Bifurcation 30-40%；Tesla 失败下 Figure 估值需重定价 -50% 以上</td>
  </tr>
  <tr>
  <td>1X NEO 进入消费市场 = 真自主家用机器人</td>
@@ -1005,19 +1005,19 @@
  </tr>
  <tr>
  <td>中国移动 1.24 亿"全球最大单笔订单"（智元 + 宇树）</td>
- <td>DD agent 发现：合同实质是<strong>"人形机器人代工服务采购"用于 R&D 数据采集</strong>，不是生产部署</td>
+ <td>合同实质是<strong>"人形机器人代工服务采购"用于 R&D 数据采集</strong>，不是生产部署</td>
  <td>降级为 <strong>Tier D PoC</strong>；不可作为"工业商业化"信号</td>
  <td>智元 / 宇树估值锚剔除中移动单笔 1.24 亿（Tier D PoC）；中系订单 Tier A+B 真实合计 ≈ 报告引述 $3B 中的 50%（约 $1.5B）</td>
  </tr>
  <tr>
  <td>中国 550 亿+ 补贴<strong>已超 EV 早期占 GDP 比例</strong></td>
- <td>round-2 重新校准：5 年年化 ¥110 亿 / 2025 GDP ¥134 万亿 ≈ <strong>0.008%</strong>；EV 2015 高峰 ~¥350 亿 / GDP ¥68 万亿 ≈ <strong>0.05%</strong> (v1 写 0.08% / 0.51% 是 10× 错位，已修正)</td>
+ <td>校准后 5 年年化 ¥110 亿 / 2025 GDP ¥134 万亿 ≈ <strong>0.008%</strong>；EV 2015 高峰 ~¥350 亿 / GDP ¥68 万亿 ≈ <strong>0.05%</strong></td>
  <td>中国补贴<strong>相对量级仅为 EV 2015 高峰 15-20%</strong>（绝对水平 ~0.008% GDP 几乎可忽略），远未"接近同量级"，但产业链复杂度高 5×；2027-2028 大概率头部洗牌</td>
- <td>补贴权重在 China-led 概率推导中 ≤ 10%（vs v1 隐含 20-30%）；核心论据回归"BOM 成本 + 场景密度 + 工厂数据"三件套</td>
+ <td>补贴权重在 China-led 概率推导中 ≤ 10%；核心论据回归"BOM 成本 + 场景密度 + 工厂数据"三件套</td>
  </tr>
  <tr>
  <td>金力永磁 / 中研股份是 <strong>Tesla Optimus 独家供应商</strong></td>
- <td>第三方核实：公司单方披露"供应商"身份，Tesla 从未公开确认排他性</td>
+ <td>公司单方披露"供应商"身份，Tesla 从未公开确认排他性</td>
  <td>表述统一为<strong>"公司披露已成为 Tesla 供应商，未获 Tesla 公开确认独家"</strong></td>
  <td>金力永磁 / 中研股份 PE 估值上限剪 30%（去掉 Tesla 独供溢价）；按"行业稀缺性 + 非排他供应商"重新定价</td>
  </tr>
@@ -1029,7 +1029,7 @@
  </tr>
  <tr>
  <td>humanoid IRA 推出概率 40%</td>
- <td>第三方评审：单点概率拍脑袋，仅基于 ITIF 单篇白皮书</td>
+ <td>单点概率拍脑袋，仅基于 ITIF 单篇白皮书</td>
  <td>降级为 <strong>policy watchlist 项</strong>；推出与否高度依赖 Optimus 兑现度，作为情景触发条件而非给定概率</td>
  <td>humanoid IRA 改为 watchlist 项（推出概率区间 20-50% × Tesla 兑现度）；组合不依赖单一政策路径，平衡 China-led/US-led 暴露</td>
  </tr>
@@ -1038,12 +1038,12 @@
  </div>
 
  <div class="insight-box mt-4">
- <strong>变更的元 takeaway</strong>：
+ <strong>九条 DD 发现的元 takeaway</strong>：
  <ul class="text-sm mt-2 mb-0">
- <li>① 10 处修订中 <strong>7 处指向"美系估值下行风险"</strong>（RaaS / Tesla / Figure DCF / 1X 自主率 / 仓储替代 / 资产负债表）</li>
- <li>② 中系修订相对中性（口径错位、独家声明软化、补贴叙事降级），但<strong>板块估值锚整体下移 2-4×</strong></li>
- <li>③ 没有一处修订让原结论"更乐观"——这印证 v1 整体偏 narrative-driven 而非 DD-driven</li>
- <li>④ <strong>核心架构（5 层产业链、技术拐点、6 玩家路径）仍立得住</strong>——v3 只是把估值锚 / 商业化兑现 / 政策概率拉回 DD 现实</li>
+ <li>① 九条 DD 发现中 <strong>七条指向"美系估值下行风险"</strong>（RaaS / Tesla / Figure DCF / 1X 自主率 / 仓储替代 / 资产负债表）</li>
+ <li>② 中系发现相对中性（口径错位、独家声明软化、补贴叙事降级），但<strong>板块估值锚整体下移 2-4×</strong></li>
+ <li>③ 没有一条 DD 发现让主流叙事"更乐观"——这印证当前一级市场叙事整体偏 narrative-driven 而非 DD-driven</li>
+ <li>④ <strong>核心架构（5 层产业链、技术拐点、6 玩家路径）仍立得住</strong>——本节只是把估值锚 / 商业化兑现 / 政策概率拉回 DD 现实</li>
  </ul>
  </div>
 
@@ -1089,14 +1089,14 @@
  </div>
 
  <div class="data-card" style="border-top:4px solid var(--blue);">
- <h3 class="!mt-0">路径 ② · Figure — 端到端 VLA + B 端 RaaS <span class="text-xs text-gray-500">(Round-4 ind-i17: Apptronik 移至路径 7c, 见下)</span></h3>
+ <h3 class="!mt-0">路径 ② · Figure — 端到端 VLA + B 端 RaaS</h3>
  <ul class="text-sm">
  <li><strong>核心假设</strong>：纯软件（Helix VLA）+ B 端 RaaS（$1K/月 - $25/h）+ 头部车厂客户（BMW, Mercedes）→ 估值 5-10× of 中系</li>
  <li><strong>实际进度</strong>：Figure 11 月 BMW PoC 完成 / BotQ 工厂爬产 / commercial 目标 2026 H2</li>
  <li><strong>关键节点</strong>：Adcock "no teleop in market" 是 binary credibility event；任何被发现遥操作打击 $39B 估值</li>
  <li><strong>退出</strong>：Figure IPO 或被 Tesla / NVIDIA 并购</li>
  <li><strong>失败模式</strong>：RaaS 资产负债表压力；竞争对手提前 PMF；teleop 争议爆发</li>
- <li><strong>PE 估值</strong>：Figure $39B (DP009 canonical; media $39.5B 同义)；DCF 隐含产能 100K + capex-light 假设. <em>Apptronik $5B 移至路径 7c (OEM-locked); ind-i17 fix</em></li>
+ <li><strong>PE 估值</strong>：Figure $39B (DP009 canonical; media $39.5B 同义)；DCF 隐含产能 100K + capex-light 假设. <em>Apptronik $5B 移至路径 7c (OEM-locked)</em></li>
  </ul>
  </div>
 
@@ -1149,22 +1149,22 @@
  </div>
 
  <div class="data-card md:col-span-2" style="border-top:4px solid #7c3aed;background:#faf5ff;">
- <h3 class="!mt-0">路径 ⑦ · 美系软件 + OEM 锁定 — 传统机器人巨头 / Big Tech 基础模型层 <span class="pill pill-primary text-xs">round-2 新增</span></h3>
- <p class="text-sm">v1 把 "美系软件" = Figure / PI / Skild / 1X 严重低估了 (a) Google DeepMind robotics (Gemini Robotics 1.5 / ER / On-Device / Live) 和 (b) Boston Dynamics × Hyundai 路径的真实影响 — 这两条都不在私募一线估值泡沫名单上。</p>
+ <h3 class="!mt-0">路径 ⑦ · 美系软件 + OEM 锁定 — 传统机器人巨头 / Big Tech 基础模型层</h3>
+ <p class="text-sm">"美系软件" 这一桶里，除 Figure / PI / Skild / 1X 之外，还有两条被一级市场叙事低估的路径：(a) Google DeepMind robotics (Gemini Robotics 1.5 / ER / On-Device / Live) 和 (b) Boston Dynamics × Hyundai —— 这两条都不在私募一线估值泡沫名单上。</p>
  <ul class="text-sm mt-2">
- <li><strong>子路径 7a · Big Tech 基础模型层</strong>：Google DeepMind / Intrinsic / OpenAI / Anthropic 不可直投 (PE 无 entry)，但通过 Alphabet 二级 (TSLA-style) + 战略并购窗口 + 整机 OEM 锁定 (Apptronik 跑 Gemini Robotics / BD Atlas 接 Gemini) 间接暴露。Alphabet 2025 robotics 资本投入 [INFERRED] $5-20B + 自由现金流补贴, 隐含 multiple 远低于美系私募整机一线 pure-play 加权 PSR ~750-1,500× (中点 ~1,000×; 与 §4 takeaway ③ 同步 ind-i16)。</li>
- <li><strong>子路径 7b · BD-Hyundai-DeepMind (传统机器人 + 整车 OEM + 外购大模型)</strong>：Boston Dynamics (Hyundai 全资) Atlas Electric 2026 全部产能给现代 + DeepMind, <strong>2028 目标 30,000 台/年</strong> (= LBC-2 中位 50 万年度出货的 6% 单一公司锁定)；<strong>§3.1 Autonomy 评分卡 BD Atlas L2-L3 与 Figure "L3 in-task ODD 但有 teleop 争议" 大致 tied (Round-4 ind-i19 修订: 严格 head-to-head 看, BD 量化吞吐量 [UNDISCLOSED] 而 Figure 有 1,250 累计运行小时 + 90,000 件钣金 + 30,000+ 辆 X3 定量证据 — BD 的论证强度实际低于 Figure)</strong>。BD 优势在 (i) 整车 OEM 现金流补贴 + (ii) 没有 teleop 争议; 劣势在 (iii) 公开量化数据稀疏。<em>round-3 路径 7b 文案 "BD 高于 Figure" 是反向 cherry-pick, round-4 已修正</em>。</li>
+ <li><strong>子路径 7a · Big Tech 基础模型层</strong>：Google DeepMind / Intrinsic / OpenAI / Anthropic 不可直投 (PE 无 entry)，但通过 Alphabet 二级 (TSLA-style) + 战略并购窗口 + 整机 OEM 锁定 (Apptronik 跑 Gemini Robotics / BD Atlas 接 Gemini) 间接暴露。Alphabet 2025 robotics 资本投入 [INFERRED] $5-20B + 自由现金流补贴, 隐含 multiple 远低于美系私募整机一线 pure-play 加权 PSR ~750-1,500× (中点 ~1,000×)。</li>
+ <li><strong>子路径 7b · BD-Hyundai-DeepMind (传统机器人 + 整车 OEM + 外购大模型)</strong>：Boston Dynamics (Hyundai 全资) Atlas Electric 2026 全部产能给现代 + DeepMind, <strong>2028 目标 30,000 台/年</strong> (= LBC-2 中位 50 万年度出货的 6% 单一公司锁定)；<strong>§3.1 Autonomy 评分卡 BD Atlas L2-L3 与 Figure "L3 in-task ODD 但有 teleop 争议" 大致 tied</strong>：严格 head-to-head 看，BD 量化吞吐量 [UNDISCLOSED] 而 Figure 有 1,250 累计运行小时 + 90,000 件钣金 + 30,000+ 辆 X3 定量证据 —— BD 的论证强度实际低于 Figure。BD 优势在 (i) 整车 OEM 现金流补贴 + (ii) 没有 teleop 争议; 劣势在 (iii) 公开量化数据稀疏。</li>
  <li><strong>关键节点</strong>：(i) BD-Hyundai 30K/yr 2028 兑现度；(ii) Apptronik × Mercedes pilot → commercial 转化；(iii) Gemini Robotics 在 ER (Embodied Reasoning) benchmark 与 π0/Helix 同台公开成绩</li>
  <li><strong>退出</strong>：Hyundai 二级 / Alphabet 二级 / Apptronik IPO 或被并购</li>
  <li><strong>失败模式</strong>：DeepMind robotics 战略级降级；Hyundai-BD 整合迟缓；OEM 锁定路径被私募一线绕过</li>
  <li><strong>PE 视角</strong>：BD 隐含估值按 Hyundai 2021 收购 $1.1B + 后续追加投入 + Atlas Electric 业务线 implied 测算 ~$3-5B；不可直投但<strong>是"美系软件不全是泡沫"的事实锚</strong>。这条路径修正 LBC-4 — "美系一线全在泡沫区" 应限定为 "美系私募整机一线 (Figure/PI/Skild/1X)" 而非 "美系软件全貌"。</li>
- <li><strong>子路径 7c · Apptronik × Mercedes / Jabil (Round-4 ind-i17 新增, 与 BD-Hyundai 同级)</strong>：Apptronik (Series A-X $520M 2026.2, 估值 $5B) Mercedes firm pilot + Jabil 双重身份 (制造 + 客户) + Google DeepMind 战略投资. 与 Figure 不同: Apptronik 是 OEM-locked (Mercedes / Jabil 双 lock), 不是 pure-play VLA. 与 BD-Hyundai 不同: Apptronik 是独立公司 (PE 可直投) 而 BD 是 Hyundai 全资 (仅 Hyundai 二级). 关键节点: Mercedes pilot → commercial 转化时点 2026 H2; Gemini Robotics 在 Apollo 上的部署 benchmark. 退出: Apptronik IPO 或被 Google / Hyundai / Mercedes 并购. PE 视角: $5B 在 OEM-locked 桶内是中等估值, 失败率 15-25% (低于 Figure 30-40% 因为有 OEM 现金流补贴).</li>
+ <li><strong>子路径 7c · Apptronik × Mercedes / Jabil (与 BD-Hyundai 同级)</strong>：Apptronik (Series A-X $520M 2026.2, 估值 $5B) Mercedes firm pilot + Jabil 双重身份 (制造 + 客户) + Google DeepMind 战略投资. 与 Figure 不同: Apptronik 是 OEM-locked (Mercedes / Jabil 双 lock), 不是 pure-play VLA. 与 BD-Hyundai 不同: Apptronik 是独立公司 (PE 可直投) 而 BD 是 Hyundai 全资 (仅 Hyundai 二级). 关键节点: Mercedes pilot → commercial 转化时点 2026 H2; Gemini Robotics 在 Apollo 上的部署 benchmark. 退出: Apptronik IPO 或被 Google / Hyundai / Mercedes 并购. PE 视角: $5B 在 OEM-locked 桶内是中等估值, 失败率 15-25% (低于 Figure 30-40% 因为有 OEM 现金流补贴).</li>
  </ul>
  </div>
 
  </div>
 
- <h2 class="mt-8">7 种路径对照：核心维度 (Round-5 r4-i25: 添加路径⑦c Apptronik OEM-locked 行)</h2>
+ <h2 class="mt-8">7 种路径对照：核心维度</h2>
  <div class="overflow-x-auto">
  <table class="pro text-sm">
  <thead>
@@ -1172,12 +1172,12 @@
  </thead>
  <tbody>
  <tr><td>① Tesla</td><td>垂直整合 + 自家场景 + 自研芯片</td><td>内部使用，无外部 ROI 数据</td><td>2026.7-8 V3 量产 + $20K 目标</td><td>40-50%（历史延期记录）</td></tr>
- <tr><td>② Figure (round-4 ind-i17: Apptronik 移出)</td><td>VLA 软件 + B 端客户绑定</td><td>$1K/月 RaaS - 8 年回本 naive</td><td>BotQ 爬产 + capex-light 验证</td><td>30-40%（estimate 泡沫风险）</td></tr>
+ <tr><td>② Figure</td><td>VLA 软件 + B 端客户绑定</td><td>$1K/月 RaaS - 8 年回本 naive</td><td>BotQ 爬产 + capex-light 验证</td><td>30-40%（estimate 泡沫风险）</td></tr>
  <tr><td>③ 1X</td><td>消费品牌 + teleop → 数据飞轮</td><td>$20K 硬件 + $499/月 订阅</td><td>2028 95% 自主率兑现</td><td>50-60%（最 ambitious）</td></tr>
  <tr><td>④ PI / Skild</td><td>通用大脑模型</td><td>软件 license / API</td><td>整机厂买不买 vs 自研</td><td>40-50%（被整机厂内化）</td></tr>
  <tr><td>⑤ 中国硬件派</td><td>BOM 成本 + 走量 + 现金流</td><td>毛利 30-60%，现金流为正</td><td>R1 海外持续 + IPO 兑现</td><td>15-25%（已经盈利，稳健）</td></tr>
  <tr><td>⑥ 中国场景派</td><td>国资 + 政府订单 + 仿真</td><td>政府采购毛利低，商业溢出未验</td><td>仿真→真机闭合 + IPO 兑现</td><td>25-35%（依赖政策窗口）</td></tr>
- <tr style="border-top:4px solid #7c3aed;"><td>⑦c Apptronik OEM-locked (Round-5 r4-i25 新增)</td><td>Mercedes firm pilot + Google 战略投资 + Jabil contract mfg</td><td>OEM 现金流补贴 + B2B pilot → commercial 2026 H2</td><td>Mercedes pilot 转 commercial + Google Gemini Robotics 兑现</td><td>15-25%（OEM 现金流补贴; 比 Figure 30-40% 低; 同等于 BD-Hyundai 7b）</td></tr>
+ <tr style="border-top:4px solid #7c3aed;"><td>⑦c Apptronik OEM-locked</td><td>Mercedes firm pilot + Google 战略投资 + Jabil contract mfg</td><td>OEM 现金流补贴 + B2B pilot → commercial 2026 H2</td><td>Mercedes pilot 转 commercial + Google Gemini Robotics 兑现</td><td>15-25%（OEM 现金流补贴; 比 Figure 30-40% 低; 同等于 BD-Hyundai 7b）</td></tr>
  </tbody>
  </table>
  </div>
@@ -1187,7 +1187,7 @@
  <ul class="text-sm mt-2 mb-0">
  <li>① <strong>没有一条路径有 &lt; 15% 失败率</strong>——这是早期产业的本质；PE 应当押"路径组合"而非"单一公司"</li>
  <li>② <strong>当前唯一公开经盈利验证的是路径 ⑤（中国硬件派）</strong>——宇树扣非净利 ¥6 亿；其他 5 条路径都未跑出 ROI 闭环</li>
- <li>③ <strong>美系私募整机一线 (Pure-play, 不含 OEM-locked) 4 家估值合计 ~$74B</strong>（路径②Figure $39B; 路径③1X $10B 2025.9 在谈; 路径④PI $11B + Skild $14B 在谈; <em>Apptronik 已移至 OEM-locked 桶 (Mercedes firm pilot + Google 投资), 不在 pure-play 泡沫名单 — ind-i14 fix; 不含 Tesla 上市公司分摊 / 不含路径⑦ BD-Hyundai / DeepMind robotics</em>），2025 真实营收合计估 [INFERRED] ~$50-100M（Figure $15-30M, 1X ~$20M, PI/Skild 软件层未公开营收）——<strong>加权平均 LTM PSR ~750-1,500×</strong>（中点 ~1,000×），中位 PSR 仍超 500×；<em>但 LBC-4 限定为 "美系私募整机一线 pure-play" 而非 "美系软件全貌"</em>——见路径⑦ (BD-Hyundai-DeepMind / Apptronik-Mercedes) 作为反锚</li>
+ <li>③ <strong>美系私募整机一线 (Pure-play, 不含 OEM-locked) 4 家估值合计 ~$74B</strong>（路径②Figure $39B; 路径③1X $10B 2025.9 在谈; 路径④PI $11B + Skild $14B 在谈; <em>Apptronik 已移至 OEM-locked 桶 (Mercedes firm pilot + Google 投资), 不在 pure-play 泡沫名单 fix; 不含 Tesla 上市公司分摊 / 不含路径⑦ BD-Hyundai / DeepMind robotics</em>），2025 真实营收合计估 [INFERRED] ~$50-100M（Figure $15-30M, 1X ~$20M, PI/Skild 软件层未公开营收）——<strong>加权平均 LTM PSR ~750-1,500×</strong>（中点 ~1,000×），中位 PSR 仍超 500×；<em>但 LBC-4 限定为 "美系私募整机一线 pure-play" 而非 "美系软件全貌"</em>——见路径⑦ (BD-Hyundai-DeepMind / Apptronik-Mercedes) 作为反锚</li>
  <li>④ "Tesla 会赢"这个论点在我们 10 人样本中无人支持（<strong>注：样本不含 Tesla bulls 如 Musk / Adam Jonas / Cathie Wood；带 Tesla bulls 后业内分歧大致 5:5</strong>，详见第一章矩阵 ⑤ 列 selection bias 说明）</li>
  <li>⑤ <strong>路径 ① ② ③ ④ ⑥ 一起押的总暴露 = $90-100B，全部依赖"AI Scaling Law 2027-2028 兑现"</strong>——如果不到，集体压力测试；路径⑦ (DeepMind 间接 + BD-Hyundai) 是非 Scaling-Law-binding 对冲</li>
  </ul>
@@ -1532,7 +1532,7 @@ graph TB
  <div class="data-card" style="border-top:3px solid #16a34a;"><strong>① 消费级 $5-15K</strong><br/><span class="text-xs text-gray-600">宇树 R1 ($5.9K) / G1 (¥99K) / 众擎 SA01 (¥42K)</span></div>
  <div class="data-card" style="border-top:3px solid #2563eb;"><strong>② 商用 $15-30K</strong><br/><span class="text-xs text-gray-600">1X NEO ($20K) / 众擎 PM01 (¥188K) / Tesla 目标价 / 远征青春版</span></div>
  <div class="data-card" style="border-top:3px solid #ea580c;"><strong>③ 工业级 $50-150K</strong><br/><span class="text-xs text-gray-600">Apollo / Figure 02 ($130K) / 远征 A2 (¥620K) / Walker S1 (¥3M)</span></div>
- <div class="data-card" style="border-top:3px solid #dc2626;"><strong>④ 高端 $300-500K</strong><br/><span class="text-xs text-gray-600">Atlas Electric ~$300-500K tier [SECONDARY SOURCE: originofbots.com $420K; BD/Hyundai 一手未披露 sticker; Round-4 ind-i21]</span></div>
+ <div class="data-card" style="border-top:3px solid #dc2626;"><strong>④ 高端 $300-500K</strong><br/><span class="text-xs text-gray-600">Atlas Electric ~$300-500K tier [SECONDARY SOURCE: originofbots.com $420K; BD/Hyundai 一手未披露 sticker]</span></div>
  </div>
 
  <h3>应用场景商业化进度（2025）</h3>
@@ -1804,7 +1804,7 @@ graph TB
  <div class="scenario-card bi" style="background:#fef3c7;">
  <div class="flex justify-between items-center mb-2">
  <span class="tag" style="background:#92400e;color:white;">基准情景</span>
- <span class="text-3xl font-bold" style="color:#92400e;">35%</span><span class="text-xs text-amber-700 block">(30-40% range; Round-5 r4-i22 SST canonical 中点 35%)</span>
+ <span class="text-3xl font-bold" style="color:#92400e;">35%</span><span class="text-xs text-amber-700 block">(30-40% range; 中点 35%)</span>
  </div>
  <h3 class="!mt-0">Bifurcation 双轨平行（基准）</h3>
  <p class="text-sm font-medium mb-3">中美三层全面脱钩，BOM 重合度 &lt; 30%</p>
@@ -1824,10 +1824,10 @@ graph TB
  <div style="height: 360px;"><canvas id="chartScenarioCompare"></canvas></div>
  </div>
 
- <h3>情景概率推导：2×2 触发条件矩阵（round-2 新增，pe i8 / numerical i6）</h3>
+ <h3>情景概率推导：2×2 触发条件矩阵</h3>
  <div class="overflow-x-auto">
  <table class="pro text-sm">
- <caption>表 6.3.x — 2×2 触发条件 joint 概率 (Round-4 r3-n2 / i20 / n3.i2: P(Tesla Y) 校准至 25% 以 reconcile US-led 卡片中点与矩阵 derive)</caption>
+ <caption>表 6.3.x — 2×2 触发条件 joint 概率</caption>
  <thead><tr><th>cell</th><th>Tesla 100 万兑现 = Y (marginal 25%)</th><th>Tesla 失败 = N (marginal 75%)</th><th>marginal IRA</th></tr></thead>
  <tbody>
  <tr><td><strong>humanoid IRA = Y</strong></td><td><strong>P(Y,Y) = 12.5%</strong><br/>= US-led 核心<br/>Optimus 反向倾销 $20K + 美硬件锁定</td><td><strong>P(N,Y) = 7.5%</strong><br/>= Bifurcation 偏 US 一支<br/>政策推出但 Tesla 失败 → Figure 短期承接</td><td><strong>20%</strong></td></tr>
@@ -1836,9 +1836,9 @@ graph TB
  </tbody>
  </table>
  </div>
- <div class="limitation-note">Round-4 修订 (r3-n2 / ind-i20 / num-n3.i2 reconcile): conditional decomposition P(Tesla Y)=25% (round-3 用 30% 与卡片中点 20% 不一致), P(IRA|Tesla Y)=50%, P(IRA|Tesla N)=10%. 4 cell joint 加和 = 12.5+12.5+7.5+67.5 = 100% ✓. mapping 到 named scenarios (与 §0.2 卡片 + chartScenarioProb 一致): <strong>US-led 25% (= P(Y,Y) 12.5% + P(Y,N) 12.5%)</strong>; China-led 35% + Bifurcation 主干 27.5% + Other 5% = P(N,N) 67.5%; Bifurcation 偏 US-with-IRA = P(N,Y) 7.5%; Bifurcation 总 35% (= 27.5% + 7.5%). <strong>Single Source of Truth for scenario probabilities: 35 / 25 / 35 / 5 = 100% — propagated to §0.2 / §3.6 / §6.3 cards / chartScenarioProb / §A.5 IC Memo Returns / §A.3 决策树 Q3 / §A.6.3 portfolio IRR</strong>. Round-3 +10pp gap (cards 20% vs matrix 30%) fully resolved.</div>
+ <div class="limitation-note">Conditional decomposition: P(Tesla Y)=25%, P(IRA|Tesla Y)=50%, P(IRA|Tesla N)=10%. 4 cell joint 加和 = 12.5+12.5+7.5+67.5 = 100% ✓. mapping 到 named scenarios (与 §0.2 卡片 + chartScenarioProb 一致): <strong>US-led 25% (= P(Y,Y) 12.5% + P(Y,N) 12.5%)</strong>; China-led 35% + Bifurcation 主干 27.5% + Other 5% = P(N,N) 67.5%; Bifurcation 偏 US-with-IRA = P(N,Y) 7.5%; Bifurcation 总 35% (= 27.5% + 7.5%). <strong>Single Source of Truth for scenario probabilities: 35 / 25 / 35 / 5 = 100% — propagated to §0.2 / §3.6 / §6.3 cards / chartScenarioProb / §A.5 IC Memo Returns / §A.3 决策树 Q3 / §A.6.3 portfolio IRR</strong>.</div>
 
- <div class="info-box mt-4"><strong>Korea-Japan satellite pole (Round-4 ind-i15 framing)</strong>: Korea 不是独立第三极, 而是 US-led / Bifurcation 两侧的 satellite pole. 论据 (a) BD 是 Hyundai 全资, integration with Google DeepMind Gemini, BD-Hyundai 通道 ≈ US-side 整机 OEM 锁定的延伸 (现金流来自 Hyundai $50B 市值的 capex 调度, 软件栈来自 US 阵营 Gemini Robotics); (b) Korean component supply chain (Samsung 半导体 + LG 电池 + Hyundai 主机厂) 是 not-full-stack — VLA / 仿真 / 数据飞轮三件套 Korea 都没有独立栈; (c) 与日本 (Sony / Honda / Yaskawa) 类似 — 集成商 + 部件供应, 非阵营驱动者. <strong>PE 视角影响</strong>: 不需要将 LBC-3 三情景升级为四情景; Korea 暴露通过 (i) Hyundai 二级 (BD route) + (ii) Samsung / LG 二级 (component) + (iii) FTA 国家硬件 hedge — 三条路径在现有 US-led / Bifurcation 情景内已覆盖. <strong>限定条件</strong>: 若 Korea + 日本 + Israel 形成"第三阵营"反 Tesla narrative (例如 Hyundai-Toyota-Samsung 联合 humanoid 标准), 则 LBC-3 需重建; round-4 monitor (§0.3 ⑥ 监测点 新增 第 7 项).</div>
+ <div class="info-box mt-4"><strong>Korea-Japan satellite pole</strong>: Korea 不是独立第三极, 而是 US-led / Bifurcation 两侧的 satellite pole. 论据 (a) BD 是 Hyundai 全资, integration with Google DeepMind Gemini, BD-Hyundai 通道 ≈ US-side 整机 OEM 锁定的延伸 (现金流来自 Hyundai $50B 市值的 capex 调度, 软件栈来自 US 阵营 Gemini Robotics); (b) Korean component supply chain (Samsung 半导体 + LG 电池 + Hyundai 主机厂) 是 not-full-stack — VLA / 仿真 / 数据飞轮三件套 Korea 都没有独立栈; (c) 与日本 (Sony / Honda / Yaskawa) 类似 — 集成商 + 部件供应, 非阵营驱动者. <strong>PE 视角影响</strong>: 不需要将 LBC-3 三情景升级为四情景; Korea 暴露通过 (i) Hyundai 二级 (BD route) + (ii) Samsung / LG 二级 (component) + (iii) FTA 国家硬件 hedge — 三条路径在现有 US-led / Bifurcation 情景内已覆盖. <strong>限定条件</strong>: 若 Korea + 日本 + Israel 形成"第三阵营"反 Tesla narrative (例如 Hyundai-Toyota-Samsung 联合 humanoid 标准), 则 LBC-3 需重建; 监测项：§0.3 ⑥ 监测点 第 7 项.</div>
  </div>
 </section>
 
@@ -1877,7 +1877,7 @@ graph TB
  </div>
 
  <div class="warning-box">
- <strong>类比 EV 早期补贴（v2 修正 10× 错位）</strong>：累计承诺 ¥550+ 亿（vs EV 2009-2014 "十城千辆" 5 年累计 ¥430 亿）。按 5 年落地窗口年化：¥110 亿 / 年 ÷ 2025 GDP ¥134 万亿 = <strong>0.0082%（即 ~0.008%）</strong>，<em>不是 v1 写的 0.08%（小数点位置错一位）</em>。EV 2015 年高峰单年补贴约 ¥300-400 亿 ÷ 当年 GDP ¥68 万亿 = <strong>0.0441-0.0588%（即 ~0.044-0.059%）</strong>，<em>不是 v1 写的 0.44-0.59%</em>。具身补贴<strong>相对量级仍为 EV 2015 高峰的 15-25%</strong>（0.0082 / 0.05 ≈ 16%；相对比例不变）；但<strong>绝对水平（占 GDP ~0.008%）几乎可忽略</strong>，远未"接近 EV 同量级"。产业链复杂度高 5×，<strong>2027-2028 大概率进入头部洗牌期</strong>（受 EV "光伏式产能过剩"剧本启发）。
+ <strong>类比 EV 早期补贴</strong>：累计承诺 ¥550+ 亿（vs EV 2009-2014 "十城千辆" 5 年累计 ¥430 亿）。按 5 年落地窗口年化：¥110 亿 / 年 ÷ 2025 GDP ¥134 万亿 = <strong>0.0082%（即 ~0.008%）</strong>。EV 2015 年高峰单年补贴约 ¥300-400 亿 ÷ 当年 GDP ¥68 万亿 = <strong>0.0441-0.0588%（即 ~0.044-0.059%）</strong>。具身补贴<strong>相对量级仍为 EV 2015 高峰的 15-25%</strong>（0.0082 / 0.05 ≈ 16%；相对比例不变）；但<strong>绝对水平（占 GDP ~0.008%）几乎可忽略</strong>，远未"接近 EV 同量级"。产业链复杂度高 5×，<strong>2027-2028 大概率进入头部洗牌期</strong>（受 EV "光伏式产能过剩"剧本启发）。
  </div>
  </div>
 </section>
@@ -1962,17 +1962,17 @@ graph TB
  </div>
  <div class="warning-box">
  2020 EV 整车 PSR 中位 <strong>8×</strong>（LTM 口径），2021 蔚来/小鹏达 <strong>15-20×</strong>（NTM 高峰口径），2023 回调至 1-3×（LTM）。<strong>2025 美系一线人形 LTM PSR (区间): Figure 单家 1,300-2,600× / 4 家 pure-play 加权 750-1,500× (中点 1,000×; 中位 >500×)</strong>（按 [INFERRED] 2025 营收区间），<strong>2027-2028 预计回调 50-70%</strong>。
- <div class="limitation-note">v1 写 "8× 中位"（LTM 口径）与 §6.5.2 蔚来 IPO 53× LTM 不矛盾——8× 是 2020 全板块 LTM 中位；53× 是蔚来 IPO 单点 LTM 高位。本节统一使用 LTM 口径，§6.5.2 同时列 LTM/NTM。</div>
+ <div class="limitation-note">"8× 中位"（LTM 口径）与 §6.5.2 蔚来 IPO 53× LTM 不矛盾——8× 是 2020 全板块 LTM 中位；53× 是蔚来 IPO 单点 LTM 高位。本节统一使用 LTM 口径，§6.5.2 同时列 LTM/NTM。</div>
  </div>
 
  <h3>6.5.1 · 估值 sanity check：2030 EBIT terminal-value 对照（简化 DCF）：Figure / 智元 / 宇树</h3>
  <p class="text-sm text-gray-600 mb-3">在 Bifurcation 基准情景下，对三家头部整机厂做"2030 EBIT × terminal value × WACC 折现"的简化 sanity check。<strong>这不是完整 DCF</strong>（未含 2026-2030 逐年现金流、capex、NWC、税、稀释、爬坡曲线、失败概率）——完整 DCF 需独立财务模型 / DD 阶段 build。本表仅用于"市场估值 vs 简化 anchor 的 sanity check"。</p>
 
- <!-- Round-3 vis-i4 fix: Promote DCF punch line (市场/sanity 比值) to top of section via 3 KPI cards -->
+ <!-- DCF punch line (市场/sanity 比值) — 3 KPI cards at top of section -->
  <div class="grid md:grid-cols-3 gap-4 mb-6">
  <div class="kpi-card" style="border-left:4px solid #dc2626;">
  <div class="kpi-value" style="color:#dc2626;">45× sanity</div>
- <div class="kpi-label"><strong>Figure AI 🇺🇸</strong><br/>$39B vs sanity $0.87B (base; 敏感性 28-64× round-4)<br/><span class="text-xs">系统性泡沫</span></div>
+ <div class="kpi-label"><strong>Figure AI 🇺🇸</strong><br/>$39B vs sanity $0.87B (base; 敏感性 28-64×)<br/><span class="text-xs">系统性泡沫</span></div>
  </div>
  <div class="kpi-card" style="border-left:4px solid #ea580c;">
  <div class="kpi-value" style="color:#ea580c;">16× sanity</div>
@@ -2009,19 +2009,19 @@ graph TB
  <tr><td>EBIT × 折现 (4 年 WACC) = 2026 锚定 operating value</td><td>$93M (df=0.572)</td><td>$22M (df=0.516)</td><td>$52M (df=0.552)</td><td>—</td></tr>
  <tr><td>+ 永续期价值（EBIT × 1/(WACC-g) × 折现因子）</td><td>+$0.78B</td><td>+$0.15B</td><td>+$0.40B</td><td>永续 g=3% (mature industry ~ GDP -1pp); 公式: EBIT × 1/(WACC-g) × 折现 → Figure $163M × (1/0.12) × 0.572 = $776M ≈ $0.78B</td></tr>
  <tr style="background:#fef3c7;font-weight:700;"><td><strong>= Sanity check 估值</strong></td><td><strong>$0.87B</strong></td><td><strong>$0.17B</strong></td><td><strong>$0.46B</strong></td><td>简化 sanity check，不含软件 / 数据资产 / 战略溢价 / 逐年现金流</td></tr>
- <tr style="background:#dbeafe;font-weight:700;"><td><strong>当前市场估值</strong></td><td><strong>$39B</strong> (post-money 2025.9 Series C; DP009 high conf; canonical anchor for all PSR calculations; 媒体 $39.5B 已 round-3 全局统一为 $39B)</td><td><strong>¥200 亿+ = $2.8B</strong> (Pre-IPO; IPO 后预期 $4-7B 详 A.5)</td><td>Pre-IPO C 轮 ¥120 亿 ($1.7B; chart Top10) / IPO 锚定预计 <strong>&gt;¥400 亿 = $5.6B</strong></td><td>智元两个时点 (Pre-IPO vs IPO 后) 不可混用</td></tr>
- <tr style="background:#fee2e2;font-weight:700;"><td><strong>市场 vs sanity check 比值</strong></td><td><span class="highlight-num">市场 45× sanity</span></td><td><span class="highlight-num">市场 16× sanity</span></td><td><span class="highlight-num">市场 12× sanity</span></td><td>v2 收入修订（Figure 20%→10% 全球份额假设与中国主导一致）后，Figure 泡沫倍数更严重；若纳入失败概率 35% 中点 → sanity ×(1-0.35) = $0.57B, 市场/sanity 跳至 68× (vs base 45×)</td></tr>
+ <tr style="background:#dbeafe;font-weight:700;"><td><strong>当前市场估值</strong></td><td><strong>$39B</strong> (post-money 2025.9 Series C; DP009 high conf; canonical anchor for all PSR calculations; 媒体 $39.5B 同义)</td><td><strong>¥200 亿+ = $2.8B</strong> (Pre-IPO; IPO 后预期 $4-7B 详 A.5)</td><td>Pre-IPO C 轮 ¥120 亿 ($1.7B; chart Top10) / IPO 锚定预计 <strong>&gt;¥400 亿 = $5.6B</strong></td><td>智元两个时点 (Pre-IPO vs IPO 后) 不可混用</td></tr>
+ <tr style="background:#fee2e2;font-weight:700;"><td><strong>市场 vs sanity check 比值</strong></td><td><span class="highlight-num">市场 45× sanity</span></td><td><span class="highlight-num">市场 16× sanity</span></td><td><span class="highlight-num">市场 12× sanity</span></td><td>按 Figure 20%→10% 全球份额假设（与中国主导一致）后，Figure 泡沫倍数更严重；若纳入失败概率 35% 中点 → sanity ×(1-0.35) = $0.57B, 市场/sanity 跳至 68× (vs base 45×)</td></tr>
  <tr><td>当前 LTM PSR (2025 营收，全口径)</td><td><strong>~1,300-2,600×</strong> ($39B / [INFERRED] $15-30M, 中点 ~1,750×)</td><td><strong>~20×</strong> (¥200亿/¥10亿)</td><td><strong>~23×</strong> (¥400亿/¥17.08亿)</td><td>美系真泡沫（任一营收假设下同向）；中系接近 EV IPO N=3 sample median 24×</td></tr>
  <tr><td>2030 PSR（按 DCF 锚定）</td><td>0.6×</td><td>0.13×</td><td>0.37×</td><td>DCF 隐含的 2030 PSR</td></tr>
  </tbody>
  </table>
  </div>
 
- <h4 class="mt-6">6.5.1.x · 3×3 g/WACC 敏感性矩阵 (Figure AI, Round-4 r3-n4 / n3.i1 重建: 全部 9 cell 用同一简单 DCF 闭式公式, 不再混 ramp accumulator)</h4>
- <p class="text-xs text-gray-600 mb-2">公式 (统一): V = EBIT × df_4yr + EBIT × df_4yr / (WACC − g), 其中 df_4yr = 1/(1+WACC)^4; EBIT = $163M (Figure 2030 base). 这是 4 年后开始永续 + 4 年折现的两阶段 DCF 闭式. <strong>Round-3 在 W=12%/18% 列偷加 ramp accumulator 但 W=15% 列没加导致 9 cell 中 6 cell 不闭合 — round-4 全部统一</strong>.</p>
+ <h4 class="mt-6">6.5.1.x · 3×3 g/WACC 敏感性矩阵 (Figure AI; 全部 9 cell 用同一简单 DCF 闭式公式)</h4>
+ <p class="text-xs text-gray-600 mb-2">公式 (统一): V = EBIT × df_4yr + EBIT × df_4yr / (WACC − g), 其中 df_4yr = 1/(1+WACC)^4; EBIT = $163M (Figure 2030 base). 这是 4 年后开始永续 + 4 年折现的两阶段 DCF 闭式.</p>
  <div class="overflow-x-auto">
  <table class="sensitivity-table">
- <caption>Figure AI sanity-check 估值 ($B); 市场 $39B; row = perpetual g, col = WACC; Round-4 SST: 全 9 cell 用同一公式</caption>
+ <caption>Figure AI sanity-check 估值 ($B); 市场 $39B; row = perpetual g, col = WACC; 全 9 cell 用同一公式</caption>
  <thead><tr><th>g \ WACC</th><th>WACC = 12%</th><th>WACC = 15% (base)</th><th>WACC = 18%</th></tr></thead>
  <tbody>
  <tr><td><strong>g = 2%</strong></td><td>$1.14B (市场/sanity ≈ 34×)</td><td>$0.81B (≈ 48×)</td><td>$0.61B (≈ 64×)</td></tr>
@@ -2030,25 +2030,25 @@ graph TB
  </tbody>
  </table>
  </div>
- <div class="limitation-note">Round-4 r3-n4 / num n3.i1 fix: 全部 9 cell 用统一公式 V = EBIT × df_4yr × [1 + 1/(WACC-g)]. <strong>独立核验 (任一行可复算)</strong>: g=3%, W=12%: df = 1/1.12^4 = 0.6355; V = 163 × 0.6355 × (1 + 1/0.09) = 163 × 0.6355 × 12.11 = $1,255M ≈ $1.26B ✓. g=3%, W=15% (base): df = 1/1.15^4 = 0.5718; V = 163 × 0.5718 × (1 + 1/0.12) = 163 × 0.5718 × 9.33 = $870M ≈ $0.87B ✓. g=2%, W=18%: df = 0.5158; V = 163 × 0.5158 × (1 + 1/0.16) = 163 × 0.5158 × 7.25 = $610M ≈ $0.61B ✓. 区间 $0.61-1.40B / 28-64× sanity; 中心 $0.87B / 45×; 失败概率 35% 中点折减: Figure $0.87B × 0.65 = $0.57B, 市场/sanity 跳至 68×. 统一 WACC 16% (中美对照): Figure $0.74B / 智元 $0.20B / 宇树 $0.50B → fundamentals-only 反差 73%, WACC 假设差 27% (= (5.1-3.7)/5.1, 见 num n3.i6 footnote). <strong>narrative "敏感性 24-58×" round-3 残留</strong>; round-4 重新校准为 <strong>28-64× (canonical)</strong>; 失败概率 folddown 68× 独立给出. 报告内 §3.6 L980 / KPI L1965 / §6.5.1 L2041 三处 narrative 已同步更新到 28-64×.</div>
+ <div class="limitation-note">全部 9 cell 用统一公式 V = EBIT × df_4yr × [1 + 1/(WACC-g)]. <strong>独立核验 (任一行可复算)</strong>: g=3%, W=12%: df = 1/1.12^4 = 0.6355; V = 163 × 0.6355 × (1 + 1/0.09) = 163 × 0.6355 × 12.11 = $1,255M ≈ $1.26B ✓. g=3%, W=15% (base): df = 1/1.15^4 = 0.5718; V = 163 × 0.5718 × (1 + 1/0.12) = 163 × 0.5718 × 9.33 = $870M ≈ $0.87B ✓. g=2%, W=18%: df = 0.5158; V = 163 × 0.5158 × (1 + 1/0.16) = 163 × 0.5158 × 7.25 = $610M ≈ $0.61B ✓. 区间 $0.61-1.40B / 28-64× sanity; 中心 $0.87B / 45×; 失败概率 35% 中点折减: Figure $0.87B × 0.65 = $0.57B, 市场/sanity 跳至 68×. 统一 WACC 16% (中美对照): Figure $0.74B / 智元 $0.20B / 宇树 $0.50B → fundamentals-only 反差 73%, WACC 假设差 27% (= (5.1-3.7)/5.1, 见 WACC footnote). <strong>敏感性</strong>校准为 <strong>28-64× (canonical)</strong>; 失败概率 folddown 68× 独立给出. 报告内 §3.6 / KPI / §6.5.1 三处 narrative 一致 28-64×.</div>
 
  <h4 class="mt-6">智元 / 宇树 3×3 简表 (num i5 / pe i3 follow-up, fundamentals comparison)</h4>
  <div class="overflow-x-auto">
  <table class="sensitivity-table">
  <caption>智元 / 宇树 sanity-check 区间端点 → (g, WACC) corner; 用 EBIT $43M / $95M</caption>
- <thead><tr><th>公司</th><th>下沿 (g=2%; WACC: 智元 21% / 宇树 18%) <span class="text-xs">(Round-5 n4.i3 split)</span></th><th>Base (g=3%, WACC=author per row)</th><th>上沿 (g=4%, WACC=15%)</th><th>统一 WACC 16% (per-row g 见 §6.5.1 footnote)</th></tr></thead>
+ <thead><tr><th>公司</th><th>下沿 (g=2%; WACC: 智元 21% / 宇树 18%)</th><th>Base (g=3%, WACC=author per row)</th><th>上沿 (g=4%, WACC=15%)</th><th>统一 WACC 16% (per-row g 见 §6.5.1 footnote)</th></tr></thead>
  <tbody>
  <tr><td><strong>智元</strong> (EBIT $43M)</td><td>$0.13B</td><td>$0.17B (WACC=18%)</td><td>$0.25B</td><td>$0.20B</td></tr>
  <tr><td><strong>宇树</strong> (EBIT $95M)</td><td>$0.36B</td><td>$0.46B (WACC=16%)</td><td>$0.62B</td><td>$0.50B</td></tr>
  </tbody>
  </table>
  </div>
- <div class="limitation-note"><strong>WACC source (Round-4 num n3.i6 fix)</strong>: 智元 base WACC = 18% (= Damodaran emerging-market China tech baseline 14% + 港股流动性折扣 +200bp + 国资 IPO 时点 +200bp; ref: Damodaran 2025 China cost-of-equity table + 中金 2024 unlisted tech compset); 上限 21% (= 18% + 额外 300bp 反映 yield &lt; 70% 量产风险 — author's prior, not market-sourced; <em>若 reviewer 不接受 21%, 可用 18-21% 区间, 不影响 Figure 比值结论</em>). 宇树 base WACC = 16% (= China A-share tech median 14% + 1.5× equity beta adjustment for 海外 30% 出口风险; 已盈利故不加 IPO 不确定性); 上限不超 18% (A 股 IPO 已受理 + 扣非净利 ¥6 亿). 统一 WACC 16% + per-company explicit (g) call-out (Round-5 n4.i2 fix; previous footnote stated single g=3% but published anchors imply different g per company): <strong>Figure $0.74B (g≈2.15%, W=16%)</strong> — 美系成熟期低增长 prior; <strong>智元 $0.20B (g=3%, W=16%)</strong> — 中系硬件升周期 base; <strong>宇树 $0.50B (g≈4.3%, W=16%)</strong> — 已盈利 + R1 海外 30% 出口持续 ramp prior. Ratio 3.7× / 1× / 2.5× (per-company g 反映 perpetual growth 假设差异 — not free parameter, reflects 不同公司生命周期). <strong>fundamentals 反差 73% / WACC 假设差 27% 分解</strong>: author's-WACC ratio Figure/智元 = $0.87B/$0.17B = 5.1×; unified-WACC 16% ratio Figure/智元 = $0.74B/$0.20B = 3.7×; (5.1-3.7)/5.1 = 27.5% 来自 WACC 假设差; 余 72.5% 来自 EBIT scale 差 ($163M vs $43M = 3.8×) — 这是 fundamentals 部分. 失败概率折减 (30-40% 中点): Figure → $0.57B, 智元 → $0.11B, 宇树 → $0.33B; 市场/sanity 比值 68× / 25× / 17× — 反差进一步放大. <strong>智元 cell $0.13B 用 (g=2%, WACC=21%, EBIT=$43M, simple-formula)</strong>: df = 1/1.21^4 = 0.4665; V = 43 × 0.4665 × (1 + 1/0.19) = 43 × 0.4665 × 6.26 = $126M ≈ $0.13B ✓ (与 Figure 3×3 同公式).</div>
+ <div class="limitation-note"><strong>WACC source</strong>: 智元 base WACC = 18% (= Damodaran emerging-market China tech baseline 14% + 港股流动性折扣 +200bp + 国资 IPO 时点 +200bp; ref: Damodaran 2025 China cost-of-equity table + 中金 2024 unlisted tech compset); 上限 21% (= 18% + 额外 300bp 反映 yield &lt; 70% 量产风险 — author's prior, not market-sourced; <em>若 reviewer 不接受 21%, 可用 18-21% 区间, 不影响 Figure 比值结论</em>). 宇树 base WACC = 16% (= China A-share tech median 14% + 1.5× equity beta adjustment for 海外 30% 出口风险; 已盈利故不加 IPO 不确定性); 上限不超 18% (A 股 IPO 已受理 + 扣非净利 ¥6 亿). 统一 WACC 16% + per-company explicit (g) call-out: <strong>Figure $0.74B (g≈2.15%, W=16%)</strong> — 美系成熟期低增长 prior; <strong>智元 $0.20B (g=3%, W=16%)</strong> — 中系硬件升周期 base; <strong>宇树 $0.50B (g≈4.3%, W=16%)</strong> — 已盈利 + R1 海外 30% 出口持续 ramp prior. Ratio 3.7× / 1× / 2.5× (per-company g 反映 perpetual growth 假设差异 — not free parameter, reflects 不同公司生命周期). <strong>fundamentals 反差 73% / WACC 假设差 27% 分解</strong>: author's-WACC ratio Figure/智元 = $0.87B/$0.17B = 5.1×; unified-WACC 16% ratio Figure/智元 = $0.74B/$0.20B = 3.7×; (5.1-3.7)/5.1 = 27.5% 来自 WACC 假设差; 余 72.5% 来自 EBIT scale 差 ($163M vs $43M = 3.8×) — 这是 fundamentals 部分. 失败概率折减 (30-40% 中点): Figure → $0.57B, 智元 → $0.11B, 宇树 → $0.33B; 市场/sanity 比值 68× / 25× / 17× — 反差进一步放大. <strong>智元 cell $0.13B 用 (g=2%, WACC=21%, EBIT=$43M, simple-formula)</strong>: df = 1/1.21^4 = 0.4665; V = 43 × 0.4665 × (1 + 1/0.19) = 43 × 0.4665 × 6.26 = $126M ≈ $0.13B ✓ (与 Figure 3×3 同公式).</div>
 
  <div class="grid md:grid-cols-3 gap-4 mt-4">
  <div class="warning-box" style="margin:0;">
- <strong>Figure AI 解读 (round-2)</strong>
- <p class="text-xs mt-1 mb-0">Sanity check base case <strong>$0.87B</strong> (g=3%/WACC=15%; 敏感性 $0.61-1.40B 详下方 3×3 表 round-4 重建) vs 市场 $39B → <strong>市场 28-64× sanity (base 45×)</strong>。差距反映市场 price in "AI 大脑 + 软件 + 数据飞轮 + 100 万台兑现"等非财务因子。<strong>LTM PSR ~1,300-2,600× 远高于 EV IPO N=3 sample median 24× + Lucid 2021 IPO ~150× (NTM 锚, 单家可比, Rivian LTM 营收近零故 PSR 不可比) + AI 巨头 OpenAI 50×；任何营收假设下同向。美系一线真泡沫；完整 DCF 应纳入失败概率 30-40%</strong>。</p>
+ <strong>Figure AI 解读</strong>
+ <p class="text-xs mt-1 mb-0">Sanity check base case <strong>$0.87B</strong> (g=3%/WACC=15%; 敏感性 $0.61-1.40B 详下方 3×3 表) vs 市场 $39B → <strong>市场 28-64× sanity (base 45×)</strong>。差距反映市场 price in "AI 大脑 + 软件 + 数据飞轮 + 100 万台兑现"等非财务因子。<strong>LTM PSR ~1,300-2,600× 远高于 EV IPO N=3 sample median 24× + Lucid 2021 IPO ~150× (NTM 锚, 单家可比, Rivian LTM 营收近零故 PSR 不可比) + AI 巨头 OpenAI 50×；任何营收假设下同向。美系一线真泡沫；完整 DCF 应纳入失败概率 30-40%</strong>。</p>
  </div>
  <div class="warning-box" style="margin:0;">
  <strong>智元 AgiBot 解读</strong>
@@ -2069,7 +2069,7 @@ graph TB
 
  <div class="overflow-x-auto">
  <table class="pro text-sm">
- <caption>表 6.5.2 — Comps Quartile (Round-3 同步: Figure / Symbotic / EV IPO median 全部对齐 narrative)</caption>
+ <caption>表 6.5.2 — Comps Quartile </caption>
  <thead><tr><th>公司 / 板块</th><th>样本时点</th><th>EV / Sales (LTM)</th><th>EV / Sales (NTM)</th><th>Median 板块倍数</th><th>分位（同板块 Quartile）</th><th>vs Median 溢价</th></tr></thead>
  <tbody>
  <tr style="background:#dbeafe;"><td><strong>Figure AI</strong> 🇺🇸</td><td>2025.9 Series C</td><td><strong>~1,300-2,600×</strong> ($39B / [INFERRED] $15-30M; 中点 ~1,750×)</td><td>~200-400× (2026E forward; 若 $50-100M)</td><td>—</td><td><strong>Q4 极端高位</strong></td><td>—</td></tr>
@@ -2080,8 +2080,8 @@ graph TB
  <tr><td>小鹏（IPO 2020.8）</td><td>2020.8</td><td>24×</td><td>9×</td><td>Q3</td><td>0%</td></tr>
  <tr><td>理想（IPO 2020.7）</td><td>2020.7</td><td>15×</td><td>5×</td><td>Q2</td><td>-37.5%</td></tr>
  <tr><td colspan="7" style="background:#7c2d12;color:white;font-weight:600;text-align:center;">— 可比板块 1b：N=5 全口径 (加 2021 "manic-phase" Rivian/Lucid) ind/num i7 + Tesla 2010 reference —</td></tr>
- <tr><td>Rivian（IPO 2021.11）</td><td>2021.11</td><td>~85,000× (LTM near-zero rev; NTM 锚) [footnote A]</td><td>~250× (NTM)</td><td rowspan="3"><strong>N=5 median = 53× (sorted [15,24,53,150,85000] 第 3 位; round-4 r3-n8 fix)</strong></td><td>Q4 manic-phase (LTM 不可比)</td><td>N/A (LTM 营收近零)</td></tr>
- <tr><td>Lucid（IPO 2021.7 SPAC）</td><td>2021.7</td><td>~150× (NTM 锚, LTM rev ~$0)</td><td>~25× (NTM)</td><td>Q4 manic-phase</td><td>+183% (vs N=5 median 53×; round-4 r3-n8 重算)</td></tr>
+ <tr><td>Rivian（IPO 2021.11）</td><td>2021.11</td><td>~85,000× (LTM near-zero rev; NTM 锚) [footnote A]</td><td>~250× (NTM)</td><td rowspan="3"><strong>N=5 median = 53× (sorted [15,24,53,150,85000] 第 3 位)</strong></td><td>Q4 manic-phase (LTM 不可比)</td><td>N/A (LTM 营收近零)</td></tr>
+ <tr><td>Lucid（IPO 2021.7 SPAC）</td><td>2021.7</td><td>~150× (NTM 锚, LTM rev ~$0)</td><td>~25× (NTM)</td><td>Q4 manic-phase</td><td>+183% (vs N=5 median 53×)</td></tr>
  <tr><td>Tesla（IPO 2010.6 reference, 不进 N=5 median)</td><td>2010.6</td><td>10× LTM (rev $112M)</td><td>~5× (NTM)</td><td>Q1 (sanity ref, 2010 与 2021 era 不可比)</td><td>N/A (单列 reference)</td></tr>
  <tr><td colspan="7" style="background:#19376d;color:white;font-weight:600;text-align:center;">— 可比板块 2：工业自动化龙头（成熟期）— Symbotic 重算后 median 修正 (num i2/i9, pe i1)</td></tr>
  <tr><td>ABB（瑞士）</td><td>2025</td><td>2.8×</td><td>2.7×</td><td rowspan="3"><strong>8.1× (Symbotic + Intuitive 拉高 median)</strong></td><td>Q1</td><td>-65%</td></tr>
@@ -2099,18 +2099,18 @@ graph TB
  </div>
 
  <div class="warning-box">
- <strong>关键定位（round-2 修订, num i1/i5/i9; pe i7; ind i1/i8）</strong>：
+ <strong>关键定位</strong>：
  <ul class="text-sm mt-2 mb-0">
  <li>① <strong>Figure AI LTM PSR ~1,300-2,600×</strong>（$39B / [INFERRED] $15-30M, 中点 ~1,750×）远超 EV IPO N=3 sample median 24× + Lucid 2021 IPO ~150× LTM (manic-phase 单家锚, Rivian LTM 营收近零 PSR 不可比) + AI 巨头 OpenAI 50× —— Q4 极端高位，类比"2021 Rivian/Lucid + 2024 AI hype" 双重叠加；<strong>美系一线是真泡沫</strong>（结论 robust to ±50% 营收敏感性）</li>
  <li>② <strong>智元 20× LTM</strong>（¥200亿/¥10亿）<strong>处于 EV IPO N=3 sample median 24× 偏下沿 (-17%)</strong>——市场估值合理偏低，<strong>非 PSR 泡沫</strong>。若 IPO 后估值冲到 ¥500-800 亿 (~50-80× 2025 营收) 则进入 Q4。<em>智元有两个估值时点 (Pre-IPO $2.8B vs IPO 后预期 $4-7B), §6.5.1 / A.5 已分离</em></li>
  <li>③ <strong>宇树 23× LTM</strong>（¥400亿/¥17.08亿全口径 / IPO 锚定）<strong>处于 EV IPO 中位区间 (-4%)</strong>——毛利 60% + 扣非净利 ¥6 亿 + 海外 30% 出口接近 Symbotic / Intuitive 模式。<strong>但全口径 ≠ 纯人形</strong>：人形 segment 占总营收 30-50%, 人形 PSR ~50-80× 接近美系下限</li>
- <li>④ <strong>样本限制 (round-2 承认)</strong>：EV IPO N=3 "early-phase" sample 是 cherry-picked friendly 对照（全部中国 EV / 全部成功 IPO / 不含 Tesla 2010 / Rivian / Lucid / 失败 IPO）。N=5 全口径 (加 Rivian / Lucid) median 53× 实际让"中系无泡沫"更强，但方法论上承认样本影响。工业自动化 median 修正 8.1× (Symbotic 4.5×→13×)，Intuitive Surgical 仍应单列"医疗机器人"</li>
- <li>⑤ <strong>核心结论修订</strong>："中系也是泡沫"在 v1 是错的——中系一线 LTM PSR (全口径) 已基本对齐 EV IPO 中位区间 (-17% to -4%)。<strong>真正的系统性泡沫在美系私募整机一线</strong>（Figure / Skild / PI / 1X），<em>不延伸到美系 Big Tech robotics 层 (DeepMind/Intrinsic) 或 BD-Hyundai OEM 锁定层</em> — 详 §4 路径⑦</li>
+ <li>④ <strong>样本限制</strong>：EV IPO N=3 "early-phase" sample 是 cherry-picked friendly 对照（全部中国 EV / 全部成功 IPO / 不含 Tesla 2010 / Rivian / Lucid / 失败 IPO）。N=5 全口径 (加 Rivian / Lucid) median 53× 实际让"中系无泡沫"更强，但方法论上承认样本影响。工业自动化 median 修正 8.1× (Symbotic 4.5×→13×)，Intuitive Surgical 仍应单列"医疗机器人"</li>
+ <li>⑤ <strong>核心结论</strong>："中系也是泡沫"叙事不成立——中系一线 LTM PSR (全口径) 已基本对齐 EV IPO 中位区间 (-17% to -4%)。<strong>真正的系统性泡沫在美系私募整机一线</strong>（Figure / Skild / PI / 1X），<em>不延伸到美系 Big Tech robotics 层 (DeepMind/Intrinsic) 或 BD-Hyundai OEM 锁定层</em> — 详 §4 路径⑦</li>
  </ul>
  </div>
 
  <h3>6.5.3 · Unit Economics · 三种商业模式对比（含资产负债表口径）</h3>
- <p class="text-sm text-gray-600 mb-3">PE 投资人的核心问题不是"卖多少台"，是"每台机器人在不同模式下的现金流 + 资产负债表负担"。下表按真实公开口径重做（修正了 v1 中 RaaS 单台年收入算术错误）。</p>
+ <p class="text-sm text-gray-600 mb-3">PE 投资人的核心问题不是"卖多少台"，是"每台机器人在不同模式下的现金流 + 资产负债表负担"。下表按真实公开口径重做。</p>
 
  <div class="overflow-x-auto">
  <table class="pro text-sm">
@@ -2137,7 +2137,7 @@ graph TB
  </div>
 
  <div class="warning-box">
- <strong>方法论说明</strong>：v1 把 RaaS 年收入估算为 $360K/年（$30K/月 × 12）是错的——行业估算 Figure RaaS 约 $25/h × 8h × 250d ≈ $50K/年（<strong>注：Figure 未官方披露价格</strong>，仅披露 BMW 1,250 运行小时 / 90,000+ 件），<strong>差 7×</strong>。修订后 RaaS LTV $200-250K（不是 v1 的 $1.8M），LTV:CAC 仅 2-5×（不是 9×），消除了 v1 "RaaS 5 年累计现金流是售卖的 170×"的错误结论。
+ <strong>方法论说明</strong>：坊间常把 Figure RaaS 年收入估算为 $360K/年（$30K/月 × 12）——行业估算 Figure RaaS 约 $25/h × 8h × 250d ≈ $50K/年（<strong>注：Figure 未官方披露价格</strong>，仅披露 BMW 1,250 运行小时 / 90,000+ 件），<strong>差 7×</strong>。RaaS LTV 修正为 $200-250K，LTV:CAC 仅 2-5×（不是 9×），所谓"RaaS 5 年累计现金流是售卖的 170×"叙事不成立。
  </div>
 
  <h4 class="mt-4">Unit Economics 假设敏感性 (numerical i13)</h4>
@@ -2157,7 +2157,7 @@ graph TB
  <div class="limitation-note">所有 RaaS 假设均为 [INFERRED]，无 Agility / Figure 公开披露的 NDR / 续约率 / 实际工作小时数据。表中 base case (单班 + 100% 续约) 同时已偏乐观 (250 工作日意味着无故障 + 100% utilization)。DD 阶段第一个数据室项 — 见 §A.5 IC Memo Risk #1。</div>
 
  <div class="insight-box">
- <strong>修订后的真实启示</strong>：
+ <strong>真实启示</strong>：
  <ul class="text-sm mt-2 mb-0">
  <li>① RaaS LTV:CAC 仅 <strong>2-5×</strong>，相对售卖（10-40×）<strong>没有数量级优势</strong>——美系估值溢价不能单纯归因 RaaS LTV，更多是"软件大脑 + AI infra"的预期价值</li>
  <li>② RaaS 模式真正的负担在<strong>资产负债表</strong>：单台 BOM $50-130K 由 OEM 前置，需要充足 capex 融资 + 残值假设 + 信用管理 + 维修团队——这些 Figure / Apptronik 都未充分披露</li>
@@ -2237,7 +2237,7 @@ graph TB
  <li><strong>优必选 × 空中客车签 Walker S2 采购合作</strong>—— 工业人形 2026 产能 &gt;1 万台</li>
  <li><strong>Figure 03 量产爬坡</strong>：产线效率 <strong>24× 跃升</strong>（1 台/天 → 1 台/小时），已下线 350+ 台</li>
  <li><strong>Tesla Fremont 终止 Model S/X，7-8 月启动 Optimus V3 量产线</strong>，目标 100 万台/年</li>
- <li><strong>国内具身近 ~150 天累计融资 ¥373 亿</strong>（自 2025.12 中旬至 2026.5 初, ~150 天 × 日均 ¥2.5 亿 = ¥373 亿; <em>非 2026 YTD; v1 标 "YTD" 误导, 已修正 — numerical i4</em>）；2026.4 单月日均 ¥5.8 亿创新高（174 亿/30 天）, 高于 2026.2 月度 ¥160 亿（5.7 亿/28 天），主要由银河通用 ¥25 亿 + 星动 ¥10 亿 + 逐际 $2 亿等驱动）</li>
+ <li><strong>国内具身近 ~150 天累计融资 ¥373 亿</strong>（自 2025.12 中旬至 2026.5 初, ~150 天 × 日均 ¥2.5 亿 = ¥373 亿; <em>非 2026 YTD 而是 150 天累计口径</em>）；2026.4 单月日均 ¥5.8 亿创新高（174 亿/30 天）, 高于 2026.2 月度 ¥160 亿（5.7 亿/28 天），主要由银河通用 ¥25 亿 + 星动 ¥10 亿 + 逐际 $2 亿等驱动）</li>
  </ul>
  </div>
  </div>
@@ -2307,8 +2307,8 @@ graph TB
  <tr style="background:#fef3c7;"><td><span class="star-rating">★★★★</span></td><td>仿真 / 数据基础设施</td><td>国内对标 NVIDIA Isaac、字节/华为/智源仿真、数据工厂（智元 4,000㎡）</td><td>早期 + AI 估值溢价</td><td>2026 起</td><td>NVIDIA 独占压力</td></tr>
  <tr style="background:#fef3c7;"><td><span class="star-rating">★★★★</span></td><td>中系一线整机（IPO 锚定）</td><td><strong>宇树（2026.3.20 受理）</strong>、智元（港股 IPO 中）、银河通用、星动纪元</td><td>¥100-400 亿</td><td>2026 IPO 窗口</td><td>估值部分泡沫化</td></tr>
  <tr><td><span class="star-rating">★★★</span></td><td>美系私募整机一线（限观察）</td><td>Figure、1X、Skild、π0（Apptronik 单列入 OEM-locked 行）</td><td>$5-40B</td><td>2027 后调整窗口</td><td>系统性泡沫</td></tr>
- <tr style="background:#dbeafe;"><td><span class="star-rating">★★★★</span></td><td><strong>美系 OEM-locked / 上市路径（round-2 新增）</strong></td><td>Apptronik (Mercedes pilot) / BD-Hyundai Atlas Electric (30K/yr by 2028) / Symbotic (仓储自动化)</td><td>Hyundai 二级 / Symbotic NTM ~10×</td><td>2026-2028</td><td>OEM 整合迟缓</td></tr>
- <tr style="background:#fee2e2;"><td><span class="star-rating">★★★</span></td><td><strong>Distressed Tier-2/3 整机 M&A (pe i5 / Round-3 per-company subtable, pe-n8)</strong></td><td>30+ 三线厂 watchlist (详 §A.2.1 per-company 子表)</td><td>0.3-0.5× 当前估值收购</td><td>2027 H2 - 2028</td><td>整合人才/数据资产难度</td></tr>
+ <tr style="background:#dbeafe;"><td><span class="star-rating">★★★★</span></td><td><strong>美系 OEM-locked / 上市路径</strong></td><td>Apptronik (Mercedes pilot) / BD-Hyundai Atlas Electric (30K/yr by 2028) / Symbotic (仓储自动化)</td><td>Hyundai 二级 / Symbotic NTM ~10×</td><td>2026-2028</td><td>OEM 整合迟缓</td></tr>
+ <tr style="background:#fee2e2;"><td><span class="star-rating">★★★</span></td><td><strong>Distressed Tier-2/3 整机 M&A</strong></td><td>30+ 三线厂 watchlist (详 §A.2.1 per-company 子表)</td><td>0.3-0.5× 当前估值收购</td><td>2027 H2 - 2028</td><td>整合人才/数据资产难度</td></tr>
  <tr><td><span class="star-rating">★★</span></td><td>美系芯片 / 模型生态</td><td>NVIDIA、Skild、π0、Generalist AI</td><td>高估值</td><td>长期持有</td><td>NVIDIA 议价权</td></tr>
  <tr><td><span class="star-rating">★★</span></td><td>应用场景集成商</td><td>车厂自研子、物流 RaaS、医疗康复（傅利叶）</td><td>多元</td><td>2026-2028</td><td>头部自营压制</td></tr>
  <tr style="background:#fee2e2;"><td><span class="star-rating">★</span></td><td>全栈大而全（重资产）</td><td>二线整机</td><td>—</td><td>—</td><td>卷死风险</td></tr>
@@ -2316,7 +2316,7 @@ graph TB
  </table>
  </div>
 
- <h3 class="mt-6">A.2.1 · Distressed Tier-2/3 Watchlist per-company 子表 (Round-3, pe-n8)</h3>
+ <h3 class="mt-6">A.2.1 · Distressed Tier-2/3 Watchlist per-company 子表</h3>
  <p class="text-sm text-gray-600 mb-2">PE IC 要回答"哪家 / 何时 / 什么价 / 谁接"。以下 10 家分两级: <strong>Tier-A 公开数据可查 (6 家)</strong> + <strong>Tier-B 待 DD 调查 (4 家)</strong>. runway/估值/资产/acquirer 全部估算, 需 DD 验证.</p>
  <div class="overflow-x-auto">
  <table class="pro text-sm">
@@ -2390,7 +2390,7 @@ graph TD
  </div>
  </div>
 
- <h3>A.3.2 决策树第二层 · Tesla × IRA 4 行 if-then 矩阵 (Round-3 真正落地, pe i10 / n2)</h3>
+ <h3>A.3.2 决策树第二层 · Tesla × IRA 4 行 if-then 矩阵</h3>
  <p class="text-sm text-gray-600 mb-2">条件触发 IF (Tesla 100 万兑现 ∈ {Y, N}) × (humanoid IRA ∈ {Y, N}) THEN 5 大资产类调整百分比 (vs Bifurcation base 配置).</p>
  <div class="overflow-x-auto">
  <table class="pro text-sm">
@@ -2404,7 +2404,7 @@ graph TD
  </tbody>
  </table>
  </div>
- <div class="limitation-note">P(cell) 来自 §6.3 2×2 矩阵 (n3 fix). 资产类调整百分比为 author's prior, 量化 IF Tesla 2026 Q3 量产 &lt; 10K THEN 触发 row 3 或 4 (即 Tesla N), 对美系一线减仓 -10% 到 -50%, 中系硬件加仓 +25-30%, 仿真/数据加仓 +15-20%. §0.3 行动 ③ "Tesla &lt; 10K THEN 美系一线减仓 -50%" 对应 row 4 (Tesla N + IRA N 主干 67.5% 概率, Round-4 r3-n2 reconcile). row 3 (P=7.5%) 是 mixed conditional, IRA 出台但 Tesla 失败 → Apptronik 短期承接需求 +30%, Figure 估值 -10% (失败 narrative 拖累, 但小于 Tesla 失败本身 -50%, 因为美系还有非 Tesla 替代). 这是 A.4 Q2 答复 cascade 的量化依据.</div>
+ <div class="limitation-note">P(cell) 来自 §6.3 2×2 矩阵. 资产类调整百分比为 author's prior, 量化 IF Tesla 2026 Q3 量产 &lt; 10K THEN 触发 row 3 或 4 (即 Tesla N), 对美系一线减仓 -10% 到 -50%, 中系硬件加仓 +25-30%, 仿真/数据加仓 +15-20%. §0.3 行动 ③ "Tesla &lt; 10K THEN 美系一线减仓 -50%" 对应 row 4 (Tesla N + IRA N 主干 67.5% 概率). row 3 (P=7.5%) 是 mixed conditional, IRA 出台但 Tesla 失败 → Apptronik 短期承接需求 +30%, Figure 估值 -10% (失败 narrative 拖累, 但小于 Tesla 失败本身 -50%, 因为美系还有非 Tesla 替代). 这是 A.4 Q2 答复 cascade 的量化依据.</div>
 
  <h3>A.3.3 · 5 个最值得做的具体决定 (long-only positions; §0.3 包含 ⑥ 监测点 catch-all 即 6 项)</h3>
  <div class="grid md:grid-cols-1 gap-3">
@@ -2458,7 +2458,7 @@ graph TD
  <strong>反方挑战</strong>：GGII 数据显示中国 2025 工业 + 物流出货占比 &lt; 5%，剩余 95% 是教育（42%）+ 数据采集（19%）+ 交互服务（19%）+ 娱乐（16%）。这些场景没有 ROI 闭环，完全靠补贴 + 一次性预算驱动，与早期"光伏组件出海"的虚假繁荣类似。
  </div>
  <div class="qa-answer bg-green-50 p-3 rounded text-sm border-l-2 border-green-300">
- <strong>我们的答复（round-2 收紧, S2）</strong>：① <strong>承认：截至 2026.05 真实工业部署 &lt; 1,000 台</strong>（GGII 中国 2025 工业 + 物流出货 &lt; 5%；0.18 万 × 0.05 = ~900 台；§3.1 评分卡承认 Tier A ≈ 0）；②教育/科研采购量大但单价低（¥30-50K），数据采集是 VLA 训练真实需求（智元/银河通用都需要）；③工业 PoC 已闭环但仍 PoC 级（比亚迪 2026 计划 20,000 台、优必选车厂 500+ 台意向、Walker × 空客 2026.5 签约——这些是 Tier C/D LOI 不是 Tier A 已收款），2026-2027 是<strong>可能</strong>的工业商业化拐点；④美国端 BMW-Figure / Mercedes-Apptronik / GXO-Agility 是 RaaS PoC 不是规模化营收；⑤ <strong>"补贴催生的 GDP 数字"在中国部分确属事实</strong>——但同时是数据飞轮的必要建设，不是纯虚假繁荣。<strong>真实工业 → 规模化兑现需 12-18 个月验证；H2 2026 监测点</strong>。
+ <strong>我们的答复</strong>：① <strong>承认：截至 2026.05 真实工业部署 &lt; 1,000 台</strong>（GGII 中国 2025 工业 + 物流出货 &lt; 5%；0.18 万 × 0.05 = ~900 台；§3.1 评分卡承认 Tier A ≈ 0）；②教育/科研采购量大但单价低（¥30-50K），数据采集是 VLA 训练真实需求（智元/银河通用都需要）；③工业 PoC 已闭环但仍 PoC 级（比亚迪 2026 计划 20,000 台、优必选车厂 500+ 台意向、Walker × 空客 2026.5 签约——这些是 Tier C/D LOI 不是 Tier A 已收款），2026-2027 是<strong>可能</strong>的工业商业化拐点；④美国端 BMW-Figure / Mercedes-Apptronik / GXO-Agility 是 RaaS PoC 不是规模化营收；⑤ <strong>"补贴催生的 GDP 数字"在中国部分确属事实</strong>——但同时是数据飞轮的必要建设，不是纯虚假繁荣。<strong>真实工业 → 规模化兑现需 12-18 个月验证；H2 2026 监测点</strong>。
  </div>
  </div>
  </div>
@@ -2469,13 +2469,13 @@ graph TD
  <div class="flex items-start gap-3">
  <span class="pill pill-primary text-base">Q2</span>
  <div class="flex-1">
- <strong class="text-lg">"Tesla Optimus 2025 部署 1,000 台但'useful work'受质疑。如果 2026 Q3 V3 量产线还是没兑现 $20K 或 100 万产能，US-led 情景概率从 25% (round-4 SST 中点) 降到 15-20% 区间，依据是什么？"</strong>
+ <strong class="text-lg">"Tesla Optimus 2025 部署 1,000 台但'useful work'受质疑。如果 2026 Q3 V3 量产线还是没兑现 $20K 或 100 万产能，US-led 情景概率从 25% (SST 中点) 降到 15-20% 区间，依据是什么？"</strong>
  <div class="qa-pair grid md:grid-cols-2 gap-3 mt-2">
  <div class="qa-challenge bg-red-50 p-3 rounded text-sm border-l-2 border-red-300">
  <strong>反方挑战</strong>：Tesla 史上 8 次跨车型 ramp 中 6 次延期 12-24 个月（Model 3、Cybertruck、Semi）。Optimus 比这些都更难（含 22 DoF 灵巧手 + VLA 模型 + 软件订阅系统）。"7-8 月启动产线"和"100 万台/年"之间至少差 18-24 月。
  </div>
  <div class="qa-answer bg-green-50 p-3 rounded text-sm border-l-2 border-green-300">
- <strong>我们的答复 (Round-3 量化 cascade, pe i10 / n2)</strong>：① base case 假设 Tesla 2030 达 30 万 / 200 万 / 100 万台 (China-led / US-led / Bifurcation); ② IF 2026 Q3 量产 &lt; 10,000 台/年 (即 Tesla N), US-led 概率从 25% (SST 中点) 降到 ~15% (= conditional P(Y,Y)+P(Y,N) ≈ 0 + P(IRA|N)×P(N) 仅留 IRA-only 路径), Bifurcation 升到 ~45-50%; ③ PE 行动建议 "<strong>谨慎进入美系一线</strong>"; ④ <strong>Tesla 失败的量化 cascade</strong> (详 §A.3.2 4 行 if-then 矩阵): (a) <strong>Figure 估值 -50%</strong> (美系一线 narrative 破裂, Bear case $35B → $15-20B); (b) <strong>Apptronik 估值 +20%</strong> (Mercedes pilot 短期承接需求, OEM-locked 路径相对受益); (c) <strong>Big Tech robotics 层 (Alphabet 二级 / DeepMind)</strong> 受 cap 损耗 -10% (Gemini Robotics narrative 同样受打击); (d) <strong>BD-Hyundai +5%</strong> (Atlas Electric 路径不依赖 Tesla); 净加权 Tesla 失败对美系一线整机 cluster 总效应 <strong>-30% to -40%</strong>; (e) <strong>中系硬件 +25-30%</strong> (BOM 剪刀差 + 国产化窗口); (f) <strong>仿真/数据 +15-20%</strong> (NVIDIA Isaac 跨阵营受益). 不再用"双刃剑"概括, 给出 5 大资产类的具体百分比.
+ <strong>我们的答复</strong>：① base case 假设 Tesla 2030 达 30 万 / 200 万 / 100 万台 (China-led / US-led / Bifurcation); ② IF 2026 Q3 量产 &lt; 10,000 台/年 (即 Tesla N), US-led 概率从 25% (SST 中点) 降到 ~15% (= conditional P(Y,Y)+P(Y,N) ≈ 0 + P(IRA|N)×P(N) 仅留 IRA-only 路径), Bifurcation 升到 ~45-50%; ③ PE 行动建议 "<strong>谨慎进入美系一线</strong>"; ④ <strong>Tesla 失败的量化 cascade</strong> (详 §A.3.2 4 行 if-then 矩阵): (a) <strong>Figure 估值 -50%</strong> (美系一线 narrative 破裂, Bear case $35B → $15-20B); (b) <strong>Apptronik 估值 +20%</strong> (Mercedes pilot 短期承接需求, OEM-locked 路径相对受益); (c) <strong>Big Tech robotics 层 (Alphabet 二级 / DeepMind)</strong> 受 cap 损耗 -10% (Gemini Robotics narrative 同样受打击); (d) <strong>BD-Hyundai +5%</strong> (Atlas Electric 路径不依赖 Tesla); 净加权 Tesla 失败对美系一线整机 cluster 总效应 <strong>-30% to -40%</strong>; (e) <strong>中系硬件 +25-30%</strong> (BOM 剪刀差 + 国产化窗口); (f) <strong>仿真/数据 +15-20%</strong> (NVIDIA Isaac 跨阵营受益). 不再用"双刃剑"概括, 给出 5 大资产类的具体百分比.
  </div>
  </div>
  </div>
@@ -2489,7 +2489,7 @@ graph TD
  <strong class="text-lg">"我们 LP 大半在美国。投中系标的的政治风险、退出风险如何对冲？万一 humanoid IRA 推出 + 中概股退市加剧，怎么办？"</strong>
  <div class="qa-pair grid md:grid-cols-2 gap-3 mt-2">
  <div class="qa-challenge bg-red-50 p-3 rounded text-sm border-l-2 border-red-300">
- <strong>反方挑战 (round-2 量化, pe i4)</strong>：智元、宇树都走 A 股 / 港股，美元 LP 资金回流通道受限。若中美脱钩深化，美元 LP 无法分红，IRR 形同账面。具体风险点（详 §A.6）: (a) A 股 vs 港股具身板块同公司估值差 30-40%（宁德港股长期较 A 股折价 30%+）; (b) 港股流动性折扣 + 中概股退市风险下美元 LP 真实 IRR -3 到 -5pp; (c) ADR / VIE HFCAA 退市风险溢价; (d) 并购买家清单 6 家详 A.6.2。
+ <strong>反方挑战</strong>：智元、宇树都走 A 股 / 港股，美元 LP 资金回流通道受限。若中美脱钩深化，美元 LP 无法分红，IRR 形同账面。具体风险点（详 §A.6）: (a) A 股 vs 港股具身板块同公司估值差 30-40%（宁德港股长期较 A 股折价 30%+）; (b) 港股流动性折扣 + 中概股退市风险下美元 LP 真实 IRR -3 到 -5pp; (c) ADR / VIE HFCAA 退市风险溢价; (d) 并购买家清单 6 家详 A.6.2。
  </div>
  <div class="qa-answer bg-green-50 p-3 rounded text-sm border-l-2 border-green-300">
  <strong>我们的答复</strong>：① <strong>美元基金应聚焦"中国制造但海外销售"的零部件</strong>（绿的、双环、金力永磁 港股 / B 股 / 海外子公司）；② 用 QFII / RQFII / 沪深港通配置 A 股；③ 二级市场对冲（做空 Figure / 做多中国零部件）；④ 对冲基金合作 / 跨境 SPV；⑤ 若 humanoid IRA 出台，<strong>美系硬件供应商（Materion、Kollmorgen、Lynas）相对受益，可加仓</strong>。
@@ -2523,7 +2523,7 @@ graph TD
  <strong class="text-lg">"中国 550 亿+ 补贴是否会催生'光伏式产能过剩'？2027-2028 洗牌中，哪些标的会被淘汰？"</strong>
  <div class="qa-pair grid md:grid-cols-2 gap-3 mt-2">
  <div class="qa-challenge bg-red-50 p-3 rounded text-sm border-l-2 border-red-300">
- <strong>反方挑战 (round-2, pe i5)</strong>：光伏 2010-2015 的"骗补 + 产能过剩 + 政府退坡 → 90% 玩家死亡"剧情可能重演；EV 2016 工信部查处骗补 5 家 / 罚款 ¥9.7 亿同样可能复现；三线 30+ 厂中具体哪几家会先爆雷 / 哪几家会被并购？
+ <strong>反方挑战</strong>：光伏 2010-2015 的"骗补 + 产能过剩 + 政府退坡 → 90% 玩家死亡"剧情可能重演；EV 2016 工信部查处骗补 5 家 / 罚款 ¥9.7 亿同样可能复现；三线 30+ 厂中具体哪几家会先爆雷 / 哪几家会被并购？
  </div>
  <div class="qa-answer bg-green-50 p-3 rounded text-sm border-l-2 border-green-300">
  <strong>我们的答复</strong>：①<strong>必然洗牌</strong>，目标淘汰 70% 玩家；② 存活的特征：拥有自研模型 + 客户绑定 + 海外出口能力；③ 头部 5 家（智元、宇树、银河通用、星海图、星动纪元）≈ 当年光伏的协鑫 / 隆基 / 通威，会从洗牌中跑出来；④ 二线（傅利叶、众擎、加速进化、月泉、它石、自变量等）50% 概率被并购或退场；⑤ <strong>三线（&gt; 30 家）大概率消失</strong>；⑥ PE 行动：避开靠补贴生存的全栈玩家，押注核心零部件 + 数据基础设施。
@@ -2594,10 +2594,10 @@ graph TD
  <strong>排名逻辑</strong>：DCF 锚定 + 当前估值溢价 + 行业卡位 + 退出路径。
  </div>
  <div class="qa-answer bg-green-50 p-3 rounded text-sm border-l-2 border-green-300">
- <strong>我们的答复 (round-2 修订为 base-case-conditional, pe i9)</strong>：
+ <strong>我们的答复</strong>：
  <ul class="mt-1 mb-0">
- <li><strong>① 宇树科技</strong>（A 股 IPO 2026.3.20 受理，毛利 60%）—— <strong>enter Pre-IPO ¥120 亿 → exit Base case ¥400 亿 / Bull case ¥1,000 亿</strong>；IRR Base case ~25% / Bull case ~45%；概率加权中性 ~35%（base-case-conditional 而非 single-point）。Bull case ¥1,000 亿 需 Apple/Tesla 级长期估值兑现，与智元 Bull $35B 同一情景。<em>Round-5 r4-n2: P50/P95 distribution-percentile 术语已替换为 named-scenario, 与 §A.5 SST 术语规约一致</em></li>
- <li><strong>② 金力永磁（300748.SZ）</strong>—— 公司披露为特斯拉 Optimus 稀土永磁供应商（未经 Tesla 公开确认，A.2 已降至 ★★★★，<em>独家失败敏感性</em>: Tesla 加 2 个供应商, 单台价值量 ÷ 3, IRR ÷ 2），3-5 年窗口期享溢价 —— IRR Base case ~20% / Bull case ~40% (取代 v1 单点 30-40%)；前提需独立来源（Tesla 10-K / 投资者电话 / 第三方拆解）至少 2 处确认</li>
+ <li><strong>① 宇树科技</strong>（A 股 IPO 2026.3.20 受理，毛利 60%）—— <strong>enter Pre-IPO ¥120 亿 → exit Base case ¥400 亿 / Bull case ¥1,000 亿</strong>；IRR Base case ~25% / Bull case ~45%；概率加权中性 ~35%（base-case-conditional 而非 single-point）。Bull case ¥1,000 亿 需 Apple/Tesla 级长期估值兑现，与智元 Bull $35B 同一情景。</li>
+ <li><strong>② 金力永磁（300748.SZ）</strong>—— 公司披露为特斯拉 Optimus 稀土永磁供应商（未经 Tesla 公开确认，A.2 已降至 ★★★★，<em>独家失败敏感性</em>: Tesla 加 2 个供应商, 单台价值量 ÷ 3, IRR ÷ 2），3-5 年窗口期享溢价 —— IRR Base case ~20% / Bull case ~40%；前提需独立来源（Tesla 10-K / 投资者电话 / 第三方拆解）至少 2 处确认</li>
  <li><strong>③ 仿真 / 数据基础设施种子轮</strong>（国内对标 NVIDIA Isaac、AgiBot World 类开源数据工厂）—— 高赔率，高风险，single bet IRR Base case ~30% / Bull case ~80% (10x potential)</li>
  </ul>
  <p class="text-xs text-gray-700 mt-2">⚠ Q9 与 IC Memo 智元 Returns 表对齐：两家可比公司 bull case 估值数量级差异 1.5-2× 是 fundamentals 反差; base case 倍数应同区间; bear case 应同时计入 "量产 &lt; 30%" + "IPO 受阻" + "数据资产清零" 三层 conditional。</p>
@@ -2648,7 +2648,7 @@ graph TD
  </div>
 
  <h4>1. Executive Summary</h4>
- <p class="text-sm">中国 2026 年估值最高的人形机器人整机厂（当前 Pre-IPO $2.8B；本备忘录以 Pre-IPO 跟投 entry $3.9B post-money 为 anchor [round-2 修订, pe i2]，IPO 锚定 $4-7B 用于 exit 区间），创始人彭志辉为前华为天才少年。2025 年实现首批量产交付 5,168 台（IDC 口径，<em>需注意 IDC 原报告未公开</em>）。Top 3 risks：(i) 量产爬坡瓶颈未经第三方审计 (ii) 估值已 frothy（但 PSR 20× 接近 EV IPO N=3 sample median <strong>24×</strong> (round-3 重算)，相对合理；vs 简化 sanity check <strong>$0.17B (Round-4 canonical, see §6.5.1)</strong> 表明市场 price in 非财务因子）(iii) 软件栈相对 Helix/π0 优势不明显。<em>Round-5 n4.i1: IC Memo intro 同步至 Round-4 SST canonical 24× / $0.17B (前为 round-1 残留 22% / $0.15B)</em>。</p>
+ <p class="text-sm">中国 2026 年估值最高的人形机器人整机厂（当前 Pre-IPO $2.8B；本备忘录以 Pre-IPO 跟投 entry $3.9B post-money 为 anchor，IPO 锚定 $4-7B 用于 exit 区间），创始人彭志辉为前华为天才少年。2025 年实现首批量产交付 5,168 台（IDC 口径，<em>需注意 IDC 原报告未公开</em>）。Top 3 risks：(i) 量产爬坡瓶颈未经第三方审计 (ii) 估值已 frothy（但 PSR 20× 接近 EV IPO N=3 sample median <strong>24×</strong>，相对合理；vs 简化 sanity check <strong>$0.17B (canonical, see §6.5.1)</strong> 表明市场 price in 非财务因子）(iii) 软件栈相对 Helix/π0 优势不明显。</p>
 
  <h4>2. Company Overview</h4>
  <p class="text-sm">见 §1.4 + <a href="sections/04_downstream_oems.md" class="text-blue-600 underline">04_downstream_oems.md</a>。核心产品：远征 A2（¥620K 工业版）、A2 青春版（¥168K）、灵犀 X1（¥109K）。投资方含腾讯/上汽/京东/比亚迪/红杉/北京机器人产业基金/上海国资。</p>
@@ -2678,13 +2678,13 @@ graph TD
  <li>(iv) AgiBot World 开源生态商业化路径（数据 SaaS）</li>
  </ol>
 
- <h4>6. Deal Terms & Structure (round-2 修订, pe i2)</h4>
- <p class="text-sm">假设 Pre-IPO 跟投：$200-300M raise、<strong>$3.6-4.2B post-money</strong> (= 当前 $2.8B current × 1.3-1.5× Series-D / Pre-IPO premium; <em>v1 用 $5-7B post-money 是 sell-side markup, 把 IPO 跟投流动性溢价锁进入场价, 已修正</em>)、单笔投资 $20-30M（基金 3% 上限）。无 leverage。建议条款：<strong>反稀释 ratchet（IPO 估值 &lt; $5B 触发）+ MFN 条款 + 信息权 + 董事会观察席</strong>。</p>
+ <h4>6. Deal Terms & Structure</h4>
+ <p class="text-sm">假设 Pre-IPO 跟投：$200-300M raise、<strong>$3.6-4.2B post-money</strong> (= 当前 $2.8B current × 1.3-1.5× Series-D / Pre-IPO premium; sell-side markup $5-7B post-money 将 IPO 跟投流动性溢价锁进入场价，不采用)、单笔投资 $20-30M（基金 3% 上限）。无 leverage。建议条款：<strong>反稀释 ratchet（IPO 估值 &lt; $5B 触发）+ MFN 条款 + 信息权 + 董事会观察席</strong>。</p>
 
- <h4>7. Returns Analysis · 5-year Hold (Round-5 r4-n1 capture-probability factoring: entry $3.9B; 5 macro scenarios × P(智元 captures|scenario) — <strong>E[MOIC | capture=1] 4.6× (ceiling, conditional on 智元 = Chinese champion); E[MOIC] capture-adjusted ~2.0-3.0× (mid 2.55× @ P=0.5); E[IRR | capture=1] 24% nominal / capture-adjusted ~16-24% (mid 21%); LP real 15% ceiling / 13% adjusted</strong> — see r4-n1 row in §A.5 SST footnote)</h4>
+ <h4>7. Returns Analysis · 5-year Hold (entry $3.9B; 5 macro scenarios × P(智元 captures|scenario); capture-adjusted E[MOIC] ~2.0-3.0× mid 2.55×; capture-adjusted E[IRR] ~16-24% nominal mid 21%; LP real ~10-15% mid 13%)</h4>
  <div class="overflow-x-auto">
  <table class="pro text-sm" style="margin:0;">
- <caption>智元 5-yr Returns Analysis — entry $3.6-4.2B (mid $3.9B); 5 macro scenarios 35/35/12.5/12.5/5 = 100% (US-led 25% = Bear-A + Bear-B, 与 §6.3 SoT 同步); 新增 P(智元 captures|scenario) 列 — 反映 China-led / Bifurcation 阵营内 智元 不一定是 winner (7-way Chinese-pole 竞争: 宇树/银河通用/智元/字节/蚂蚁/京东/优必选); Round-5 r4-n1 fix</caption>
+ <caption>智元 5-yr Returns Analysis — entry $3.6-4.2B (mid $3.9B); 5 macro scenarios 35/35/12.5/12.5/5 = 100% (US-led 25% = Bear-A + Bear-B, 与 §6.3 SoT 同步); P(智元 captures|scenario) 列反映 China-led / Bifurcation 阵营内 智元 不一定是 winner (7-way Chinese-pole 竞争: 宇树/银河通用/智元/字节/蚂蚁/京东/优必选)</caption>
  <thead style="background:#19376d;color:white;">
  <tr><th>情景</th><th>macro 概率</th><th>P(智元 captures|scenario)</th><th>触发</th><th>Exit 估值 (conditional on capture)</th><th>Multiple (vs $3.9B mid)</th><th>IRR (conditional)</th><th>退出渠道 (A.6)</th></tr>
  </thead>
@@ -2692,16 +2692,16 @@ graph TD
  <tr style="background:#dcfce7;"><td>Bull (China-led macro 35%)</td><td>35% (macro)</td><td><strong>0.4-0.6 (mid 0.5)</strong><br/><span class="text-xs">7-way Chinese-pole 竞争; 智元 currently #2 by funding behind 宇树</span></td><td>2027 量产 5 万 + 工业商业化兑现 + AgiBot World 商业化 <strong>AND 智元 dominant 中国 winner</strong></td><td>$35B IPO</td><td><strong>9.0×</strong> (conditional)</td><td><strong>55%</strong> (conditional)</td><td>港股 IPO + 30% 流动性折扣</td></tr>
  <tr style="background:#fef3c7;"><td>Base (Bifurcation macro 35%)</td><td>35% (macro)</td><td><strong>0.4-0.6 (mid 0.5)</strong><br/><span class="text-xs">双轨下中系玩家分散; 智元 vs 宇树 vs 优必选</span></td><td>2027 量产 2 万 + Tesla 部分兑现 AND 智元 mid-pack 兑现</td><td>$15B</td><td><strong>3.8×</strong> (conditional)</td><td><strong>31%</strong> (conditional)</td><td>港股 IPO</td></tr>
  <tr style="background:#fee2e2;"><td>Bear-A (US-led / IPO 估值压缩)</td><td>12.5% (macro)</td><td><strong>0.5-0.7 (mid 0.6)</strong><br/><span class="text-xs">US-led 下中系整体压缩, 但 智元 国资背书相对资源富集</span></td><td>2027 量产 &lt; 10K + 美 IRA 出台, 港股 IPO 但估值压缩</td><td>$3B</td><td><strong>0.77×</strong> (conditional)</td><td><strong>-5%</strong> (conditional)</td><td>港股 IPO (压缩估值)</td></tr>
- <tr style="background:#fee2e2;"><td>Bear-B (US-led / IPO 受阻 + 战略并购)</td><td>12.5% (macro)</td><td><strong>0.5-0.7 (mid 0.6)</strong></td><td>港股 IPO 失败 + 比亚迪 / 美的 distressed strategic acquire at <strong>~3× DCF sanity (我方 prior 国资战投 + 数据资产残值; 高于 §A.6.1 标准 control premium 1.3-2× — 见 r4-i23 footnote 下)</strong></td><td>$0.5B (= $0.17B DCF sanity × ~3× control premium; 触发列与估值列现严格同步 r4-i23 fix)</td><td><strong>0.13×</strong> (conditional)</td><td><strong>-33%</strong> (conditional)</td><td>战略并购 (比亚迪 / 美的)</td></tr>
+ <tr style="background:#fee2e2;"><td>Bear-B (US-led / IPO 受阻 + 战略并购)</td><td>12.5% (macro)</td><td><strong>0.5-0.7 (mid 0.6)</strong></td><td>港股 IPO 失败 + 比亚迪 / 美的 distressed strategic acquire at <strong>~3× DCF sanity (我方 prior 国资战投 + 数据资产残值; 高于 §A.6.1 标准 control premium 1.3-2×)</strong></td><td>$0.5B (= $0.17B DCF sanity × ~3× control premium; 触发列与估值列严格同步)</td><td><strong>0.13×</strong> (conditional)</td><td><strong>-33%</strong> (conditional)</td><td>战略并购 (比亚迪 / 美的)</td></tr>
  <tr style="background:#7f1d1d;color:#fee2e2;"><td><strong>True Bear (5% tail)</strong></td><td>5% (macro)</td><td><strong>1.0</strong><br/><span class="text-xs">True Bear 已 conditional on 智元 自己失败, capture multiplier 不适用</span></td><td>量产 yield &lt; 30% + IPO 受阻 + 数据资产清零 + 软件栈被反超</td><td><strong>$0.3-0.6B</strong> (vs DCF sanity $0.17B + 部分 IP 残值)</td><td><strong>0.12×</strong> (mid)</td><td><strong>-31% to -39%</strong></td><td>资产处置 / 部分清算</td></tr>
- <tr style="background:#dbeafe;font-weight:700;"><td>E[MOIC] (capture-adjusted; Round-5 r4-n1)</td><td>100%</td><td>mid 0.5 prior</td><td>—</td><td>—</td><td><strong>~2.55× (capture-adjusted base; range 2.0-3.0×)</strong><br/><span class="text-xs"><strong>OLD canonical 4.6× = "Bull-takes-all" ceiling (no-capture-discount; overstates by ~80% — DEPRECATED 标 r4-n1)</strong></span><br/><span class="text-xs"><strong>New formula (capture-adjusted)</strong>: E[MOIC] = Σ macro_prob × P(capture) × MOIC<sub>conditional</sub> + (1−P(capture)) × MOIC<sub>sunk</sub> · macro_prob; sunk = 0.5× (down-round/equity recap if 智元 loses to peer in same macro scenario).<br/>Bull: 0.35×0.5×9.0 + 0.35×0.5×0.5 = 1.575 + 0.0875 = 1.66<br/>Base: 0.35×0.5×3.8 + 0.35×0.5×0.5 = 0.665 + 0.0875 = 0.75<br/>Bear-A: 0.125×0.6×0.77 + 0.125×0.4×0.5 = 0.058 + 0.025 = 0.083<br/>Bear-B: 0.125×0.6×0.13 + 0.125×0.4×0.5 = 0.010 + 0.025 = 0.035<br/>True Bear: 0.05×1.0×0.12 = 0.006<br/><strong>Total: 1.66+0.75+0.083+0.035+0.006 = 2.53× (mid P=0.5)</strong>; P=0.4 → ~2.13×; P=0.6 → ~2.94×</span></td><td><strong>E[IRR] ~21% nominal (capture-adjusted; range 16-24%)</strong><br/><span class="text-xs"><strong>OLD 24% nominal / 15% real DEPRECATED — those were "Bull-takes-all" ceiling</strong>; 2.53×<sup>1/5</sup>−1 = 20.6% nominal; range 16.3% (P=0.4) to 24.2% (P=0.6)</span><br/><strong>~13% real LP 可分红 (capture-adjusted)</strong> (= 20.6% × 0.7 × 0.95 × 0.93 = 12.74%; OLD 15% ceiling)</td><td>—</td></tr>
+ <tr style="background:#dbeafe;font-weight:700;"><td>E[MOIC] (capture-adjusted)</td><td>100%</td><td>mid 0.5 prior</td><td>—</td><td>—</td><td><strong>~2.55× (capture-adjusted base; range 2.0-3.0×)</strong><br/><span class="text-xs"><strong>Formula (capture-adjusted)</strong>: E[MOIC] = Σ macro_prob × P(capture) × MOIC<sub>conditional</sub> + (1−P(capture)) × MOIC<sub>sunk</sub> · macro_prob; sunk = 0.5× (down-round/equity recap if 智元 loses to peer in same macro scenario).<br/>Bull: 0.35×0.5×9.0 + 0.35×0.5×0.5 = 1.575 + 0.0875 = 1.66<br/>Base: 0.35×0.5×3.8 + 0.35×0.5×0.5 = 0.665 + 0.0875 = 0.75<br/>Bear-A: 0.125×0.6×0.77 + 0.125×0.4×0.5 = 0.058 + 0.025 = 0.083<br/>Bear-B: 0.125×0.6×0.13 + 0.125×0.4×0.5 = 0.010 + 0.025 = 0.035<br/>True Bear: 0.05×1.0×0.12 = 0.006<br/><strong>Total: 1.66+0.75+0.083+0.035+0.006 = 2.53× (mid P=0.5)</strong>; P=0.4 → ~2.13×; P=0.6 → ~2.94×</span></td><td><strong>E[IRR] ~21% nominal (capture-adjusted; range 16-24%)</strong><br/><span class="text-xs">2.53×<sup>1/5</sup>−1 = 20.6% nominal; range 16.3% (P=0.4) to 24.2% (P=0.6)</span><br/><strong>~13% real LP 可分红 (capture-adjusted)</strong> (= 20.6% × 0.7 × 0.95 × 0.93 = 12.74%)</td><td>—</td></tr>
  </tbody>
  </table>
  </div>
- <p class="text-sm mt-2"><strong>术语 (Round-4 统一, r3-n3 fix)</strong>: <strong>scenario probability ≠ distribution percentile</strong>. 每行用 "X% scenario probability" 直接命名 (Bull 35% / Base 35% / Bear-A 12.5% / Bear-B 12.5% / True Bear 5%), <strong>不再用 P5/P50/P95</strong> percentile 术语 (round-3 P95 标 35% 概率自相矛盾, round-4 删除). E[IRR] / E[MOIC] = 概率加权 expected value, 与 percentile 概念正交. Attribution (Base case 单情景): 多数 IRR 来自 operating growth (营收 $0.2B→$1.2B 5×), multiple 实际从 Pre-Revenue 高位收缩至 12-15× P/S.</p>
- <div class="limitation-note"><strong>Single Source of Truth (SST) for 智元 Returns — Round-5 r4-n1 capture-probability factoring (replaces Round-4 ceiling SST)</strong>: <strong>Category-conflation fix</strong>: Round-4 mapped "Bull (35% macro China-led) → $35B IPO" by setting Bull row macro probability = scenario contribution. But these are <em>two different probability spaces</em>: macro China-led probability ≠ P(智元 wins | China-led). Chinese-pole has 7-way competition (宇树 / 银河通用 / 智元 / 字节 / 蚂蚁 / 京东 / 优必选); 智元 currently #2 by funding behind 宇树. <strong>Round-5 introduces explicit P(智元 captures | scenario) factor</strong>: prior = 0.4-0.6 (mid 0.5) for China-led / Bifurcation rows; 0.5-0.7 for US-led rows (Bear-A/B; 国资 backing 中相对资源富集); 1.0 for True Bear (already conditional on 智元 failure). Sunk-fund residual = 0.5× MOIC in scenarios where 智元 loses to peer but macro scenario plays out. <strong>Capture-adjusted canonical</strong>: E[MOIC] ~2.55× mid (range 2.0-3.0×); E[IRR] ~21% nominal mid (range 16-24%); LP real ~13% mid (range 10-15%). <strong>OLD Round-4 SST canonical 4.6× / 24% / 15% = "Bull-takes-all ceiling" — overstates by ~80% on MOIC; DEPRECATED but retained as upper bound for "what if 智元 wins China-led winner-take-all"</strong>. 与 §6.3 2×2 矩阵 SoT (US-led 25% = Bear-A 12.5% + Bear-B 12.5%) 同步. <strong>报告内任何 MOIC / IRR 数字 (§0.1 / §6.5 / §A.5 / §A.6 / IC Memo) 均回指此 capture-adjusted SST cell</strong>. Round-3 deprecated set (24.6/26.1/27.3/28/29% IRR, 4.4×/4.8× MOIC) + Round-4 ceiling (4.6×/24%/15%) 均保留为公开 traceability layer. <strong>Reviewer 可调 P(capture) prior; alternative IC action: 同时 fund 智元 + 宇树 + 银河通用 (3-stock ensemble) 让 capture probability → ~0.85-0.95, E[MOIC] 回到 3.5-4.2× 中位</strong> (但占用基金 ~3× 单笔限额, 需 LP 加注).</div>
+ <p class="text-sm mt-2"><strong>术语统一</strong>: <strong>scenario probability ≠ distribution percentile</strong>. 每行用 "X% scenario probability" 直接命名 (Bull 35% / Base 35% / Bear-A 12.5% / Bear-B 12.5% / True Bear 5%), <strong>不用 P5/P50/P95</strong> percentile 术语. E[IRR] / E[MOIC] = 概率加权 expected value, 与 percentile 概念正交. Attribution (Base case 单情景): 多数 IRR 来自 operating growth (营收 $0.2B→$1.2B 5×), multiple 实际从 Pre-Revenue 高位收缩至 12-15× P/S.</p>
+ <div class="limitation-note"><strong>Single Source of Truth (SST) for 智元 Returns — capture-probability factoring</strong>: 关键修正在于 "Bull (35% macro China-led) → $35B IPO" 不能简单令 Bull row macro probability = scenario contribution. 它们是 <em>两个不同的 probability spaces</em>: macro China-led probability ≠ P(智元 wins | China-led). Chinese-pole has 7-way competition (宇树 / 银河通用 / 智元 / 字节 / 蚂蚁 / 京东 / 优必选); 智元 currently #2 by funding behind 宇树. <strong>引入 P(智元 captures | scenario) 因子</strong>: prior = 0.4-0.6 (mid 0.5) for China-led / Bifurcation rows; 0.5-0.7 for US-led rows (Bear-A/B; 国资 backing 中相对资源富集); 1.0 for True Bear (already conditional on 智元 failure). Sunk-fund residual = 0.5× MOIC in scenarios where 智元 loses to peer but macro scenario plays out. <strong>Capture-adjusted canonical</strong>: E[MOIC] ~2.55× mid (range 2.0-3.0×); E[IRR] ~21% nominal mid (range 16-24%); LP real ~13% mid (range 10-15%). <strong>4.6× / 24% / 15% 是 "Bull-takes-all ceiling" — overstates by ~80% on MOIC; 仅作为 "if 智元 wins China-led winner-take-all" 的上限参考</strong>. 与 §6.3 2×2 矩阵 SoT (US-led 25% = Bear-A 12.5% + Bear-B 12.5%) 同步. <strong>报告内任何 MOIC / IRR 数字 (§0.1 / §6.5 / §A.5 / §A.6 / IC Memo) 均回指此 capture-adjusted SST cell</strong>. <strong>Reviewer 可调 P(capture) prior; alternative IC action: 同时 fund 智元 + 宇树 + 银河通用 (3-stock ensemble) 让 capture probability → ~0.85-0.95, E[MOIC] 回到 3.5-4.2× 中位</strong> (但占用基金 ~3× 单笔限额, 需 LP 加注).</div>
 
- <h4>8. Risk Factors（4 列对照表, Round-3, v2-new-i8）</h4>
+ <h4>8. Risk Factors（4 列对照表）</h4>
  <div class="overflow-x-auto">
  <table class="pro text-sm">
  <caption>智元 IC Memo — Risk Register (P × I scoring 1-5; residual = mitigant 应用后剩余风险)</caption>
@@ -2727,16 +2727,16 @@ graph TD
  </div>
 </section>
 
-<!-- ============ A.6 退出路径方法论 (round-2 新增, pe i4) ============ -->
+<!-- ============ A.6 退出路径方法论 ============ -->
 <section id="ch3-6" class="section-anchor py-12 px-8 bg-gray-50">
  <div class="max-w-7xl mx-auto">
- <h2>A.6 退出路径方法论 (round-2 新增, pe i4)</h2>
- <p class="text-sm text-gray-600 mb-4">PE IC 决策的另一半是 exit。v1 仅以"一句话退出: A 股 / 港股 / 战略并购"覆盖, 不构成分析。本节给出 ASP 矩阵 + 5 家潜在 strategic acquirer + 港股流动性折扣量化。</p>
+ <h2>A.6 退出路径方法论</h2>
+ <p class="text-sm text-gray-600 mb-4">PE IC 决策的另一半是 exit。"一句话退出: A 股 / 港股 / 战略并购"不构成分析。本节给出 ASP 矩阵 + 5 家潜在 strategic acquirer + 港股流动性折扣量化。</p>
 
  <h3>A.6.1 · 退出渠道 ASP 矩阵 (估值 / 锁定 / 流动性 / 政治风险)</h3>
  <div class="overflow-x-auto">
  <table class="pro text-sm">
- <caption>表 A.6.1 — 退出渠道 ASP 矩阵 (Round-3: 加第 7 列 真实可分红 IRR; v2-new-i9 fix)</caption>
+ <caption>表 A.6.1 — 退出渠道 ASP 矩阵 </caption>
  <thead><tr><th>渠道</th><th>估值倍数</th><th>锁定期</th><th>流动性折扣</th><th>政治风险</th><th>美元 LP 可分红</th><th>Base case 真实可分红 IRR (vs 31% nominal)</th></tr></thead>
  <tbody>
  <tr><td><strong>A 股 IPO (科创板 / 创业板)</strong></td><td>PSR 20-30× (中位偏高)</td><td>3 年大股东 / 1 年战投</td><td>低 (深沪日均 ~¥1.2 万亿)</td><td>外资减持有 quota / 数据合规</td><td>需 QFII / RQFII / 沪深港通；T+1 资金回流</td><td style="background:#dcfce7;font-weight:600;">~25% (= 31% × 0.95 × 0.85)</td></tr>
@@ -2748,14 +2748,14 @@ graph TD
  </table>
  </div>
 
- <h3>A.6.2 · 6 家潜在 Strategic Acquirer (具身赛道, Round-4 r3-n6: round-3 加 Big Tech row 但标题未同步)</h3>
+ <h3>A.6.2 · 6 家潜在 Strategic Acquirer (具身赛道)</h3>
  <div class="overflow-x-auto">
  <table class="pro text-sm">
  <thead><tr><th>Acquirer</th><th>估值能力 / Checkout size</th><th>历史相关 deal</th><th>Rationale (具身赛道)</th><th>对中系标的 friendly?</th></tr></thead>
  <tbody>
  <tr><td><strong>NVIDIA (NVDA)</strong></td><td>$3T+ 市值 / $50B+ FCF</td><td>Mellanox $7B; Arm 失败 ($40B); Run:ai $700M</td><td>具身 AI infra: Isaac + Cosmos + Newton 三件套, 需要终端硬件锁定渠道</td><td>受限 (中美 GPU 出口管制 + 软件锁定)</td></tr>
  <tr><td><strong>SoftBank Vision Fund</strong> <span style="color:#dc2626;">⚠ 历史 reference</span></td><td>历史 $20-50B 单笔; <strong>2022 Q3 Vision Fund 单季 -$30B 后 Son 公开转 "defense"; 当前估 deal capacity $5-15B/单笔</strong></td><td>Arm $32B (2016); BD 投资 (2020-22, 已退出); 字节/滴滴自 2023 仅存量管理</td><td>具身 AGI 长期赌注; 中国 portfolio 自 2023 未新增; relevance: <strong>watchlist 而非 active acquirer</strong></td><td>历史 friendly 但当前 deal flow 收缩</td></tr>
- <tr style="background:#dbeafe;"><td><strong>Big Tech (Alphabet / Microsoft / Amazon)</strong> (Round-3 新增, pe-n7)</td><td>$2-3T 市值 / $50B+ FCF 可用 / 历史并购 $1-15B/单笔</td><td>Alphabet → Intrinsic (2021 internal spin); Alphabet 投 Apptronik (2024 strategic); Microsoft → Sanctuary AI (2023 stake); Amazon → Covariant (2024)</td><td>Big Tech robotics 路径锁定 — Apptronik 跑 Gemini Robotics; BD Atlas 接 Gemini; DeepMind 自研但未直投 acquirer; 通过整机 OEM 锁定间接暴露</td><td>中性 (CFIUS 中国敏感; FTC 反垄断 cap)</td></tr>
+ <tr style="background:#dbeafe;"><td><strong>Big Tech (Alphabet / Microsoft / Amazon)</strong></td><td>$2-3T 市值 / $50B+ FCF 可用 / 历史并购 $1-15B/单笔</td><td>Alphabet → Intrinsic (2021 internal spin); Alphabet 投 Apptronik (2024 strategic); Microsoft → Sanctuary AI (2023 stake); Amazon → Covariant (2024)</td><td>Big Tech robotics 路径锁定 — Apptronik 跑 Gemini Robotics; BD Atlas 接 Gemini; DeepMind 自研但未直投 acquirer; 通过整机 OEM 锁定间接暴露</td><td>中性 (CFIUS 中国敏感; FTC 反垄断 cap)</td></tr>
  <tr><td><strong>比亚迪 / 吉利 / 上汽</strong></td><td>¥500-3,000 亿市值 / ¥50-200 亿单笔</td><td>比亚迪 / 上汽 - 智元已有投资</td><td>整车厂自研人形 → 集成商威胁 → 收购成熟整机厂</td><td>极 friendly (国产替代 + 已绑)</td></tr>
  <tr><td><strong>美的 (000333) / 海尔 (600690)</strong></td><td>¥4,000-6,000 亿市值</td><td>美的 KUKA $4.6B (2016); 海尔 Candy $0.5B (2019)</td><td>家电 / 工业自动化龙头 + KUKA 整合经验</td><td>极 friendly</td></tr>
  <tr><td><strong>Hyundai / Samsung / LG (韩系)</strong></td><td>$50-150B 市值</td><td>Hyundai - BD $1.1B (2021); Samsung - Harman $8B</td><td>BD-Hyundai 已成立模板; 韩系汽车 OEM 需要人形</td><td>中性 (FTA 国家但中国资产敏感)</td></tr>
@@ -2765,14 +2765,14 @@ graph TD
 
  <h3>A.6.3 · IRR 折扣量化 — 同公司不同退出路径</h3>
  <div class="info-box">
- <strong>同公司 (智元) 不同退出渠道下美元 LP 真实可分红 IRR 估算 (Round-5 r4-n1 SST: 以 Base case 31% nominal IRR 为锚 conditional on capture / capture-adjusted 概率加权 E[IRR] ~21% nominal canonical, 来自 §A.5 SST cell; Round-4 ceiling 23.6% DEPRECATED)</strong>:
+ <strong>同公司 (智元) 不同退出渠道下美元 LP 真实可分红 IRR 估算 (capture-adjusted 概率加权 E[IRR] ~21% nominal canonical, 来自 §A.5 SST cell)</strong>:
  <ul class="text-sm mt-2 mb-0">
  <li>Base case (港股 IPO): 31% IRR × <strong>0.7 流动性折扣 × 0.95 退市风险 × 0.93 跨境合规 = ~19% 真实可分红 IRR</strong></li>
  <li>Upside (A 股 IPO 通道): 31% × 0.95 流动性 × 0.85 QFII quota = ~25% 真实</li>
  <li>Downside (战略并购 5 年 earnout): 31% × 0.8 control premium × 0.75 earnout uncertainty = ~19% 真实</li>
- <li><strong>用概率加权 E[IRR] 替代</strong> (Round-5 r4-n1 capture-adjusted): capture-adjusted nominal E[IRR] = ~21% (range 16-24%); 真实 portfolio-level = 20.6% × 0.7 × 0.95 × 0.93 = <strong>~13% real (range 10-15%)</strong>; OLD 4.6× / 24% / 15% 是 Bull-takes-all ceiling (DEPRECATED, see §A.5 SST footnote)</li>
+ <li><strong>用概率加权 E[IRR] 替代</strong> (capture-adjusted): nominal E[IRR] = ~21% (range 16-24%); 真实 portfolio-level = 20.6% × 0.7 × 0.95 × 0.93 = <strong>~13% real (range 10-15%)</strong>; 4.6× / 24% / 15% 是 Bull-takes-all ceiling (上限参考，见 §A.5 SST footnote)</li>
  </ul>
- <p class="text-xs mt-2 mb-0">表内 31% 来自 §A.5 IC Memo Returns Base case (single-scenario IRR, 1 of 5 rows, <strong>conditional on 智元 captures full Base macro upside</strong>); capture-adjusted Base contribution to portfolio = 0.35×0.5×31% ≈ 5.4% (mid). 与 capture-adjusted E[IRR] 21% 不同 — Base case 是 LP "if Bifurcation AND 智元 wins (P=17.5%)" 看到的 IRR, E[IRR] 是 LP "对整个 5-scenario × capture 分布" 看到的 IRR. 两者并存: 31% 答 "best estimate single scenario conditional on capture", 21% nominal / 13% real 答 "portfolio capture-risk-adjusted expectation". Round-3 的 ~28% / ~17% 数字 deprecated, Round-4 ceiling 24% / 15% 也 deprecated 为 ceiling; 均回指 §A.5 SST cell (Round-5 r4-n1 canonical).</p>
+ <p class="text-xs mt-2 mb-0">表内 31% 来自 §A.5 IC Memo Returns Base case (single-scenario IRR, 1 of 5 rows, <strong>conditional on 智元 captures full Base macro upside</strong>); capture-adjusted Base contribution to portfolio = 0.35×0.5×31% ≈ 5.4% (mid). 与 capture-adjusted E[IRR] 21% 不同 — Base case 是 LP "if Bifurcation AND 智元 wins (P=17.5%)" 看到的 IRR, E[IRR] 是 LP "对整个 5-scenario × capture 分布" 看到的 IRR. 两者并存: 31% 答 "best estimate single scenario conditional on capture", 21% nominal / 13% real 答 "portfolio capture-risk-adjusted expectation". 均回指 §A.5 SST cell。</p>
  </div>
  </div>
 </section>
@@ -4485,11 +4485,11 @@ graph TD
  <tbody>
  <tr><td>2025 全球出货</td><td>1.8 万台</td><td><span class="tag tag-strong">High</span></td><td>IDC、信通院、GGII 三方交叉</td><td>口径略有差异（IDC 1.8 万 / 信通院 2 万）</td></tr>
  <tr style="background:#fef3c7;"><td>中国出货占全球</td><td><strong>80-95%（按口径区间）</strong></td><td><span class="tag tag-mid">Medium</span></td><td>IDC 一手 ~95% / GGII ~85%（口径差异）</td><td>"出货"定义在不同机构间不一致（含/不含教育/数据采集机；含/不含小尺寸）</td></tr>
- <tr style="background:#fef3c7;"><td>中美 BOM 剪刀差</td><td>原 $32K vs $130K → <strong>$46K vs $130K (MS 原文)</strong></td><td><span class="tag tag-mid">Medium</span></td><td><a href="#ref-REF008" class="text-blue-600">REF008</a> MS *Humanoid 100*</td><td>BofA $35K 为压制后口径；MS 原文 $46K 更权威，已就地修订 + 加口径警示</td></tr>
+ <tr style="background:#fef3c7;"><td>中美 BOM 剪刀差</td><td>原 $32K vs $130K → <strong>$46K vs $130K (MS 原文)</strong></td><td><span class="tag tag-mid">Medium</span></td><td><a href="#ref-REF008" class="text-blue-600">REF008</a> MS *Humanoid 100*</td><td>BofA $35K 为压制后口径；MS 原文 $46K 更权威，已加口径警示</td></tr>
  <tr><td>Figure AI 估值</td><td>$39B (canonical; 媒体口径 $39.5B 同义)</td><td><span class="tag tag-strong">High</span></td><td>Figure 官方 + The Information</td><td>Series C 已落定</td></tr>
  <tr><td>Skild AI $14B</td><td>$14B 在谈</td><td><span class="tag tag-mid">Medium</span></td><td>The Information 报道</td><td>未落定，"在谈"</td></tr>
  <tr><td>智元 2025 出货 5,168 台</td><td>5,168 台</td><td><span class="tag tag-mid">Medium</span></td><td>IDC 报告，华尔街见闻转引</td><td>IDC 原报告未公开下载</td></tr>
- <tr><td>三情景概率 35/25/35/5 (China-led/US-led/Bifurcation/Other; Round-4 SST)</td><td>主观分布</td><td><span class="tag tag-weak">Analyst Judgment</span></td><td>报告分析师判断 / §6.3 SoT</td><td>非市场共识，需 reviewer 校准</td></tr>
+ <tr><td>三情景概率 35/25/35/5 (China-led/US-led/Bifurcation/Other; SST)</td><td>主观分布</td><td><span class="tag tag-weak">Analyst Judgment</span></td><td>报告分析师判断 / §6.3 SoT</td><td>非市场共识，需 reviewer 校准</td></tr>
  <tr><td>humanoid IRA 推出</td><td><strong>Policy watchlist</strong>（不给单点概率）</td><td><span class="tag tag-weak">Watchlist Item</span></td><td>ITIF 2025.7 报告 + 政策周期</td><td>推出与否高度依赖 Optimus 兑现度等外生变量；本报告将其作为情景触发条件而非给定概率</td></tr>
  <tr><td>稀土高性能磁材 92%</td><td>92%+</td><td><span class="tag tag-strong">High</span></td><td>USGS + 中国稀土行业协会</td><td>多源一致</td></tr>
  <tr><td>中国 550 亿+ 补贴</td><td>累计承诺</td><td><span class="tag tag-mid">Medium</span></td><td>地方政府官网 + 媒体汇总</td><td>"承诺"vs"实际投放"有差距</td></tr>
@@ -4776,7 +4776,7 @@ new Chart(document.getElementById('chartShipmentTop10'), {
  },
  options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
  plugins: { legend: { display: false },
- title: { display: true, text: 'Round-5 ind-i24 fix: Tesla 1,000 已剔除; Apptronik / 1X = [UNDISCLOSED] 估算下限 50; BD Atlas Electric = NOT YET IN PRODUCTION (null, 不是 80; 2026.Q1 量产起点; 2025 = 0 commercial; pre-production / engineering units 数量未公开 [UNDISCLOSED])' } },
+ title: { display: true, text: 'Tesla 1,000 已剔除; Apptronik / 1X = [UNDISCLOSED] 估算下限 50; BD Atlas Electric = NOT YET IN PRODUCTION (null; 2026.Q1 量产起点; 2025 = 0 commercial; pre-production units [UNDISCLOSED])' } },
  scales: { x: { title: { display: true, text: '出货量（台）' } } } }
 });
 
@@ -4939,7 +4939,7 @@ new Chart(document.getElementById('chartPSRComparison'), {
  },
  options: { responsive: true, maintainAspectRatio: false,
  plugins: { legend: { position: 'bottom' },
- title: { display: true, text: 'Source: Figure 2024.02 $2.6B / [INFERRED] $13M 2024 营收 (n3.i5); 中系 2024 = 智元 $1.5B / ¥3.5亿 [INFERRED]; 2026E-2028E forward = 营收 ramp $50M / $200M / $500M 假设 + 50% YoY multiple compression. Round-4 chart in-config source disclosure.' },
+ title: { display: true, text: 'Source: Figure 2024.02 $2.6B / [INFERRED] $13M 2024 营收; 中系 2024 = 智元 $1.5B / ¥3.5亿 [INFERRED]; 2026E-2028E forward = 营收 ramp $50M / $200M / $500M 假设 + 50% YoY multiple compression.' },
  annotation: { annotations: {
  lineEV8: { type: 'line', yMin: 8, yMax: 8, borderColor: '#2563eb', borderDash: [3,3], borderWidth: 1,
  label: { display: true, content: '2020 EV 板块 LTM median 8×', position: 'start', backgroundColor: 'rgba(37,99,235,0.7)', color: '#fff', font: { size: 9 } } },
@@ -4948,7 +4948,7 @@ new Chart(document.getElementById('chartPSRComparison'), {
  lineEVmedian: { type: 'line', yMin: 24, yMax: 24, borderColor: '#7c3aed', borderDash: [3,3], borderWidth: 1,
  label: { display: true, content: 'EV IPO N=3 median 24× / 智元/宇树 当前位置', position: 'end', backgroundColor: 'rgba(124,58,237,0.7)', color: '#fff', font: { size: 9 } } }
  } } },
- scales: { y: { type: 'logarithmic', min: 0.5, max: 5000, title: { display: true, text: 'LTM PSR 倍数 (log scale, round-3: 保留 EV 锚 visible)' } } } }
+ scales: { y: { type: 'logarithmic', min: 0.5, max: 5000, title: { display: true, text: 'LTM PSR 倍数 (log scale)' } } } }
 });
 
 // 投资优先级象限图
@@ -4999,7 +4999,7 @@ new Chart(document.getElementById('chartPortDual'), {
  tooltip: { callbacks: { label: (ctx) => ctx.label + ': ' + ctx.parsed + '%' } } } }
 });
 
-// ===== Round-2 visual i6: defer non-critical chart re-rendering using IntersectionObserver =====
+// ===== Defer non-critical chart re-rendering using IntersectionObserver =====
 // Since Chart.js is already initialized inline, we provide a render-on-scroll hint for layout
 // stability. (Full lazy init refactor deferred — see v2.md limitations.)
 (function() {
