@@ -1,0 +1,136 @@
+{
+  "round": 1,
+  "draft_classification": "PE 战略 pitch + 行业研究（HTML 单页报告，4,672 行，含 26 张 Chart.js + 24 张表 + 4 张 mermaid + 2 张内嵌 SVG 不可能三角）",
+  "load_bearing_claims": [
+    "执行摘要 + KPI 卡片能让 PE partner 在 90 秒内 get 核心论点（含 8 个 KPI 卡片 + 12 条 takeaway + 5 个最值得做的决定）",
+    "三种情景概率（35% China-led / 15-25% US-led / 40% Bifurcation）+ 2030 累计保有量预测靠两张并列图（chartScenarioProb + chartScenarioShipment）传达",
+    "Figure 估值泡沫论据靠 chartValuationTop10（美系 5-10× 中系）+ chartPSRComparison（PSR 时间线）+ 6.5.1 DCF 表 + 6.5.2 Comps 表四路证据合围",
+    "中美 16 环节能力差异靠 chartCapabilityRadar（雷达图）+ 一张 16 行 5 列对比表传达；强卡脖子环节用红色背景 highlight",
+    "10 个投委会问题 + 智元 IC Memo（附录 A.4-A.5）作为 deal-level pitch 工具，每个 Q 由'反方挑战 / 我们答复'两栏对照展示"
+  ],
+  "verdict": "block",
+  "verdict_reason": "执行摘要的 KPI 卡片 8 个堆挤无视觉优先级 + 估值 Top10 图轴单位错乱（'0.1B'）+ Tesla 出货图色码与对比组冲突（Tesla 显示为灰色但仍参与 Top10 排序）+ Q4-Q10 的反方/答复双列在 iPad 竖屏会 break 成上下堆叠后第 9-10 题深度比第 1 题低 → 一个 PE partner 在 iPad 90 秒内拿到的是'信息密度过载但优先级不清'的印象，而非'美系泡沫 + 中系低估 + 真实 Tier A ≈ 0'三条核心论点。",
+  "issues": [
+    {
+      "id": "i1",
+      "severity": "fatal",
+      "title": "chartValuationTop10 x 轴单位混乱：'估值（亿美元 / 0.1B）'同时出现两种单位，Figure 显示为 395 但 tooltip 显示 $39.5B",
+      "attacks_claim": "Figure 估值泡沫论据靠 chartValuationTop10 传达",
+      "detail": "v1.report.html line 4426-4440：x 轴 title 写 '估值（亿美元 / 0.1B）'，bar 数据是 `[395, 140, 110, 50, 44, 30, 28, 28, 17, 14]`，tooltip 是 `(ctx.parsed.x/10).toFixed(1) + 'B'`。这意味着：(a) 数据本身是'亿美元'（395 亿美元 = $39.5B），(b) tooltip 把数除以 10 又加 B 后变成 $39.5B，(c) 但 x 轴刻度直接读到 395 的位置——读者看到 395 这个数字会困惑'这是 $395B 吗'。中文'亿美元'与英文'B (Billion)'之间差 10 倍（1B = 10 亿），整个图的轴是用'亿美元'读数但 tooltip 用 B 读数。这是 PE partner 在 iPad 上滚动到 §5.4 第一眼看到的 anchor chart——单位不一致直接破坏'美系 5-10× 中系'的核心比较论据。修复必须二选一：要么 x 轴改 'USD Bn' 且数据除以 10，要么 tooltip 改成 '亿美元' 不再算除法。",
+      "what_would_resolve": "数据全部除以 10 改为以 $B 为单位（39.5, 14, 11, 5...），x 轴 title 改为 'Valuation (USD Bn)'，tooltip 改为 `'$' + ctx.parsed.x.toFixed(1) + 'B'`。或保留原数据但 x 轴改为 '估值（亿美元）'去掉 '/ 0.1B'，tooltip 改为 `ctx.parsed.x + ' 亿美元'`。"
+    },
+    {
+      "id": "i2",
+      "severity": "fatal",
+      "title": "执行摘要 8 个 KPI 卡片无视觉优先级，导致最重要的 Tesla 'not in usage' / Tier A=0 / Figure PSR 790× 三条核心论据在执行摘要里完全缺位",
+      "attacks_claim": "执行摘要能让 PE partner 在 90 秒内 get 核心论点",
+      "detail": "v1.report.html line 313-346：KPI grid 是 8 个 kpi-card 横排（2x4 on md+），全部用同样的 .kpi-card 样式（white bg + amber 左边框 + 2.2rem value），无层级区分。8 张卡分别是：1.8万出货、80-95%中国占比、2.8×BOM剪刀差、$39.5B Figure 估值、¥373亿融资、¥550+亿补贴、$75亿 TAM、69-113% CAGR。但 §3.1-3.6（PE 视角真正改变投资动作的）核心结论——Tesla Optimus 'not in usage in our factories in a material way' / 真实 Tier A 订单 ≈ 0 / Figure PSR 790× 远超 EV IPO 蔚来 53× / 仓储战争已被 Symbotic 赢得（ROI 差 5-16×）——**没有任何一条进入 8 个 KPI 卡片**。一个 PE partner 看完 8 个 KPI 后的印象是'中国出货大 + Figure 估值 $39B'（中性 narrative），完全感受不到报告真正的尖锐论点（'美系是真泡沫 + 仓储战争已结束'）。这违背了报告本身在第三章揭示的 thesis。8 个卡片排平意味着没有任何卡片是 thesis 主旨。",
+      "what_would_resolve": "降为 4 个 KPI 卡片（行业 anchor 数字），并新增一个独立的 '5 条 thesis statements' 卡片组放在 KPI 上方或下方：① Tesla 'not in material use'（Musk 原话）② Tier A 订单 ≈ 0（媒体 $3B 中 Tier B+ ~$1.5B）③ Figure PSR 790× vs 蔚来 IPO 53× ④ 仓储战争 ROI 差 16× ⑤ 美系 5 家合计 PSR 757× 加权。每条用 warning-box 红色高亮、配 1 句 evidence + 引用 §章节锚点。"
+    },
+    {
+      "id": "i3",
+      "severity": "severe",
+      "title": "chartShipmentTop10 Tesla 灰色显示 + '* useful work 受质疑' 注释，但 Tesla 1,000 台仍排在第 8 位 → 视觉上削弱论据，与第三章'剔除——不是订单'结论冲突",
+      "attacks_claim": "三种情景概率 + 真实 Autonomy Level 评分卡论据传达",
+      "detail": "v1.report.html line 4443-4457：chartShipmentTop10 把 Tesla Optimus 数据 1,000 台放在第 8 位（标注 *），背景色用 `#9ca3af` 灰色与中系 cn 红色 + 美系 us 蓝色形成视觉降级。但 §3.2 line 760 已明确写：'Tesla 自厂 1,000 台 — 剔除——不是订单'。chart 与表的结论自相矛盾：表里剔除 Tesla，chart 里只是降级灰色但保留——读者第一眼看到 'Tesla 1,000 台排第 8' 的视觉锚定，再去看下方表才发现应剔除。这削弱了第三章'Tier A ≈ 0'的攻击力。同样问题：line 4310 chartChinaShipmentBreakdown 把宇树 5,500 + 智元 5,168 当作'中国 Top6 厂商'，但 §5.4 line 1354-1355 又承认'宇树/智元的 5,500 / 5,168 含大量非人形（机器狗+工业版+人形全口径）'——chart 标题说'2025 出货量（台）'读者会误读成'人形 5,500 台'，但实际是全口径含机器狗。",
+      "what_would_resolve": "chartShipmentTop10 直接剔除 Tesla（与 §3.2 line 760 表保持一致），或把 Tesla 放在独立的'剔除项'子图。chartChinaShipmentBreakdown / chartShipmentTop10 的 chart subtitle 必须明确 '宇树 5,500 含机器狗 80%+人形 20%，纯人形 ≈ 1,100' 或在数据上拆成 stacked bar（人形 + 机器狗 + 工业版三段）。"
+    },
+    {
+      "id": "i4",
+      "severity": "severe",
+      "title": "§6.5.1 sanity check 表 16 列 × 13 行，关键 '市场 vs sanity check 比值' 数字埋在最后一行，PE partner 5 秒抓不到结论",
+      "attacks_claim": "Figure 估值泡沫四路证据合围",
+      "detail": "v1.report.html line 1819-1849：6.5.1 DCF sanity check 表共 13 行 5 列（参数 + Figure + 智元 + 宇树 + 说明）。表的 punch line 是倒数第 3 行（line 1845）的 'Figure 市场 45× sanity / 智元 16× / 宇树 12×'——但读者必须从'2025 营收 → 2025 出货 → 2030 出货 → ASP → 收入 → 毛利率 → 毛利 → EBIT → WACC → 折现 → 永续期 → sanity check → 市场估值 → 比值'13 行一路读到第 13 行才看到。表头没有把 '市场 45× sanity' 提前到第一行（应作为表 caption 或第一行 highlighted summary row）。同样问题在 §6.5.2 Comps 表（line 1874-1895）：Figure 790× LTM 这个核心数字也埋在第一行但与 EV IPO 中位 22×、AI 巨头 OpenAI 50× 的比较散落在表底注释。在 iPad 竖屏，13 行 5 列的表会需要纵向滚动，PE partner 90 秒内根本读不到第 13 行。",
+      "what_would_resolve": "在 §6.5.1 表上方加一个独立的 KPI 卡片组（3 张卡片）：'Figure 市场 45× sanity check（$39.5B vs $0.87B）/ 智元 16× / 宇树 12×'。或在表的第一行（thead 下方）插入一个突出 row 用红色背景 + bold 显示 '市场 vs sanity 比值'，把结论从倒数第 3 行 promote 到第 1 行。"
+    },
+    {
+      "id": "i5",
+      "severity": "severe",
+      "title": "chartPSRComparison 用对数轴显示 PSR，但 Figure 400 vs 蔚来 20 的视觉差距被对数压扁，反而弱化'美系真泡沫'论点",
+      "attacks_claim": "Figure 估值泡沫论据",
+      "detail": "v1.report.html line 4603-4620：chartPSRComparison 用 `type: 'logarithmic'` y 轴显示三条 PSR 时间线：EV 蔚来 PSR 8-20 / Figure PSR 100-400 / 智元宇树 PSR 10-30。对数轴的结果是 400 与 20 在视觉上只相差 1.3 倍高度，但实际是 20 倍数量级。报告的核心论点'Figure 真泡沫'恰恰需要 visceral 视觉冲击——400 vs 20 应该是垂直 20 倍的悬殊差距。改成 linear 轴后 Figure 数据会冲出顶部，但 §6.5.2 已明确 '790× 远超 EV IPO 蔚来 53×' 是核心攻击点，视觉应配合这一攻击。同时 Figure 数据 `[null,null,null,null,null,null,100,400,300,200,100]`——2024 PSR=100 vs 2025 PSR=400 跳跃幅度无任何 caption 解释（应该是 RaaS bookings 还没起来 + 估值 jump 双因素），读者无法理解为什么 2025 一年内 PSR 翻 4 倍。",
+      "what_would_resolve": "用 linear 轴 + 把 Figure 线裁剪到 max=500 显示，让 400 vs 20 的差距视觉化；或保留对数但在 Figure 400 处加一条 horizontal annotation line + 文字标注 '20× 蔚来 IPO 高位'。"
+    },
+    {
+      "id": "i6",
+      "severity": "severe",
+      "title": "26 张 Chart.js 全部在页面加载时一次性渲染，无 lazy load / IntersectionObserver；4,672 行单页 HTML + 312KB 在 iPad 上初次渲染可能 5-10 秒白屏，破坏 90 秒原则",
+      "attacks_claim": "PE partner 在 iPad 90 秒能 get 核心论点",
+      "detail": "v1.report.html line 4234-4668：26 个 `new Chart(...)` 全部在文档底部的同一 `<script>` 块内同步执行，没有 lazy load、没有 viewport-based 触发。Chart.js 4.4.0 + Mermaid 10 都从 CDN 加载，文件本身 312KB（line counts 4,672）。在 iPad（即使较新款）上：(a) 首屏 hero 段渲染完后，浏览器要同步执行所有 26 个 chart 的 init 才能 paint TOC 以下内容；(b) 4 个 mermaid 图渲染需另外 1-2 秒。结果是 PE partner 滑入页面后 hero 显示 + 白屏滚动 5-10 秒 + 然后 chart 跳出。这直接违反'90 秒 get 核心论点'——前 10 秒就在等渲染。同时所有 chart `responsive: true, maintainAspectRatio: false` 但 wrapper 是固定 height（如 line 382 `height: 280px`）——iPad 横竖切换不会重排比例，但 Chart.js resize 监听器仍会触发。",
+      "what_would_resolve": "用 IntersectionObserver 把每个 chart 的 `new Chart(...)` 延迟到对应 canvas 滚入视口前 200px 才执行；或把执行摘要的两张关键 chart（chartScenarioProb + chartScenarioShipment）放在 head 之后立刻加载，其余 24 张延迟。另外 hero 部分的 8 个白色卡片应改用 CSS-only（已经是），但 Chart.js 必须延迟。"
+    },
+    {
+      "id": "i7",
+      "severity": "severe",
+      "title": "TOC 三条不同章节都指向同一锚点 #ch-why-now，导致目录看似 3 条精细但点击行为完全一样——iPad 用户的导航预期被破坏",
+      "attacks_claim": "导航/目录可读性",
+      "detail": "v1.report.html line 244-247：'★ 第一章 · 行业本质' 下的三个子链接\n```\n<li><a href=\"#ch-why-now\">为什么是现在 + 4 拐点</a></li>\n<li><a href=\"#ch-why-now\">顶尖人物 10×5 观点矩阵</a></li>\n<li><a href=\"#ch-why-now\">5 条核心分歧线</a></li>\n```\n三个 href 全部是 `#ch-why-now`（重复 3 次）。但实际章节 §1.1 / §1.2 / §1.3 都在同一节点下，没有独立 anchor。这违反'目录精度 = anchor 精度'原则——PE 用户点击 '顶尖人物 10×5 观点矩阵' 预期跳到 §1.2（line 471），实际跳到 §1.1 顶部（line 450）需再滚 20 行。iPad 上一次滚动 = 一次方向感丢失。",
+      "what_would_resolve": "为 §1.2 line 471 加 `id=\"ch-why-now-people\"`，§1.3 line 510 加 `id=\"ch-why-now-divisions\"`，TOC 三个 href 分别指向独立 anchor。同样问题需检查其他重复 anchor 章节（如 #ch-tech-routes 也是 3 个子项指同一处，line 251-253）。"
+    },
+    {
+      "id": "i8",
+      "severity": "severe",
+      "title": "§6.5.3 Unit Economics 表有 4 列商业模式 × 8 行指标，但 LTV:CAC 这一行的 '2-5×' '2-5×' '10-40×' '~5×' 单数字埋在表中，关键对比'RaaS LTV:CAC 没有数量级优势'结论靠读者自己推",
+      "attacks_claim": "Figure 估值泡沫四路证据合围",
+      "detail": "v1.report.html line 1911-1932：6.5.3 Unit Economics 4 列对比表，关键的 LTV:CAC 行（line 1926）写 '2-5× / 2-5× / 10-40× / ~5×'，旁边没有任何视觉锚点。表下方 line 1942-1947 的 insight-box 才点明 'RaaS LTV:CAC 仅 2-5×，相对售卖（10-40×）没有数量级优势'——但这条 punch line 在表外，PE partner 滚到表时第一眼看到 '2-5×' 不会立即联想到 '比硬件售卖差 4-8 倍'。同时 [INFERRED] / [UNDISCLOSED] 标记散落在 6 行表格内（出现 14 次），密度过高造成视觉嘈杂。这些 caveat 应作为'数据成熟度色码'统一视觉化（如 column header 加圆点 indicator），而不是每个 cell 都嵌入 [INFERRED]。",
+      "what_would_resolve": "LTV:CAC 行用 #fee2e2 红底高亮 + 在 RaaS 两列加 '⚠️ no order of magnitude advantage' 文字。Inferred/Undisclosed 改用统一图标 system（如 cell 右上角小 ⚠ icon hover 显示原因）。"
+    },
+    {
+      "id": "i9",
+      "severity": "severe",
+      "title": "13 张表全部用 .pro 样式（dark navy header + striped rows），但没有任何一张表用了 `<caption>` 元素；屏幕阅读器 + HTML scraper 无法关联表与上下文标题",
+      "attacks_claim": "结构语义与可访问性",
+      "detail": "v1.report.html line 95-109：table.pro 定义了 thead / tbody striping / hover，但 24 张表没有一张使用 `<caption>`。PE partner 经常用 'View > Reader Mode' 在 iPad 上阅读，或导出 PDF 给团队——这两种场景下 .pro 表如果用 `<caption>` 会自动带出表标题。当前每张表上方都用 `<h3>` 或 `<p>` 描述（如 line 1611 '各环节去风险化难度评分（仿照弘毅做电池的方式...）'），但 h3 与紧跟的 table 在 DOM 上无 caption 关联——任何 HTML scraper（包括 LLM）提取表时丢失上下文。同时 24 张表全部用 .pro 样式，没有视觉差异化：(a) tier 表（§3.2 Tier A-E）、(b) 5 列 × 10 行的人物矩阵（§1.2）、(c) 16 行的中美 16 环节（§6.1）— 三种完全不同体量的表用同样的视觉权重，让 PE partner 无法判断哪张是核心。",
+      "what_would_resolve": "为每张表加 `<caption>` 元素（CSS 隐藏视觉但保留 a11y）；或在每张表的 wrapper div 上加 `aria-labelledby` 关联上一个 h3 id。核心表（如 §3.2 Top 10 orders、§6.5.1 DCF、§6.5.2 Comps）用 .pro-key 突出样式（border 加粗 / 顶部添加 '★ 关键表'）。"
+    },
+    {
+      "id": "i10",
+      "severity": "moderate",
+      "title": "投委会 Q1-Q10（§A.4）每个 Q 用 'flex items-start gap-3' + 两栏 '反方挑战 / 我们答复'，但 iPad 竖屏 ≤ 768px 时 md:grid-cols-2 会变成上下堆叠，'反方挑战' 永远显示在 '我们答复' 上方 → 视觉上每个 Q 都是'红色挑战占据视觉 → 绿色答复埋在下面'，PE partner 滑过去看到的是 10 段红色 critique",
+      "attacks_claim": "10 个投委会问题作为 deal-level pitch 工具",
+      "detail": "v1.report.html line 2188-2369：10 个 Q 全部用 `<div class=\"grid md:grid-cols-2 gap-3 mt-2\">` 包含一个 red bg-red-50 box + 一个 green bg-green-50 box。Tailwind `md:` breakpoint 是 768px——iPad mini 竖屏 768px 临界，iPhone Pro Max 横屏可能落入 md。但常见 iPad（10.2/10.9 寸）竖屏宽度 810-820px 刚好在 md 内，PE partner 单手持竖屏可能 760-768px 实际 viewport（含状态栏）落入 sm 单列。在单列模式下，'反方挑战' 总是先显示，'我们答复' 在下方——10 个 Q 滑下来视觉上是 10 段红色 critique 主导，绿色答复被滚动。这恰好是 narrative 灾难。",
+      "what_would_resolve": "把 grid 改为 `flex flex-col md:flex-row`，并在 mobile 用 CSS `order` 让绿色 box 排在红色 box 上方（PE 的 anchor 是答案不是挑战）。或在 sm/md 单列时用 `<details>` 折叠'反方挑战'默认收起。"
+    },
+    {
+      "id": "i11",
+      "severity": "moderate",
+      "title": "2 个 SVG 不可能三角（§6.2 line 1566-1607）的'美国/中国/欧洲'数据点位置是 hardcoded 视觉位置，不可读 → 无 alt-text、无 axis label，PE partner 不知道'美国在 cx=140 cy=180' 意味着什么强度",
+      "attacks_claim": "中美 16 环节能力差异",
+      "detail": "v1.report.html line 1566-1607：两个三角形 SVG 用 hardcoded 坐标放置数据点（美国 cx=140 cy=180、中国 cx=300 cy=180、欧洲 cx=240 cy=280）。三角形顶点是'国家安全 / 技术领先 / 经济效益'三个标签，但数据点旁的文字 'safety+技术'、'安全+经济' 这种短标签依赖读者自己理解'点离哪个顶点更近 = 在那个维度更强'。但 SVG 没有 axis 也没有'强度等高线'，读者看到三个圆点都在三角形中部，无法 quantify 美国 vs 中国 vs 欧洲在每个维度的得分差异。同时 SVG 没有 `<title>` / `<desc>` / role='img'，a11y 完全空白。技术视角的第二个三角（Tesla/Figure / 银河通用 / 宇树）同样问题。",
+      "what_would_resolve": "在三角形外加 3 个'维度得分 0-5'量化轴，或者改用 ternary plot 配 grid 线。每个 SVG 加 `<title>` 描述 + role='img' + aria-label。"
+    },
+    {
+      "id": "i12",
+      "severity": "moderate",
+      "title": "Hero 顶部 4 张白色统计卡片（5 层 / 44 家 / ~6 万字 / 25+ 图）传达的是'研究广度'而非'投资结论'，与下方'STRICTLY PRIVATE AND CONFIDENTIAL'的 PE pitch tone 不一致",
+      "attacks_claim": "执行摘要能让 PE partner 在 90 秒内 get 核心论点",
+      "detail": "v1.report.html line 205-222：Hero 4 张统计卡片是 '5 层产业链 / 44 家整机厂商详表 / ~6 万字 / 25+ 图'。这是'研究工程量'指标，不是'投资判断'指标。PE partner 看 PE pitch 的 first impression 是'你的 thesis 是什么 + 多少高信号 risk/return'，不是'你研究了多少家公司'。这是 sell-side equity research 报告的 hero 风格，不是 buy-side IC memo 风格。下方又有 'STRICTLY PRIVATE AND CONFIDENTIAL' + 'Private Equity' 文案，表明这是 IC-style 而非 sell-side 报告——hero 风格定位错了。同时这 4 个数字与第 2 屏（执行摘要 KPI 8 张）信息重复——'25+ 图' 在 hero 出现但执行摘要里更应有'美系一线加权 PSR 757× / Tier A=0' 这种 thesis 数字。",
+      "what_would_resolve": "Hero 4 张卡片替换为 4 条 thesis statement（Tesla 'not in material use' / Tier A=0 / Figure 790× PSR / 仓储 ROI 差 16×），每条配下方章节锚链接。'25+ 图 / 6 万字' 这种工作量信息放到 footer 或单独 'methodology' 章节。"
+    },
+    {
+      "id": "i13",
+      "severity": "moderate",
+      "title": "色彩使用：成功 / 警告 / 信息 / 洞察 4 种 box 类型在第三章 §3.1-3.7 中混用 17 次，但'警告'与'洞察'的视觉区分不强（黄底 vs 红底）；色盲用户（8% 男性）无法区分",
+      "attacks_claim": "信息层次",
+      "detail": "v1.report.html line 67-94 定义 4 种 box：insight-box（黄 #fef3c7→#fde68a 黄左边框）/ warning-box（红 #fee2e2→#fecaca 红左边框）/ success-box（绿 #dcfce7→#bbf7d0 绿左边框）/ info-box（蓝 #dbeafe→#bfdbfe 蓝左边框）。仅靠左边框颜色 + 浅背景区分。CTA 文字（如 '核心结论' '关键洞察' '修订后的真实启示'）字号一致，没有 icon prefix。色盲用户（红绿色盲 8% 男性）会把 warning-box 红底 + success-box 绿底视为同色。同时 §3.1-3.7 共有 8 个 warning-box + 3 个 insight-box + 1 个 success-box——警告太多导致 dilution，'警告' 失去 anchor 功能。",
+      "what_would_resolve": "每种 box 加专属 icon prefix（⚠️警告 / 💡洞察 / ✅成功 / ℹ️信息），不依赖颜色；warning-box 仅用于'真正改变 investment action'的结论（如 Tesla 'not in material use'），其他降级为 info-box。"
+    },
+    {
+      "id": "i14",
+      "severity": "moderate",
+      "title": "§3.6 投资动作变更表 4 列 × 10 行，列宽分配未指定 → 第 4 列'对投资动作的影响'最长（每行 ~80-120 字）会挤压前 3 列",
+      "attacks_claim": "10 个投委会问题作为 deal-level pitch 工具",
+      "detail": "v1.report.html line 845-918：4 列 ('原结论' / '新证据' / '修订后结论' / '对投资动作的影响') × 10 行。table.pro 默认无 `<colgroup>` 或 col width。最后一列内容如 line 860 '组合中美系一线整机权重 ≤ 5%（vs v1 推荐 15-25%）；估值锚改用 \"AI 大脑 + 软件 + 数据飞轮\" 非财务因子，不再依赖 RaaS LTV' 约 80 字 + 中间字符无 break。前 3 列在 iPad 横屏 1180px 会被挤到每列 200-280px，但每个 cell 内有 60-100 字，导致整表行高 80-120px。10 行 = 整表 1000-1200px 垂直高度，PE partner 需要垂直滚动 1.5 屏。这是'投资动作变更'核心表，应该 5 秒抓到一个 takeaway，但实际需要 60 秒读完。",
+      "what_would_resolve": "拆为 2 列对照式（'原结论 → 修订后结论' 合并一列 + '对投资动作的影响' 一列），证据列移到 footnote 或 hover popover；或保留 4 列但用 `<colgroup>` 指定 width 20%/20%/25%/35%，并把第 4 列字数压缩到 ≤ 40 字。"
+    },
+    {
+      "id": "i15",
+      "severity": "minor",
+      "title": "§3.7 第六条 takeaway 用了引号但没有 quote 样式：'\"任何不含 MTBF 的 PE deck 都不算完整尽调\"'——视觉上是普通文本，无法成为 sound bite",
+      "attacks_claim": "执行摘要 + 第三章核心论据",
+      "detail": "v1.report.html line 937：`<li>⑥ <strong>\"任何不含 MTBF 的 PE deck 都不算完整尽调\"</strong>——全行业未披露的关键指标</li>`。这是报告里少数可被 PE 直接 quote 到团队 / IC 会议的 sound bite，但被压在 ol 列表第 6 行用 strong 加粗。同样第一章 §1.2 line 502 '矩阵的 3 个隐藏共识' 也是潜在 quotable insight 但没有视觉提升。整份报告缺少'pull-quote'风格组件（large italic + 左侧引号 icon）来 promote 这些核心句子。",
+      "what_would_resolve": "新增 .pullquote CSS 类（large italic 1.5rem + 左侧 ❝ 装饰），把 6-8 条最具传播力的论断 promote 为 pull-quote 形式。"
+    }
+  ],
+  "prior_issue_updates": []
+}

@@ -1,0 +1,96 @@
+{
+  "round": 4,
+  "persona": "pe_partner",
+  "draft_classification": "PE/VC IC 决策辅助报告 (Round-4, post-SST canonicalization)",
+  "verdict": "block",
+  "verdict_reason": "Round-4 真的把 5 处 MOIC/IRR/US-led 数字治理到 SST-clean: 公式与 header 严格一致 (4.6× / 23.6% / 14.6% propagated to §0.1/§A.5/§A.6.3/chartScenarioProb/data-confidence), 3×3 cell 9 个全部用单一闭式公式且 3 个独立 worked example 都核对 ✓ (g=3%/W=12% → 1.26B, base → 0.87B, g=2%/W=18% → 0.61B), Bull/Base/Bear-A/Bear-B/True Bear 命名替代 P5/P50/P95, 2×2 矩阵 P(Tesla Y) 重新 calibrated 25% 全文 9 处 propagation 一致. r3 8 个 issue 中 6 个 fully resolved, 2 个 (r3-n5 Bear-B 3× premium / r3-n7 cell N,N 拆分) accepted-with-explicit-disclosure (limitation-note 公开). 但 SST canonicalization 把 IC Memo Bull row label 标 'Bull (35% scenario probability, China-led)' 直接 把 智元-specific Bull-exit-$35B 概率 与 macro China-led 35% 划等号 — 是 category conflation: macro 阵营 probability ≠ 单公司 capture probability, 应 multiplicative (P(China-led) × P(智元 wins | China-led)), 不是 set-equal. 此 conflation 让 E[MOIC] 4.6× / E[IRR] 23.6% 被 Bull contribution (= 0.35 × 9.0 = 3.15, 占 E[MOIC] 的 68%) 撑住, 但真实 P(智元 captures China-led upside) prior 应在 30-50% — folddown 后 E[MOIC] 跌至 ~3.0× / E[IRR] ~17%. 这是 SST 治理动作 introduce 出的新 severe — 公式越严格, conflation 越显眼. 另外 §A.5.Q9 (L2592-2594) 仍写 'IRR P50 ~25% / P95 ~45%' 与 r3-n3 fix paragraph 'round-4 删除 P5/P50/P95' (L2694) 同文件直接矛盾.",
+  "issues": [
+    {
+      "id": "r4-n1",
+      "severity": "severe",
+      "title": "SST Bull row 把'智元 5万台量产 + AgiBot World 商业化兑现 → $35B'与'macro China-led 阵营 35%'直接划等号 — category conflation, 应是 P(China-led) × P(智元 capture | China-led), 真实 Bull 概率 ≤ 17.5%, folddown 后 E[MOIC] ~3.0× 而非 4.6×",
+      "attacks_claim": "LBC-4 / SST canonical E[MOIC] 4.6× / E[IRR] 23.6%",
+      "detail": "L2685 Bull row label: 'Bull (35% scenario probability, China-led)' — 35% 概率, exit $35B IPO, MOIC 9.0×. L479 §0.2 显式: 'China-led (30-40%; 中点 35%; Bull 锚)'. SST footnote L2695: 'E[MOIC] = 0.35×9.0 + ... = 4.598'. 即 Bull contribution = 3.15, 占 E[MOIC] 4.6× 的 68% — 整个 returns 故事的支柱. 但 China-led 35% 是 **macro 阵营 probability** ('中国凭借硬件成本 + 场景密度赢得全球'), Bull row trigger 是 **公司-specific** ('2027 量产 5 万 + 工业商业化兑现 + AgiBot World 商业化'). 两者不是同一个事件. China-led 世界可能由 宇树 / 银河通用 / 其他 winner take 大头, 智元 拿不到 $35B exit; 同样 Bifurcation 世界下智元可能 underperform $15B Base. PE 标准模型: P(智元 Bull exit) = P(China-led) × P(智元 wins | China-led) — 不是 set-equal. 行业 prior: 1 家公司 ex-ante 拿下整个 vertical winner 概率在 cluster 中 (智元 / 宇树 / 银河通用 / 优必选 至少 4 家国资+VC 大注 cluster) 应 30-50% 中位. 若 P(智元 wins | China-led) = 0.4: 真实 Bull 概率 = 35% × 0.4 = 14%, Base 概率 = 35% × P(智元 mid | Bifurcation) ≈ 35% × 0.5 = 17.5%; folddown E[MOIC] = 0.14×9 + 0.175×3.8 + ... ≈ 1.26 + 0.67 + 0.10 + 0.02 + 0.01 ≈ 2.06× — 跌至 SST canonical 4.6× 的 45%. 即使温和 prior P(智元 captures | scenario) = 0.6 across all 5 rows: E[MOIC] = 0.6 × 4.6× + 0.4 × (sunk fund value ≈ 0.5×) = 2.96×. 任何 P(capture | scenario) < 1 都意味着 SST 4.6× 是 ceiling-bound 而非 expectation. **r3 attack 'header vs 公式' 已修, 但 SST 治理后 mapping 'Bull = China-led 35%' 直接成为新的 load-bearing 假设, 且 prior rounds 对此 mapping 没有 surface 过 — 是 r4 canonicalization 引入的新 severe**. 是 PE IC 一眼就会问的:'你的 Bull 35% 是行业 35% 还是 智元 35%? 这两个不是一个数.'",
+      "what_would_resolve": "(a) Bull/Base/Bear-A 三 row 都加 'conditional on macro scenario' caveat, 并明示 P(智元 captures | scenario) prior; (b) E[MOIC] header 改 'E[MOIC | 智元 captures full scenario exit] ~4.6× / E[MOIC] adjusted for capture prob (0.4-0.6 mid) ~2.0-3.0×' — 两条数字并列; (c) IC Memo + §A.6.3 cascade 都同步; (d) SST footnote L2695 加 '此 E[X] 假设 capture probability = 1; reviewer 应 multiply 自己的 prior'. (e) 替代方案: 把 Bull 35% 直接砍半至 17%, Base 35% 砍至 20%, 留 28% 为 'China-led/Bifurcation 下 智元 不是 winner' 的中性情景 (e.g. MOIC 1.0× sunk fund value)."
+    },
+    {
+      "id": "r4-n2",
+      "severity": "moderate",
+      "title": "§A.5 Q9 (L2592-2594) 仍写 'IRR P50/P95' (3 个 line item) 与 r3-n3 fix 段落 (L2694) 'round-4 删除 P5/P50/P95' 同文件直接矛盾",
+      "attacks_claim": "r3-n3 follow-up / 数据治理",
+      "detail": "L2694 (round-4 r3-n3 fix paragraph): 'scenario probability ≠ distribution percentile. 每行用 X% scenario probability 直接命名 (Bull 35% / Base 35% / Bear-A 12.5% / Bear-B 12.5% / True Bear 5%), 不再用 P5/P50/P95 percentile 术语 (round-3 P95 标 35% 概率自相矛盾, round-4 删除)'. 但 同章节 §A.5 上方 L2592-2594 Q9 三行: ① 宇树 'exit P50 ¥400 亿 / P95 ¥1,000 亿; IRR P50 ~25% / P95 ~45%'; ② 金力 'IRR P50 ~20% / P95 ~40%'; ③ 仿真种子轮 'IRR P50 ~30% / P95 ~80%'. 同一份文档同一章节 P50/P95 一边'删除'一边照用. r3-n3 builder response 'Deleted P5/P50/P95 percentile labels entirely' 是 partial — 只删了 智元 Returns table row label, Q9 没扫. PE reader 看到 L2694 paragraph 'we don't use P/X anymore' 然后 scroll up 看到 Q9 'P50/P95' 立即问 '哪个口径正确?' (注: Q9 P50/P95 用法 statistically 是对的 — 单笔 distribution percentile — 但与 L2694 的禁令不一致.) cosmetic fix incomplete.",
+      "what_would_resolve": "(a) Q9 三 line item 改 'IRR Base case ~25% / Bull case ~45%' 等 named-scenario 表达; 或 (b) L2694 paragraph 加豁免 '单笔投资 IRR distribution 仍可用 P50/P95 统计 percentile, 此处仅禁止把 P50/P95 当 scenario name 用于 portfolio-level Returns table'; 二选一, 不能并存."
+    },
+    {
+      "id": "r4-n3",
+      "severity": "moderate",
+      "title": "Bull 锚 mapping '智元 $35B exit (5 万台量产兑现)' 与 §0.2 China-led 'CAGR 100% 极限, 中 100 万 / 美 12 万' 不匹配 — Bull row trigger 是公司-level milestone, 但 macro 概率用整阵营",
+      "attacks_claim": "LBC-3 / LBC-4 mapping consistency",
+      "detail": "L1770-1774 §6.3 China-led 卡片: '2030 累计保有量: 中 100 万 / 美 12 万 / 其他 8 万 = 120 万合计'. 即 China-led 世界中国累计 100 万台保有. L2685 IC Memo Bull row trigger: '2027 量产 5 万 + 工业商业化兑现 + AgiBot World 商业化'. 5 万 累计/年 vs 100 万 2030 累计 — 智元 5 万只占 5%. 也就是说: 即便 China-led 世界 100% 兑现, 智元 拿 5% 也不能保证 $35B exit (取决于 winner-take-all 程度). r3-n2 reconcile 把 2×2 与卡片做了一致, 但 Bull row 仍把 '智元 拿 5% China-led 容量 + 量产兑现' 等同于 '获得 China-led 全场 35% 概率'. 公司-level Bull (智元 自己 5 万兑现) 与 industry-level Bull (China-led 35% 阵营 prob) 两个概念被 collapse. 与 r4-n1 相关但 angle 不同: r4-n1 攻击 capture multiplier 缺失, r4-n3 攻击 Bull trigger description ≠ macro scenario description.",
+      "what_would_resolve": "(a) Bull row trigger 改 '智元 5 万量产兑现 AND 获得 China-led 35-50% market share (5 万 / 100 万累计 = 5% 仅一阶段, 智元 dominant 假设需 explicit)'; (b) 或 拆 Bull 为 Bull-A '智元 wins big in China-led' P=12-18% / Bull-B 'China-led 兑现但 智元 lose share' P=17-23% MOIC 1.5×; (c) 修 SST footnote 把 Bull conditional 明示."
+    },
+    {
+      "id": "r4-n4",
+      "severity": "minor",
+      "title": "§A.6.3 channel breakdown 用 Base case 31% nominal 做分母, 但 portfolio-level 用 E[IRR] 23.6% — 两个 IRR 分母并存导致 L2735-2739 channel 行 '~25%/~19%/~12%' (基于 31%) 与 L2766 '~15% portfolio' (基于 23.6%) 不在同一坐标系",
+      "attacks_claim": "数据治理 / r3-n1 cascade",
+      "detail": "L2735-2739 退出渠道 ASP 矩阵 'Base case 真实可分红 IRR (vs 31% nominal)': A 股 ~25% (= 31×0.95×0.85), 港股 ~19% (= 31×0.7×0.95×0.93), ADR ~12%, 战略并购 ~19%, 二级 ~15%. 这些都以 31% Base case (单 scenario, P=35%) 为分母. L2761 §A.6.3 paragraph: '以 Base case 31% nominal IRR 为锚 / 概率加权 E[IRR] 23.6% canonical'. L2766 '用概率加权 E[IRR] 替代: 23.6% × 0.7 × 0.95 × 0.93 = 15% portfolio-level'. L2768 explicit '31% 是 single-scenario / 23.6% 是 portfolio'. 治理 surface 了, 但 channel 表 (L2735-2739) row 都是 single-scenario × discount, LP 实际遇到的 portfolio-level cross-channel breakdown 没给. 即 LP 不知道 '如果我看 A 股渠道, portfolio-level 真实 IRR 是什么?' = 23.6% × 0.95 × 0.85 = 19.1%, 不是 25%. L2768 caveat 把这个差异 surface 了但没给数字. PE IC 标准做法是两组 row 并列: 'Base case (conditional)' 25%/19%/12%/19%/15% + 'portfolio E[IRR]' 19%/14.6%/9.2%/14.2%/11.7%.",
+      "what_would_resolve": "(a) 表 A.6.1 加第 8 列 'Portfolio E[IRR] 真实可分红 (vs 23.6% canonical)' = 23.6 × 同 discount, 给 LP 两组数字; (b) 或在 L2768 caveat 明列 portfolio E[IRR] cross-channel = 19/14.6/9.2/14.2/11.7%, 不让 LP 自己算."
+    },
+    {
+      "id": "r4-n5",
+      "severity": "minor",
+      "title": "L1832 limitation-note 把 P(N,N)=67.5% 后验拆为 'China-led 35% + Bifurcation 主干 27.5% + Other 5%' — 三个 scenario 共享同一个 2×2 cell, 与 r3-n7 同病, 'documented' 但 PE IC 仍会问 '为何 Bifurcation 一支 (主干 27.5%) 大于另一支 (US-with-IRA 7.5% in N,Y) 3.7×, 这个 split prior 从何而来'",
+      "attacks_claim": "r3-n7 follow-up / 概率治理",
+      "detail": "L1827 cell (N,N) = 67.5% = China-led 35% + Bifurcation 主干 27.5% + Other 5%. L1832 limitation-note 称 '2×2 only to 4-cell level; 拆 China-led/Bifurcation/Other 是 author's downstream prior, 与 2×2 维度无关'. r3-n7 builder response 'accepted + documented'. surface 了承认但没给 split rationale. Bifurcation 总 35% = 27.5% (N,N 内) + 7.5% (N,Y) = 35% — 27.5 vs 7.5 = 3.67×, 即'政策推出但 Tesla N' 路径 7.5% << '政策也没出 Tesla 也没出' 27.5%. PE: 'humanoid IRA 推出概率 vs 不推出, 你 implicit 假设是 20%/80%? 那 20% × 中国 winning 的 prior 是什么?' 一个 1 句的 author prior. r3-n7 builder response acknowledged 'cannot resolve without 3rd variable / 2×2×2 upgrade, listed in carry-forward'. 接受 documented, 但 minor 残留: split numbers (27.5 vs 7.5) 本身没 source.",
+      "what_would_resolve": "(a) Limitation-note 加 1 sentence 'P(N,N) 内 China-led:Bifurcation主干:Other = 35:27.5:5 ≈ 7:5.5:1 比例 来自 author prior (相同 P(Tesla N AND IRA N) 条件下, 中国 win 概率 略高于 双轨); reviewer 可调比例'; (b) 或 carry-forward 到 round-5 升级 2×2×2."
+    }
+  ],
+  "prior_issue_updates": [
+    {
+      "id": "r3-n1 (Returns table header vs formula 三处算术冲突)",
+      "status": "resolved",
+      "reasoning": "Grep-verified L2690: header '~4.6× (canonical)' 与 inline 公式 '0.35×9.0 + 0.35×3.8 + 0.125×0.77 + 0.125×0.13 + 0.05×0.12 = 3.15 + 1.33 + 0.096 + 0.016 + 0.006 = 4.598 ≈ 4.6×' 严格一致 ✓. E[IRR] header '~24% 名义 (canonical)' 与 inline '0.35×55 + 0.35×31 + 0.125×(-5) + 0.125×(-33) + 0.05×(-35) = 23.6%' 严格一致 ✓. LP IRR '~15% 真实' 与 '23.6% × 0.7 × 0.95 × 0.93 = 14.6%' 严格一致 ✓. SST footnote L2695 显式列旧 round-3 deprecated 数字 (24.6/26.1/27.3/28/29% MOIC 4.4/4.8) — 不再 silent strip 而是 explicit 留痕. 我 spot-check 任两个 contribution: 0.35×9 = 3.15 ✓, 0.125×0.77 = 0.09625 ≈ 0.096 ✓. Math fully closes. Header / 公式 / 跨章节 §A.6.3 L2766 ('23.6% × 0.7 × 0.95 × 0.93 = 15% portfolio-level' canonical) 三处都同步. FATAL 修."
+    },
+    {
+      "id": "r3-n2 (US-led 中点 20% vs 矩阵 derive 30% +10pp gap)",
+      "status": "resolved",
+      "reasoning": "9 处 propagation 全部 grep-verified: L480 §0.2 '20-30%; 中点 25%' ✓; L992 §3.6 '20-30%; 中点 25%; Round-4 r3-n2 上调' ✓; L1784 §6.3 卡片 '20-30%' ✓ (旧 15-25% 已删); L1826 cell (Y,Y) P=12.5% / (Y,N) P=12.5% (sum=25%) ✓; L1828 marginal Tesla 25%/75% ✓; L1832 限制说明 'US-led 25% = P(Y,Y)+P(Y,N)' SoT ✓; L2368 决策树 Q3 '20-30%; 中点 25%' ✓; L2390-L2396 §A.3.2 4 行 if-then 表 P=12.5/12.5/7.5/67.5 ✓; L4485 data-confidence '35/25/35/5' ✓; L4554 chartScenarioProb 'US-led (20-30%, 中点 25%)' + data [35,35,25,5] ✓. P(Tesla Y)=25% 重 derive 出 P(Y,Y)=12.5%, P(Y,N)=12.5% (sum=25% = US-led 卡片中点) ✓. 数学闭合. Bear-A + Bear-B = 12.5+12.5 = 25% 与 SST US-led 25% 一致 ✓. SEVERE fully resolved."
+    },
+    {
+      "id": "r3-n3 (P5/P50/P95 row label vs definition conflict)",
+      "status": "partial",
+      "reasoning": "智元 Returns table row label 已改: L2685 'Bull (35% scenario probability, China-led)' / L2686 'Base (35% scenario probability, Bifurcation)' / L2687-2688 'Bear-A/B 12.5%' / L2689 'True Bear (5% probability tail)' — P5/P50/P95 row label 删除 ✓. L2694 paragraph 改写 'scenario probability ≠ distribution percentile; 不再用 P5/P50/P95' ✓. 但 同章节 §A.5 上方 Q9 L2592-2594 三行仍用 'IRR P50 ~25% / P95 ~45%' (宇树 / 金力 / 仿真种子轮). r4-n2 详. r3-n3 builder claim 'Deleted P5/P50/P95 percentile labels entirely' 是 over-stated — Returns table row level resolved, but Q9 line items 没扫. partial."
+    },
+    {
+      "id": "r3-n4 (3×3 sensitivity 9 cell 公式混 ramp accumulator)",
+      "status": "resolved",
+      "reasoning": "L2017-2022 3×3 表全部重建用单一公式 V = EBIT × df_4yr × [1 + 1/(WACC-g)]; 9 cell: g=2% row $1.14/$0.81/$0.61B; g=3% (base) row $1.26/$0.87/$0.64B; g=4% row $1.40/$0.94/$0.68B. L2026 footnote 3 个 independent worked-example: (g=3%, W=12%): 163×0.6355×12.11=1255 ≈ $1.26B ✓; (g=3%, W=15% base): 163×0.5718×9.33=870 ≈ $0.87B ✓; (g=2%, W=18%): 163×0.5158×7.25=610 ≈ $0.61B ✓. 我独立 spot-check (g=4%, W=12%): df=0.6355; V=163×0.6355×(1+1/0.08)=163×0.6355×13.5=$1,398M ≈ $1.40B ✓. ramp accumulator hybrid 完全 removed. 区间 28-64× (canonical), narrative L980/L1965/L2041 三处 propagation 'narrative 敏感性 28-64×' grep-verified. SEVERE resolved."
+    },
+    {
+      "id": "r3-n5 (Bear-B / True Bear outcome overlap; 3× control premium 反直觉)",
+      "status": "partial",
+      "reasoning": "L2688 Bear-B cell explicit footnote: '$0.5B (= $0.17B DCF sanity × ~3× control premium 假设上限; 注: 典型 distressed M&A control premium 1.3-1.5× — 我方 prior 3× 隐含国资战投 + 数据资产残值)'. 即 control premium 3× 已 surface 为 author's prior 与典型 1.3-1.5× 的差异. Bear-B / True Bear outcome overlap (Bear-B 0.13× / True Bear 0.12× exit $0.5 vs $0.3-0.6B) 未消除. v4.md Limitations #5 显式 accept: '保留拆分 IPO-block vs 残值清算 两渠道; 完全 merge 不做'. **documented** but not eliminated. Bear-B contribution to E[MOIC] = 0.125 × 0.13 = 0.016 不影响 bottom line (即使 3× → 1.5×: 0.125 × 0.065 = 0.008, 差 0.008, 对 4.6× 影响 < 0.2%). 故 partial 但 immaterial."
+    },
+    {
+      "id": "r3-n6 (A.6.2 '5 家' vs 6 行 count)",
+      "status": "resolved",
+      "reasoning": "L2744 标题 '6 家潜在 Strategic Acquirer' ✓; L2483 Q4 (d) '并购买家清单 6 家详 A.6.2' ✓. Count reconciled."
+    },
+    {
+      "id": "r3-n7 (cell N,N 拆 China-led 35% + Bifurcation 27.5% over-decomposition)",
+      "status": "partial",
+      "reasoning": "L1832 limitation-note: 'P(N,N) 67.5% 拆 China-led 35% + Bifurcation 主干 27.5% + Other 5% — 这是 author's downstream prior, 与 2×2 维度无关; 2×2 only to 4-cell level'. 显式承认 ✓. v4.md Limitations #6 同步. 升级 2×2×2 (8-cell) accepted-deferred to round-5. r4-n5: split 比例本身 (China:Bifurcation:Other = 35:27.5:5 = 7:5.5:1) 没 source — minor 残留. Accepted-with-documentation, 不算 unresolved."
+    },
+    {
+      "id": "r3-n8 (Comps N=5 footnote Lucid/Rivian premium 算错)",
+      "status": "resolved",
+      "reasoning": "L2073-2077 rowspan + 溢价列已重算: Lucid 溢价 '+254% → +183%' (vs N=5 median 53×) ✓; Rivian/Tesla 标 'N/A (LTM 营收近零, PSR 不可比 / 单列 reference)' ✓; rowspan median caption 'N=5 median 53× (sorted [15,24,53,150,85000] 第 3 位)' ✓ 删除 '(24+53)/2 alt'. spot-check Lucid: 150/53 - 1 = 183% ✓. Phantom 175× 全文 grep 空集 ✓ (n3.i4 fix 一并). Minor resolved."
+    },
+    {
+      "id": "pe-n9 (P50/P95 misuse — r2/r3 carry)",
+      "status": "partial",
+      "reasoning": "智元 Returns table row label 完全清空 P5/P50/P95 ✓; L2694 paragraph 'scenario probability ≠ distribution percentile' ✓. 但 Q9 L2592-2594 仍 P50/P95 (虽然 single-bet IRR distribution 用 P50/P95 statistically 是对的). r3 critique 'cosmetic fix' 改 paragraph 没改 row — r4 改了 row (Returns table) 但 Q9 没改, 仍 partial. r3-n3 / r4-n2 详. carry-forward unresolved on Q9."
+    }
+  ]
+}

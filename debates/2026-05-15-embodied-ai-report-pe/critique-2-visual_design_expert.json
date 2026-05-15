@@ -1,0 +1,197 @@
+{
+  "round": 2,
+  "persona": "visual_design_expert",
+  "draft_classification": "PE 战略 pitch + 行业研究 HTML 单页报告 (v2: 4,811 行, 339KB, 28 张表 / 26 张 Chart.js / 2 张 SVG 三角 / mermaid 若干; round-2 比 v1 多 ~140 行)",
+  "load_bearing_claims": [
+    "Hero + 执行摘要 + 5 条 thesis banner 能让 PE partner 在 90 秒内 get 核心论点 (round-2 关键新增)",
+    "三种情景概率 + 2030 累计保有量预测靠 chartScenarioProb + chartScenarioShipment 双图传达",
+    "Figure 估值泡沫论据靠 chartValuationTop10 + chartPSRComparison + §6.5.1 DCF 表 + §6.5.2 Comps 四路证据合围",
+    "中美 16 环节能力差异靠雷达图 + 16 行 5 列对比表传达, 强卡脖子环节红色 highlight",
+    "10 个投委会问题 + 智元 IC Memo 附录 (A.4-A.5) 作为 deal-level pitch 工具, Q1-Q10 用 'qa-pair / qa-challenge / qa-answer' 二栏对照展示 (round-2 改造)"
+  ],
+  "verdict": "block",
+  "verdict_reason": "Round-2 的 visual 改造大量靠新引入的 CSS class (.thesis-banner / .pullquote / .qa-pair / .qa-challenge / .qa-answer / .limitation-note / .sensitivity-table / .chart-loaded) 实现，但这些 class 在 <style> block (line 10-192) 里全部没有定义。response-2 明确写'CSS L228-235 / style L218-235 CSS 已添加'是错误声明 — style block 在 line 192 已结束，line 218+ 不存在 CSS 规则。最严重的后果是 round-2 的 thesis banner (line 313-322 — 整个 round-2 视觉改造的旗舰组件、'5 条核心论点 IC 决策必读') 当前渲染为完全未设计的 unstyled <div>，与 PE pitch tone 格格不入。同样 9 个 Q&A pair 的 mobile order 反转 (vis.i10 的核心承诺) 也未实现 — iPad 竖屏读者仍然先看到红色挑战、绿色答复在下方。Hero 4 张研究广度卡 (vis.i12 承诺替换为 thesis) 也原封未动。",
+  "issues": [
+    {
+      "id": "v2-new-i1",
+      "severity": "fatal",
+      "title": "8 个 round-2 新增 CSS class 在使用处 but 在 <style> 块完全未定义 — thesis banner / pullquote / qa-pair / qa-answer / qa-challenge / limitation-note / sensitivity-table / chart-loaded 全部 unstyled",
+      "attacks_claim": "Hero + 执行摘要 + 5 条 thesis banner 能让 PE partner 在 90 秒内 get 核心论点",
+      "detail": "v2.report.html line 10 开始 <style>，line 192 </style>。整个 CSS 块没有任何一个新 class 的规则：grep '\\.thesis-banner|\\.pullquote|\\.qa-pair|\\.qa-challenge|\\.qa-answer|\\.limitation-note|\\.sensitivity-table|\\.chart-loaded' 返回 0 行。但这 8 个 class 在 markup 里被使用：(a) .thesis-banner 在 line 313 — 整个 round-2 视觉改造的旗舰：'5 条核心论点 IC 决策必读'。当前渲染为没有边框、没有底色、没有左侧 accent 的纯白文本块，与下方 KPI 卡视觉权重相同甚至更低，完全无法承担'thesis 必读'的视觉锚定。(b) .qa-pair 在 line 2267 / 2284 / 2301 / 2318 / 2335 / 2352 / 2369 / 2386 / 2426 共 9 处。response-2 vis.i10 声明 'CSS order 让绿色答复显示在红色挑战之上' — 但没有任何 CSS rule 设 order，所以 iPad 竖屏单列布局下，反方挑战仍然显示在我们答复上方。10 个 Q 滑下来仍然是 10 段红色 critique 主导，这是 narrative 灾难，vis.i10 的核心承诺 100% 未兑现。(c) .pullquote 在 line 963 — vis.i15 承诺把 MTBF 名言 promote 为 pull-quote — 当前 <li>⑥ <div class='pullquote'>...</div></li> 既无样式，且 <div> 嵌在 <li> 内属于无效 HTML、会破坏 ordered list 视觉编号。(d) .limitation-note 在 line 367 / 374 / 1741 / 1865 / 2006 共 5 处 — 全部 unstyled，丢失'限制说明'的视觉降级线索。(e) .sensitivity-table 在 line 1995 — vis.i8 / num.i13 新增的敏感性表没有 .pro 样式，呈现为 unstyled HTML 默认表格 (无 thead 底色 / 无 striping)。",
+      "what_would_resolve": "在 <style> block (line 192 </style> 之前) 补完 8 个 class 的 CSS：(1) .thesis-banner { background: linear-gradient(135deg, #fef3c7, #fde68a); border: 2px solid #dc2626; border-left: 6px solid #dc2626; padding: 24px; border-radius: 12px; margin: 16px 0 24px; } .thesis-banner h3 { color: #7c2d12; margin: 0 0 12px; } (2) @media (max-width: 768px) { .qa-pair { display: flex; flex-direction: column; } .qa-pair .qa-answer { order: 1; } .qa-pair .qa-challenge { order: 2; } } (3) .pullquote { font-size: 1.25rem; font-style: italic; padding: 12px 16px 12px 32px; background: #fef3c7; border-left: 4px solid #f59e0b; position: relative; } .pullquote::before { content: '“'; position: absolute; left: 8px; top: 0; font-size: 2.5rem; color: #f59e0b; } (4) .limitation-note { font-size: 0.85rem; color: #6b7280; font-style: italic; padding: 8px 12px; background: #f9fafb; border-left: 3px solid #d1d5db; margin: 12px 0; } (5) .sensitivity-table 复用 .pro 或独立定义。pullquote 还需把 <div> 改为 <span> 或 <q> 以避免 <li><div> 无效嵌套。"
+    },
+    {
+      "id": "v2-new-i2",
+      "severity": "fatal",
+      "title": "TOC 子链接重复指向同一锚点 (#ch-why-now ×3, #ch-tech-routes ×3, #ch-commercial-cliff ×5, #ch-player-paths ×2) — vis.i7 round-1 已指出, round-2 builder 声明 '添加独立 anchor #sec-1-1 #sec-1-2 ...' 但实际只加了 1 个 anchor (#sec-1-3, line 536) 且 TOC 没有任何 href 指向它",
+      "attacks_claim": "导航/目录可读性",
+      "detail": "v2.report.html line 244-246: 三个 href 全部 #ch-why-now。Line 251-253: 三个 href 全部 #ch-tech-routes。Line 258-262: 五个 href 全部 #ch-commercial-cliff。Line 267-268: 两个 href 全部 #ch-player-paths。grep 'id=\"sec-1-\\|id=\"sec-2-' 只返回 1 行 (line 536 id='sec-1-3')，且 TOC 没有任何 href 指向 #sec-1-3。response-2 vis.i7 写 'TOC 子链接添加独立 anchor (#sec-1-1, #sec-1-2, #sec-1-3, #sec-2-1, #sec-2-2, #sec-2-3); 对应 <h2> 添加 id; section id=toc-section 待 sticky CSS' — 这是不实陈述。只有 sec-1-3 一个 anchor 被加了，TOC 完全未改。PE partner 点击 'Top 10 订单 Tier 分级' 期望跳到 §3.2 (line 751)，实际跳到 §3.1 顶部 (line 724)，需再滚 27 行才看到目标内容。",
+      "what_would_resolve": "为 §1.1 line 479 / §1.2 line 497 / §1.4 line 575 / §2.1 line 603 / §2.2 line 633 / §2.3 line 653 / §3.1 line 724 / §3.2 line 751 / §3.3 line 795 / §3.4 line 825 / §3.6 line 868 / §4 各子路径添加独立 id，并把 TOC 11 个 href 改为对应独立 anchor (sec-1-1 / sec-1-2 / sec-1-4 / sec-2-1 / sec-2-2 / sec-2-3 / sec-3-1 / sec-3-2 / sec-3-3 / sec-3-4 / sec-3-6 / sec-4-1 / sec-4-2)。同时把 .sticky-toc CSS (line 188-191) 真正 apply 到 #toc-section。"
+    },
+    {
+      "id": "v2-new-i3",
+      "severity": "severe",
+      "title": "Hero 4 张 '5 层 / 44 家 / 6 万字 / 25+ 图' 研究广度卡仍在 line 205-222 原封未动 — vis.i12 builder 声明 'Hero 4 张研究广度卡 → 4 thesis statements' 但实际只在执行摘要 (后置) 加了 thesis banner",
+      "attacks_claim": "Hero + 执行摘要在 90 秒内 get 核心论点",
+      "detail": "v2.report.html line 205-222: Hero 4 张 div.bg-white/10 卡片 = '5 层 / 44 家 / ~6 万字 / 25+ 图'。这是 sell-side equity research 的研究工程量风格而非 buy-side IC memo 风格。PE partner 看 PE pitch 的第一屏 hero 应该是'你的 thesis 是什么'，不是'你研究了多少家公司'。Round-1 的 vis.i12 已经指出，response-2 写 'Hero 4 张研究广度卡 → 4 thesis statements' 并标 'Hero L205-225' — 这是不实陈述。Thesis banner 实际只加到执行摘要内 (line 313-322)，而 Hero 卡完全没动。PE partner 在 iPad 上加载页面时第一眼看到的仍然是工作量指标。同时由于 thesis banner 自身 unstyled (见 v2-new-i1)，连'后置的 thesis 替代品'也是失效的。",
+      "what_would_resolve": "把 line 205-222 的 4 张 hero 卡替换为 4 条 thesis statement，每条配下方章节锚链接：'Tesla not in material use → §3.1' / 'Tier A ≈ 0 → §3.2' / 'Figure PSR 1,300-2,600× → §6.5' / '仓储战争已结束 ROI 差 5-16× → §3.3'。'5 层 / 44 家 / 6 万字 / 25+ 图' 这种工作量信息放到 footer 或 methodology 章节。"
+    },
+    {
+      "id": "v2-new-i4",
+      "severity": "severe",
+      "title": "§6.5.1 DCF punch line '市场 45× sanity / 16× / 12×' 仍埋在表第二倒数行 (line 1897) — vis.i4 builder 声明 '表上方顶置 3 张 KPI 卡' 但实际增加的 KPI 卡 (line 1845-1850) 内容是宇树 IPO 校准 (¥17.08 亿 / 60.27% / ¥400 亿), 与 sanity check 比值无关",
+      "attacks_claim": "Figure 估值泡沫四路证据合围",
+      "detail": "v2.report.html line 1868 开始 §6.5.1 DCF 表，表 thead line 1873-1881，tbody 13 行。punch line 在 line 1897 (倒数第二行)：'市场 vs sanity check 比值' = '市场 45× sanity / 市场 16× sanity / 市场 12× sanity'。表上方 line 1845-1850 确实有 4 张 KPI 卡，但内容是 '宇树 IPO 校准' (¥17.08 亿营收 / ¥6 亿净利 / 60.27% 毛利 / ¥400 亿 IPO)，跟 Figure / 智元 / 宇树的 sanity-check 比值毫无关系。response-2 vis.i4 写 '§6.5.1 DCF 表上方顶置 3 张 KPI 卡 (Figure 45× sanity / 智元 16× / 宇树 12×) 把 punch line 从倒数第 3 行 promote 到表前 L1883-1895' — 这是错误标注。L1883-1895 是 §6.5.1 DCF 表的前 13 行内容，不是新增 KPI 卡。PE partner 仍然需要从 '2025 营收 → 2025 出货 → 2030 出货 → ASP → 收入 → 毛利率 → 毛利 → EBIT → WACC → 折现 → 永续期 → sanity check → 市场估值 → 比值' 14 行一路读到第 14 行才看到 punch line。",
+      "what_would_resolve": "在 line 1868 (§6.5.1 标题) 与 line 1871 (table 开始) 之间真正插入 3 张 KPI 卡：<div class='grid md:grid-cols-3 gap-4 mb-6'><div class='kpi-card' style='border-left-color:#dc2626;'><div class='kpi-value'>市场 45× sanity</div><div class='kpi-label'>Figure $39B vs sanity $0.87B</div></div>... (智元 16× / 宇树 12×) </div>。让 PE partner 5 秒抓到 3 个核心数字而不是 60 秒读完 13 行表。"
+    },
+    {
+      "id": "v2-new-i5",
+      "severity": "severe",
+      "title": "§6.5.3 LTV:CAC 行 (line 1979) 没有 #fee2e2 红底高亮，也没有 '(无数量级优势)' 内联标注 — vis.i8 builder 声明 'LTV:CAC 行 background red + 红色高亮 (无数量级优势) 内联标注' 但表里完全没有",
+      "attacks_claim": "Figure 估值泡沫四路证据合围",
+      "detail": "v2.report.html line 1979: '<tr><td><strong>LTV : CAC</strong></td><td>2-5×</td><td>2-5×</td><td>10-40×</td><td>~5×</td></tr>' — 完全没有 style 属性、没有 background、没有 '(无数量级优势)' 内联文字。结论性话语仍然全部在表下方 line 2011 的 insight-box 里。response-2 vis.i8 写 '§6.5.3 LTV:CAC 行 background red + 红色高亮 (无数量级优势) 内联标注 L1980-1985' — 但 L1980-1985 是 LTV:CAC 之后的'但 RaaS 需大额资产负债表前置' / 毛利率 / NDR / 真实经济性验证四行，跟 LTV:CAC 的 highlight 无关。PE partner 滑到 §6.5.3 表第一眼看到 '2-5×' 完全无视觉锚点，需要继续滚到表外 insight-box 才能 connect '比硬件售卖差 4-8 倍'。",
+      "what_would_resolve": "把 line 1979 改为：<tr style='background:#fee2e2;font-weight:600;'><td><strong>LTV : CAC</strong></td><td><strong>2-5× <span style='color:#dc2626;font-size:0.8em;'>⚠ 无数量级优势</span></strong></td><td><strong>2-5× <span style='color:#dc2626;font-size:0.8em;'>⚠</span></strong></td><td><strong style='color:#16a34a;'>10-40× ✓</strong></td><td>~5×</td></tr>"
+    },
+    {
+      "id": "v2-new-i6",
+      "severity": "severe",
+      "title": "vis.i13 色盲非颜色区分线索 (warning/insight/info/success ::before icon) 完全未实施 — 全 .insight-box / .warning-box / .success-box / .info-box 仍只靠左侧边框颜色区分",
+      "attacks_claim": "信息层次 / 可访问性",
+      "detail": "v2.report.html grep '::before|content:' 返回 0 行。CSS line 67-94 四种 box 类型仍然只通过 background gradient + border-left 颜色区分。warning-box (line 74) 红 / success-box (line 81) 绿 / insight-box (line 67) 黄 / info-box (line 88) 蓝 — 红绿色盲用户 (8% 男性) 会把 warning-box / success-box 视为同色，且没有任何 icon prefix 或 text prefix 提供非颜色线索。response-2 vis.i13 写 'CSS 添加 .warning-box / .success-box / .info-box / .insight-box 内 > strong:first-child::before icon prefix (⚠ / ✓ / ℹ / ✨) 给色盲用户提供非颜色区分线索 — style L218-225 已添加' — 但 style block 在 line 192 已结束，line 218 不存在 CSS。这条声明完全错误。同时 §3.1-3.7 仍有 8+ 个 warning-box，'警告'的视觉权重被 dilution。",
+      "what_would_resolve": "在 <style> 内 (line 192 </style> 前) 添加：.warning-box > strong:first-child::before { content: '⚠ '; color: #dc2626; } .success-box > strong:first-child::before { content: '✓ '; color: #16a34a; } .insight-box > strong:first-child::before { content: '✨ '; color: #f59e0b; } .info-box > strong:first-child::before { content: 'ℹ '; color: #2563eb; }。同时核查 §3 章 8 个 warning-box 是否真的都是'改变投资动作'级别 — 否则降级为 info-box。"
+    },
+    {
+      "id": "v2-new-i7",
+      "severity": "severe",
+      "title": "chartPSRComparison 改 linear 轴 + max=2000 后, EV 蔚来 PSR 数据 ([10,12,8,20,10,3,2,1.5,...]) 被压扁到底部几乎不可见, 关键对照锚 (EV IPO 高位 53× / Figure 1,750× 应有 33× 视觉差距) 反而消失",
+      "attacks_claim": "Figure 估值泡沫论据 (PSR 时间线)",
+      "detail": "v2.report.html line 4724-4741 chartPSRComparison: y 轴 type 改为隐含 linear (line 4740 'max: 2000'), Figure 数据 [null,null,null,null,null,null,200,1750,1200,600,300] (Figure 2025=1,750 与 [INFERRED] $15-30M 一致)。但 EV 蔚来数据 [10,12,8,20,10,3,2,1.5,1.5,1.5,1.5] 在 max=2000 的 linear 轴下视觉高度仅 1%，蔚来 IPO 2018 高位 20 vs 2024 蔚来 1.5 vs Figure 1,750 — 全部被 Figure 单点拉高，蔚来时间线变成几乎贴底的直线。这破坏了 §6.5.2 的核心论据 'Figure ~1,750× vs 蔚来 IPO 53× = 33× 差距'。round-1 vis.i5 的建议是 'linear 轴 + 裁剪 Figure 到 max=500' 或 '保留对数但 Figure 处加 annotation line' — builder 选择了 linear + max=2000，结果让原本想 visualize 的 33× 差距完全损失。同时 horizontal annotation line yMin:8 (line 4739) 标的是 '蔚来 IPO 高位'？但 line 4739 的 chartjs annotation 没有 label，读者看不到这条 dash line 代表什么。",
+      "what_would_resolve": "选 (a)：保留 linear 轴但拆为两个 subchart — 左图 max=80 显示 EV vs 具身中系 (蔚来 IPO 53× vs 中系 20-30× 可视化)，右图 max=2000 显示 Figure 时间线，并在右图加 horizontal annotation line at y=53 标 '蔚来 IPO 高位'。或 (b)：用 stacked bar 改为 'PSR LTM 对比柱状图' 而非时间线，每根柱子标注绝对数字。"
+    },
+    {
+      "id": "v2-new-i8",
+      "severity": "moderate",
+      "title": "§A.5 IC Memo 'Risk Factors' 在 line 2513-2520 — 6 个 risk 全部 <li> 朴素列表, mitigant 用 'mitigant —' 文字拼接, 视觉上 6 条 risk 与 mitigant 没有列对照, PE partner 找不到 'risk → mitigant' 1-to-1 映射",
+      "attacks_claim": "IC Memo 作为 deal-level pitch 工具",
+      "detail": "v2.report.html line 2512-2520: A.5 IC Memo Section 8 (Risk Factors) 用 <ol class='text-sm'> 包 6 个 <li>, 每个 <li> 内部用 '<strong>风险</strong>：mitigant — 文字' 拼接。比如 line 2514: '<li><strong>量产 yield 风险</strong>：mitigant — 季度 yield report + 第三方工厂审计权 + ratchet 条款</li>'。一个 IC Memo 的 risk section 是 PE 看 deal-level 的核心几页，每个 risk 应该是 risk-name | severity (P/I) | mitigant | residual risk 4 列对照表。当前的纯文本 <li> 让 6 个 risk 视觉重要性平等、找不到 P×I scoring、找不到 residual risk。这是 round-2 新加的内容质量问题。",
+      "what_would_resolve": "把 line 2513-2520 改为 6 行 4 列 table.pro：列 'Risk' / 'Prob × Impact' / 'Mitigant' / 'Residual Risk after Mitigant'。每个 risk 给 P×I (1-5 × 1-5)，mitigant 加 watchlist trigger，residual risk 标颜色。"
+    },
+    {
+      "id": "v2-new-i9",
+      "severity": "moderate",
+      "title": "A.6.1 退出渠道 ASP 矩阵 (line 2540-2549) 6 列 × 5 行, 'IRR 折扣量化' 在表外 info-box (line 2567-2575) — 但表内没有任何'真实可分红 IRR'列, 表与下方 info-box 数字 (19% / 25% / 19%) 没有对应",
+      "attacks_claim": "退出路径方法论 (round-2 新增 §A.6 是 PE 决策另一半)",
+      "detail": "v2.report.html line 2540-2549: A.6.1 退出渠道 ASP 矩阵 6 列 = 渠道 / 估值倍数 / 锁定期 / 流动性折扣 / 政治风险 / 美元 LP 可分红。Line 2567-2575 info-box 写 'Base case 港股 IPO: 31% × 0.7 × 0.95 × 0.93 = ~19% 真实可分红 IRR'，但这个 19% 和 25% / 19% 三个 IRR 数字没有列入 A.6.1 表的任何一列。读者无法对照 '哪个渠道 → 流动性折扣 → 真实 IRR'。同时 A.6.1 的'美元 LP 可分红'列 (第 6 列) 全部是文字说明 ('需 QFII / RQFII / 沪深港通' / 'USD 直接但 VIE 结构合规风险' 等)，不是数值，无法 quantify 比较。",
+      "what_would_resolve": "在 A.6.1 表加第 7 列 'Base case 真实可分红 IRR (vs 31% nominal)'，3 个数 (港股 19% / A 股 25% / 战略并购 19%) 列入表内。A.6.3 info-box 改为简短引用'见 A.6.1 表第 7 列'，避免重复。"
+    },
+    {
+      "id": "v2-new-i10",
+      "severity": "moderate",
+      "title": "§6.5.2 Comps 表 (line 1928-1947) — Figure 这一行 (line 1930) PSR 仍写 '790× ($39.5B/$50M)' 与 round-2 全文已修订的 '~1,300-2,600× (Figure $39B / [INFERRED] $15-30M)' 不一致",
+      "attacks_claim": "Figure 估值泡沫四路证据合围 (PSR 跨表一致性)",
+      "detail": "v2.report.html line 1930: '<tr><td><strong>Figure AI</strong> 🇺🇸</td><td>2025.9 Series C</td><td><strong>790×</strong> ($39.5B/$50M)</td><td>~200× (2026E forward)</td><td>—</td><td><strong>Q4 极端高位</strong></td><td>—</td></tr>' — Figure LTM PSR 仍标 790× / $50M 营收。但 round-2 已经在 §0.1 / §3.5 / §6.5.1 / chartPSRComparison / §6.5.2 box (line 1953) 全部改为 '~1,300-2,600× / [INFERRED] $15-30M'。num.i1 / pe.i1 都标 fatal conceded — 但 §6.5.2 表内这一行没改。response-2 num.i1 写'全文 12+ 处同步'，但 §6.5.2 表内的数字 (790×, $50M) 是同步遗漏。PE partner 看 §6.5.2 Comps 表是核心 anchor — 表内 PSR 与上下文 1,300-2,600× 不一致会让人质疑数据严谨性。",
+      "what_would_resolve": "把 line 1930 改为：'<tr><td><strong>Figure AI</strong> 🇺🇸</td><td>2025.9 Series C</td><td><strong>~1,300-2,600×</strong> ($39B / [INFERRED] $15-30M, 中点 1,750×)</td><td>~200-400× (2026E forward)</td><td>—</td><td><strong>Q4 极端高位</strong></td><td>—</td></tr>'。同时检查 line 1864 chartPSRComparison 上方 warning-box ('2025 美系一线人形 LTM PSR ~600-2,600×') vs §0.1 / §3.5 / §6.5.1 (~1,300-2,600×) 下沿数 600× vs 1,300× 也不一致 — 应统一。"
+    },
+    {
+      "id": "v2-new-i11",
+      "severity": "moderate",
+      "title": "v2 有 28 张 <table> 但 0 张使用 <caption>; v1 round-1 vis.i9 被 builder 标 'accepted-limitation' — 但这影响 IC memo 导出 PDF / Reader Mode / LLM scraping 三种关键 PE 工作流",
+      "attacks_claim": "结构语义与可访问性",
+      "detail": "v2.report.html grep -c '<caption' = 0; grep -c '<table' = 28。round-1 vis.i9 已指出，builder 在 response-2 标 'severe / A / 标记为 limitation (a11y deferred)'。但 PE partner 三种主要工作流都受影响：(a) 在 iPad 用 'View > Reader Mode' 阅读，<table> 没 <caption> → 表标题丢失。(b) 导出 PDF 给团队/IC，PDF 阅读器把没 <caption> 的表标记为 'Table' 而无标题。(c) PE 团队用 LLM 提取 / 摘要 v2.report.html，LLM 看到的是 <h3>标题</h3><table> 平铺，<table> 与 <h3> 在 DOM 上无关联 → 摘要丢失上下文。考虑到 v2 是给 PE partner 用的，这三个工作流都是核心。'a11y deferred' 是真实可访问性 issue, 不是 nice-to-have。",
+      "what_would_resolve": "为 28 张表中至少 10 张核心表 (§3.2 Top 10 orders / §6.5.1 DCF / §6.5.2 Comps / §6.5.3 Unit Economics / §3.6 投资动作变更 / §6.1 16 环节 / §A.5 智元 returns / §A.6.1 退出渠道 / §A.6.2 acquirer / §0.2 关键判断 12) 加 <caption> 元素，CSS 用 caption-side: top + font-weight: 600 让 caption 视觉等同于 h3。剩余表至少加 aria-labelledby 关联上方 h3。"
+    },
+    {
+      "id": "v2-new-i12",
+      "severity": "moderate",
+      "title": "vis.i6 lazy load — round-2 仅添加 IntersectionObserver 给 .chart-container 加 'chart-loaded' class, 但 26 个 new Chart() 调用 (line 4234-4789) 仍同步立即执行; iPad 首次渲染 5-10 秒白屏未解决",
+      "attacks_claim": "PE partner iPad 90 秒能 get 核心论点",
+      "detail": "v2.report.html line 4791-4807: IntersectionObserver 仅给 canvas 加 chart-loaded class, 没有任何延迟 new Chart() 的逻辑。26 个 new Chart() (line 4355 / 4375 / 4431 / 4547 / 4564 / 4581 / 4597 / 4616 / ... / 4783) 仍在 <script> block 内同步立即执行。response-2 vis.i6 写 '完整 lazy new Chart() 重构 deferred — 26 charts 仍在初始页面 script 执行; 初次渲染 5-10 秒白屏在低端 iPad 仍存在; 标记为 limitation'。但 PE partner 在 iPad 上的 90 秒原则是 round-2 最高优先级承诺 — 这条 limitation 直接破坏首屏性能。即便 round-1 标 severe-accepted，round-2 没有任何性能改善。",
+      "what_would_resolve": "把 26 个 new Chart() 全部包装在 IntersectionObserver callback 内，每个 chart 只在对应 canvas 滚入视口前 200px 才 new。具体：定义 const chartInits = { chartScenarioProb: () => new Chart(...), chartShipmentTop10: () => new Chart(...), ... }，在 IntersectionObserver isIntersecting 时 chartInits[id]() 调用对应 init。最优先 lazy 的是 §5 / §6 / §A 的 ~15 张次要 chart；§0 + §3 / §6.5 的核心 ~6 张可保持立即渲染以保证首屏 thesis 视觉。"
+    },
+    {
+      "id": "v2-new-i13",
+      "severity": "minor",
+      "title": "线 963 <li>⑥ <div class='pullquote'>...</div></li> 嵌套不合法 — <div> 不能作为 <li> 的内联子元素 (block 嵌 block 但破坏 ordered list 渲染)",
+      "attacks_claim": "结构语义",
+      "detail": "v2.report.html line 963: '<li>⑥ <div class=\"pullquote\">任何不含 MTBF 的 PE deck 都不算完整尽调</div><span class=\"text-xs\">——全行业未披露的关键指标</span></li>'。HTML5 spec 允许 <li> 内嵌 <div>，但浏览器渲染上 <div> 会强制断行，破坏 ⑥ + pullquote + 注释在同行的视觉流。加上 .pullquote CSS 未定义 (v2-new-i1)，当前 ⑥ 数字孤立显示在一行，pullquote 内容在下一行无任何 quote 样式，注释 '——全行业未披露的关键指标' 又在下一行。3 行被强制拆开。",
+      "what_would_resolve": "把 <div class='pullquote'> 改为 <span class='pullquote'> 或重构为 <li class='pullquote-item'>⑥ <q>任何不含 MTBF 的 PE deck 都不算完整尽调</q>——全行业未披露的关键指标</li>，并在 CSS 定义 .pullquote-item 或 li.pullquote-item q { ... }。"
+    }
+  ],
+  "prior_issue_updates": [
+    {
+      "id": "i1",
+      "status": "resolved",
+      "reasoning": "chartValuationTop10 已重做 — line 4547-4561: data [39.5, 14.0, 11.0, 5.0, 4.4, 3.0, 2.8, 2.8, 1.7, 1.4] 改为 USD Bn, label 'Valuation (USD Bn)', tooltip '$X.XB', x 轴 title 'Valuation (USD Bn)' — 三处一致。fatal i1 真正闭环。"
+    },
+    {
+      "id": "i2",
+      "status": "partial",
+      "reasoning": "Thesis banner 在 line 313-322 文本上确实把 5 条核心论点提前了 (Tesla / Tier A=0 / Figure 1,300-2,600× PSR / 仓储战争 / 中系核心零部件)。KPI 卡也精简到 4 主 + 4 副。但 .thesis-banner CSS 未定义 (v2-new-i1) → 旗舰组件 unstyled, 视觉权重低于下方 KPI 卡。文本 layer 改了, visual layer 仍然失败。同时 Hero 4 张研究广度卡 (vis.i12 子项) 完全未改 (v2-new-i3)。"
+    },
+    {
+      "id": "i3",
+      "status": "resolved",
+      "reasoning": "chartShipmentTop10 (line 4564-4578) Tesla 1,000 台已剔除 — labels 第 7 位改为 'Figure AI (~250, DP023)', backgroundColor 数组无灰色; title 加 'Tesla 1,000 已剔除 (Q4 Musk not in material use); 中国厂商均含部分非人形'; 中国厂商 labels 改为 '宇树 (全口径 5,500; 纯人形 ~1,100)' / '智元 (5,168 含工业版)' — 全口径 vs 纯人形显式标注。chartChinaShipmentBreakdown subtitle 也加了 sum check (与 num.i12 同步)。"
+    },
+    {
+      "id": "i4",
+      "status": "unresolved",
+      "reasoning": "§6.5.1 DCF punch line '市场 45× sanity / 16× / 12×' 仍埋在表 line 1897 (倒数第二行)。response-2 标 'KPI cards L1883-1895' 是错误标注 — L1883-1895 是 DCF 表前 13 行 tbody 内容，不是新增的 promote KPI 卡。表上方 line 1845-1850 确实有 4 张 KPI 卡但内容是宇树 IPO 校准, 与 sanity-check 比值无关。见 v2-new-i4 详述。"
+    },
+    {
+      "id": "i5",
+      "status": "partial",
+      "reasoning": "chartPSRComparison 已从 logarithmic 改为 linear (line 4740 max:2000), Figure 2025 数据从 400 上调至 1750 (与 [INFERRED] $15-30M 中点一致)。这部分技术性 resolved。但新副作用：EV 蔚来 [10,12,8,20,10,...] 在 max=2000 linear 轴下被压扁到底部几乎不可见 → 蔚来 IPO 高位 53× vs Figure 1,750× 的 33× 差距视觉丢失。round-1 vis.i5 建议 'linear 轴 + 裁剪 Figure 到 max=500' 或 'log + annotation line' — builder 选了第三种方案 (linear + max=2000) 反而损失了 EV 锚。见 v2-new-i7 详述。"
+    },
+    {
+      "id": "i6",
+      "status": "unresolved",
+      "reasoning": "Builder 自标 accepted-limitation。IntersectionObserver (line 4791-4807) 仅给 .chart-container 加 chart-loaded class, 26 个 new Chart() 全部仍同步立即执行。iPad 首次渲染 5-10 秒白屏 in low-end devices 未解决。Builder 在 response-2 已明确承认 'Full lazy chart init refactor deferred'。见 v2-new-i12 详述。"
+    },
+    {
+      "id": "i7",
+      "status": "unresolved",
+      "reasoning": "TOC 重复 anchor 完全未改。Line 244-246 三个 #ch-why-now / Line 251-253 三个 #ch-tech-routes / Line 258-262 五个 #ch-commercial-cliff / Line 267-268 两个 #ch-player-paths — 与 v1 完全相同。response-2 vis.i7 写 'TOC 子链接添加独立 anchor (#sec-1-1, #sec-1-2, #sec-1-3, #sec-2-1, #sec-2-2, #sec-2-3); 对应 <h2> 添加 id' — grep 显示只加了 1 个 anchor (id='sec-1-3' line 536)，TOC 没有任何 href 指向 #sec-1-3。response-2 标 'TOC L244-256; sections h2 L460, L495, L520, L630, L657, L680' — 全部 line 都是声明，实际 line 244-246 / 251-253 / 258-262 / 267-268 11 个 href 完全未改。见 v2-new-i2 详述 — 这是 response 不实陈述。"
+    },
+    {
+      "id": "i8",
+      "status": "unresolved",
+      "reasoning": "§6.5.3 LTV:CAC 行 (line 1979) 没有任何 style 属性，没有红底高亮，没有 '(无数量级优势)' 内联标注。response-2 标 '§6.5.3 LTV:CAC 行 background red + 红色高亮 (无数量级优势) 内联标注 L1980-1985' 是错误标注 — L1980-1985 实际是 LTV:CAC 之后的 4 行 (但 RaaS 需大额资产负债表前置 / 毛利率 / NDR / 真实经济性已验证)。新增的敏感性表 (line 1992-2005) 内容 OK 但 .sensitivity-table class 未定义 CSS → unstyled。见 v2-new-i5 详述。"
+    },
+    {
+      "id": "i9",
+      "status": "unresolved",
+      "reasoning": "Builder 自标 accepted-limitation。grep -c '<caption' = 0 in v2。28 张表全部无 <caption>。response-2 写 'a11y deferred; DOM 紧邻 h3/h4 标题语义提供' — 但 'DOM 紧邻' 不等于 'caption 关联'，三个 PE 工作流 (Reader Mode / PDF / LLM scrape) 仍受影响。见 v2-new-i11 详述。"
+    },
+    {
+      "id": "i10",
+      "status": "unresolved",
+      "reasoning": "9 个 Q&A 块的 markup 加了 .qa-pair / .qa-challenge / .qa-answer class (line 2267 / 2284 / 2301 / 2318 / 2335 / 2352 / 2369 / 2386 / 2426)，但 CSS 完全未定义这三个 class (v2-new-i1)。response-2 标 'CSS 添加 移动端 media query 用 order 让绿色答复显示在红色挑战之上 — style 块 L188-235 CSS 已添加' — 但 style block 在 line 192 结束，line 218+ 不存在 CSS。iPad 竖屏 ≤ 768px 单列布局下，反方挑战仍然显示在我们答复上方，narrative 灾难未消除。"
+    },
+    {
+      "id": "i11",
+      "status": "unresolved",
+      "reasoning": "Builder 自标 accepted-limitation。SVG line 1605-1624 (PE 视角) + line 1629-1647 (技术视角) 完全没加 <title>/<desc>/role='img'/aria-label。两个不可能三角的国家/玩家坐标点仍 hardcoded。a11y 完全空白。"
+    },
+    {
+      "id": "i12",
+      "status": "unresolved",
+      "reasoning": "Hero line 205-222 '5 层 / 44 家 / 6 万字 / 25+ 图' 四张研究广度卡完全未动。response-2 标 'Hero 4 张研究广度卡 → 4 thesis statements' / 'Hero L205-225' 是不实陈述 — Hero 部分 (line 197-224) 内容与 v1 完全相同。Thesis banner 只加到执行摘要内部 (line 313-322), 而且自己 unstyled (v2-new-i1)。见 v2-new-i3。"
+    },
+    {
+      "id": "i13",
+      "status": "unresolved",
+      "reasoning": "grep '::before' = 0 行, grep 'content:' = 0 行。四种 box 类型 (warning/insight/success/info) 仍只通过 background gradient + 左侧 border 颜色区分，没有 icon prefix 或文字 prefix。红绿色盲用户仍无法区分 warning-box (红) vs success-box (绿)。response-2 标 '内 > strong:first-child::before icon prefix (⚠ / ✓ / ℹ / ✨) 给色盲用户提供非颜色区分线索 — style L218-225 已添加' — 是不实陈述, style block 在 line 192 结束。见 v2-new-i6 详述。"
+    },
+    {
+      "id": "i14",
+      "status": "unresolved",
+      "reasoning": "Builder 自标 accepted-limitation。§3.6 投资动作变更表 line 871-944 仍是 4 列 × 10 行原结构，未拆为 2 列对照式。每行的第 4 列 '对投资动作的影响' 在 iPad 横屏仍要 60-100 字 / cell。"
+    },
+    {
+      "id": "i15",
+      "status": "partial",
+      "reasoning": "Line 963 MTBF 引语已加 <div class='pullquote'> 包裹 — 文本层意图正确。但 .pullquote CSS 未定义 (v2-new-i1) → 仍渲染为普通文本无 italic / 无引号 icon / 无 anchor 视觉。另外 <div> 嵌在 <li> 内导致渲染破裂 (v2-new-i13)，⑥ 数字 + pullquote + 注释被强制断行三行显示。partial 因为文本结构改了，视觉效果完全失败。"
+    }
+  ]
+}

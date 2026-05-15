@@ -1,0 +1,204 @@
+{
+  "round": 1,
+  "persona": "numerical_auditor",
+  "draft_classification": "商业研究 / PE 视角具身智能产业链报告（中文）",
+  "load_bearing_claims": [
+    "LBC-1 美强软件中强硬件 — BOM 剪刀差 2.8×（$46K vs $130K, MS Humanoid 100）",
+    "LBC-2 2030 TAM $30-144 亿（中位 $75 亿）+ 出货 CAGR 69-113%，由 1.8 万→25-80 万逐年复合得出",
+    "LBC-3 三情景概率 China-led 35% / US-led 15-25% / Bifurcation 40%",
+    "LBC-4 Figure LTM PSR 790× ($39.5B/$50M) = 系统性泡沫；中系 20-23× 接近 EV IPO 中位 22× 无泡沫",
+    "LBC-5 中系核心零部件 + 稀土永磁卡点是 PE alpha 主战场，谐波 CR3 = 94%、稀土中国 92%"
+  ],
+  "verdict": "block",
+  "verdict_reason": "在 LBC-4 估值锚和 LBC-3/5 数字一致性上发现 3 处 severe / fatal 不一致（Figure 营收 PSR 锚 self-contradicting；EV/Symbotic comp 中位数与真实数据冲突；GDP 比率 10× 单位错误）。",
+  "issues": [
+    {
+      "id": "i1",
+      "severity": "fatal",
+      "title": "Figure 2025 营收：DCF 表内 self-contradicting，$15-30M [INFERRED] 与 PSR 790× 用的 $50M 互相打脸",
+      "attacks_claim": "LBC-4",
+      "detail": "L1831 DCF 表 '2025 营收' 单元格写：'$15-30M [INFERRED]（150 台 × $130K BOM × 30-50% 实际销售/RaaS 计提率估算）'。但同一行末位 'PSR 2025' 写：'790× ($39.5B/$50M)'。算术：$39.5B/$50M=790× 成立，但 $50M 与同行声称的 $15-30M 推断值矛盾。如果按 $15-30M 中点 ~$22M 计算，真 PSR 应是 ~1,795×（39500/22）；如果按 $15M 下限，PSR=2,633×。\n\n另一处不一致：L830 写'当前 2025 营收估 $20-50M，2025 PSR 仍 ~790×'——既给区间又锚单点，并称都是 790×。$20M 对应 1,975×、$50M 对应 790×，差 2.5×。\n\n再交叉 data/data_points.json：DP023 Figure 2025 出货 ~250 台（不是 HTML 用的 150 台），DP140 写 'Figure 03 累计已下线 350+ 台（2026.05）'。如果 2025 真实出货是 250 台，按同样 $130K × 30-50%，营收应该是 $32.5-65M，与 HTML 用的 150 台×$130K×30-50%=$5.85-19.5M 完全不在一个区间。\n\n这是 LBC-4 全部估值结论的锚——'美系一线 PSR 790× 是真泡沫，中系 20-23× 接近 EV IPO 中位 22× 不是泡沫'。如果真实 Figure PSR 是 1,300-2,700×，定性结论（'真泡沫'）仍然成立但定量倍数极不稳定；如果按 DP023 的 250 台得 $32-65M，PSR 是 608-1234×，反而比报告承认的 790× 更糟。Builder 必须挑一组数字打钉，不能既用 150 台又用 $50M 又同时承认 [INFERRED] $15-30M。",
+      "what_would_resolve": "Builder 必须 (a) 把 L1831 DCF 表的 '2025 营收' 与 L1846 PSR 行的分母统一——要么用 $50M（并解释 150 台×$130K×30-50% 怎么得 $50M）要么用 $20-30M（并把 PSR 改成 1,300-2000×）；(b) 与 data_points.json DP023 的 ~250 台数据对齐（要么修订 JSON 要么修订 HTML 中的 150 台）；(c) 在 L830 / L1846 / L1878 三处使用同一 PSR 倍数。",
+      "evidence": [
+        "L1831: 2025 营收 $15-30M [INFERRED]",
+        "L1846: PSR 790× ($39.5B/$50M)",
+        "L830: 2025 营收估 $20-50M, PSR 仍 ~790×",
+        "data_points.json DP023: Figure 2025 出货 ~250 台",
+        "data_points.json DP140: 350+ cumulative as of 2026.05"
+      ]
+    },
+    {
+      "id": "i2",
+      "severity": "severe",
+      "title": "Symbotic LTM EV/Sales = 4.5× 是错的；真实 ~13×，导致 '工业自动化中位 3.5×' 锚失效",
+      "attacks_claim": "LBC-4",
+      "detail": "L1888 Comps 表：'Symbotic（仓储自动化）2025 EV/Sales (LTM) 4.5×'。Symbotic FY2025（截至 2025-09-27）营收 $2.25B（报告自己在 L780 引用），2026 年 5 月市值 ~$30B，2026.2 高点曾到 $33B。EV/Sales LTM ≈ 13×（≈$30B / $2.25B），不是 4.5×。\n\n这导致 '工业自动化板块 median 3.5×' 严重偏低。算 4 家给的数（ABB 2.8×, KUKA/FANUC 3.2×, Symbotic 4.5×, Intuitive 14×）：median = (3.2+4.5)/2 = 3.85×（不是 3.5×）；mean = 6.13×。如果把 Symbotic 修正为 13×，median 跳到 (3.2+13)/2 = 8.1×。\n\n影响：报告 L793/L870 用 'Symbotic FY2025 营收 $2.25B + $22.5B 订单' 作为 '非人形已赢得仓储战争' 的核心证据，并在 §6.5.3 用 Symbotic 作为成熟期工业自动化锚。如果 Symbotic 真实 PSR 13× 而不是 4.5×，那么 '中系人形 23×' 已经不再是 '7× of 工业 median'，而是 '~2× of Symbotic 修正后 13×' ——LBC-4 '中系无泡沫，处于 EV IPO 中位区间' 的对照锚被显著削弱。另外 Symbotic 的 13× PSR 表明二级市场已经把非人形仓储自动化按 '高成长 + AI 加成' 估值，更接近 AI 软件板块 median 40× 的下沿，而不是传统工业 3.5×，从而打掉了 '工业自动化板块 = 成熟低估值' 的二元对比 framing。",
+      "what_would_resolve": "(a) 重算 Symbotic EV/Sales LTM 与 NTM，使用 2026.05 市值；(b) 重新计算工业自动化 median（建议剔除 Intuitive Surgical，因医疗机器人不是真正工业自动化对照）；(c) 修订 L1903 '宇树 23× LTM 接近 EV IPO 中位区间 22× ...接近 Symbotic / Intuitive 模式' 的结论——如果 Symbotic 是 13× 不是 4.5×，这个 '接近' 锚需重写。",
+      "evidence": [
+        "L1888: Symbotic LTM EV/Sales 4.5×",
+        "L780/L793: Symbotic FY2025 营收 $2.25B (+26% YoY) / 订单 $22.5B",
+        "公开市场数据: Symbotic 2026.05 市值 ~$30B, 2026.02 ~$33B",
+        "Macrotrends / Yahoo Finance / Companies Market Cap"
+      ]
+    },
+    {
+      "id": "i3",
+      "severity": "severe",
+      "title": "GDP 比率全部 10× 错位：具身 0.08% 应为 0.008%；EV 2015 0.44-0.59% 应为 0.044-0.059%",
+      "attacks_claim": "LBC-3, 关键判断 #8",
+      "detail": "L1729: '累计承诺 ¥550+ 亿 ... 按 5 年落地窗口年化：¥110 亿 / 年 / 2025 GDP ¥134 万亿 ≈ 0.08%。EV 2015 单年补贴约 ¥300-400 亿 / 当年 GDP ¥68 万亿 ≈ 0.44-0.59%。'\n\n重算：¥110亿 / ¥134万亿 = 110e8 / 1.34e14 = 8.2e-6 = **0.00082%** (即 0.0008%)；如果用 % 表示则是 **0.008%**，不是 0.08%。\n\nEV 重算：¥300亿/¥68万亿 = 4.41e-4 = **0.0441%**，¥400亿/¥68万亿 = **0.0588%**——所以正确是 0.044-0.059%，不是 0.44-0.59%。\n\n两处都是 10 倍错位（小数点位置错了一位）。关键判断 #8（L396）写 'vs EV 2015 高峰 ~0.51%' 同样是 10× 错位，应为 ~0.05%。\n\n好消息：相对比例（具身/EV）仍然成立，因为两个数字同等错位。'具身 ~ EV 高峰 15-25%' 这个结论数学上依然是对的（0.008/0.044 ≈ 18%）。但绝对水平 framing 完全错位：用 0.08% / 0.51% 给读者的印象是 '具身补贴已经接近 EV 1/6'，而真实数 0.008% / 0.05% 给的印象是 '具身补贴占 GDP 的比例几乎可以忽略'——同样的相对比例，绝对水平的读者直觉完全不同。\n\n而且 L893 自相矛盾：'中国 550 亿+ 补贴已超 EV 早期占 GDP 比例' 这一行（标为 '过度声称'）——既然实际 ratio 是 18%，'已超' 显然是错的，但 L893 又写为 '已超'，与 L1729 的 '远未接近' 自相矛盾。这两处文字必须同步。",
+      "what_would_resolve": "(a) 修正 L1729 两组 GDP 百分比（除以 10）；(b) 同步修正关键判断 #8（L396）的 0.51%；(c) 修正 L893 '已超 EV 早期占 GDP 比例' 与 L1729 '远未接近' 之间的相反结论；(d) 重新审视 framing——'量级仅 EV 高峰 15-25%' 与 '0.008% GDP' 给的相对感受差距很大，建议在执行摘要 KPI 旁加 '占 GDP 0.008% / EV 2015 高峰为 0.044%'，让读者看到绝对水平。",
+      "evidence": [
+        "L1729: 0.08% / 0.44-0.59%",
+        "L396: 关键判断 #8 vs EV 2015 高峰 ~0.51%",
+        "L893: 中国 550亿+补贴已超 EV 早期占 GDP 比例",
+        "计算：110e8/1.34e14 = 0.00082% = 0.0008%（不是 0.08%）"
+      ]
+    },
+    {
+      "id": "i4",
+      "severity": "severe",
+      "title": "YTD 累计融资 ¥373 亿 vs 日均 ¥2.5 亿 vs data_points.json '日均 >¥5 亿' — 三个数互相打脸",
+      "attacks_claim": "LBC 周边 KPI（执行摘要 KPI 卡 #5）",
+      "detail": "执行摘要 KPI L331-332：'¥373 亿 中国具身累计融资（YTD）截至 2026.05；YTD 日均 ¥2.5 亿'。L2020：'国内具身累计融资额（截至 2026.5 初）达 ¥373 亿（YTD 日均 ¥2.5 亿；2026.4 单月日均 ¥5.8 亿）'。\n\n算术：2026-01-01 → 2026-05-12 = 132 天。¥2.5 亿 × 132 = ¥330 亿，不是 ¥373 亿。两者要同时成立，YTD 起始点必须更早 ~149 天（即 2025.12.15）。如果按 2.5亿/天 × 149 天 = ¥372.5亿 ≈ ¥373亿——这意味着 YTD 实际是 'from 2025.12 中旬' 而不是 'YTD 2026'。但 KPI 卡标 'YTD' 强烈暗示 2026 年迄今，这是误导。\n\n再对照 data_points.json DP098：'国内具身累计融资额（截至 2026.05 初）¥373 亿，日均 >¥5 亿'——JSON 写日均 **>¥5 亿**，HTML 写 ¥2.5 亿——**差 2 倍**。如果真的是 >¥5 亿/天 × 132 天 = ¥660 亿 ≠ ¥373 亿，所以 JSON 也内部矛盾。\n\n再交叉 L1978 timeline：'2026.2 国内具身月度融资 ¥160+ 亿（月度新高）'，2026.2 有 28 天，¥160 / 28 = ¥5.7 亿/天；而 L2020 说 '2026.4 单月日均 ¥5.8 亿创新高'——但如果 2026.2 是 5.7 亿/天，4 月 5.8 亿/天，'2026.4 创新高' 几乎只比 2 月高 0.1 亿，prose 写法 '创新高' 不严谨。\n\n注：5.8 × 30 = 174 亿（4 月有 30 天），但 L1978 写 '160+ 亿' 月度高点是 2 月，于是 4 月 174 亿 > 2 月 160 亿，'新高' 成立。但数字相互之间还是不严格。",
+      "what_would_resolve": "(a) 明确 'YTD' 起点（是 2026.01.01 还是从某事件开始累计），并让 累计 = 日均 × 天数 成立；(b) 同步 data_points.json DP098 的 '日均 >¥5 亿' 与 HTML KPI 的 '¥2.5 亿' ——一处错；(c) 重新审视 L2020 '2026.4 单月日均 ¥5.8 亿' 与 L1978 '2026.2 月度 ¥160+亿（月度新高）' 的时间线（哪个是真新高）。",
+      "evidence": [
+        "L331-332: KPI '¥373 亿 / 日均 ¥2.5亿'",
+        "L2020: 日均 ¥2.5亿 / 2026.4 日均 ¥5.8亿",
+        "L1978: 2026.2 月度 ¥160+ 亿（月度新高）",
+        "data_points.json DP098: '日均 >¥5 亿'",
+        "算: ¥2.5亿 × 132 天 = ¥330亿, not ¥373亿"
+      ]
+    },
+    {
+      "id": "i5",
+      "severity": "severe",
+      "title": "EV IPO median 22× 与样本本身（蔚来 53/ 小鹏 24/ 理想 15）median 24× 不符；样本 N=3 + 全部 cherry-picked",
+      "attacks_claim": "LBC-4",
+      "detail": "L1882-1884 Comps Quartile 表：列了蔚来 IPO 53×、小鹏 IPO 24×、理想 IPO 15×，'Median' 列对三行都注 22×。算术：median[15, 24, 53] = **24**，mean = **30.67**。22× 既不是 median 也不是 mean，可能是 mean(15,24) 或 mean(15+24+53)/3 round down，但都不严谨。\n\nLBC-4 的关键叙事完全建立在这个 22× 上：L1902 '智元 20× LTM (¥200亿/¥10亿) 接近 EV IPO 中位 22×——市场估值合理，不是 PSR 泡沫'；L1903 '宇树 23× LTM 同样处于 EV IPO 中位区间'；L1904 '真正的系统性泡沫在美系一线'。\n\n如果 median 改为正确的 24×：智元 20× 是 -17%（Q2 偏低）、宇树 23× 是 -4%（接近）。如果用 mean 30.67×：智元 -35%、宇树 -25%——更便宜。结论方向不变但语义变化大：'接近中位' vs '低于中位 25-35%' 暗示 '更便宜' 而不是 '与中位差不多'。\n\n更深一层：N=3 的样本（全部中国 EV、全部上市的成功 IPO），系统性 cherry-picked：(a) 不含 Tesla IPO（2010 时 PSR ~2×，但若用 2020-21 高位 PSR ~30×）；(b) 不含失败 EV IPO（如 Lordstown、Faraday、Workhorse）；(c) 不含 BYD（也是 EV 但 PSR 完全不同，因为是混动起家）；(d) NIO 53× 本身就是泡沫高位，把它纳入样本就抬高了中位数。\n\n这个 N=3 + 全部 cherry-picked 样本，加上 median 计算本身就错了 8%（22 vs 24），共同导致 LBC-4 的 '中系无泡沫，对齐 EV IPO 中位' 结论不够稳健。",
+      "what_would_resolve": "(a) 重算 median = 24× 而不是 22×；(b) 扩大样本到 ≥6 家（含 Tesla / Rivian / Lucid / 蔚来 / 小鹏 / 理想 / BYD），并报告 mean + median + quartile；(c) 在 L1902-1904 加注 '样本 N=3，cherry-picked' 限定，或改用更稳健的板块统计；(d) 把 '智元 20× / 宇树 23× ≈ 中位 22×' 这个相似度判断改为 'within ±20% of N=3 sample median'，承认精确度。",
+      "evidence": [
+        "L1882-1884: 蔚来 53×, 小鹏 24×, 理想 15×; rowspan median 22×",
+        "L1902-1904: '智元 20× / 宇树 23× 接近 EV IPO 中位 22×'",
+        "算: median = 24, mean = 30.67"
+      ]
+    },
+    {
+      "id": "i6",
+      "severity": "severe",
+      "title": "三情景概率 35% + 15-25% + 40% 加起来下限只有 90%，缺 10% 未命名情景",
+      "attacks_claim": "LBC-3",
+      "detail": "L372-376/L1640-1672：China-led 35% + US-led 15-25% + Bifurcation 40%。\n\n在 US-led 取下限 15% 时：35 + 15 + 40 = **90%**——缺 10% 未命名概率质量。在上限 25% 时正好 100%。\n\n这是一个分布闭合性问题：概率必须加和到 1。要么 (a) US-led 给 25% 单点，(b) 留 10% 给 '其他/黑天鹅/中美互不主导' 情景但显式标出，(c) 把 China-led / Bifurcation 也改为区间使总和恒为 100%。\n\n这影响 LBC-3 的整个组合配置：附录 A.3 的 '25% / 30% / 15% 配置' 来自概率加权后的预期收益。如果实际 10% 概率漂浮，组合权重也漂浮 ±10%。\n\n另注：之前 review tag F3 标 'US-led 已改为 15-25% 区间'，似乎修补单一概率问题，但引入了加和不闭合问题。",
+      "what_would_resolve": "(a) 明确加和到 100% 的方法（推荐：'其他 / 不可预测' 占 10%），或 (b) 同时把另外两个改为区间（如 China-led 30-40%, Bifurcation 35-45%），让任意取值组合都能加到 100%；(c) 在 §6.3 / §A.3 加注 '区间反映分布不确定性，组合配置按各情景中点加权'。",
+      "evidence": [
+        "L372-376: China-led 35% / US-led 15-25% / Bifurcation 40%",
+        "L1640/L1656/L1672: 35%/15-25%/40%",
+        "算: 35+15+40 = 90; 35+25+40 = 100"
+      ]
+    },
+    {
+      "id": "i7",
+      "severity": "moderate",
+      "title": "Figure 估值 $39.5B vs data_points.json $39B vs Top10 chart 395 亿 — 0.5B 不一致漂移",
+      "attacks_claim": "LBC-1, LBC-4",
+      "detail": "HTML 全篇用 **$39.5B**：L327, L356, L1844, L1846, L1878 等十多处。但 data_points.json DP009 写 '$39B'（cross-validated: Figure official + TechCrunch + Robot Report + Wikipedia, high confidence）。Top 10 估值 chart L4432 数据 395 亿美元 = $39.5B。\n\n差距 0.5B（1.3%），但对 PSR 计算 $39.5B/$50M=790× vs $39B/$50M=780× 是 10× 漂移。Figure Series C 公开数字是 post-money $39B（多源验证），$39.5B 没有 JSON 源支持。\n\n建议统一为 $39B 与 data_points.json 对齐，或在 JSON 中加注 '$39.5B 来源 = ?'。",
+      "what_would_resolve": "把 HTML 所有 $39.5B 改为 $39B，或在 data_points.json 加注解释 $39.5B 出处；同步 PSR 计算（780× vs 790×）。",
+      "evidence": [
+        "L327: KPI $39.5B",
+        "L4432: chart data 395 (=$39.5B)",
+        "data_points.json DP009: $39B (high confidence)"
+      ]
+    },
+    {
+      "id": "i8",
+      "severity": "moderate",
+      "title": "Figure 出货 150 台 vs data_points.json DP023 250 台 / DP140 350+ 累计 — 整个 DCF 推算基础数错位",
+      "attacks_claim": "LBC-4",
+      "detail": "L1832/L1831/L4449 DCF 表 + 出货 Top 10 chart 全部用 Figure '~150 台 (Tech360 2026.1)' 作为 2025 出货数。但 data_points.json DP023 写 '~250 台 (报告口径)'（low confidence），DP140 写 'Figure 03 累计已下线 350+ 台 (2026.05)' (high confidence; Source REF021)。\n\n2025 年究竟出货多少台直接决定推算营收：150 × $130K × 30-50% = $5.85-9.75M（高度低）；250 × $130K × 30-50% = $9.75-16.25M；350 × $130K × 30-50% = $13.65-22.75M。\n\nHTML 用 150 的同时把 PSR 算成 790×（用 $50M 分母）——这套数学不可能同时成立。150 台 × $130K × 100% = $19.5M——即使把 RaaS/销售计提率拉到 100%，营收上限也只有 $19.5M。$50M 分母明显是反推得到的（39500/790=50），不是从 150 台推出来的。\n\n出货 Top 10 chart L4449 数据 [5500, 5168, 1500, 1200, 800, 700, 500, 1000, 300, 150]——Apptronik 标 150（Top 10 中位置 10），但根据 data_points.json DP024 Apptronik 2025 估测 300 台、DP023 Figure 2025 估测 250 台。**Top 10 chart 实际上把 Figure 完全漏掉了**——labels 列没有 Figure，最后一名 Apptronik 150。但 DCF 表用 Figure 150。所以一份报告中 Figure 出货数同时是 '150 台（DCF）' 和 '不在 Top 10 之列'，逻辑断裂。",
+      "what_would_resolve": "(a) 把 Figure 2025 出货数统一为 ~250 台（DP023）或 ~350 累计（DP140，截至 2026.05），并修订 DCF 表 L1831 的营收推算；(b) 重检 Top 10 出货 chart L4446 labels 是否漏 Figure；(c) 同步 PSR 分母（如果出货上调到 250 台，推断营收 $10-16M，PSR 应升到 2,400-4,000×）。",
+      "evidence": [
+        "L1832: Figure 150 台 (Tech360 2026.1)",
+        "L4449/L4446: chart Top 10 出货 labels 不含 Figure",
+        "DP023: Figure 2025 ~250 台 (low conf)",
+        "DP140: Figure 03 累计 350+ 台 截至 2026.05 (high conf)"
+      ]
+    },
+    {
+      "id": "i9",
+      "severity": "moderate",
+      "title": "工业自动化板块 median 3.5× 计算错（应为 3.85×），且样本混入医疗机器人",
+      "attacks_claim": "LBC-4",
+      "detail": "L1886-1889：ABB 2.8×, KUKA/FANUC 3.2×, Symbotic 4.5×, Intuitive Surgical 14×; median 标 3.5×。算术：median[2.8, 3.2, 4.5, 14] = (3.2+4.5)/2 = 3.85×，不是 3.5×。\n\n更严重的方法论问题：Intuitive Surgical 14× 是医疗机器人（达芬奇手术系统），不是工业自动化。如果剔除 Intuitive，median[2.8, 3.2, 4.5] = 3.2×，但样本掉到 N=3。\n\n如果 Symbotic 真值是 13×（见 i2），重算 median[2.8, 3.2, 13, 14] = (3.2+13)/2 = 8.1×——'工业自动化板块' 看起来完全不一样。\n\nLBC-4 的对照逻辑链 '中系 23× → 远高于工业自动化 3.5× → 仍然处于 EV IPO 中位 22×' 在 median 修正后变为 '23× → 高于工业自动化 8.1× 约 3×（不是 7×）→ 与 EV IPO 中位 24× 偏差 -4%' ——'轻度低估，不是泡沫' 仍然成立，但锚定的强度变弱。",
+      "what_would_resolve": "(a) 修正工业自动化板块 median 为 3.85×（不是 3.5×）；(b) 剔除 Intuitive Surgical 或拆为独立 '医疗机器人' 板块；(c) Symbotic LTM 修正为 ~13×（见 i2）后重算 median ~8×；(d) 在 LBC-4 结论中加注 'median 取值对 outlier 极敏感'。",
+      "evidence": [
+        "L1886-1889: ABB 2.8 / KUKA 3.2 / Symbotic 4.5 / Intuitive 14, rowspan median 3.5",
+        "算: median[2.8,3.2,4.5,14] = 3.85"
+      ]
+    },
+    {
+      "id": "i10",
+      "severity": "moderate",
+      "title": "Figure vs 智元估值多倍数对照：报告同时使用 智元 $2.8B 和 $8B+ 两个口径，5-10× 估值分层和 14× 分层都被声称",
+      "attacks_claim": "LBC-1",
+      "detail": "L350/L356: '资本市场把软件大脑和硬件本体按 5-10× 估值分层'。\n\n但 L1844 DCF 表：智元 ¥200亿 = **$2.8B**——按此 Figure/智元 = $39.5B/$2.8B = **14.1×**，超出 '5-10×' 上限。\n\n而 L1367（§5.5）'Figure $39B vs 智元 $8B+ 估值差归因'——这里突然用 $8B+：39/8 = 4.9× ≈ 5×，落在 '5-10×' 下沿。\n\n智元 estimate 的两个数值（$2.8B 和 $8B+）相差 2.9×，反映 'pre-IPO C 轮投后 ¥200亿' vs '港股 IPO 后预计 ¥500-800亿' 的不同时点。两者都合法，但报告未明示用哪个时点比较，导致 '5-10× 分层' 这个 KPI 同时可以解读为 5× 和 14×。\n\n建议：明确分为 'pre-IPO 时点估值分层 14× / IPO 后预期 5×'。",
+      "what_would_resolve": "(a) 在 L350 / L1367 同步用同一时点的智元估值；(b) 把 '5-10× 估值分层' 改为 'pre-IPO ~14× / IPO 后预期 ~5×'，或显式注明 '区间反映智元 IPO 前后估值'。",
+      "evidence": [
+        "L350: '5-10× 估值分层'",
+        "L1367: 'Figure $39B vs 智元 $8B+ 应当 9× 实际 5×'",
+        "L1844: 智元 ¥200亿 = $2.8B"
+      ]
+    },
+    {
+      "id": "i11",
+      "severity": "moderate",
+      "title": "中美 BOM 剪刀差 2.8× 完全依赖 MS 单一来源；BofA $35K / Yole $32K 与 MS $46K 不能简单并列",
+      "attacks_claim": "LBC-1",
+      "detail": "L323-324 KPI：'2.8× / $46K vs $130K (MS)'。L356：'中系一线整机 BOM $32K-$46K (BofA/Yole 报"$35K"为压制后口径; MS 原文 $46K 中国链 vs $130K 美国链, 剪刀差 2.8 倍)'。\n\n剪刀差 2.8× 完全建立在 MS Humanoid 100 一个数据点上（$130K / $46K = 2.83×）。BofA 与 Yole 没有报美国对照口径，只报了中国 $35K 和 $32K。\n\n如果只有 MS 报了美国 $130K，那么:\n- BofA/Yole 与 MS 的 $35-46K 不是独立交叉验证，因为对照（美国 $130K）只有 MS 一家；\n- 用 $46K 当 KPI 是选了 MS 最高的中国估算（不是 BofA $35K / Yole $32K）以减小 2.83× 倍数；如果选 BofA $35K vs MS $130K，倍数 3.71×；选 Yole $32K vs MS $130K，倍数 4.06×；倍数实际是 2.8-4.1× 区间。\n- KPI 写 2.8× 是 selected case。\n\n这是经典的 cherry-pick：用一家的 numerator 配另一家的 denominator 时，不能并列称多源验证。",
+      "what_would_resolve": "(a) KPI 中改为 '2.8-4.1×' 区间；(b) 注明 '美国对照口径仅 MS 单一来源；BofA $35K / Yole $32K 没有提供美国对照'；(c) 或者用 MS 内部口径 $46K vs $130K = 2.83× 但承认是 single source。",
+      "evidence": [
+        "L323-324: KPI 2.8× ($46K vs $130K MS)",
+        "L356: '$32K-$46K BofA/Yole/MS'",
+        "L1182/L1186: chart 中国 $32-46K / 美国 $90-150K"
+      ]
+    },
+    {
+      "id": "i12",
+      "severity": "minor",
+      "title": "宇树 IPO 估值 ¥400亿 vs 投后 $5.6B 汇率回换偏差",
+      "attacks_claim": "LBC-4",
+      "detail": "L1844: '宇树 IPO 后预计 >¥400 亿 = $5.6B'。算术：¥400 / $5.6B = 71.4 ¥/USD，与当前 ~7.1 ¥/USD 基本一致 ✓（400/7.1 = $56.34B 不对——是 400/71 = $5.63B，OK 用 71 单位放对了）。\n\n再交叉 L1844 智元：'¥200 亿+ = $2.8B' → 200/2.8 = 71.4 ✓。所以汇率 7.14 一致使用，没问题。\n\n但 L1798 显示 IPO 锚定 '>¥400 亿' 是预计估值，不是已落定。L4432 chart 估值 Top 10 把宇树标为 17（=$1.7B = ¥120亿 pre-IPO）；但 §6.5.2 用 ¥400亿 = $5.6B 算 PSR 23×。即 Chart 用 pre-IPO，PSR 表用 IPO 预期——两个时点混用。\n\n如果 chart 改用 IPO 预期 ¥400亿，宇树在 Top 10 应位列 #3，超过 银河通用 / 智元（$3B / $2.8B）；但 chart 数据列宇树 17 = $1.7B 在第 9 位。Top 10 chart 的 ranking 不准。",
+      "what_would_resolve": "(a) 在 L1798 KPI 和 L4432 chart 中明示用 pre-IPO 还是 IPO 预期；(b) Top 10 估值 chart 加注 '宇树 17 (Pre-IPO 估值，IPO 后预期 56 = $5.6B)'；(c) 任何 PSR 计算明示 numerator 的时点。",
+      "evidence": [
+        "L1844: 宇树 >¥400亿 = $5.6B (IPO 预期)",
+        "L4432: chart 宇树 17 (Pre-IPO ¥120亿)",
+        "L1846: PSR 23× = ¥400亿/¥17亿"
+      ]
+    },
+    {
+      "id": "i13",
+      "severity": "minor",
+      "title": "Unit Economics 表中大量 [INFERRED] 数据相互推论，没有外部 anchor",
+      "attacks_claim": "LBC-4 (estimation rigor)",
+      "detail": "L1923-1930: RaaS LTV $200-250K [INFERRED]; CAC $50-100K [INFERRED]; 毛利率 30-50% [INFERRED]; NDR [UNDISCLOSED]; 真实经济性 '尚未公开验证'。\n\nL1936 自己承认：'v1 把 RaaS 年收入估算为 $360K/年（$30K/月 × 12）是错的——行业估算 Figure RaaS 约 $25/h × 8h × 250d ≈ $50K/年，差 7×'——这次修订暴露了原表完全是估算，依赖 BMW $25/h × 假设工作小时数。$25/h 这个数字 来自 data_points.json DP073 (high confidence, REF018/REF019)，但 250 工作日 × 8h/day = 2000h，这是默认假设；如果是 24/7（机器人理论可以 3 班倒），就是 8760h × $25 = $219K/年。\n\nRaaS LTV $200-250K 在 5 年合约下，对应年化 $40-50K——把 LTV 反推年化几乎等于 $50K，意味着假设了 0% 价格涨幅、0% expansion、0% NDR、100% 续约率——非常乐观且无支撑。\n\nLTV:CAC 2-5× 这个 narrow 区间夹了三个 [INFERRED]：LTV 区间、CAC 区间、它们的比。误差传播下去，2-5× 这个 narrow 结论与 'unit economics 没数量级优势' 的定性结论需要打折看待。",
+      "what_would_resolve": "(a) 把 LTV / CAC 假设明示（小时数、续约率、价格涨幅、NDR 等）；(b) 提供敏感性表（LTV $100-400K、CAC $30-150K 范围内 LTV:CAC 跨度多大）；(c) DCF L1842 g/WACC 也加敏感性（g=2/3/4%、WACC=12/15/18%）。Builder 不需要外部硬数据，但需要把假设链显化。",
+      "evidence": [
+        "L1923-1930: 大量 [INFERRED] / [UNDISCLOSED]",
+        "L1936: 自己承认 v1 RaaS 年收入估算错 7×",
+        "L1842 DCF: g=3% / WACC=15-18% 单点"
+      ]
+    },
+    {
+      "id": "i14",
+      "severity": "minor",
+      "title": "Figure DCF 永续期价值占总估值 90% — 极敏感于 g 与 WACC，缺少敏感性分析",
+      "attacks_claim": "LBC-4",
+      "detail": "L1842-1843 简化 DCF：\n- Figure: operating disc $93M + perpetuity $0.78B = $0.87B → perpetuity 占 90%\n- 智元: $22M + $0.15B = $0.17B → perpetuity 占 87%\n- 宇树: $52M + $0.40B = $0.46B → perpetuity 占 88%\n\n永续期价值 = EBIT / (WACC - g) × discount factor。Figure 假设 WACC=15%, g=3%。如果 g=4%（更乐观，AI 长期增长）：163/(0.15-0.04) × 0.572 = $848M，总估值 = $93+$848 = $0.94B (+8%)。如果 g=2%（更保守）：163/(0.13) × 0.572 = $717M，总 $0.81B (-7%)。如果 WACC=12% (g=3%)：163/(0.09) × 0.636 = $1152M，总 $1.25B (+44%)。\n\nFigure 在 WACC=12%, g=4% 下 = $93M + 163/(0.08) × 0.636 = $93+$1296M = $1.39B → 市场倍数 = $39.5B/$1.39B = **28×** （不是 45×）。\n\n这表明 '45× sanity' vs '28-65× sanity 区间' 的精确度。如果 Builder 不给敏感性表，'45× sanity = 真泡沫' 显得 false-precision。",
+      "what_would_resolve": "在 §6.5.1 加一个 6×6 敏感性表（g=2/3/4% × WACC=12/15/18%），让 sanity check 区间显示出来；或者至少标注 'perpetuity 占 90%，对 g/WACC 极敏感' + 主表用一个 base + 上下沿组合给三组数字。",
+      "evidence": [
+        "L1842-1843 永续期价值占 87-90% 总估值",
+        "g=3%, WACC=15-18% 单点假设"
+      ]
+    }
+  ],
+  "prior_issue_updates": []
+}

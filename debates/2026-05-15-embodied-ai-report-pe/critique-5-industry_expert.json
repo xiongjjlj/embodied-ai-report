@@ -1,0 +1,37 @@
+{
+  "round": 5,
+  "persona": "industry_expert",
+  "draft_classification": "商业研究 / 产业链格局分析 / PE 投资判断报告 (zh-CN, PE/VC 合伙人级 IC 决策辅助材料 — round-5 修订后)",
+  "load_bearing_claims": [
+    "LBC-1 · 美强软件 (二层拆分: Big Tech 基础模型层 + 私募整机层) / 中强硬件; Apptronik 一致地在 OEM-locked 桶 (7c), 6-路径对照表 round-5 升级为 7 行含 ⑦c",
+    "LBC-2 · 2030 年度 TAM $30-144 亿 (中位 $75 亿); 2025 真实工业部署 < 1,000 台 conceded",
+    "LBC-3 · 三情景 35/25/35/5 (China-led / US-led / Bifurcation / Other); Bifurcation 卡片大字 round-5 由 40% 修正为 35% 与 SST 一致",
+    "LBC-4 · Figure 单家 LTM PSR 1,300-2,600× / 美系一线 pure-play 4 家 (不含 Apptronik) 加权 PSR 750-1,500× / 中系 22× = EV IPO N=3 中位 24×",
+    "LBC-5 · 中系核心零部件 + 稀土 alpha + 美系 OEM-locked (Apptronik 7c / BD-Hyundai 7b / Symbotic) + Distressed M&A; Bear-B 触发列与估值列 round-5 统一在 3× control premium (与 §A.6.1 标准 1.3-2× 显式区分为 author's prior)"
+  ],
+  "verdict": "pass",
+  "verdict_reason": "4 项 prior issues (i22 / i23 / i24 / i25) 全部 grep-verified resolved; round-5 markers 15 条 + round-4 markers 23 条保留; 未引入新 industry/玩家 层面 fatal/severe/moderate 问题; 仅有 1 条 minor 观察 (⑦c 表格 row 引用 '同等于 BD-Hyundai 7b' 失败率 15-25% 但 §4 path-card 7b 没有显式 stamped 失败率数字 — 由 OEM-locked 逻辑类比推得, 不影响 IC 判断)。Pass criteria (0 fatal + 0 severe) 满足.",
+  "issues": [],
+  "prior_issue_updates": [
+    {
+      "id": "i22",
+      "status": "resolved",
+      "reasoning": "§6.3 Bifurcation 卡片 L1801 大字 由 '40%' 改为 '35%' + 副标 '(30-40% range; Round-5 r4-i22 SST canonical 中点 35%)'. 与紧邻的 2×2 矩阵 derive 出 'Bifurcation 主干 27.5% + 偏 US 一支 7.5% = 35%' (L1828) 一致. SST 35/25/35/5 = 100% 全报告闭合. grep `r4-i22 SST canonical 中点 35%` → L1801 verified."
+    },
+    {
+      "id": "i23",
+      "status": "resolved",
+      "reasoning": "§A.5 Bear-B 行 L2689 触发列改为 'distressed strategic acquire at ~3× DCF sanity (我方 prior 国资战投 + 数据资产残值; 高于 §A.6.1 标准 control premium 1.3-2× — 见 r4-i23 footnote 下)'; Exit 估值列同样标 '$0.5B (= $0.17B × ~3× control premium; 触发列与估值列现严格同步 r4-i23 fix)'. 同一 row 两列 control premium 倍数现一致 (3×). §A.6.1 标准 1.3-2× 仍作为市场基准, 智元 Bear-B 的 3× 显式声明为 author's prior 上限. Builder 选择 unify-on-3× (i 我选项 1) 是合理选择 — 不再两个倍数并存."
+    },
+    {
+      "id": "i24",
+      "status": "resolved",
+      "reasoning": "chartShipmentTop10 chart title text L4773: '2025 仅 30 单位 Hyundai 内部 pilot, 非 commercial' → '2025 = 0 commercial; pre-production / engineering units 数量未公开 [UNDISCLOSED]'. grep `30 单位 Hyundai` → empty (彻底移除). [UNDISCLOSED] 与 Apptronik / 1X 同一 chart 内的相同标准对齐. mini-fabrication 已剔除."
+    },
+    {
+      "id": "i25",
+      "status": "resolved",
+      "reasoning": "§4 对照表 caption L1161 由 '6 种路径对照' → '7 种路径对照 (Round-5 r4-i25: 添加路径⑦c Apptronik OEM-locked 行)'. 新增 row L1174 含: 路径名 '⑦c Apptronik OEM-locked'; moat 'Mercedes firm pilot + Google 战略投资 + Jabil contract mfg'; 经济模型 'OEM 现金流补贴 + B2B pilot → commercial 2026 H2'; 关键变量 'Mercedes pilot 转 commercial + Google Gemini Robotics 兑现'; 失败概率 '15-25%（OEM 现金流补贴; 比 Figure 30-40% 低; 同等于 BD-Hyundai 7b）'. border-top:4px solid #7c3aed 与 path-card 视觉一致. 'OEM-locked 路径 15-25% vs Figure 30-40%' head-to-head 可见性建立. ⑦a / ⑦b 未加入对照表但 ⑦c row 内文已引用 'BD-Hyundai 7b' 作类比锚, 对 IC 决策足够 (i25 原 what_would_resolve 第 (1) 条 '至少加 ⑦c' 已满足)."
+    }
+  ]
+}

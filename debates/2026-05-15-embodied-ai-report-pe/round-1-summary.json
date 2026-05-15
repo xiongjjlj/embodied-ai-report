@@ -1,0 +1,13 @@
+{
+  "round": 1,
+  "aggregate_verdict": "block",
+  "totals": {"fatal": 7, "severe": 22, "moderate": 17, "minor": 6},
+  "per_persona": [
+    {"persona": "pe_partner",          "verdict": "block", "fatal": 2, "severe": 6, "moderate": 3, "minor": 1},
+    {"persona": "industry_expert",     "verdict": "block", "fatal": 2, "severe": 4, "moderate": 4, "minor": 1},
+    {"persona": "numerical_auditor",   "verdict": "block", "fatal": 1, "severe": 5, "moderate": 5, "minor": 3},
+    {"persona": "visual_design_expert","verdict": "block", "fatal": 2, "severe": 7, "moderate": 5, "minor": 1}
+  ],
+  "pass_criteria": "0 fatal + 0 severe",
+  "next_action": "spawn Round 2 builder; address all fatal + severe across the four critique JSONs"
+}

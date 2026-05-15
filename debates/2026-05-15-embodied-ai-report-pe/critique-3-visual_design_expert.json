@@ -1,0 +1,136 @@
+{
+  "round": 3,
+  "persona": "visual_design_expert",
+  "draft_classification": "PE 战略 pitch + 行业研究 HTML 单页报告 (v3: 5,008 行, ~340KB; <style> 块 line 10-274 — Round-3 在 line 192-273 实质追加 80+ 行 CSS 修复 8 个 phantom class; markup 端补完了 TOC sec-1-1 ~ sec-4-5 anchors, hero 4 thesis cards, DCF KPI 卡, LTV:CAC 红底, 退出 IRR 列, 风险登记 4 列表)",
+  "load_bearing_claims": [
+    "Round-2 标记 FATAL 的 8 个 phantom CSS class (.thesis-banner / .pullquote / .qa-pair / .qa-challenge / .qa-answer / .limitation-note / .sensitivity-table / .chart-loaded) 在 v3 全部已定义并 ship 到 <style> 块",
+    "Round-2 标记 FATAL 的 TOC 11 处重复 href 已去重，每个子链接指向独立 sec-X-Y anchor (h2 端 id 同步追加)",
+    "Hero 4 张研究广度卡已替换为 4 thesis statement 卡, 可点击跳到对应 §3.1 / §3.2 / §6.5 / §3.3",
+    "§6.5.1 DCF punch line (45× / 16× / 12× sanity) 已 promote 到表上方 3 张 KPI 卡",
+    "§6.5.3 LTV:CAC 行已加红底 + ⚠ 无数量级优势 内联标注",
+    "色盲非颜色区分线索 (warning/success/insight/info ::before icon) 已 ship"
+  ],
+  "verdict": "pass",
+  "verdict_reason": "Round-2 的 2 个 FATAL (phantom CSS / TOC 重复 href) 已实质 ship — grep 验证 8 个 class 在 line 193-265 全有完整 CSS rule，TOC nav 内 35 个 href 仅有 1 处重复 (#ch2-5 在 §6 和左列各出现一次, 跨子区合理); 5 个 ROUND-2 SEVERE (Hero thesis / DCF KPI / LTV:CAC / 色盲 icon / chartPSRComparison) 全部技术 resolved; 3 个 moderate (Risk Register / 退出 IRR / Comps 表 stale) resolved。剩余 issue 仅一条 major 级 (Hero 4 thesis 卡有 3 张落到同一 chapter-top anchor #ch-commercial-cliff 而非 granular sec-3-X — granular anchor 已存在仅未使用) + 2 条 minor (qa-challenge 误用 border-green 1 处 / response 声明 10 caption 实际 9) + 1 条 moderate (~6 张 chart 仍缺至少一个 axis title)。这些都不是 load-bearing 失败 — 不构成 block 理由。Round-3 真正解决了 Round-2 标记的视觉灾难, builder 没有再 fabricate citation。",
+  "issues": [
+    {
+      "id": "v3-i1",
+      "severity": "major",
+      "title": "Hero 4 张 thesis 卡中 Thesis 1 / 2 / 4 三张全部 href='#ch-commercial-cliff' — granular anchor sec-3-1 / sec-3-2 / sec-3-3 已存在 (L812 / L839 / L883) 但未被使用; response-3 v2-new-i3 表里写 'clickable to §3.1/§3.2/§6.5/§3.3' 与实际不一致",
+      "attacks_claim": "Hero 4 thesis 卡可点击跳到对应章节",
+      "detail": "v3.report.html line 289: '<a href=\"#ch-commercial-cliff\">' (Thesis 1, Tesla, 文案标 → §3.1). Line 294: '<a href=\"#ch-commercial-cliff\">' (Thesis 2, $3B 订单, 文案标 → §3.2). Line 299: '<a href=\"#ch2-5\">' (Thesis 3, PSR 1,300-2,600×, 文案标 → §6.5 — 正确). Line 304: '<a href=\"#ch-commercial-cliff\">' (Thesis 4, 仓储 ROI, 文案标 → §3.3). 三张卡片落到同一 #ch-commercial-cliff (line 805 chapter-top anchor)。PE partner 点击 Thesis 4 期望进 §3.3 仓储 ROI (line 883), 实际落到 §3.0 chapter intro (line 805), 需手动向下滚 78 行经过 §3.1 + §3.2 才到目标内容。granular anchor 在 L812 (#sec-3-1) / L839 (#sec-3-2) / L883 (#sec-3-3) 已存在 — response-3 v2-new-i2 已经为 TOC 加好了，但 Hero 4 卡片完全没用它们。这是 Round-3 修 TOC 时漏配套修 Hero。response-3 v2-new-i3 表里写 'clickable to §3.1/§3.2/§6.5/§3.3' 与实际不一致。",
+      "what_would_resolve": "把 line 289 href 改为 '#sec-3-1' (Thesis 1 — Tesla, §3.1 Autonomy Level)。Line 294 href 改为 '#sec-3-2' (Thesis 2 — 真实订单 Tier, §3.2)。Line 304 href 改为 '#sec-3-3' (Thesis 4 — 仓储 ROI, §3.3 替代方案)。Line 299 已经是 #ch2-5 (§6.5), 文案 → §6.5, 一致, 保留。"
+    },
+    {
+      "id": "v3-i2",
+      "severity": "moderate",
+      "title": "Chart.js 26 张中至少 6 张仍缺至少 1 个 axis title — chartScenarioShipment / chartChinaShipmentBreakdown / chartBomBreakdown / chartPenetration / chartPriceMatrix / chartScenarioCompare / chartPSRComparison 在 vertical bar / line 上缺 x-axis title",
+      "attacks_claim": "chart 可读性 / 离线 export PDF 可解释性",
+      "detail": "Python AST 扫描 v3.report.html — 26 个 new Chart() 中, 排除 doughnut/pie/radar (axis 不适用) 后剩 17 个 cartesian chart。其中下列仍缺至少 1 个 axis title (即未含 scales.{x|y}.title.text): chartScenarioShipment (vertical bar, x-axis '情景' 无 title), chartChinaShipmentBreakdown (horizontal bar, value 轴 x 无 title), chartBomBreakdown (vertical bar, x-axis '部件' 无 title), chartPenetration (line, x-axis 年份无 title, y 有 '% 渗透率'), chartPriceMatrix (vertical bar, x-axis 玩家无 title), chartScenarioCompare (vertical bar, x-axis 情景无 title), chartPSRComparison (line, x-axis 年份无 title — 虽然 label 可见 '2018'..'2028E', 但 PDF 导出黑白时 axis context 丢失)。chartPenetration / chartPSRComparison 在 PE partner 把页面 'export to PDF for IC' 时, x 轴无标题 → IC reviewer 看 PDF 黑白印刷会问 'x 轴是什么'. 这是 PE 工作流第二阶段的可读性问题，不是页面渲染问题。",
+      "what_would_resolve": "为 7 张 cartesian chart 各加 1 行 scales.x.title.text — 'chartPSRComparison' scales.x.title.text='年份 (2018-2028E)'; 'chartPenetration' scales.x.title.text='年份 (2024-2030E)'; 'chartScenarioShipment' / 'chartScenarioCompare' scales.x.title.text='情景'; 'chartPriceMatrix' scales.x.title.text='整机厂商'; 'chartBomBreakdown' scales.x.title.text='BOM 部件'; 'chartChinaShipmentBreakdown' scales.x.title.text='出货 (台)'. 全部 7 行 ~30 秒手术。"
+    },
+    {
+      "id": "v3-i3",
+      "severity": "minor",
+      "title": "Line 2532 qa-challenge 类与 border-green-300 同行 — 应为 border-red-300, 是 9 个 qa-pair 块中唯一 1 处 copy-paste 致颜色翻转",
+      "attacks_claim": "qa-pair 视觉一致性",
+      "detail": "v3.report.html line 2532: '<div class=\"qa-challenge bg-red-50 p-3 rounded text-sm border-l-2 border-green-300\">' — qa-challenge (反方挑战) 应该全部用红色 border 维持 9 个 Q 的视觉一致性 (L2447/2464/2481/2498/2515/2548/2565/2582 均 border-red-300)。仅此 1 处误用 border-green-300, 使第 6 个 Q (位于 Q6 位置) 的反方挑战左边界变绿 — 视觉上与下方'我们的答复'(也是绿) 混淆, 读者无法快速 parse 'challenge → answer' 对立结构。是 round-2 markup 复制时的笔误, round-3 没扫到。",
+      "what_would_resolve": "把 line 2532 'border-green-300' 改为 'border-red-300'。"
+    },
+    {
+      "id": "v3-i4",
+      "severity": "minor",
+      "title": "response-3 v2-new-i11 表里写 '10 caption' 实际 grep -c '<caption>' = 9; 同时 line 4471 数据置信度表 ('table.pro') 不在 overflow-x-auto wrapper 内, 是 v3 唯一一张 5 列 pro 表无 mobile 横滑保护",
+      "attacks_claim": "table caption a11y 部分完成度 / mobile overflow 一致性",
+      "detail": "(a) response-3 visual.v2-new-i11 'Added <caption> to 10 core PE-workflow tables' — 实际 v3.report.html grep -c '<caption>' = 9 (不是 10)。差异具体在哪张表 builder 没说; 不影响功能性但是 builder 自标 citation 与实际不一致, response-3 同样的笔误模式 (v2 response 有 8 处 phantom 已被 r2 抓出 — r3 这一处算改进但仍未到 0 errata)。(b) line 4471 '<table class=\"pro text-sm mt-3\">' (数据置信度表, 5 列) 不在 <div class=\"overflow-x-auto\"> wrapper 内 (line 4468 父 div 是 '<div class=\"data-card\">'), 是 v3 30 张 pro 表中唯一一张缺 overflow-x 保护。iPad 竖屏 768px 下 5 列宽表会强制 overflow document body 触发整页水平滚动条 — 这是 PE 在 iPad 上分享 report 给 IC 时遇到的 mobile UX 故障。grep 'overflow-x-auto' 在 line 4468 上方 5 行内 = 0。",
+      "what_would_resolve": "(a) 在 v3.md / response-4 校对 caption 计数 (9 vs 10) — 如果是漏加一张关键表 (例如 §3.6 投资动作变更表) 补上; 否则把声明改为 9. (b) line 4470-4471 在 <table> 前插入 '<div class=\"overflow-x-auto\">' 并在 </table> 后闭合, 保持与其他 29 张 pro 表一致。"
+    }
+  ],
+  "prior_issue_updates": [
+    {
+      "id": "v2-new-i1",
+      "status": "resolved",
+      "reasoning": "grep 验证: line 193 .thesis-banner { ... } line 205 .pullquote { ... } line 216 .pullquote::before line 226-232 .qa-pair / .qa-challenge / .qa-answer (含 mobile order swap @media max-width:768px) line 234 .limitation-note { ... } line 244-258 table.sensitivity-table 全部 ship。8 个 phantom class 实质 resolved。Round-3 旗舰修复, ship 干净。"
+    },
+    {
+      "id": "v2-new-i2",
+      "status": "resolved",
+      "reasoning": "grep -c 'id=\"sec-[0-9]' = 13, sec-1-1 / sec-1-2 / sec-1-3 / sec-2-1 / sec-2-2 / sec-2-3 / sec-3-1 / sec-3-2 / sec-3-3 / sec-3-4 / sec-3-6 / sec-4-1 / sec-4-5 全部存在 (line 567/585/624/691/721/741/812/839/883/913/956/1074/1122)。TOC 11 个子链接 href 与 anchor 一一对应。TOC 内部 35 个 href sort uniq -c 仅有 1 处真重复 (#ch2-5 在第六章子链接和 thesis banner 内引用, 跨区块合理)。Round-2 FATAL 实质 resolved。"
+    },
+    {
+      "id": "v2-new-i3",
+      "status": "partial",
+      "reasoning": "Hero 端文案 layer resolved — line 283-313 已用 4 张 thesis statement 卡 (Thesis 1: Tesla / Thesis 2: $3B Tier A 几乎 0 / Thesis 3: Figure 1,300-2,600× PSR / Thesis 4: 仓储 ROI 差 5-16×) 替代 '5 层 / 44 家 / 6 万字 / 25+ 图' 研究广度卡。但锚链接 layer 失败 — Thesis 1 / 2 / 4 三张全部 href='#ch-commercial-cliff' (chapter-top), 而 granular sec-3-1 / sec-3-2 / sec-3-3 anchor 已存在 (L812 / L839 / L883) 仅未被 hero 使用。response-3 'clickable to §3.1/§3.2/§6.5/§3.3' 不准确。详 v3-i1。"
+    },
+    {
+      "id": "v2-new-i4",
+      "status": "resolved",
+      "reasoning": "v3 line 1961-1975 在 §6.5.1 表上方真正插入 3 张 KPI 卡 (Figure 45× sanity / 智元 16× sanity / 宇树 12× sanity), 每张配 subtitle 显示市场估值 vs sanity $0.87B / $0.17B / $0.46B + 敏感性区间 + 一句话定性 (系统性泡沫 / 含数据 + SaaS 溢价 / 已现金流盈利)。Round-2 'punch line 仍在表倒数第二行' 实质解决。"
+    },
+    {
+      "id": "v2-new-i5",
+      "status": "resolved",
+      "reasoning": "line 2120 '<tr style=\"background:#fee2e2;font-weight:600;\"><td><strong>LTV : CAC</strong></td><td><strong>2-5× <span style=\"color:#dc2626;font-size:0.8em;\">⚠ 无数量级优势</span></strong></td><td><strong>2-5× <span style=\"color:#dc2626;font-size:0.8em;\">⚠</span></strong></td><td><strong style=\"color:#16a34a;\">10-40× ✓</strong></td><td>~5×</td></tr>' — 红底 + warning icon + 内联文字标注 + 绿色 ✓ 对照, 与 round-2 提的建议字字对应。Resolved."
+    },
+    {
+      "id": "v2-new-i6",
+      "status": "resolved",
+      "reasoning": "line 262-265 已 ship: '.warning-box > strong:first-child::before { content: \\'\\\\26A0 \\'; ...} .success-box ::before content \\'\\\\2713 \\' .insight-box ::before content \\'\\\\2728 \\' .info-box ::before content \\'\\\\2139 \\''. 4 种 box 类型现都有非颜色 prefix icon。色盲 a11y resolved."
+    },
+    {
+      "id": "v2-new-i7",
+      "status": "resolved",
+      "reasoning": "v3 line 4915-4937 chartPSRComparison 改回 logarithmic scale (min:0.5 max:5000) + 3 horizontal annotation line 全有 label (y=8 '2020 EV 板块 LTM median', y=53 '蔚来 IPO 2018 LTM 53× (EV IPO 高位)', y=24 'EV IPO N=3 median / 智元/宇树 当前位置'). EV / 中系 / Figure 三条 PSR 时间线全部可见, 33× 差距视觉重建。Round-2 'linear max=2000 压扁 EV' 副作用 resolved。"
+    },
+    {
+      "id": "v2-new-i8",
+      "status": "resolved",
+      "reasoning": "v3 line 2693-2710 §A.5 Risk Factors 改为 4 列 table.pro: 风险 / Prob × Impact (1-5) / Mitigant + watchlist trigger / Residual Risk。caption 'P × I scoring 1-5; residual = mitigant 应用后剩余风险'。每行有 P×I 量化分。Round-2 'plain <li> 无 P×I 无 residual' resolved。"
+    },
+    {
+      "id": "v2-new-i9",
+      "status": "resolved",
+      "reasoning": "v3 line 2729 §A.6.1 退出渠道表加第 7 列 'Base case 真实可分红 IRR (vs 31% nominal)', 5 行渠道分别给出量化 IRR with 公式 (A 股 25% / 港股 19% / 美股 ADR 12% / 战略并购 19% / 二级 15%); 单元格用 traffic-light 颜色 (绿 25% / 黄 19%, 19% / 红 12%, 15%)。表与 info-box IRR 数字一致。Round-2 'IRR 折扣量化在表外 info-box, 表无对应列' resolved。"
+    },
+    {
+      "id": "v2-new-i10",
+      "status": "resolved",
+      "reasoning": "Round-3 pe-n1 conceded 重写 Comps 表, line 2065 Figure 行已改为 '1,300-2,600× ($39B / [INFERRED] $15-30M; 中点 ~1,750×)', 与 §0.1 / §3.5 / §6.5.1 / chartPSRComparison 五处一致。Symbotic 4.5×→13× / 工业 median 3.5×→8.1× / EV IPO median 22×→24× (N=3 rowspan) 也同步。跨表一致性 resolved."
+    },
+    {
+      "id": "v2-new-i11",
+      "status": "partial",
+      "reasoning": "response-3 自称 'Added <caption> to 10 core PE-workflow tables', 但实际 grep -c '<caption>' = 9。10 vs 9 微小不一致。9 个 caption 已加给 6.5.2 Comps / 6.5.1 DCF / 3×3 Figure / 智元宇树 simple / 6.3 2×2 / A.2.1 distressed / A.3.2 second-layer / A.5 Risk Register / A.6.1 退出渠道 (大致 9 张)。其余 ~21 张 supporting table 仍无 caption。Builder 明确把后者标 'documented as limitation'。Round-3 实际产出符合 'partial' 状态 — 不是 '0 caption' 也不是 '28 caption 全覆盖'。详 v3-i4 (a)。"
+    },
+    {
+      "id": "v2-new-i12",
+      "status": "unresolved",
+      "reasoning": "v3 line 4988-5004 仍只有 IntersectionObserver 给 .chart-container 加 'chart-loaded' class (fade-in 0.4s 动画), 26 个 new Chart() 仍在 <script> 内同步立即执行。Builder 明确 'Full lazy new Chart() refactor explicitly deferred to Round-4 (60-min surgery, regression risk)' — 即承认这是 accepted-limitation。从 visual_design_expert 视角性能仍是 unresolved，但 round-2 已经标过且 round-3 没破坏现状 — 不再 block。"
+    },
+    {
+      "id": "v2-new-i13",
+      "status": "resolved",
+      "reasoning": "v3 line 1051 '<li>⑥ <span class=\"pullquote\">任何不含 MTBF 的 PE deck 都不算完整尽调</span><span class=\"text-xs\">——全行业未披露的关键指标</span></li>' — div→span 改完, .pullquote 又有 inline-block 显示 + ::before 引号 icon。Round-2 nesting 问题 resolved。"
+    },
+    {
+      "id": "i6_round-1",
+      "status": "unresolved",
+      "reasoning": "同 v2-new-i12, builder 标 accepted-limitation, no actual lazy init。Round-3 未改善, 但也未破坏。"
+    },
+    {
+      "id": "i9_round-1",
+      "status": "partial",
+      "reasoning": "9 caption (response-3 称 10) / 30 pro 表 = 30% 覆盖率。核心 10 张 PE 工作流表已加 caption (Comps / DCF / Returns / Risk Register / 退出 IRR 等), 其余 ~21 张 supporting table 仍无。比 round-2 0 caption 显著进步, 但未完成。详 v3-i4 (a)。"
+    },
+    {
+      "id": "i11_round-1",
+      "status": "unresolved",
+      "reasoning": "SVG 不可能三角 (line 1670+ 区) 仍无 <title>/<desc>/role='img'。Builder 标 accepted-limitation。a11y 仍空白但不是 round-3 的 regression。"
+    },
+    {
+      "id": "i14_round-1",
+      "status": "unresolved",
+      "reasoning": "§3.6 投资动作变更表 4 列 × 10 行结构未改。Builder 标 accepted-limitation。iPad 横屏每行第 4 列仍 60-100 字 dense, 但不是 round-3 regression。"
+    }
+  ]
+}

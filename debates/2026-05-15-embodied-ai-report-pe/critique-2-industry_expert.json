@@ -1,0 +1,113 @@
+{
+  "round": 2,
+  "persona": "industry_expert",
+  "draft_classification": "商业研究 / 产业链格局分析 / PE 投资判断报告（zh-CN，PE/VC 合伙人级 IC 决策辅助材料 — round-2 修订后）",
+  "load_bearing_claims": [
+    "LBC-1 · 美强软件、中强硬件 — 美系软件已拆为 (a) Big Tech 基础模型层 + (b) 私募整机层（round-2 修订）",
+    "LBC-2 · 2030 年度新增出货 25-80 万台 / TAM $30-144 亿（中位 $75 亿）/ CAGR 69-113%",
+    "LBC-3 · 三情景概率 China-led 30-40% / US-led 15-25% / Bifurcation 35-45% / Other ~5%（加和 100%）",
+    "LBC-4 · 美系私募整机一线 PSR 1,300-2,600× 系统性泡沫；中系 IPO 全口径已对齐 EV IPO 中位 24×；纯人形 segment 仍接近美系下限",
+    "LBC-5 · 中系核心零部件 + 稀土卡点 = PE alpha 主战场 — 稀土拆 (a) 具身专属 alpha + (b) 稀土 beta + (c) 终端定点未确认"
+  ],
+  "verdict": "block",
+  "verdict_reason": "11 条 round-1 issues 中 8 条 resolved / 3 条 partial（i5 LIBERO 97.1%、i9 Genesis 430,000× 在 §1.1 拐点卡片和 §2.2 数据来源表中仍未加 caveat — 内部矛盾）。Round-2 修订过程中新引入 2 条 severe + 2 条 moderate：(a) chartShipmentTop10 把 Tesla 剔除后填入 'Apptronik ~300' 与 '1X Technologies 300' 作为 2025 出货 — 两家均未公开披露 2025 出货量，1X NEO 2026.4 才投产，2025 实质为 0；(b) chartValuationTop10 含 Apptronik $5B + Neura $4.4B 却独缺 BD，与 §4 路径 7b 给 BD implied $3-5B 自相矛盾；(c) 路径 7b 标 '美系 OEM-locked' 但 BD-Hyundai 实际是 美国软件×韩国整车 OEM，'美系' 框架破裂；(d) PSR headline 数字在 §0.1 (1,300-2,600×)、§4 takeaway (加权 600-1,300×)、§4 路径 7 (仍写 757×)、v2.md 文档地图 (600-2,600×) 之间多版本并存。前 2 条 severe 直接动摇行业事实底座（玩家盘点诚实度 + 玩家估值生态完整性），不通过。",
+  "issues": [
+    {
+      "id": "i12",
+      "severity": "severe",
+      "title": "chartShipmentTop10 round-2 重排引入了两条无来源 '玩家盘点' 数字（Apptronik ~300、1X 300）",
+      "attacks_claim": "结构性 / LBC-1 出货格局 + LBC-4 估值锚",
+      "detail": "v1→v2 chartShipmentTop10 (L4565-4578) 在剔除 Tesla 1,000 之后填入两条新数字：\n- 'Apptronik (~300)' 作为 2025 全年出货\n- '1X Technologies 300' 作为 2025 全年出货\n\n两家均未公开披露 2025 出货量：(a) Apptronik 至 2026.05 仍在 Mercedes / GXO / Jabil pilot 阶段，commercial scale 目标 2026 H2；§3.1 评分卡 L737 自己写 '仍处 pilot；商业 scale 目标 2026 H2'；§3.2 订单表 L782 标 [UNDISCLOSED] 且 D (PoC) 级。300 台与 'D 级 PoC' 矛盾。(b) 1X NEO 2026.4 才在 Hayward 投产（§4 路径③ L1013 自己写 'NEO 2026.4 投产 Hayward'），2025 不可能有 300 台真机出货 — 充其量是工程样机 + alpha 测试机 < 50 台。\n\nv2.md L74 标 'chartShipmentTop10 Tesla 剔除' (visual i3) 表示这是 round-2 对 v1 的修复；但修复过程中未审查替换数字，把 selection-bias 错误（v1 把 Tesla 1,000 美化）置换成了 fabrication 错误（凭空填 Apptronik 300 + 1X 300）。\n\n对 LBC-1 / LBC-4 的影响：(1) 'Apptronik (~300)' 与 §0.1 / §4 takeaway 把 Apptronik 列为 '私募一线泡沫' 的论证脱节 — 若 Apptronik 真有 300 台出货 + Mercedes 多年合同，$5B 估值 / 100M+ implied PSR 反倒比 Figure 更合理；要么估值不是泡沫，要么 300 台不是真实。两者不能同时成立。(2) chart 是 IC 读者 60 秒拿到的 '玩家盘点视觉'，把未披露数字以并排条形展示 = visual smoking gun，复核失败时全章估值锚都会被怀疑。\n\n这正是报告 §3 第三章自己批判的 'demo 当生产力' / 'PR 数字当 KPI' 错误 — 双重标准。",
+      "what_would_resolve": "(1) chartShipmentTop10 把 'Apptronik (~300)' 和 '1X Technologies 300' 标 [UNDISCLOSED] 灰色虚线，或者改为 '< 100 (pilot)' 区间；(2) 图表 subtitle 加 '出货数据基于公司公开披露或 IDC，未公开者标 [UNDISCLOSED] 不列入数值排序'；(3) 如保留数字，必须在 §A 数据室或脚注给出推算逻辑（类似 Figure $15-30M [INFERRED] 的标注）；(4) 同步审查 chartOrderTop10、chartValuationTop10 是否也有类似 round-2 重排引入的 fabrication 数字。"
+    },
+    {
+      "id": "i13",
+      "severity": "severe",
+      "title": "chartValuationTop10 把 BD 排除 — 与 §4 路径 7b 'BD implied $3-5B' 直接矛盾；这是 round-2 修订自己制造的内部不一致",
+      "attacks_claim": "结构性 / LBC-1 + LBC-4（玩家估值生态完整性）",
+      "detail": "round-2 修订核心动作之一是把 BD-Hyundai 纳入第 4 章路径 7b（L1062 '2028 30,000 台/年 = LBC-2 中位 50 万年度出货的 6% 单一公司锁定' + L1066 'BD 隐含估值按 Hyundai 2021 收购 $1.1B + 后续追加投入 + Atlas Electric 业务线 implied 测算 ~$3-5B'）。但 chartValuationTop10 (L4547-4561) 仍是 v1 的 10 家：Figure $39.5B / Skild $14B / PI $11B / Apptronik $5B / Neura $4.4B / 银河通用 $3B / 智元 $2.8B / 星海图 $2.8B / 宇树 $1.7B / 星动 $1.4B。\n\n问题：BD implied $3-5B 应当排在 Apptronik $5B / Neura $4.4B / 银河通用 $3B 同梯队（按 round-2 自己的估算），按中点 $4B 应排第 5-6 位，挤掉的应该是星动纪元 $1.4B 或星海图 $2.8B。但 chart 完全没有 BD。\n\n这造成的连锁问题：\n(a) IC 读者打开报告先看 chart，对全球玩家估值梯队的视觉直觉里 BD 仍然 invisible — round-2 路径 7b 的文字补全在视觉层无效。\n(b) §4 takeaway ③ 强调 'BD-Hyundai 是美系软件不全是泡沫的反锚'，但 visual evidence 反锚不存在；论证靠纯文字承担。\n(c) Apptronik 在 chart 出现 $5B + 路径 7b 文字也把 Apptronik 列入 OEM-locked 路径 + §4 takeaway ③ 又把 Apptronik 算入 '美系私募整机一线 ~$79.5B'（i14 详述）— 三处身份冲突。\n\n这不是 minor 排版问题：visualization 是估值论证的 anchor，IC 读者在 chart 上看到的玩家盘点决定其后续翻 §6 estimate 时的 prior。round-2 修订把 BD 写进框架但忘记同步 chart = 修订未完成。",
+      "what_would_resolve": "(1) chartValuationTop10 加入 'Boston Dynamics (implied $3-5B)' 条形（标灰色 + 'implied/not directly investable' tag），与 Apptronik / Neura 同梯队；(2) chart subtitle 加 '美系 OEM-locked (BD-Hyundai / Apptronik) 用浅色区分'；(3) 同步 chartShipmentTop10 加 'Boston Dynamics (limited / volume manufacturing 2026.Q1 起)' — BD 公开宣称 '2026 年全部产能给 Hyundai + DeepMind, volume manufacturing 已启动'，至少 ≥ Apptronik / 1X 量级。"
+    },
+    {
+      "id": "i14",
+      "severity": "moderate",
+      "title": "Apptronik 被同时归入 '美系私募整机一线泡沫' 和 'OEM-locked 非泡沫路径' 两个互斥桶 — 框架自相矛盾",
+      "attacks_claim": "LBC-1 + LBC-4（美系软件二层拆分的内在一致性）",
+      "detail": "round-2 修订把 '美系软件' 拆为两层：(a) Big Tech 基础模型层（不可直投，非泡沫）+ (b) 私募整机层（泡沫）；同时新增 A.2 矩阵 '美系 OEM-locked / 上市路径' ★★★★ 行（Apptronik / BD-Hyundai / Symbotic — 非泡沫）。但 Apptronik 同时出现在三个地方：\n\n(1) §0.1 L373 列入 '美系估值远高于中系：Figure $39B、Skild $14B、PI $11B、Apptronik $5B' — 即 (b) 层泡沫。\n(2) §4 路径 7 L1058 + 子路径 7b 关键节点 (ii) 'Apptronik × Mercedes pilot → commercial 转化' + A.2 OEM-locked 行 L2159 'Apptronik (Mercedes pilot)' — 即非泡沫。\n(3) §4 章末 takeaway ③ L1094 '美系私募整机一线 4 家估值合计 ~$79.5B（路径②Figure $39B + Apptronik $5B；路径③1X $10B；路径④PI $11B + Skild $14B）' — 注意 '4 家' 但实际列 5 家 (Figure / Apptronik / 1X / PI / Skild)，且 Apptronik 又被算进 '私募一线泡沫' bucket。同时句尾说 '不含路径⑦ BD-Hyundai / DeepMind robotics'，但又包含 Apptronik 这个路径⑦ 子路径里的玩家。\n\n这是新分类法 (二层 + OEM-locked) 落实不完整的产物：(a) Apptronik 到底是 'OEM-locked 非泡沫' 还是 '私募一线泡沫'？(b) '4 家 ~$79.5B' 的计数和列表数量不一致（4 vs 5）— 如果 Apptronik 移出 buckets，应当是 '4 家 ~$74.5B'。\n\n对 LBC-4 的影响：'美系一线全在泡沫区' 被限定为 '私募一线' 是 round-1 i1 修订的核心结论；但若 Apptronik（与 Mercedes 真实 OEM 关系 + Google 投资 + Gemini Robotics 合作）也算 OEM-locked 一员，那 '泡沫' bucket 实际只有 Figure / PI / Skild / 1X 4 家 = $74B 而非 $79.5B；LTM 营收 [INFERRED] 也应剔除 Apptronik 的部分（虽 Apptronik 营收未披露）。这影响 'PSR 加权 600-1,300×' 的具体数字。",
+      "what_would_resolve": "(1) 显式做归类决策：Apptronik 二选一 — 若放 OEM-locked 路径，§0.1 + §4 takeaway ③ 把它移出 $79.5B / 'Figure $50B 在谈' 同梯队；若放私募一线泡沫，A.2 OEM-locked 行删除 Apptronik；(2) §4 takeaway ③ '4 家' / '5 家' 计数与公司列表对齐；(3) 给一条决策规则 — '若 OEM 关系是 multi-year firm order 则进 OEM-locked，若仍 pilot 则进私募一线'，Apptronik @ Mercedes 是 pilot 还是 firm order 决定其归属。"
+    },
+    {
+      "id": "i15",
+      "severity": "moderate",
+      "title": "路径 7b BD-Hyundai-DeepMind 被标为 '美系 OEM-locked'，但 Hyundai 是韩国整车 OEM — '美系' 框架在路径⑦ 处破裂",
+      "attacks_claim": "LBC-1（美强软件、中强硬件 — '美系' 的语义边界）",
+      "detail": "全报告以 '美系 vs 中系' 为基础对立框架（§0.1 L366 'IDC vs GGII'、§5.4 chart 'Pre-IPO 时点估值分层 5-14×' 蓝红双色等）。round-2 新增路径 7b（L1062）显示 BD-Hyundai 路径核心特征：\n- 整机 OEM = Hyundai Motor Group（韩国，2021 收购 BD 80% 股权）\n- 软件层 = Google DeepMind Gemini Robotics（美系）\n- 制造 = Hyundai 工厂（Savannah/Georgia + 韩国，按公开报道 2028 30K/yr 主要在美国 Georgia EV 厂附近，但 Hyundai 控股 + 韩国母公司）\n- A.2 矩阵 L2159 把它放在 '美系 OEM-locked / 上市路径' 行 — '美系' 的归类不严谨\n\n问题：(1) BD-Hyundai 出货若兑现 30K/yr by 2028，'中国 80-95% 出货占比' 的统计口径需要重新看待 — 韩国-美国混合制造的 BD 产量算谁？现有 chartChinaShipmentBreakdown 完全没考虑这个第三方力量。(2) Hyundai 整车厂 + 韩国国家队（机器人国家战略 2024.7 出台）+ Samsung Robot Forward 投资 Apptronik / Persona AI（companies.json C021 显示 Persona AI 韩美合资 + POSCO DX 投资）— 'Korean Inc 机器人板块' 是路径⑦ 的真正面貌之一，但报告完全没把 Korea 作为独立第三阵营来呈现。(3) 整个报告以 '中美' 二元对立陈述 LBC-1，但路径⑦ 的实质论证是 '美系软件 + 韩系制造 + 美国部署' 的混合路径——这至少应当在 LBC-1 表述中加注 'Korea 作为 OEM 协作方', 否则 '美系' 框架内部不自洽。\n\n这不是文字小错：LBC-3 China-led 35% / US-led 20% / Bifurcation 40% 的概率分布如果加上 'Korea-as-third-pole'（即 BD-Hyundai-Samsung-LG 等供应链 + Persona AI + Naver Robotics 等），需要重新建模为三极而非两极。报告的情景三元组（中/美/双轨）本身可能漏掉了 'Korean-supplied' 这条独立情景。",
+      "what_would_resolve": "(1) §0.1 / LBC-1 表述加注 '中美两极外，Korea 通过 Hyundai-BD / Samsung-Apptronik / POSCO-Persona 介入 OEM 锁定路径，作为美系软件的硬件载体'；(2) A.2 '美系 OEM-locked' 行改为 'US 软件 + Korean/欧 OEM 锁定路径'，并列出 Hyundai / Mercedes / Symbotic 各自国别；(3) §6.3 三情景推演加一行 'Bifurcation 中的第三向量：Korea-anchored hybrid 路径 — 若 BD-Hyundai 30K/yr + Apptronik-Mercedes 双双兑现，2028 总 60-100K/yr 可改变 LBC-3 概率分布（Bifurcation +5pp、China-led -5pp）'。"
+    },
+    {
+      "id": "i16",
+      "severity": "moderate",
+      "title": "PSR headline 数字在文档不同位置间出现四个版本，IC 读者无法形成单一锚",
+      "attacks_claim": "LBC-4（美系私募整机一线 PSR 系统性泡沫 — 数字一致性）",
+      "detail": "v2 的 PSR headline 数字在不同位置出现至少 4 个版本：\n\n- §0.1 L373: Figure 单家 LTM PSR ~1,300-2,600×（中点 ~1,750×）\n- §4 章末 takeaway ③ L1094: 美系私募一线 4 家加权 LTM PSR ~600-1,300×（中点 ~900×），中位 PSR 仍超 500×\n- §4 路径 7a L1061: '隐含 multiple 远低于私募一线 PSR 757×' — 757× 是 v1 旧数字，未更新\n- v2.md L83 文档地图: '§6.5 PSR 警示 — PSR 195-780× → 600-2,600×'\n\n757× 仍出现在路径 7a 是失修；600-1,300× vs 1,300-2,600× 的区别可解释（前者加权所有 4 家、后者 Figure 单家），但在没有显式 narrative bridge 下，IC 读者会把 '加权 600-1,300×' 和 'Figure 1,300-2,600×' 当作矛盾数据点。\n\nv2.md 文档地图也声明 'PSR 195-780× → 600-2,600×' — 195-780× 是 v1 旧 PSR 区间（含中系 10-20× 与美系 195-780×），新区间 '600-2,600×' 暗示只剩美系（中系剔除了？）。但 §6.5.2 box ⑤ 又明示中系 LTM PSR (全口径) 20-23× 已对齐 EV IPO 中位 24×，则 PSR 区间应为 '中系 ~22× / 美系 600-2,600×'，不该写成单一 '600-2,600×'。\n\n这是 round-2 修订的常见副作用：核心数字往上调（Figure 营收锚从 $50M → $15-30M）后，多处引用未同步刷新。",
+      "what_would_resolve": "(1) §4 路径 7a 把 'PSR 757×' 改为与 §4 takeaway 一致的 '私募一线加权 ~600-1,300×' 或 '中位 PSR > 500×'；(2) §0.1 / §4 takeaway / §6.5 / v2.md 文档地图 统一一句 headline：'Figure 单家 LTM PSR 1,300-2,600×（中点 1,750×）；美系私募一线 4 家加权 600-1,300×（中点 900×）；中系一线 LTM PSR ~22× 已对齐 EV IPO 中位'；(3) chartPSRComparison 把这三个数字以分组显示（Figure 单家、美系加权、中系一线），避免单点 1,750× 视觉孤立。"
+    }
+  ],
+  "prior_issue_updates": [
+    {
+      "id": "i1",
+      "status": "resolved",
+      "reasoning": "§0.1 L366 显式把 '美系软件' 拆为 (a) Big Tech 基础模型层 + (b) 私募整机层；§4 路径⑦ 子路径 7a 详述 DeepMind / Intrinsic / OpenAI 不可直投但通过 Alphabet 二级 + 战略并购 + OEM 锁定间接暴露；§6.5.2 box ⑤ 显式 'LBC-4 不延伸到 Big Tech robotics 层'；DeepMind 在 v2 中出现 18 次（v1 仅 1 次）。框架骨架已修复。"
+    },
+    {
+      "id": "i2",
+      "status": "partial",
+      "reasoning": "BD-Hyundai 路径已纳入 §4 子路径 7b (L1062-1066) + A.2 OEM-locked 行 L2159 ★★★★ + §6.5.2 box ⑤ '不延伸到 BD-Hyundai OEM 锁定层' + §3.5 价格矩阵 L1449 显示 '现代汽车装配/售卖 Atlas Electric 2028 30K/yr'。但 chartValuationTop10 (L4547) + chartShipmentTop10 (L4565) 仍未把 BD 加入视觉 Top 10 — 见 i13。框架补全但视觉层未同步。Apptronik 也被同时归入 '私募一线泡沫' 和 'OEM-locked 非泡沫' 双桶 — 见 i14。"
+    },
+    {
+      "id": "i3",
+      "status": "resolved",
+      "reasoning": "§5.3 L1325 GraspVLA 加 ⚠ + '公司声称，未经第三方 benchmark 复核（截至 2026.05）' caveat；§2.2 L650 加 'H2 2026 前要求银河通用公开 LIBERO/CALVIN/SimplerEnv 第三方 benchmark' + 'China-led 概率下调 5-10pp' 条件；§4 路径⑥ L1050 关键节点同步；§A.2 银河通用 ¥225 亿 标 '含大基金政策溢价，市场化估值下限可能仅一半'。falsifiable benchmark gate 显式建立。"
+    },
+    {
+      "id": "i4",
+      "status": "resolved",
+      "reasoning": "§2.1 L604 重写为 '2026.05 现状是融合趋势而非二派对立' + 三种实现方案 (pure VLA / hierarchical S1-S2 / world-model-as-data-source) + drop binary catalyst → 改为 'hierarchical reasoning 在真机泛化任务 ≥30% 即视为突破'；§2.4 L696 Scaling Law 时间锚加 Tedrake / Joel Jang / Jim Fan 三源外推说明 + '若 Helix 02 / π0.5 已达前夜则时间锚可能过保守'。GR00T N1.6 (2026.01 CES, NVIDIA Cosmos Reason VLA) 路径分类符合 (c) world-model-as-data-source。"
+    },
+    {
+      "id": "i5",
+      "status": "partial",
+      "reasoning": "§5.3 KPI 卡 L1310 已改 '30-50% 真实部署 / LIBERO 97.1% 已饱和'；§2.4 L688 LIBERO 列为饱和；§A.4 Q&A L2354 已加 caveat。但 §1.1 第 4 拐点卡片 L484 仍写 'SOTA OpenVLA-OFT 在 LIBERO 4 套件 97.1%' 完全无 caveat — 这是报告 4 拐点之一的顶层叙事，IC 读者看到 §1.1 inflection card 后会形成 '技术拐点已到' 印象，到 §2.4 / §5.3 才被纠正。一致性未达到。同时 PE 视角 box L630 同样把 'LIBERO/CALVIN 已饱和（多数模型 95%+）' 提及，但 §1.1 顶层卡片仍是 misleading 锚点。"
+    },
+    {
+      "id": "i6",
+      "status": "resolved",
+      "reasoning": "A.2 L2153-2155 拆为 (a) 中系卡脖子零部件 (具身专属 alpha ★★★★★) + (b) 稀土上游 (稀土 beta + 时效 3-5 年 ★★★★★ + MP/Lynas 产能爬坡风险) + (c) 稀土终端定点未确认 (★★★★ — 金力永磁/中研股份从 v1 ★★★★★ 降级 + Tesla 独家失败敏感性 → IRR ÷2)；'稀土永磁占 BOM 0.5%' 与 'alpha vs beta' 区分明确。"
+    },
+    {
+      "id": "i7",
+      "status": "resolved",
+      "reasoning": "§2.1 L612 'Tesla (Optimus AI)：架构未公开 (外界推断可能采用端到端策略学习，非已披露 VLA 范式)'；§6.3 L1700 US-led 触发条件拆双 gate：(i) Tesla 量产兑现 (ii) VLA 真机部署 ≥ 80%；§2.1 末段 warning-box L630 显式 'US-led 触发条件应拆为两个独立 gate'。捆绑解除。"
+    },
+    {
+      "id": "i8",
+      "status": "resolved",
+      "reasoning": "§6.5.2 关键定位 box bullet ③ L1955 显式 '宇树 23× LTM (¥400亿/¥17.08亿全口径) ... 但全口径 ≠ 纯人形：人形 segment 占总营收 30-50%, 人形 PSR ~50-80× 接近美系下限'；§6.5.1 box 同步。LBC-1 / LBC-4 在 §6.5.2 ⑤ 已显式 '中系纯人形锚需等智元/银河通用 IPO'。"
+    },
+    {
+      "id": "i9",
+      "status": "partial",
+      "reasoning": "§5.3 L1364 已改 '多机构开源 (CMU/Stanford/UCSD/MIT 等) Genesis' + '430,000× 系单 GPU 简化刚体 + 极小场景峰值；标准复杂操作场景 vs Isaac Lab 加速比 ~10-100×' 限定。但 §1.1 第 4 拐点 ② 算力拐点 L487 仍写 '仿真：MIT Genesis 430,000× 实时速度开源' — 完全保留 v1 原文，'MIT' 错误归属 + 营销级数字均未修。§2.2 数据来源表 L643 也仍写 'GraspVLA 10 亿帧 / Genesis 430,000× 实时速度'，未加 caveat。三处中只修了 §5.3 一处。"
+    },
+    {
+      "id": "i10",
+      "status": "resolved",
+      "reasoning": "v2.md 文档地图 L92 显式标 '本表覆盖 8 款代表 VLA 模型' (vs v1.md '27 款') + response-2.md 标 accepted-as-limitation，承认 HTML 表未扩展。诚实声明已落实。"
+    },
+    {
+      "id": "i11",
+      "status": "resolved",
+      "reasoning": "§0.1 limitation-note L375 已添加 '(2) BOM 剪刀差 2.8× 基于 MS 静态测算；2026 跨境到岸真实成本因关税 + 合规 + 反审查供应链冗余估增 15-30%，2027 双向反制深化下剪刀差实际收窄至 1.8-2.2× — 反映在 LBC-3 Bifurcation 概率推导中'；执行摘要 KPI 卡 L351-352 也加 '2.8-4.1×' 区间 + 'MS single-source; BofA/Yole 仅披露中国链'。完成。"
+    }
+  ]
+}

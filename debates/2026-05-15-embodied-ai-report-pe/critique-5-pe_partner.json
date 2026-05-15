@@ -1,0 +1,49 @@
+{
+  "round": 5,
+  "persona": "pe_partner",
+  "draft_classification": "PE/VC IC 决策辅助报告 (Round-5, post-capture-probability factoring SST)",
+  "verdict": "pass",
+  "verdict_reason": "r4-n1 'Bull row capture conflation' 全面解决: 新增 P(智元 captures|scenario) 列 (L2683 col header), Bull/Base/Bear-A/Bear-B/True Bear 5 行都填入 prior (0.5 mid for China-led/Bifurcation, 0.6 mid for US-led, 1.0 for True Bear), E[MOIC] 重算为 2.55× mid (range 2.0-3.0×), E[IRR] 21% nominal mid (range 16-24%), LP real 13% mid (range 10-15%); 旧 canonical 4.6×/24%/15% 全部明确标 'Bull-takes-all ceiling DEPRECATED, overstates by ~80% on MOIC' 保留为 traceability; 公式 9 处级联 (§7 header L2678, table caption L2681, col header L2682, 5 row L2686-2690, E[MOIC] summary row L2691, SST footnote L2696, §A.6.3 paragraph L2762 + bullet L2767 + caveat L2769) grep-verified 严格一致. 我独立 recompute (P=0.5): Bull 0.35×0.5×9.0 + 0.35×0.5×0.5 = 1.6625 ✓; Base 0.35×0.5×3.8 + 0.35×0.5×0.5 = 0.7525 ✓; Bear-A 0.125×0.6×0.77 + 0.125×0.4×0.5 = 0.0828 ✓; Bear-B 0.125×0.6×0.13 + 0.125×0.4×0.5 = 0.0348 ✓; True Bear 0.05×1.0×0.12 = 0.006 ✓; Sum 2.5386 ≈ 2.54× ✓; IRR back-out 2.54^0.2 - 1 = 20.5% ≈ 21% ✓; LP real 20.5×0.7×0.95×0.93 = 12.7% ≈ 13% ✓. 数学闭合, 反向 spot-check 全 ✓. r4-n2 (Q9 P50/P95) 完全 resolved: L2593 宇树 'IRR Base case ~25% / Bull case ~45%', L2594 金力 '~20%/~40%', L2595 仿真 '~30%/~80%' — 3 line items 全部 named-scenario, 与 r3-n3 段落一致. r4-n3 (Bull trigger 5 万 vs 100 万 mismatch) resolved-via-r4-n1: Bull row trigger 现加 'AND 智元 dominant 中国 winner' (L2686 explicit), 5%/100% 不匹配现 implicitly priced as P(capture)=0.5. r4-n4 (channel breakdown 31% vs 21% portfolio anchor) 残留 minor: 明确 surface in caveat L2769 但 channel-level cross-section 没复制 5-row matrix (作 cosmetic carry-forward 接受). r4-n5 (P(N,N) split prior) 接受 documented carry-forward, capture factor 让 35% macro 不再 load-bearing, 灵敏度下降 ~50%. 0 fatal + 0 severe new. 残留 1 minor (r4-n4) + 1 documented carry-forward (r4-n5) 均 immaterial. 报告 IC Memo 投资建议 CONDITIONAL PROCEED $20-30M with capture-adjusted E[MOIC] 2.55× / LP real 13% 接近 sub-25% PE growth target 下沿, 但 SST 同时 surface ensemble alternative (3-stock 智元+宇树+银河通用 → P(capture) 0.85-0.95, E[MOIC] 回 3.5-4.2×) — 让 LP 自主决定. honest framing.",
+  "issues": [
+    {
+      "id": "r5-n1",
+      "severity": "minor",
+      "title": "SST footnote 'alternative IC action: 3-stock ensemble (智元 + 宇树 + 银河通用) → P(capture) 0.85-0.95, E[MOIC] 回到 3.5-4.2×' 是 strong claim 但无 derivation 支撑",
+      "attacks_claim": "SST footnote L2696 末句 alternative action recommendation",
+      "detail": "L2696 末句: 'Reviewer 可调 P(capture) prior; alternative IC action: 同时 fund 智元 + 宇树 + 银河通用 (3-stock ensemble) 让 capture probability → ~0.85-0.95, E[MOIC] 回到 3.5-4.2× 中位'. ensemble capture prob 0.85-0.95 隐含假设是 3 家中至少 1 家 wins China-led 的概率 = 1 - (1-0.5)^3 = 0.875 (independent 假设). 但 7-way 竞争中 3 家 capture event 不独立 (同一 macro scenario 下相互替代). 严格说: P(任一 wins | scenario) = P(智元 wins) + P(宇树 wins | 智元 lose) × P(智元 lose) + ... ≤ Σ P(each wins) ≤ 1 - Σ P(loss). 银河通用 funding 远低于宇树/智元, prior 应 < 0.3, ensemble = 1 - (1-0.5)(1-0.5)(1-0.3) = 0.825. 同时 3-stock ensemble 占用基金 ~3× 单笔限额 (3 × $20-30M = $60-90M), 基金 3% 上限被打破; 需 LP 加注 — footnote 已 surface 但没量化 LP 加注 dilution effect. 不是 severe (alternative action 不是 base recommendation; CONDITIONAL PROCEED $20-30M 是 base, ensemble 是 reviewer optional). 列为 minor 残留.",
+      "what_would_resolve": "(a) ensemble capture math 公式给出 (1 - Π(1-P_i)), 明示 independence 简化假设; (b) 给银河通用 capture prior (建议 0.2-0.3 反映 funding gap); (c) 量化 LP 加注 dilution (3× allocation 让 IRR 在 LP 角度只增 +50% 不是 +60%); (d) 或简单加 disclaimer 'ensemble 估算用 independence 简化, 真实有相关性, 实际 ensemble 效益 ≤ formula'. cosmetic, 不 block."
+    }
+  ],
+  "prior_issue_updates": [
+    {
+      "id": "r4-n1 (Bull row capture conflation, severe)",
+      "status": "resolved",
+      "reasoning": "Choice A full revision 真正落地. 新增 P(智元 captures|scenario) 列 L2683 + 5 row L2686-2690 都填 prior, E[MOIC] 重算 2.55× mid (range 2.0-3.0×) L2691, 旧 4.6× 明示 'Bull-takes-all ceiling DEPRECATED, overstates by ~80%'. SST footnote L2696 完整 rewrite 含 category-conflation 解释 + capture prior derivation + alternative ensemble action. §A.6.3 cascade L2762/L2767/L2769 都同步用 21% nominal canonical. §7 header L2678 4 数字并列 (capture=1 ceiling + capture-adjusted mid). 我独立 verify: Bull 0.35×0.5×9.0=1.575 + 0.35×0.5×0.5=0.0875 = 1.6625 ✓; Base 0.7525 ✓; Bear-A 0.0828 ✓; Bear-B 0.0348 ✓; True Bear 0.006 ✓; Total 2.5386 ≈ 2.54× ✓. IRR back-out 2.54^0.2 - 1 = 20.5% ≈ 21% ✓. LP real 20.5×0.7×0.95×0.93 = 12.7% ≈ 13% ✓. 数学 fully closes. 任何 reviewer 可 multiply 自己的 P(capture) prior. severe 全面 resolved."
+    },
+    {
+      "id": "r4-n2 (Q9 P50/P95 与 r3-n3 fix paragraph 矛盾, moderate)",
+      "status": "resolved",
+      "reasoning": "L2593-2595 3 个 Q9 line item 全部 named-scenario rewritten: 宇树 'IRR Base case ~25% / Bull case ~45%' ✓; 金力 '~20%/~40%' ✓; 仿真种子轮 '~30%/~80%' ✓. 每行带 'Round-5 r4-n2: P50/P95 distribution-percentile 术语已替换' tag. grep 'P50' 在 §A.5 Q9 区已空集 (除 §A.5 Returns section row label 上方 limitation-note ref). 同章节双术语并存矛盾消除. moderate resolved."
+    },
+    {
+      "id": "r4-n3 (Bull trigger 5 万 vs 100 万 mismatch, moderate)",
+      "status": "resolved",
+      "reasoning": "Bull row trigger L2686 现加 'AND 智元 dominant 中国 winner' 显式 conditional. 5/100 = 5% share 不匹配现 implicitly priced as P(capture)=0.5 (即 5% nominal share 解释为 '若 智元 dominant winner 则获得 China-led 大部分 upside'). resolved via r4-n1 cascade."
+    },
+    {
+      "id": "r4-n4 (channel breakdown 31% vs 21% portfolio anchor, minor)",
+      "status": "partial",
+      "reasoning": "L2769 caveat 显式: 'Base case 是 LP if Bifurcation AND 智元 wins (P=17.5%) conditional; capture-adjusted Base contribution to portfolio = 0.35×0.5×31% ≈ 5.4% mid'. portfolio anchor surface 充分. 但 channel-level cross-section 用 21% 重算的完整 5-row matrix 没 duplicate (LP 仍需自己算 21% × discount). builder 接受 'cosmetic carry-forward'. minor 残留 但 immaterial. carry-forward."
+    },
+    {
+      "id": "r4-n5 (P(N,N) split prior 27.5%/7.5% 来源, minor)",
+      "status": "accepted_documented",
+      "reasoning": "L1832 limitation-note 保留 35:27.5:5 split (不变). r4-n1 capture-probability factoring 让 35% macro China-led 不再 load-bearing on returns — 实际 contribution 现 multiplied by 0.5 capture, split 灵敏度 ↓ 50%. v5.md round-6+ carry-forward list 第 1 项. minor accepted-with-documentation."
+    },
+    {
+      "id": "pe-n9 / r3-n3 残留 (P50/P95 misuse on Q9 line items)",
+      "status": "resolved",
+      "reasoning": "通过 r4-n2 fix 一并完全 swept. Q9 三 line item L2593-2595 现全部 named-scenario; §A.5 Returns table row level 早已 named-scenario; 同章节双术语并存矛盾消除. r3-n3 builder 'fully resolved' claim 现于 round-5 真正成立."
+    }
+  ]
+}

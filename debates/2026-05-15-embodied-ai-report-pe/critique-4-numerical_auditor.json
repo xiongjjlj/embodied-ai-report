@@ -1,0 +1,87 @@
+{
+  "round": 4,
+  "persona": "numerical_auditor",
+  "draft_classification": "商业研究 / PE 视角具身智能产业链报告 v4 (中文)",
+  "load_bearing_claims": [
+    "LBC-1 美强软件中强硬件 — BOM 剪刀差 2.8-4.1×",
+    "LBC-2 2030 TAM $30-144 亿 (中位 $75 亿)",
+    "LBC-3 三情景 (Bifurcation 35 / China-led 35 / US-led 25 / Other 5 = 100% — Round-4 SST canonical)",
+    "LBC-4 Figure LTM PSR 1,300-2,600× 真泡沫; 3×3 sensitivity $0.61-1.40B / 28-64× canonical; 智元 E[MOIC] 4.6× / E[IRR] 23.6%≈24% 名义 / LP 14.6%≈15% real (Round-4 SST cell)",
+    "LBC-5 中系核心零部件 + 稀土永磁卡点是 PE alpha 主战场; OEM-locked 美系一档单独"
+  ],
+  "verdict": "pass",
+  "verdict_reason": "Round-4 的 SST (Single Source of Truth) 改造真正落地: (a) 3×3 g/WACC 9 cell 全部用统一公式 V = EBIT × df_4yr × [1 + 1/(WACC-g)] 推出, 我独立复算 9 cell 全部在 1% 误差内 (1.139/0.810/0.610, 1.255/0.870/0.645, 1.398/0.940/0.685; 发布 1.14/0.81/0.61, 1.26/0.87/0.64, 1.40/0.94/0.68 ✓); (b) MOIC/IRR canonical set 落地: E[MOIC] inline = 0.35×9.0 + 0.35×3.8 + 0.125×0.77 + 0.125×0.13 + 0.05×0.12 = 4.598 ≈ 4.6× ✓; E[IRR] inline = 0.35×55 + 0.35×31 + 0.125×(-5) + 0.125×(-33) + 0.05×(-35) = 23.6% ≈ 24% ✓; portfolio real = 23.6 × 0.7 × 0.95 × 0.93 = 14.595% ≈ 15% ✓; round-3 的 5 个 IRR 数字 (24.6/26.1/27.3/28/29) + 2 个 MOIC 数字 (4.4/4.8) 全部 deprecated 并在 SST footnote 显式列出; (c) US-led 25% 跨 §0.2 / §3.6 / §6.3 cards / §6.3 2×2 / chartScenarioProb / §A.5 / §A.3.2 / §A.6.3 / data-confidence 9 处统一, 我独立 grep 全部对齐; 2×2 cell joint = 12.5+12.5+7.5+67.5 = 100% ✓, 边际 P(Tesla Y)=25%/P(IRA Y)=20% 与 25% × 50% + 75% × 10% = 20% ✓; (d) 175× phantom 完全删除 (grep 0 hit), Lucid +183% = (150-53)/53 = 1.830 ✓; (e) chartPSRComparison title 内 in-chart source disclosure 落地; (f) WACC=21% 给出 Damodaran + 港股 + 国资 IPO + author's prior 分解; (g) Comps 表 N=5 footnote 算术全部重算. 8 个 round-3 issues 中 7 resolved + 1 explicit-accepted (n3.i8). 但 round-4 新引入或仍存 3 处 moderate 残留: (1) §A.5 IC Memo intro L2644 仍写 'PSR 20× ≈ EV IPO 中位 22%' (canonical 24×) + '简化 sanity check $0.15B' (canonical $0.17B) — SST propagation 漏了; (2) §6.5.1 footnote 'unified WACC 16%/g=3%' 3 个值 ($0.74/$0.20/$0.50B) 不全用 g=3% (Figure 实际 g≈2.15%, 宇树 实际 g≈4.3%, 仅 智元 g=3%) — fundamentals 反差结论站得住但 anchor values 不齐; (3) 智元/宇树 简表 column 'WACC=21%' 实际只对 智元 适用, 宇树 'lower' cell $0.36B 用 W=18% 不是 21%. 这 3 处都属 moderate, 不影响 LBC-4 核心数学链 (3×3 + Returns + 2×2 三个 SST cell 全部 reproducible), 因此 verdict=pass.",
+  "issues": [
+    {
+      "id": "n4.i1",
+      "severity": "moderate",
+      "title": "§A.5 IC Memo intro L2644 漏 propagation — 'PSR 20× ≈ EV IPO 中位 22%' 与 '简化 sanity check $0.15B' 是 round-3 残留, 与 round-4 canonical (24× / $0.17B) 不一致",
+      "attacks_claim": "LBC-4 (SST propagation completeness)",
+      "detail": "Round-4 builder 自称 SST canonical 全部 propagate, 但 §A.5 IC Memo intro 段落 L2644 仍含 2 个 stale 数字:\n\n(a) '估值已 frothy（但 PSR 20× 接近 EV IPO 中位 22%' — 但 round-2 修正后 EV IPO N=3 sample median 是 24× (L2072 蔚来行 'rowspan 24× (N=3)'), 不是 22%. 22% 是 round-1 旧值. 同 IC Memo §A.5 在 L2069 / L2099 / L2101 多处已用 24×, 仅 intro 这一处漏改.\n\n(b) 'vs 简化 sanity check $0.15B 表明市场 price in 非财务因子' — 但 round-4 canonical 智元 sanity check base case 是 $0.17B (L2004 主表 + L2034 智元/宇树简表 + L2048 智元 解读 warning-box 全部用 $0.17B). $0.15B 是 round-2 早期值, intro 段落漏同步.\n\n影响: PE IC reader 第一段 (memo 顶部) 看到 '22% / $0.15B', 然后下面 Returns 表用 24% / $0.17B, 同 memo 内自相矛盾, 即使数值差异不大 (22%→24% / $0.15B→$0.17B 都在 ~10% 量级), 会 undermine 'SST' 招牌. 报告 self-claims SST canonical 全 propagate (response-4 L2695 SST footnote 列 9 个 propagation 位置), 但实际遗漏了 IC Memo intro 这第 10 个位置.\n\n核验:\n  grep -n 'EV IPO 中位 22%' v4.report.html → L2644 (单独 1 处)\n  grep -nF '$0.15B' v4.report.html → L2003 (DCF 永续期价值 cell, 这是正确数字 = $43M × 1/0.15 × 0.5158 ≈ $0.148B) + L2644 (incorrect / stale).\n  L2003 的 $0.15B 是 '永续期价值' 中间项, 不是 sanity-check 最终值 (最终 $0.17B); L2644 用 '$0.15B' 表示 final sanity check, 这是错的.",
+      "what_would_resolve": "L2644 一处编辑: 'PSR 20× 接近 EV IPO 中位 22%' → 'PSR 20× 接近 EV IPO N=3 sample median 24× (round-3 重算)'; 'vs 简化 sanity check $0.15B' → 'vs 简化 sanity check $0.17B (Round-4 canonical, see §6.5.1)'. 二者改动 ~10 字符."
+    },
+    {
+      "id": "n4.i2",
+      "severity": "moderate",
+      "title": "§6.5.1 footnote 'unified WACC 16% / g=3%' 三公司锚 ($0.74 / $0.20 / $0.50B) 实际不共用同一 g — Figure 隐含 g≈2.15%, 宇树 隐含 g≈4.3%, 仅 智元 g=3%",
+      "attacks_claim": "LBC-4 (fundamentals-vs-WACC decomposition 论证基础)",
+      "detail": "L2039 footnote 写: '统一 WACC 16% 让 Figure / 智元 / 宇树 fundamentals-only 反差可见: Figure $0.74B / 智元 $0.20B / 宇树 $0.50B, ratio 3.7× / 1× / 2.5×'. 同段又写 'fundamentals 反差 73% / WACC 假设差 27% 分解'.\n\n用 round-4 canonical 公式 V = EBIT × df_4yr × [1 + 1/(WACC-g)], df_4yr = 1/1.16^4 = 0.5523:\n  Figure (EBIT=163, W=16%, g=3%): V = 163 × 0.5523 × (1 + 1/0.13) = 163 × 0.5523 × 8.692 = $783M = $0.78B (published $0.74B — off 5%)\n  智元 (EBIT=43, W=16%, g=3%): V = 43 × 0.5523 × 8.692 = $206M = $0.21B (published $0.20B ✓ rounded)\n  宇树 (EBIT=95, W=16%, g=3%): V = 95 × 0.5523 × 8.692 = $456M = $0.46B (published $0.50B — off 9%)\n\n反推 published 值 implied g:\n  Figure $0.74B 需 (1+1/(W-g)) = 740/(163×0.5523) = 8.22 → W-g=0.1385 → g≈2.15%\n  宇树 $0.50B 需 (1+1/(W-g)) = 500/(95×0.5523) = 9.52 → W-g=0.117 → g≈4.3%\n  智元 g=3% ✓\n\n三公司用了不同 g 给出 unified-WACC 锚, 实际并非 'fundamentals-only' (因为 g 是 fundamentals 之一). 若严格用同 (g=3%, W=16%), 三个值是 $0.78 / $0.21 / $0.46B, ratio = 3.71× / 1× / 2.19×. 与 published 3.7× / 1× / 2.5× 在 Figure/智元 ratio 上一致 (因为 ratio 不依赖于 EBIT scale 自身), 但 宇树 ratio 不一致 (2.19× vs published 2.5×).\n\n下游: 'fundamentals 反差 73% / WACC 假设差 27% 分解' — author 用 author's-WACC ratio 5.118× → unified-WACC ratio 3.7× → (5.1-3.7)/5.1 = 27.5% from WACC. 我重算: 用严格 g=3%/W=16%, unified ratio = 0.78/0.21 = 3.71× (不变), 所以 27.5%/72.5% 结论站得住, 但 anchor 值不严格.\n\n影响: 'fundamentals-vs-WACC 分解' narrative 是 round-3 num-i9 / pe-i3 raised 的根本性 sanity check 论证基础. round-4 给出三个 unified-WACC 数字本意是让 reader 复算, 但三个数字用不同 g 反而让复算失败 (reader 用 g=3% 算 Figure 得 $0.78B 而非 $0.74B). 解 reproduce 失败 → undermine 'SST canonical' 招牌.",
+      "what_would_resolve": "二选一: (a) 重新发 $0.78 / $0.21 / $0.46B (严格 g=3%/W=16%), 同时改 'ratio 3.7× / 1× / 2.5×' → '3.71× / 1× / 2.19×', 并相应调整 27% / 73% 分解 (用新 ratio: (5.12-3.71)/5.12 = 27.5%, 仍 ~27%/73% — 实际无变化, 因为 ratio 由 EBIT 决定); (b) 显式承认三个 anchor 不共用 g, 改 footnote 文字为 'Figure 在 g=2.15%/W=16% 显示 $0.74B; 智元 g=3%/W=16% 显示 $0.20B; 宇树 g=4.3%/W=16% 显示 $0.50B — 不同 g 反映三公司 perpetual growth rate prior 不同 (Figure 美系成熟期低增长 vs 中系硬件升周期)'. (a) 最干净."
+    },
+    {
+      "id": "n4.i3",
+      "severity": "moderate",
+      "title": "L2032 智元/宇树 简表 column header '下沿 (g=2%, WACC=21%)' 只对智元 row 适用, 宇树 row $0.36B 实际用 W=18% — column header 跨 row 不一致",
+      "attacks_claim": "LBC-4 (sanity-check sensitivity 内部自洽)",
+      "detail": "L2032 表头: '<th>下沿 (g=2%, WACC=21%)</th>'\nL2034 智元 row '下沿' cell: $0.13B → 复算 EBIT=43, W=21%, g=2%: df = 1/1.21^4 = 0.4665, V = 43 × 0.4665 × (1 + 1/0.19) = $126M ≈ $0.13B ✓\nL2035 宇树 row '下沿' cell: $0.36B → 复算 EBIT=95, W=21%, g=2%: V = 95 × 0.4665 × 6.26 = $278M = $0.28B ≠ published $0.36B\n  尝试 W=18%: V = 95 × 0.5158 × (1 + 1/0.16) = 95 × 0.5158 × 7.25 = $355M = $0.36B ✓\n\n所以 宇树 row '下沿' 实际用 W=18% 不是 column header 标的 W=21%.\n\nL2039 footnote 中也说 '宇树 base WACC = 16% ... 上限不超 18%' — 显式确认 宇树 不用 21%. 这一致, 但 column header '21%' 跨整行表则不一致.\n\n影响: reader 看 column header '21%' 然后 宇树 cell $0.36B 反推 W=18%, 会困惑 'header 与 row 矛盾'. 同样, 表正下方 footnote 显式说 智元 21% / 宇树 18%, 但表 header 没有 split. 简单修正: column header 改为 '下沿 (g=2%; WACC = 智元 21% / 宇树 18%)' 即可.\n\n这是 cell-presentation 不严格, 不影响数学结论 (sanity check 区间 $0.13-0.25B / $0.36-0.62B 都是正确的, 只是 column 命名 mislabeled).",
+      "what_would_resolve": "L2032 column header 改为: '下沿 (g=2%; WACC: 智元 21% / 宇树 18%)' 或拆为两行. 不影响下游."
+    }
+  ],
+  "prior_issue_updates": [
+    {
+      "id": "n3.i1 (3×3 g/WACC 9 cells deviate from formula)",
+      "status": "resolved",
+      "reasoning": "Round-4 r3-n4 完全 rebuild. L2020-2022 publish 9 cells: $1.14/$0.81/$0.61, $1.26/$0.87/$0.64, $1.40/$0.94/$0.68. 我用统一公式 V = EBIT × df_4yr × [1 + 1/(WACC-g)] 独立复算 9 cell: 1.139/0.810/0.610, 1.255/0.870/0.645, 1.398/0.940/0.685 — 全部在 1% 误差内. 配套 ratios 34/48/64, 31/45/61, 28/41/57 与复算 34.2/48.1/64.0, 31.1/44.8/60.5, 27.9/41.5/57.0 一致. limitation-note L2026 给出 3 个独立 worked example (g=3%/W=12%, g=3%/W=15% base, g=2%/W=18%) 都可 reproduce. ramp accumulator hybrid 完全删除. narrative 24-58× → 28-64× canonical 三处 (§3.6 L980 / KPI L1968 / §6.5.1 L2044) 全部同步."
+    },
+    {
+      "id": "n3.i2 (US-led 30% vs 20% +10pp gap)",
+      "status": "resolved",
+      "reasoning": "Round-4 r3-n2 全部用 25% canonical. P(Tesla Y)=25%, P(IRA|Y)=50%, P(IRA|N)=10% → P(Y,Y)=12.5%, P(Y,N)=12.5%, P(N,Y)=7.5%, P(N,N)=67.5%, sum=100% ✓. US-led 25% = P(Y,Y)+P(Y,N) = 12.5+12.5 ✓. 9 处独立 grep 都对齐 25%: §0.2 L480 ('20-30%；中点 25%'), §3.6 L992 ('中点 25%'), §6.3 卡 L1783, §6.3 2×2 L1825-1827, §6.3 limitation L1832, §A.3.2 cells L2393-2394, §A.3.3 Q3 L2368, chartScenarioProb L4554-4556 (data [35,35,25,5]), data-confidence L4485 ('35/25/35/5')."
+    },
+    {
+      "id": "n3.i3 (Returns cell header 29% vs inline 26.1%; portfolio 28%)",
+      "status": "resolved",
+      "reasoning": "Round-4 r3-n1 SST canonical 落地. E[MOIC] header L2690 = '~4.6× (canonical)', inline 公式 0.35×9.0 + 0.35×3.8 + 0.125×0.77 + 0.125×0.13 + 0.05×0.12 = 4.598 ≈ 4.6× ✓ (我复算 4.5985 ✓). E[IRR] header = '~24% 名义', inline 公式 0.35×55 + 0.35×31 + 0.125×(-5) + 0.125×(-33) + 0.05×(-35) = 23.6% ≈ 24% ✓ (我复算 23.6 ✓). LP real = 23.6 × 0.7 × 0.95 × 0.93 = 14.6% ≈ 15% ✓ (我复算 14.595% ✓). §A.6.3 L2766 portfolio = ~15%, 与 §A.5 SST 一致. Round-3 deprecated 数字 24.6/26.1/27.3/28/29% + 4.4/4.8× 全部列在 SST footnote L2695. 报告内 grep '~28%|~17%' 仅命中 L2768 deprecation footnote."
+    },
+    {
+      "id": "n3.i4 (175× phantom EV IPO N=2 median)",
+      "status": "resolved",
+      "reasoning": "grep -nF '175×' v4.report.html → 0 hit. L2044 narrative: 'EV IPO N=3 sample median 24× + Lucid 2021 IPO ~150× (NTM 锚, 单家可比, Rivian LTM 营收近零故 PSR 不可比) + AI 巨头 OpenAI 50×' — 175× 完全替换. Comps 表 L2077 Lucid '+183% (vs N=5 median 53×)' = (150-53)/53 = 1.830 ✓. L2076 Rivian 'N/A (LTM 营收近零)' 取代 +254%."
+    },
+    {
+      "id": "n3.i5 (chartPSRComparison 2024 / forward 无 source)",
+      "status": "resolved",
+      "reasoning": "L4935 Chart.js config 加 title.text: 'Source: Figure 2024.02 $2.6B / [INFERRED] $13M 2024 营收 (n3.i5); 中系 2024 = 智元 $1.5B / ¥3.5亿 [INFERRED]; 2026E-2028E forward = 营收 ramp $50M / $200M / $500M 假设 + 50% YoY multiple compression'. In-chart subtitle, reader 看到 chart 时直接 visible (不是 dev note)."
+    },
+    {
+      "id": "n3.i6 (智元 WACC=21% 无 source)",
+      "status": "resolved",
+      "reasoning": "L2039 footnote 完整重写: '智元 base WACC=18% = Damodaran emerging-market China tech 14% + 港股流动性折扣 +200bp + 国资 IPO 时点 +200bp; 上限 21% = 18% + 额外 300bp (author's prior, not market-sourced)'. 宇树 base WACC=16% = A-share tech 14% + 1.5× equity beta. fundamentals/WACC decomposition (27%/73%) 算式 explicit: author's-WACC ratio 5.1× / unified-WACC ratio 3.7× / (5.1-3.7)/5.1 = 27.5%. (但 unified-WACC anchor 值不严格用同 g — 见 n4.i2 新 issue, moderate.)"
+    },
+    {
+      "id": "n3.i7 (changelog 28% vs HTML 29%/26.1%/28% inconsistent)",
+      "status": "resolved",
+      "reasoning": "Resolved via r3-n1 SST. 全文 4 个 loci (L2677 / L2690 / L2694 / L2766) 全用 23.6%/24%/15% 标准化. v4.md changelog 已同步. Round-3 各旧数字均在 L2695 SST footnote 标 deprecated. 配合 r3-n3 删除 P5/P50/P95 percentile 术语 mismatch."
+    },
+    {
+      "id": "n3.i8 (DCF 250 × $130K × 80-90% 算式 underestimates)",
+      "status": "unresolved",
+      "reasoning": "Builder 显式 acknowledges 'NOT directly edited in round-4 (focus was on FATAL + 8 severe); listed in v4.md round-5+ candidate'. 我重 grep L1989 仍含 '$15-30M ... 250 台 × $130K × 30-50% 实际销售/RaaS 计提率估算 ≈ $9.75-16.25M, 上沿 $30M 需 80-90% 计提率或 350 台 DP140 cumulative' — 数学仍然不精确 ($30M 实际需 92.3% 计提率, 不是 80-90%). 但 (i) builder 显式 deferred 而非 hand-wave, (ii) [INFERRED] 标签全程在位, (iii) 不 cascade 到下游 SST. 标 unresolved 但不阻塞 verdict, 列入 carry-forward."
+    },
+    {
+      "id": "i14_round_1 / n2.i5 (3×3 table 不存在 → round-3 partial)",
+      "status": "resolved",
+      "reasoning": "Round-3 partial (cells inconsistent) → round-4 r3-n4 full rebuild. 见 n3.i1 above. 1 → P → R 三轮 cycle close."
+    }
+  ]
+}

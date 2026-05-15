@@ -1,0 +1,23 @@
+{
+  "round": 5,
+  "aggregate_verdict": "pass",
+  "totals_new": {"fatal": 0, "severe": 0, "moderate": 3, "minor": 3},
+  "per_persona": [
+    {"persona": "pe_partner",          "verdict": "pass", "prior_R": 4, "prior_P": 1, "prior_U": 0, "new_F": 0, "new_S": 0, "new_M": 0, "new_m": 1},
+    {"persona": "industry_expert",     "verdict": "pass", "prior_R": 4, "prior_P": 0, "prior_U": 0, "new_F": 0, "new_S": 0, "new_M": 0, "new_m": 0},
+    {"persona": "numerical_auditor",   "verdict": "pass", "prior_R": "all", "prior_P": 0, "prior_U": 0, "new_F": 0, "new_S": 0, "new_M": 3, "new_m": 1},
+    {"persona": "visual_design_expert","verdict": "pass", "prior_R": 2, "prior_P": 0, "prior_U": 0, "new_F": 0, "new_S": 0, "new_M": 0, "new_m": 1}
+  ],
+  "milestone": "ALL FOUR PERSONAS PASS. Pass criteria '0 fatal + 0 severe' met.",
+  "outstanding_moderate_issues": [
+    "n5.i1: E[MOIC] mid 三处不一致 (header 2.55×, 表内展开 2.53×, v5.md 2.54×) — cosmetic, picks one",
+    "n5.i2: Bear-B sunk-residual 0.5× > capture-conditional 0.13× — semantic inversion, ~1% impact",
+    "n5.i3: L499 KPI '基准情景（40%）' — r4-i22 sweep missed this line; should be 35%"
+  ],
+  "outstanding_minor_issues": [
+    "pe r5-n1: ensemble math under-derived",
+    "numerical n5.i4: E[IRR] method silent shift (linear-avg 23.6% → MOIC-backout 21%) at L2769",
+    "visual v5: minor cosmetic"
+  ],
+  "next_action": "STOP loop. Pass criteria met. Write final.md and commit."
+}

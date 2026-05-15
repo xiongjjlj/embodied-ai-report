@@ -1,0 +1,139 @@
+{
+  "round": 4,
+  "persona": "visual_design_expert",
+  "draft_classification": "PE 战略 pitch + 行业研究 HTML 单页报告 (v4: 5,015 行, 与 canonical report.html 1:1 一致 diff=0; <style> 块 line 10-274 = round-3 ship 不动; round-4 在 markup / chart config 端加 23 处 Round-4 marker, 主要为 SST footnote / 3×3 矩阵全 9 cell 重建 / Returns 5 情景表重建 / Korea satellite info-box / 子路径 7c / chartShipmentTop10 BD null fix / chartPSRComparison source disclosure)",
+  "load_bearing_claims": [
+    "Round-3 落地的 8 个 CSS class (.thesis-banner / .pullquote / .qa-pair / .qa-challenge / .qa-answer / .limitation-note / .sensitivity-table / .chart-loaded) 在 v4 仍全部 defined 在 <style> 块",
+    "Round-3 TOC 去重 + sec-X-Y 锚 13 个仍存在; v4 TOC 0 duplicate href",
+    "Round-3 修复的 .qa-challenge border 颜色 (v3-i3 fix) + Hero 4 thesis 卡 sec-3-X 锚 (v3-i1 fix) + 数据置信度表 overflow-x-auto wrapper (v3-i4b fix) 全部 ship 到 v4",
+    "Round-4 新增 7 处大块内容 (5 情景 Returns 表 / 3×3 全 9 cell 矩阵 / 智元宇树 3×3 简表 / Korea satellite info-box / 子路径 7c / SST footnote / chartShipmentTop10 重新 label) 均遵守已建立视觉规约 (overflow-x-auto / thead / caption / sensitivity-table / limitation-note class)",
+    "v4 HTML 结构平衡 (div 976:976 / table 33:33 / section 35:35); 30/30 pro 表全部 wrap in overflow-x-auto; 0 phantom CSS class"
+  ],
+  "verdict": "pass",
+  "verdict_reason": "Round-3 的 1 个 major + 1 个 minor 视觉 issue (v3-i1 Hero 锚 / v3-i3 qa-challenge border / v3-i4b overflow wrapper) 已实质 resolved + grep 验证。v3-i2 7 张 cartesian chart 缺 x-axis title — builder 在 v4.md Limitations #4 显式 acknowledged, accepted-limitation (不再 block)。Round-4 新加 23 处 markup 内容 + chartShipmentTop10 / chartPSRComparison config 修改, 全部遵守已建立的 .sensitivity-table / .limitation-note / .pro / overflow-x-auto / thead / caption 视觉规约 — 无新 phantom CSS class, 无 broken table 结构, 无 nesting / unbalanced HTML。Returns 5 情景表用 traffic-light row 背景 (#dcfce7 / #fef3c7 / #fee2e2 / #7f1d1d) + 内联公式块, 与 round-3 退出 IRR 表 / LTV:CAC 行 / DCF KPI 卡的 visual idiom 一致, 形成内部 design system 连贯性。无 regression — 该 pass。剩余 visual issue 仅 2 minor: (a) line 2695 SST 限定 note 缩进与上下行不一致 (cosmetic, 不影响渲染), (b) response-4 自报 22 Round-4 markers, 实际 grep -c = 23 (errata, 不影响内容)。两者均 minor, 不构成 block。",
+  "issues": [
+    {
+      "id": "v4-i1",
+      "severity": "minor",
+      "title": "line 2695 SST limitation-note 缺起始空格缩进, 与 v4 其他 <div class=\"limitation-note\"> 块 (line 401 / 455 / 1832 / 1958 / 2026 / 2039 / 2091 / 2150 / 2332 / 2400) 全部以 1 space + < 起始相比, 唯独此行直接顶格 — cosmetic 风格不一致",
+      "attacks_claim": "v4 markup 缩进风格统一",
+      "detail": "v4.report.html line 2695: '<div class=\"limitation-note\"><strong>Single Source of Truth (SST) for 智元 Returns ...' — 直接顶格无 leading space。对比同文件 11 个其他 limitation-note 全部为 ' <div class=\"limitation-note\">' (1 space + <)。CSS 渲染无影响 (HTML 忽略 leading whitespace), 但若 PE partner 用 prettier / VS Code format-on-save 重新格式化 HTML 时, 这一行会单独被改, 触发 git diff 噪音。这是 round-4 大块插入 (h4 + table + p + div) 时 copy-paste 风格漂移, 不是结构问题。",
+      "what_would_resolve": "在 line 2695 行首加 1 space, 与上下文 indent 统一。30 秒手术。"
+    },
+    {
+      "id": "v4-i2",
+      "severity": "minor",
+      "title": "response-4 自称 'Round-4 markers in HTML: 22 distinct edits', 实际 grep -c 'Round-4' v4.report.html = 23 — errata pattern repeat (response-3 v2-new-i11 称 '10 caption' 实际 9 同样 off-by-one)",
+      "attacks_claim": "response-4 calibration / 自报 vs 实际 一致性",
+      "detail": "response-4 line 9: 'Round-4 markers in HTML: 22 distinct edits, each with explicit `Round-4 <issue-id>` tag'. grep -c 'Round-4' /Users/feixiong/Desktop/ClaudeCode/embodied-ai-report/debates/2026-05-15-embodied-ai-report-pe/v4.report.html → 23. 差 1。不严重 (response-4 末尾的 anti-hallucination protocol 段落也写 'grep -nF Round-4 report.html | wc -l → 22' 不准确)。这是 builder 自报数与实际 grep 的 off-by-one, 与 round-3 response-3 称 '10 caption' 实际 9 是同样 errata pattern (一次差 1 不构成趋势, 但建议 round-5+ builder 在 response 末尾贴 grep 输出前 paste-test)。不影响内容质量, 也不是 visual regression。",
+      "what_would_resolve": "在 response-4 line 9 + line 145 把 '22' 改为 '23'。或在下一轮 response-N 起始处加一个 'numbers in this response auto-verified by grep' 自检 footnote。"
+    }
+  ],
+  "prior_issue_updates": [
+    {
+      "id": "v3-i1",
+      "status": "resolved",
+      "reasoning": "grep -nF '\"#sec-3-1\"' v4.report.html → L289 (Hero Thesis 1) + L346 (TOC); '\"#sec-3-2\"' → L294 (Hero Thesis 2) + L347 (TOC); '\"#sec-3-3\"' → L304 (Hero Thesis 4) + L348 (TOC); '\"#ch2-5\"' Thesis 3 保留 (一致, 见 L299). 4 张 Hero thesis 卡全部 click-through 到 granular section anchor。Round-3 major resolved。"
+    },
+    {
+      "id": "v3-i2",
+      "status": "unresolved (accepted-limitation)",
+      "reasoning": "Python AST 重扫 v4: 26 charts 中 7 个 cartesian chart 仍缺 x-axis title (chartScenarioShipment / chartChinaShipmentBreakdown / chartBomBreakdown / chartPenetration / chartPriceMatrix / chartScenarioCompare / chartPSRComparison). 与 v3 状态完全一致, 0 改善 0 退化. response-4 明确 'Not addressed in round-4 (scope: 3 personas with fatal/severe). Listed in v4.md Limitations #4'. v4.md round-5+ carry-forward #3 also records it. 这是 builder 显式 accept 的 limitation, 不再 block。"
+    },
+    {
+      "id": "v3-i3",
+      "status": "resolved",
+      "reasoning": "grep -nE 'qa-challenge.*border-l-2 border-green-300' v4.report.html → 0 results. grep -nE 'qa-challenge.*border-red-300' → 9 results (L2450/2467/2484/2501/2518/2535/2552/2569/2609 — 全部 9 个 qa-challenge 现统一红色 border)。响应 4 visual.v3-i3 row 'Changed to border-red-300 (matches all 8 other qa-challenge blocks)' 与 grep 一致。Round-3 minor resolved 干净。"
+    },
+    {
+      "id": "v3-i4",
+      "status": "partial->resolved (b) + accepted (a)",
+      "reasoning": "(a) caption 计数 9 vs 声明 10 — response-4 visual.v3-i4 row 显式承认 'Caption count stayed at 9; v4.md correctly states 9 (no claim of 10)'. v4.md 同步校正 9, errata 实质 acknowledged。(b) data-confidence 表 (L4476) 现外包 <div class=\"overflow-x-auto\"> (L4475) + 闭合 </div> (L4490) — grep 验证. iPad 768px mobile overflow 故障 resolved。30 张 pro 表 100% overflow-x-auto 覆盖。"
+    },
+    {
+      "id": "v2-new-i1",
+      "status": "resolved",
+      "reasoning": "8 phantom CSS class (.thesis-banner L193 / .pullquote L205 / .qa-pair L226 / .qa-challenge L227 / .qa-answer L228 / .limitation-note L234 / .sensitivity-table L244 / .chart-loaded L259) 在 v4 <style> 块 line 10-274 内全部仍有 rule。round-4 未触碰 <style> 块 (响应 4 明示)。无 regression。"
+    },
+    {
+      "id": "v2-new-i2",
+      "status": "resolved",
+      "reasoning": "v4 TOC 内 (id='toc-section' L315-394) 33 个 href 全部 sort uniq -c = 1 (0 duplicates). 13 个 sec-X-Y 锚 (sec-1-1/1-2/1-3/2-1/2-2/2-3/3-1/3-2/3-3/3-4/3-6/4-1/4-5) 全部仍在 v4 line 567/585/624/691/721/741/812/839/883/913/956/1074/1122。Round-2 FATAL 持续 resolved。"
+    },
+    {
+      "id": "v2-new-i3",
+      "status": "resolved",
+      "reasoning": "Round-3 留下的 partial (Hero anchors → ch-commercial-cliff chapter-top 而非 sec-3-X granular) 在 round-4 v3-i1 row 显式 close — L289/294/304 现指向 sec-3-1/2/3。Hero 4 thesis cards 真正达成 'clickable to §3.1/§3.2/§6.5/§3.3' 声明。"
+    },
+    {
+      "id": "v2-new-i4",
+      "status": "resolved",
+      "reasoning": "DCF KPI 3 张卡 (Figure 45× / 智元 16× / 宇树 12×) 仍在 v4 line 1961-1975, round-4 未触碰; punch line 在表上方 promote 不动。无 regression。"
+    },
+    {
+      "id": "v2-new-i5",
+      "status": "resolved",
+      "reasoning": "LTV:CAC 行 (v4 L2120) 红底 + ⚠ 无数量级优势 + 内联 ✓ 对照 与 round-3 一致, round-4 未触碰。无 regression。"
+    },
+    {
+      "id": "v2-new-i6",
+      "status": "resolved",
+      "reasoning": "warning/success/insight/info-box ::before icon (line 262-265) round-4 未触碰, 4 种 box 仍有非颜色 prefix icon。色盲 a11y 不变。"
+    },
+    {
+      "id": "v2-new-i7",
+      "status": "resolved",
+      "reasoning": "chartPSRComparison 仍为 logarithmic min:0.5 max:5000 + 3 horizontal annotation line, round-4 在 L4935 加 'Source: Figure 2024.02 ... 2026E-2028E forward ramp' title 文本 (num n3.i5 fix), 增强可读性, 未破坏 log scale 或 annotation。无 regression — 实际 micro-improvement。"
+    },
+    {
+      "id": "v2-new-i8",
+      "status": "resolved",
+      "reasoning": "§A.5 Risk Register 4 列 table.pro round-4 未触碰, 仍含 P×I 量化 + caption 'P × I scoring 1-5; residual = mitigant 应用后剩余风险'. 无 regression。"
+    },
+    {
+      "id": "v2-new-i9",
+      "status": "resolved",
+      "reasoning": "§A.6.1 退出渠道表第 7 列 'Base case 真实可分红 IRR' round-4 未触碰; 5 行 + traffic-light 颜色 (绿 25% / 黄 19% / 红 12%) 不变。round-4 r3-n1 SST 修订把可分红 IRR 在 §6 IC Memo 端用 14.6%/15%, 与 §A.6.3 portfolio cascade 同步, 表内列保留。无 regression。"
+    },
+    {
+      "id": "v2-new-i10",
+      "status": "resolved",
+      "reasoning": "Comps 表 Figure 行 (round-3 改写为 '1,300-2,600×') round-4 进一步 sanity, n3.i4 把 narrative '175× median' 全 removed, Lucid row 标 '+183%' (vs N=5 median 53×), Rivian row 标 'N/A LTM 营收近零'. 5 处跨表一致性 (§0.1/§3.5/§6.5.1/chartPSRComparison/§6.5.2) 不变, round-4 还加了 N=5 sorted [15,24,53,150,85000] 中位数 derivation footnote 进一步透明化。"
+    },
+    {
+      "id": "v2-new-i11",
+      "status": "partial (unchanged)",
+      "reasoning": "grep -c '<caption>' v4 → 9, 与 round-3 9 相同。round-4 visual.v3-i4 row 显式说明 'Caption count stayed at 9; we did not add another in round-4'. ~21 张 supporting table 仍无 caption — builder 标 carry-forward #4 → round-5+. 不是 regression 也不是 round-4 改善, 但 builder 明确 acknowledged 状态。"
+    },
+    {
+      "id": "v2-new-i12",
+      "status": "unresolved (accepted-limitation)",
+      "reasoning": "26 个 new Chart() 仍同步立即执行, 仅 IntersectionObserver fade-in animation. v4.md carry-forward #1 显式记录 'Chart lazy new Chart() refactor (visual i6/v2-new-i12)'. builder 持续 accept, round-4 未改动 chart lifecycle。"
+    },
+    {
+      "id": "v2-new-i13",
+      "status": "resolved",
+      "reasoning": "L1051 pullquote span (round-3 div→span 修订) round-4 未触碰, 仍是 inline-block, ::before 引号 icon 不变。无 regression。"
+    },
+    {
+      "id": "i6_round-1",
+      "status": "unresolved (accepted-limitation)",
+      "reasoning": "同 v2-new-i12 — lazy init 仍未实施。v4.md carry-forward 显式 acknowledge。"
+    },
+    {
+      "id": "i9_round-1",
+      "status": "partial (unchanged)",
+      "reasoning": "同 v2-new-i11 — 9/30 caption (30% coverage), 与 round-3 一致。builder accept 后 round-5+ carry-forward。"
+    },
+    {
+      "id": "i11_round-1",
+      "status": "unresolved (accepted-limitation)",
+      "reasoning": "SVG 不可能三角仍无 <title>/<desc>/role='img'。v4.md carry-forward #2 显式记录 'SVG <title>/<desc> ARIA (visual i11)'. builder accept。"
+    },
+    {
+      "id": "i14_round-1",
+      "status": "unresolved (accepted-limitation)",
+      "reasoning": "§3.6 投资动作变更表 4 列 × 10 行 round-4 未重构, 第 4 列 dense 文字未变。builder 在 round-3 已标 accepted, round-4 未触碰。"
+    }
+  ]
+}

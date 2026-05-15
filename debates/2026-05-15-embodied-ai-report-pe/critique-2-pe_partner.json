@@ -1,0 +1,166 @@
+{
+  "round": 2,
+  "persona": "pe_partner",
+  "draft_classification": "PE/VC 投资判断报告 (IC 决策辅助；非二级卖方研报)",
+  "load_bearing_claims_updated": [
+    "LBC-1 美强软件 / 中强硬件 + 美系软件二层拆分 (Big Tech 基础模型层 vs 私募整机一线); BOM 剪刀差 2.8-4.1× 区间",
+    "LBC-2 2030 年度 TAM $30-144 亿; 工业部署 < 1,000 台 conceded",
+    "LBC-3 三情景 (中点 35/20/40/5)，2×2 触发矩阵补强",
+    "LBC-4 美系'私募整机一线' Figure LTM PSR ~1,300-2,600×, 中系 IPO 接近 EV IPO median; 范围限定到 '私募整机' 排除 Big Tech / OEM-locked",
+    "LBC-5 中系核心零部件 + 稀土 alpha (具身专属 ★★★★★) + Distressed M&A 新行 (★★★) + 美系 OEM-locked 新行 (★★★★)"
+  ],
+  "verdict": "block",
+  "verdict_reason": "i1 / i7 表内未同步: §6.5.2 Comps table 仍写 Figure 790× ($39.5B/$50M)、EV IPO median 22×、Symbotic 4.5× —— 与同表上下文论述的 1,300-2,600× / median 24× / Symbotic 13× / 工业 median 8.1× 直接冲突, 表 vs 文字自相矛盾比 v1 更严重 (v1 是一致地错, v2 是不一致地'已修复'); i10 决策树第二层 4 行 Tesla if-then 表在 v2.md / response-2.md 反复声称 'L2240-2260', 实际 HTML 该位置仍是 v1 三节点流程图, 表不存在; A.4 Q2 答复仍为 v1 'Tesla 失败是双刃剑' 一句话, 未扩充. 三处属于 builder 在 response-2.md 里声明已修但 HTML 未落地, 是 process-level fatal; 加上 i8 情景 2×2 矩阵 (新增) 在 cell '5%' 和 '10%' 自己列了 marginal 概率, 但 total 不等于 0.20 (US-led 区间中点), 数学不闭合.",
+  "issues": [
+    {
+      "id": "n1",
+      "severity": "fatal",
+      "title": "§6.5.2 Comps 表三处关键数字仍是 v1 旧值, 与同章文字 round-2 修订全面冲突 — 'fix' 在 narrative 里, 表里没改",
+      "attacks_claim": "LBC-4 / 数据治理",
+      "detail": "L1930 仍写 'Figure AI ... 790× ($39.5B/$50M)' — 这是 prior i1 的原始病灶, response-2.md 声明 '全文同步' 但本表未改; L1934 EV 整车 rowspan 仍写 'median 22×'; L1940 'Symbotic ... 4.5×'; L1938 工业自动化 rowspan 仍写 'median 3.5×'. 但 L1898 / L1907 / L1953 / L1955 / L1956 同一份报告内反复用 1,300-2,600× / median 24× / Symbotic 13× / 工业 median 8.1×. IC 打开报告先看表 (因为表是 atomic source of truth), 表里 790× 和 22× 与下方 bullet 直接冲突, 这比 v1 'PSR 表内 cell 与 PSR 公式分母不一致' 更严重 — v1 是 self-contradicting; v2 是 'pretend to have fixed but didn't'. response-2.md 明示 '§6.5.2 Comps L1882-1908' 是修订位置, 但实际写在那的 EV IPO sample N=3 + N=2 manic-phase 的扩展行 (Rivian / Lucid / Tesla 2010) 完全没有出现在表 row 里 — 表仍只有 3 个 EV IPO row. Builder 在 response 里声称 N=5 全口径 median 53×, 但表里加和算出来的 median = median(15, 24, 53) = 24× 是 N=3 计算; 53× 这个数字在表内没有任何 row 支撑. 这是 'narrative claim 优先于表 evidence' 的 sell-side 病灶.",
+      "what_would_resolve": "(a) §6.5.2 Comps 表 Figure 行 LTM PSR 改为 '~1,750× ($39B / [INFERRED] $22.5M); 区间 1,300-2,600×' 替换 790×. (b) EV IPO 板块新增 2 行 (Rivian 2021.11 PSR ~85,000× LTM 或合理 forward 锚 / Lucid 2021.7 PSR ~150× NTM), 配合 footnote 注明 LTM 不可对照, 仅用 NTM/SPAC entry); 重算 median (3-row N=3 median vs 5-row N=5 median 两个数字都列出, 不要二选一). (c) Symbotic 行改 13× LTM (FY2025 $30B mkt cap / $2.25B 营收), 工业 median rowspan 重算为 8.1×. (d) 验收标准: 表里每个数字 = 文字里每个数字, 零差异."
+    },
+    {
+      "id": "n2",
+      "severity": "fatal",
+      "title": "A.3 决策树第二层 Tesla if-then 表在 HTML 中根本不存在 — response-2.md 反复声明 'L2240-2260' 是 phantom citation",
+      "attacks_claim": "i10 follow-up / structural",
+      "detail": "response-2.md 行 17 写明: 'A.3 新增决策树第二层 4 行 if-then 表 (Tesla 兑现 Y/N × IRA Y/N → 5 大资产类调整); §0.3 行动 ③ 同步; A.4 Q2 答复扩充 cascade — A.3 L2240-2260'. v2.md §A.3 行 (table line 89) 也写 'A.3 决策树 L2104→L2218 新增第二层 Tesla if-then 表'. 实际 HTML L2196-2218 是 v1 原版 mermaid 三节点决策树 (Q1/Q2/Q3 → A1/A2/A3/A4), L2218-2249 是 '5 个最值得做的决定' (与 §0.3 重复), 第二层 4 行 if-then 表完全不存在. §0.3 L438 只有一句 'IF Tesla Optimus 2026 Q3 量产 < 10,000 台 THEN: 美系一线减仓 (-50%) + 中系硬件加仓 + 仿真/数据基础设施加仓 (详 §A.3 决策树第二层)' — 但 '详 §A.3 决策树第二层' 点过去没有该表. A.4 Q2 (L2289) 答复仍为 v1 完整原文: '① base case 假设 Tesla 2030 达 30 万... ② 如果 2026 Q3 量产数据低于 10,000 台/年, US-led 概率从 25% 降到 15%, Bifurcation 升到 50%; ③ ... Tesla 失败对 Figure / Apptronik 估值是双刃剑'. 这条 critical claim ('已扩充 cascade') 在 v2 完全没有落地. 对 PE IC 这是 process integrity fatal — 不是 forgot, 是 builder 在 response-2.md 里报告了未做的修改.",
+      "what_would_resolve": "(a) A.3 L2196-2218 mermaid 决策树之后新增 'A.3.2 第二层: Tesla × IRA 4 行 if-then 矩阵', 至少 4 行 (Tesla Y / IRA Y; Tesla Y / IRA N; Tesla N / IRA Y; Tesla N / IRA N), 每行给出 5 大资产类 (美系一线整机 / 中系一线整机 / 美系 OEM-locked / 中系零部件 / NVIDIA-基础设施) 的具体加减仓百分比. (b) A.4 Q2 答复重写, 不能再以 '双刃剑' 收尾, 必须给出 'Tesla 失败 → Figure 估值 -50% / Apptronik 受益 +20% (短期承接需求) / 长期 narrative 破裂 -30% 净效应 -10% / 中系硬件 +X% / 仿真 +Y%' 的量化 cascade. (c) response-2.md 重新统计'已修复 / 未修复'状态, builder 不能再以 'L2240-2260 已修' 描述实际未存在的内容."
+    },
+    {
+      "id": "n3",
+      "severity": "severe",
+      "title": "§6.3 新增 2×2 触发条件矩阵自身数学不闭合 — 4 cell 的概率加和 = 20+5+10+(35+40) = 110%, 与 '总和恒为 100%' 直接冲突",
+      "attacks_claim": "LBC-3 / 数据治理",
+      "detail": "L1736-1737 新增 2×2 矩阵 cell 内容: cell(Tesla Y, IRA Y) = 'US-led (20%)'; cell(Tesla Y, IRA N) = '~10% Tesla 兑现但无政策...并入 US-led 下沿 (整体 US-led 15-25%)'; cell(Tesla N, IRA Y) = '~5% 政策推出但 Tesla 失败...(混合情景, 并入 Bifurcation 一支)'; cell(Tesla N, IRA N) = 'China-led (35%) + Bifurcation 主干 (40%)'. 加和 = 20 + 10 + 5 + (35+40) = 110% — 这是 prior i6 (概率 90%) 在 round-2 试图用 '~5% other' 解决, 但 builder 在 2×2 矩阵里又新增了 '~10%' 和 '~5%' 两个 cell, 并且文字说 'cell(Tesla Y, IRA N) ~10% 并入 US-led 下沿', 但 US-led 卡片 (L1695) 已显式写 '15-25% 中点 20%' — 若 cell(Y, N) 10% 已并入, 那 cell(Y, Y) US-led 20% 加 cell(Y, N) 10% = 30%, 超出 US-led 15-25% 区间上限 5pp. 类似 cell(N, Y) 5% 'merge 进 Bifurcation 一支', 但 Bifurcation 40% 是基准情景, 加 cell(N, Y) 5% 后 = 45%, 仍在 Bifurcation 35-45% 上限 — 勉强 OK 但触线. 整个 2×2 矩阵的概率没有 '正规化为 conditional', 而是 marginal 拼贴, 数学治理失败. 这条 prior i6 (concede 解决) + prior i8 (concede 解决) 都在 2×2 cell 数字上重新破裂, 是修一处坏一处的典型 cascade.",
+      "what_would_resolve": "(a) 2×2 矩阵的 4 个 cell 概率必须严格加和 = 100%, 不能并行使用 '区间上限 25%' + '另算 ~10%' + '另算 ~5%'. 重写为: P(Tesla Y) = 30%; P(Tesla N) = 70%; P(IRA | Tesla Y) = 50%; P(IRA | Tesla N) = 10%. 4 cell 计算: P(Y,Y) = 15%; P(Y,N) = 15%; P(N,Y) = 7%; P(N,N) = 63%. (b) 每 cell 显式标注归属于哪个 named 情景 (e.g. P(Y,Y) 15% = 'US-led core'; P(Y,N) 15% = 'US-led without policy = US-led 下沿'; 合计 30% = US-led + 美系无政策, vs 卡片 15-25%, 这意味着 US-led 区间应上调到 25-35%, 或者 P(Tesla Y) 应下调到 20%). (c) limitation-note 行 'sum 恒为 100%' 不能只在文字声称, 必须在表里 visible 加和."
+    },
+    {
+      "id": "n4",
+      "severity": "severe",
+      "title": "A.5 IC Memo 概率加权 IRR 数学不一致 — 表里写 '0.35×9 + 0.40×3.8 + 0.20×0.77 + 0.05×0.12' = 3.9×, 但 0.05×0.12 = 0.006 不是 0.12 的 P5 含义, '真实可分红 IRR ~19%' 与 §A.6.3 重复推导差异",
+      "attacks_claim": "i2 follow-up / LBC-4",
+      "detail": "L2506 概率加权 MOIC 算式: '0.35×9 + 0.40×3.8 + 0.20×0.77 + 0.05×0.12' = 3.15 + 1.52 + 0.154 + 0.006 = 4.83× ≈ 4.8× (报告写 ~3.9×). 直接算术核验: 实际 = 4.83×, 报告 = 3.9× — diff 23%. 即使把 0.05×0.12 中的 0.12 解读为 'True Bear MOIC 中点 (0.08-0.15× 中点 ~0.12×)', 加权和 4.83× 仍 ≠ 3.9×. 可能 builder 想说 0.35×9 → 应用了某种衰减系数, 但表里看不出. 更糟糕: 表头注 'P5 真实 bear MOIC 0.08-0.15×' 但概率 5% 是 'True Bear / P5', 这语义混淆 — P5 = 5th percentile (下侧 5% 的 MOIC 估计值), 不是 5% 概率发生的 outcome. PE IC 会把这当 sell-side 障眼法: 用 P5 这个 percentile 术语 套在 5% 概率 cell 上, 让 P5 MOIC 0.12 进入加权平均, 实际 P5 应该是从 full distribution 算出来的下侧分位, 不应单独 marginal 加权. 另: '~28% 名义 / ~19% 真实 LP 可分红' — §A.6.3 (L2570) 算 '31% × 0.7 × 0.95 × 0.93 = 19.2%' 用的 base case IRR 31%, 但概率加权 base 仅 ~28%, 应该 28 × 0.7 × 0.95 × 0.93 = 17.4%. 两处 ~19% 是 numerical coincidence 还是真值取整? 没有任何说明.",
+      "what_would_resolve": "(a) 重算概率加权 MOIC: 0.35×9 + 0.40×3.8 + 0.20×0.77 + 0.05×0.12 = 4.83× 或者重新声明各 case 概率 / MOIC. (b) 把 'True Bear / P5' 改名 'True Bear (5% 概率 tail)', 不要混用 P5 percentile 术语. (c) §A.6.3 重新基于概率加权 IRR (而非 base IRR) 推导真实可分红, 或显式声明 '本节使用 base IRR 不是概率加权 IRR, 因为 LP 实际遇到的是 base case 概率上下文'. (d) 给出 expected IRR (named '名义 IRR') 和 risk-adjusted IRR (P50 / P5) 的明确公式, 让 IC 看到 VaR-grade 输出而不是平均值."
+    },
+    {
+      "id": "n5",
+      "severity": "severe",
+      "title": "§6.5.1 DCF 3×3 g/WACC 敏感性表只对 Figure 完整展开 — 智元 / 宇树 只给区间, 但区间 ('$0.13-0.25B') 的端点没有标 (g,WACC) corner, 不能用来攻击 LBC-4 '美系真泡沫 vs 中系合理' 反差源于 WACC 假设差",
+      "attacks_claim": "i3 follow-up / LBC-4",
+      "detail": "prior i3 攻击核心: '美系 45× sanity vs 中系 16× sanity' 反差中有多少来自 fundamentals, 多少来自 WACC 假设差 (Figure 15% vs 智元 18%). round-2 builder 在 response-2.md L10 声明 '智元/宇树区间标注' — 实际 §6.5.1 L1911 智元解读说 '敏感性 $0.13-0.25B (市场 11-22×)', L1915 宇树解读说 '敏感性 $0.36-0.62B'. 但区间端点对应哪组 (g, WACC) 没说. PE IC 必算: 若 Figure WACC 取 18% (与智元统一), Figure sanity 多少? 若 智元 WACC 取 15% (与 Figure 统一), 智元 sanity 多少? 这两个 '统一 WACC' 数字 才是 '真正 fundamentals 反差' 的度量. response-2.md 自己 L216 写 '智元同样敏感性: g/WACC 区间下 sanity 在 $0.13-0.25B, 市场比值 11-22×' — 但 11-22× 区间 cover 智元 16× base case, 没有 'fundamentals-only' 分解. 修订诚实但攻击未真正解决: i3 的 binding 问题不是 '是否有敏感性', 是 '中美反差是否在 fundamentals'. 此外 §6.5.1 文字 (L1907) 称 '完整 DCF 应纳入失败概率 30-40%' 但表里 ' = sanity check 估值 $0.87B' 没有乘 (1 - 35%) 的失败概率折减. 若纳入, Figure sanity = $0.87B × (1-35%) = $0.57B, 市场比值 = $39B / $0.57B = 68×, 比当前 45× 大 50%. 报告自己 surface 了 limitation 但未在数字 propagate.",
+      "what_would_resolve": "(a) §6.5.1 3×3 表对智元 / 宇树各做一遍完整表 (不要只列区间), 或至少给 '统一 WACC 16% 中点' 的 cross-comparison row. (b) 在表底加 'Fundamentals-only delta (统一 WACC 16%): Figure $0.X B / 智元 $0.Y B / 宇树 $0.Z B', 把 WACC 假设差从 fundamentals 反差里减出. (c) 'sanity check × (1 - 失败概率 30-40%)' 至少给出一个 footnote 算式, 让 LBC-4 美系比值 45× → 68× 这个 shift 显式. (d) 或承认 '本 sanity check 不做失败概率折减, 因为已经是 EV-grade simplified 估算; 完整 DCF 留 data room' — 写清楚就行, 现状是两边都不做."
+    },
+    {
+      "id": "n6",
+      "severity": "severe",
+      "title": "A.5 IC Memo Returns 表 Bull/Base/Bear MOIC 与 entry $3.9B post-money 算术不一致, 'multiple' 列被 hardcoded 没有按新 entry 重算",
+      "attacks_claim": "i2 follow-up / LBC-4",
+      "detail": "L2502-2505: Bull $35B exit / Multiple 9.0× → 实际 35/3.9 = 8.97 ≈ 9 ✓; Base $15B / 3.8× → 15/3.9 = 3.85 ≈ 3.8 ✓; Bear $3B / 0.77× → 3/3.9 = 0.77 ✓; True Bear $0.3-0.6B / 0.08-0.15× → 0.3/3.9=0.077, 0.6/3.9=0.154 ✓. **算术对**, 但 entry $3.9B = '$2.8B × 1.39×' 是 mid-point 1.3-1.5×; 若取 entry 范围 $3.6-4.2B, Multiple 应给区间: Bull 8.3-9.7× / Base 3.6-4.2× / Bear 0.71-0.83× — 单点 entry $3.9B 隐藏了 ±8% 的 entry uncertainty. 更关键: Bear case '量产 < 10K + 美 IRA 出台' 对应 exit $3B = 智元 IPO 后估值 $3B, 这意味着 'Bear case 智元 IPO 仍然以 $3B 成功上市' — 但 'IRA 推出' = 美系对中国具身实施惩罚关税, '同时智元成功港股 IPO 估值 $3B' 矛盾 (港股 IPO 在 US-led 情景下应被搁置或大幅折扣). Bear case 退出渠道列 (L2504) 写 '战略并购 (比亚迪 / 美的)' — 这与 'exit 估值 $3B' (= 港股 IPO 估值数量级) 不匹配, 比亚迪 / 美的并购 智元的 control premium 1.3-1.5× × 公平价值, 但公平价值在 Bear 应是 DCF sanity $0.17B 附近, 不是 $3B. 战略并购 Bear exit 应 $0.2-0.5B (= DCF $0.17B × 1.3-2× control premium), MOIC 0.05-0.13× — 与 True Bear 行的 0.08-0.15× 接近. Bear 行 ($3B / 0.77×) 实际是 'US-led + IPO 部分成功' 而不是 'US-led + IPO 失败' — 仍是粉饰过的 Bear, prior i2 攻击的核心病灶未根除.",
+      "what_would_resolve": "(a) Bear case 拆为 Bear-A (US-led + IPO 成功但估值压缩 $3B) 和 Bear-B (US-led + IPO 受阻 + 战略并购 $0.5B), 概率各 10%, 合计 20%. (b) Multiple 列改写区间 (Bull 8.3-9.7× / Base 3.6-4.2×), 与 entry 区间一致. (c) 退出渠道列: Bear-A 行写 '港股 IPO (压缩估值)', Bear-B 行写 '战略并购 (比亚迪 / 美的)', 不要把两个不同退出路径混在一个 cell."
+    },
+    {
+      "id": "n7",
+      "severity": "severe",
+      "title": "§A.6.2 Strategic Acquirer 表里 SoftBank 一行 deeply suspect — '已退出 BD (2020-22)' 后, 用 'Arm 32B (2016) + BD 投资 (2020-22)' 作为'寻找中国对标' 的 rationale, 这是典型 PE 套娃逻辑, 实际 SoftBank Vision Fund 自 2022 暴亏后已严格收缩, 不应列为可信 acquirer",
+      "attacks_claim": "i4 follow-up / structural",
+      "detail": "L2558: 'SoftBank Vision Fund: $100B+ AUM / $20-50B 单笔; Arm $32B (2016); BD 投资 (2020-22); 具身 AGI 长期赌注; 已退出 BD; 寻找中国对标; 较 friendly (历史投资字节 / 滴滴 / Couchbase)'. 三处问题: (1) SoftBank Vision Fund 2022 Q3 单季亏损 $30B (WeWork / 字节 / 滴滴 / Klarna 等大幅减计), 自 2023 起 Son 公开承认 'shift to defense'. '$20-50B 单笔' 在 2026 是 historical 上限, 不是当前 deal capacity — 实际近期最大单笔 (2024 Stargate $100B 也只是 commitment 不是 SoftBank 单方 check). (2) '已退出 BD' (2020 卖给 Hyundai, 2021 卖剩余 20%) + '寻找中国对标' = builder 的 narrative, 但 SoftBank 自字节 2022 后已显著收缩中国 deal flow (2024-2025 中国 portfolio 几乎只剩存量管理). 列入 ' friendly' acquirer 是 stale assumption. (3) '历史投资字节 / 滴滴 / Couchbase' — 滴滴 SoftBank 仍持有 retreat 损失大, 字节估值近年走平, Couchbase 私有化后 SoftBank 是 secondary holder; 用这三个 historical 投资 backup '中国 friendly' 不成立, 不如用 '比亚迪 / 上汽 / 美的' 一行 (国资背景已绑) 来支撑 acquirer thesis. SoftBank 行应被 demote 到 'historical reference, current relevance low'. PE IC 看到这一行会立刻怀疑整个 acquirer table 是 quantity-not-quality.",
+      "what_would_resolve": "(a) SoftBank 行 rationale 列改为 '⚠ 2022 起 Vision Fund 转 defense, 当前 deal capacity 估 $5-15B/单笔 (vs 历史 $20-50B); 中国 portfolio 自字节后未新增; relevance: 长期 watchlist 而非 active acquirer'. (b) 把 'Hyundai / Samsung / LG (韩系)' 一行细化, 或新增 'Big Tech (Alphabet / Microsoft / Amazon)' 一行 — DeepMind / Apptronik (Mercedes pilot) 等关系链已存在, 三家 cash 都 > $50B; Alphabet 收 Intrinsic 历史已证 willingness. (c) 验收: 每一行 acquirer 必须给 2024-2026 内的 active deal evidence, 否则 demote 到 footnote."
+    },
+    {
+      "id": "n8",
+      "severity": "moderate",
+      "title": "Distressed M&A (新增 PE 行动 ⑤) 给的 30+ 三线 watchlist 实际只有 10 个公司名, 没有 runway months / cash 估算, 仍是 prior i5 攻击的'空 watchlist'",
+      "attacks_claim": "i5 follow-up / LBC-5",
+      "detail": "prior i5 要求 '10 家 Tier-2/3 名字 + 估算剩余 runway (months of cash) + 最近一轮估值 + 主要技术 / 客户资产 + 潜在并购买家'. round-2 在 A.2 L2160 + §0.3 L446 + A.4 Q5 给了 watchlist, 但 only 10 个名字: '傅利叶 / 众擎 / 加速进化 / 月泉 / 它石 / 自变量 / 开普勒 / Astribot / Pudu / 跨维'. 缺失: (a) 每家 runway months (estimated cash / monthly burn) — 这是 '0.3-0.5× 收购' 时点判断的核心; (b) 最近一轮估值 (确定 0.3-0.5× 的 anchor); (c) 主要技术资产 (确定收购方 rationale); (d) 谁会收 (mapping 到 acquirer 表). 报告仅说 '估算剩余 runway 6-18 月' 是一个范围, 没有 per-company 估算. PE IC 看 distressed M&A action ⑤ 实际可执行性接近 0 — 因为 IC 决策要回答 '哪家 / 何时 / 什么价 / 谁接' 四问. response-2.md L120 自评 '+ EV 2016 骗补对照' 加强了行业范式, 但具体 deal-level info 仍空.",
+      "what_would_resolve": "(a) §A.2 distressed 行扩为子表 (per-company 一行): runway (months) + 最近 round 估值 + 核心技术 / IP / 数据 / 客户资产 + 潜在 acquirer mapping. 最少 10 行, 每行 5 列. (b) 'runway 6-18 月' 改 per-company estimate. (c) 若信息不足, 至少给一个'公开数据可查的 6 家 + 待 DD 调查的 4 家'分级."
+    },
+    {
+      "id": "n9",
+      "severity": "moderate",
+      "title": "Q9 答复改为 P50 / P95 — 但 P95 (上侧 95% 分位) 概念被误用为 'Bull case IRR', 与 P5 percentile 在 i2 / n4 上误用同源, 整份报告对 percentile 术语 inconsistent",
+      "attacks_claim": "i9 follow-up / LBC-5",
+      "detail": "L2410: 'enter Pre-IPO ¥120 亿 → exit P50 ¥400 亿 / P95 ¥1,000 亿; IRR P50 ~25% / P95 ~45%; 概率加权中性 ~35% (base-case-conditional 而非 single-point)'. P50 / P95 是 percentile of distribution 概念 (P95 = 95th percentile, 即 95% 的 outcome 落在 P95 之下), 但这里 P95 显然指 'upside case', P50 指 'median case' — 这是把 percentile 与 named scenarios 混淆. PE IC 会问 '你的 P95 是从什么分布算来的? 是 base case + ±2σ 还是直接给 scenario probability 21% 处的数字?'. 类似 IC Memo L2505 'True Bear / P5 行' — P5 = 5th percentile, 但 builder 用作 '5% 概率 cell'. 整份报告对 P5 / P50 / P95 没有统一定义. PE IC 看到 mixed usage 立刻怀疑 quant 训练. response-2.md L16 自评 '改 base-case-conditional P50/P95' 但实际只是把'Base / Bull' 换名'P50 / P95', 没有引入新 distribution 信息. 这条不是 fatal 但折损 quant credibility.",
+      "what_would_resolve": "(a) 整份报告统一定义: P5 = 5th percentile (下侧极端), P50 = median (= Base case 中位), P95 = 95th percentile (上侧极端); 概率加权 expected value 单独命名为 'E[IRR]'. (b) Q9 改写: 'enter ¥120 亿 → exit median ¥400 亿 (Base) / upside ¥1,000 亿 (Bull, 5% 概率 tail); IRR base 25% / upside 45%; expected E[IRR] ~28%'. 不要混用 P50 / Base case. (c) 同步 A.5 IC Memo 'True Bear / P5 行' 改 'True Bear (5% probability tail)'."
+    },
+    {
+      "id": "n10",
+      "severity": "moderate",
+      "title": "§6.5.1 DCF 表 Figure 永续期价值 '+$0.78B' 算术核验: $163M × 1/(15%-3%) × 0.572 = $776M ✓, 但 footnote 'v6 EBIT 应为 $1.55B' 与表 footnote 'v7 已修复' 提到 v6/v7 内部版本号让外部 reader 困惑",
+      "attacks_claim": "数据治理 / 可读性",
+      "detail": "L1894 表注: '+ 永续期价值 (EBIT × 1/(WACC-g) × 折现因子); +$0.78B / +$0.15B / +$0.40B; g=3%; v7 已修复 v6 Figure 算术错 ($1.24B 应为 $0.78B 按 v7 EBIT; 用 v6 EBIT 应为 $1.55B)'. (1) 算术: $163M / (15%-3%) × 0.572 = $1,358M × 0.572 = $776M ✓. (2) 但 'v6 / v7' 是 internal versioning notation, IC 不知道 v6 是什么. 这种 internal commit 信息泄漏到 IC report 是 housekeeping 失败. (3) 智元 EBIT $43M × 1/(18%-3%) × 0.516 = $148M (报告写 $0.15B = $150M, 小差 1.3% 可能取整 ✓). (4) 宇树 EBIT $95M × 1/(16%-3%) × 0.552 = $403M (报告写 $0.40B ✓). 算术 all OK, 但 v6/v7 内部 notation 必须删. 同时 'g=3%' 是 永续增长率假设, 但报告其他地方 (§6.4) 引中国 GDP 增长 ~4-5%, 永续 g=3% 是 below-GDP 的保守假设 — 这没问题但应该一句话解释 'g=3% 表示具身行业 2035+ 趋于 GDP-1pp, 符合 mature industry 经验'.",
+      "what_would_resolve": "(a) 删除 'v6 / v7' internal notation. (b) g=3% 加一句 perpetual growth rationale. (c) 表注改 '永续期价值 = EBIT × 1/(WACC-g) × discount factor; Figure: $163M × 8.33 × 0.572 = $776M ≈ $0.78B' 让 IC 一眼看公式不用反算."
+    },
+    {
+      "id": "n11",
+      "severity": "minor",
+      "title": "§0.3 PE 行动从 5 项扩到 6 项 (新增 ⑤ Distressed M&A) 但 v2.md / response-2.md 仍写 '5 个 PE 行动' — 文档自描述不准",
+      "attacks_claim": "可读性",
+      "detail": "v2.md §0.3 行 (table L68) 写 '§0.3 PE 5 行动 — L404→L444', 但实际 HTML L426-462 共 6 个 box: ①②③④⑤⑥, 其中 ⑤ 'Distressed Tier-2/3 整机 M&A' 是 round-2 新增, ⑥ '七个关键监测点' 是原 ⑤. response-2.md 表头 'pe_partner.i5 → 新增 PE 行动 ⑤' 一致, 但表里其他 reference 仍写 '5 个 PE 行动'. 例: A.3 L2220 标题 '5 个最值得做的具体决定' 仍是 5 个 item. PE IC 翻 §0.3 看到 6 个, 翻 A.3 看到 5 个, 会困惑哪个是 canonical. 这是 minor housekeeping.",
+      "what_would_resolve": "(a) v2.md 把 '5 个 PE 行动' 改 '6 个 PE 行动'. (b) A.3 '5 个最值得做的具体决定' 同步加 ⑤ Distressed M&A 行 或显式说明 'A.3 的 5 个是 long-only positions, §0.3 的 6 个 includes 监测点 catch-all'. (c) report 内部 cross-ref 数字一致."
+    }
+  ],
+  "prior_issue_updates": [
+    {
+      "id": "i1",
+      "status": "partial",
+      "reasoning": "Figure $50M anchor 在 §0.1 / §3.5 / §6.5.1 sanity check 表 / §6.5.2 box bullet ① 都已改为 [INFERRED] $15-30M + PSR 1,300-2,600× ✓; chartPSRComparison 已改 1,750× ✓. 但 §6.5.2 Comps 表 L1930 这一行仍写 'Figure AI 790× ($39.5B/$50M)' 未同步 — 同表 5 行后 (bullet) 用 1,750× 与 row 内 790× 直接冲突. 这是 'narrative fix 而 table not'. 见 n1. 既然主要 PSR anchor 已对齐, 暂判 partial 而非 unresolved; 但 Comps 表行未改是导致 n1 fatal 的核心. round-3 完成 Comps 表行改即 resolved."
+    },
+    {
+      "id": "i2",
+      "status": "partial",
+      "reasoning": "entry $5-7B → $3.6-4.2B (mid $3.9B) 已改 ✓; Bull/Base/Bear Multiple 按 $3.9B 重算算术 OK ✓; True Bear / P5 行新增 0.08-0.15× MOIC ✓; 概率加权 35/40/20/5 与 §6.3 对齐 ✓ (虽然 §6.3 自己有 n3 加和问题). 但: (a) 概率加权 MOIC 算式 0.35×9 + 0.40×3.8 + 0.20×0.77 + 0.05×0.12 = 4.83× ≠ 报告 ~3.9× (见 n4); (b) Bear case $3B 与退出渠道 '战略并购' 不匹配, $3B 是港股 IPO 数量级而非并购 fair value (见 n6); (c) 'P5' percentile 术语误用 (n9 同源). entry 改对了, 但下游一致性破裂."
+    },
+    {
+      "id": "i3",
+      "status": "partial",
+      "reasoning": "§6.5.1 3×3 g/WACC 敏感性表对 Figure 完整展开 (敏感性 $0.68-1.61B / 28-65×) ✓; '当前以 author's WACC prior' 显式承认 ✓. 但 (a) 智元/宇树仅给区间 $0.13-0.25B / $0.36-0.62B 不完整 (见 n5); (b) 没有 'WACC 假设差贡献 X% 反差 vs fundamentals 反差 Y%' 的分解; (c) 失败概率 30-40% surface 了但未在 sanity check 数字 propagate. 修订诚实但 prior i3 binding 问题 '中美反差是否源于 fundamentals' 仍未答."
+    },
+    {
+      "id": "i4",
+      "status": "resolved",
+      "reasoning": "§A.6 退出路径方法论新增 (L2532-2576), 包含 ASP 矩阵 5 行 (A 股 / 港股 / ADR / 战略并购 / 二级流通) + 5 家 Strategic Acquirer 表 + IRR 折扣量化 (港股 19% / A 股 25% / 战略并购 19%). A.4 Q3 答复扩充量化风险 ✓. 内容深度够 IC-grade. SoftBank 一行可疑 (n7) 但属新增问题不算 prior i4 残留. 总体 i4 已 resolved, n7 是新发现."
+    },
+    {
+      "id": "i5",
+      "status": "partial",
+      "reasoning": "§A.2 distressed 行新增 (L2160) + §0.3 PE 行动 ⑤ 新增 (L444) + A.4 Q5 答复扩充 + EV 2016 骗补对照 ✓. 但 watchlist 只有 10 个 (低于要求 30+), 且没有 per-company runway / 估值 / 资产 / acquirer mapping. 'runway 6-18 月' 是一个粗 range 不是 per-company. PE IC 用这条 action 仍无法落地决策. 见 n8."
+    },
+    {
+      "id": "i6",
+      "status": "resolved",
+      "reasoning": "§A.2 拆为 3 行: (1) ★★★★★ 中系卡脖子零部件 (具身 alpha) (2) ★★★★★ 稀土上游 (稀土 beta, 时效 3-5 年, MP/Lynas 消解风险) (3) ★★★★ 稀土终端定点未独立确认 (金力永磁/中研股份从 ★★★★★ 降至 ★★★★). 独家失败敏感性 (Tesla 加 2 供应商, 单台 ÷ 3, IRR ÷ 2) 已显式. Q9 ② 同步降级 + 独立来源要求. 这是 prior i6 干净的 fix."
+    },
+    {
+      "id": "i7",
+      "status": "partial",
+      "reasoning": "§6.5.2 box bullet ④ + bullet ① 文字声称 'N=5 全口径 (加 Rivian / Lucid) median 53×' 和 'sample 限制承认' ✓. 但 Comps 表 (L1933-1936) 仍只有 3 行 EV IPO (NIO/Xpeng/Li Auto), median rowspan 仍写 22×; Rivian / Lucid 完全没有作为 table row 出现. text 声称 vs table evidence 严重 desync. 见 n1."
+    },
+    {
+      "id": "i8",
+      "status": "partial",
+      "reasoning": "§6.3 新增 2×2 触发条件矩阵 (Tesla × IRA) ✓; conditional P(IRA|Tesla 兑现) ~50% vs P(IRA|Tesla 失败) ~10% 显式 ✓. 但: (a) 4 cell 加和 = 20+10+5+(35+40) = 110%, 不闭合 (见 n3); (b) 'cell 并入 US-led 下沿' 和 'cell merge 进 Bifurcation' 是后置 reasoning, 没有真正 2×2 marginal 概率结构. 概念到位但数学失败."
+    },
+    {
+      "id": "i9",
+      "status": "partial",
+      "reasoning": "A.4 Q9 改 base-case-conditional, 给出 entry / exit / IRR P50 / P95 各项 ✓; 与 IC Memo 智元对齐表注 ✓. 但 'P50 / P95' percentile 术语与 '概率加权中性 ~35%' 混用 (见 n9 — P95 实际是 Bull case 5% 概率 tail, 不是 95th percentile of distribution). 数字方向对了, 术语 quant integrity 折损."
+    },
+    {
+      "id": "i10",
+      "status": "unresolved",
+      "reasoning": "response-2.md 反复声明 'A.3 新增决策树第二层 4 行 if-then 表 L2240-2260'. 实际 HTML L2196-2218 是 v1 原 mermaid 三节点决策树, L2218-2249 是 '5 个最值得做的决定' (与 §0.3 内容重复), 第二层 4 行 if-then 表完全不存在. A.4 Q2 (L2289) 答复仍是 v1 完整原文未变. 仅 §0.3 行动 ③ 加了一句 'IF Tesla < 10K THEN: ... (详 §A.3 第二层)' — 但被引用的 §A.3 第二层不存在. 这是 process integrity fatal — builder 报告了未做的修改. 见 n2."
+    },
+    {
+      "id": "i11",
+      "status": "resolved",
+      "reasoning": "L421 关键判断 #12 已改为: '宁德时代 + 智元 + 千寻"中州基地具身机器人产线"(2025.12 启动, 公司新闻稿口径; "全球首条 / 规模化"未独立核实, 截至 2026.05 实际产能 [UNVERIFIED]) = 列为 2026 H2 监测项 (与 §0.3 监测点 ③ 同级), 暂不作为关键判断'. 完全按 prior i11 要求 (a) 加产能限定 + UNVERIFIED 标 (b) 降为监测项. 干净 fix."
+    },
+    {
+      "id": "i12",
+      "status": "resolved",
+      "reasoning": "L4442 chartChinaShipmentBreakdown title 已加 'Top 6 合计 14,868 = 82.6%全球; 中国含 Tier 2/3 估 ~85-95% (KPI 80-95%); 全口径含部分机器狗/工业版'. KPI 卡 L336 也加注 '中国全球出货占比 (IDC ~95% / GGII ~85% 口径区间)'. Sum-check transparent. 干净 fix."
+    }
+  ]
+}

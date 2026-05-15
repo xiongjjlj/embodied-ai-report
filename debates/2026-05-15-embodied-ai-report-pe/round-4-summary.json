@@ -1,0 +1,14 @@
+{
+  "round": 4,
+  "aggregate_verdict": "block",
+  "totals_new": {"fatal": 0, "severe": 1, "moderate": 7, "minor": 6},
+  "per_persona": [
+    {"persona": "pe_partner",          "verdict": "block", "prior_R": 6, "prior_P": 3, "prior_U": 0, "new_F": 0, "new_S": 1, "new_M": 2, "new_m": 2},
+    {"persona": "industry_expert",     "verdict": "block_but_effectively_pass", "prior_R": 6, "prior_P": 0, "prior_U": 0, "new_F": 0, "new_S": 0, "new_M": 2, "new_m": 2, "note": "self-stamped block but 0F+0S — under our criteria, effectively pass"},
+    {"persona": "numerical_auditor",   "verdict": "pass",  "prior_R": 8, "prior_P": 1, "prior_U": 1, "new_F": 0, "new_S": 0, "new_M": 3, "new_m": 0},
+    {"persona": "visual_design_expert","verdict": "pass",  "prior_R": 12,"prior_P": 2, "prior_U": 4, "new_F": 0, "new_S": 0, "new_M": 0, "new_m": 2}
+  ],
+  "milestone": "numerical_auditor PASSED. Industry effectively pass. Visual still pass. PE has 1 last severe to clear.",
+  "single_severe_remaining": "pe_partner r4-n1: SST Bull row directly equates '智元-specific 5万台量产 → $35B exit' with 'macro China-led 阵营 35%'. Category conflation. With P(智元 captures | China-led) = 0.4-0.6, E[MOIC] folds 4.6× → 2.0-3.0×.",
+  "next_action": "spawn Round 5 builder to address Bull-row capture conflation + clean up moderate residuals"
+}

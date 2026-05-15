@@ -1,0 +1,70 @@
+{
+  "round": 5,
+  "persona": "numerical_auditor",
+  "draft_classification": "商业研究 / PE 视角具身智能产业链报告 v5 (中文)",
+  "load_bearing_claims": [
+    "LBC-1 美强软件中强硬件 — BOM 剪刀差 2.8-4.1×",
+    "LBC-2 2030 TAM $30-144 亿 (中位 $75 亿)",
+    "LBC-3 三情景 35/35/25/5 SST canonical",
+    "LBC-4 (Round-5 重构) 智元 Returns: capture-probability factoring; E[MOIC] ~2.55× mid (range 2.0-3.0×), E[IRR] ~21% nominal mid (range 16-24%), LP real ~13% mid (range 10-15%); OLD 4.6×/24%/15% retained as 'Bull-takes-all ceiling'",
+    "LBC-5 中系核心零部件 + 稀土 + Distressed M&A 10 家 + 美系 OEM-locked (7 路径含 ⑦c) 并列"
+  ],
+  "verdict": "pass",
+  "verdict_reason": "Round-5 核心数学独立可复算: (a) 我用 V = macro × P(cap) × MOIC + macro × (1-P(cap)) × 0.5 公式独立求得 mid P=0.5 总和 = 2.5385× (Bull 1.6625 + Base 0.7525 + Bear-A 0.0827 + Bear-B 0.0348 + True 0.006), 与发布的 2.53 (展开式) / 2.54 (v5.md) / 2.55 (header+SST) 在 ±0.5% 内; (b) 敏感性 P=0.4 → 2.127× ≈ 2.13× ✓; P=0.6 → 2.950× ≈ 2.95× ✓; (c) IRR back-out via MOIC^(1/5)-1: 2.54→20.5% / 2.13→16.3% / 2.95→24.2%, 与 'mid 21% range 16-24%' 一致 ✓; (d) LP real = 20.6% × 0.7 × 0.95 × 0.93 = 12.74% ≈ 13% ✓; (e) §A.6.3 cascade L2762/L2767/L2769 三处全部用 21%/13% canonical, 旧 23.6% 显式标 DEPRECATED; (f) 三个 round-4 moderates 全部 swept: n4.i1 L2645 改为 '24× / $0.17B' ✓; n4.i2 L2040 per-company g 显式标注 (Figure g≈2.15%, 智元 g=3%, 宇树 g≈4.3% 全部用 V 公式复算到 ±0.5%) ✓; n4.i3 L2033 column header 拆为 '智元 21% / 宇树 18%' ✓; (g) Q9 P50/P95 → named-scenario ✓. 但 round-5 引入 / 残留 3 个 moderates 不阻 verdict: (1) headline mid label 三处不一致 (header 2.55× / SST 2.55× / 表内展开式总和 2.53× / v5.md 2.54×) — 真实精确值 2.5385 → 标 2.54×, 三处显示不齐; (2) Bear-B 行 sunk-residual 0.5× 高于 capture-conditional MOIC 0.13× — 概念上 '失败比成功好' inversion, 数量影响小 (~1% 总 E[MOIC]) 但语义错; (3) L499 '双轨平行 是基准情景（40%）' 仍为旧值, i22 fix 漏了这条 (KPI 段). 另外 round-5 methodology 从 round-4 linear-IRR (Σ p×IRR = 23.6%) 切换到 MOIC back-out (E[MOIC]^(1/5) = 20.6%), 这个方法切换没在 SST footnote 显式 disclose — 是 method-shift 而非 math error, 标 minor.",
+  "issues": [
+    {
+      "id": "n5.i1",
+      "severity": "moderate",
+      "title": "E[MOIC] mid headline 三处显示不一致: SST/header 标 2.55×, 表内展开式总和 2.53×, v5.md 2.54×; 真实精确值 2.5385 应统一标 2.54×",
+      "attacks_claim": "LBC-4 (capture-adjusted SST internal consistency)",
+      "detail": "Round-5 新引入 capture-probability framework 的 mid 数值发布点不齐:\n\n(a) L2678 §7 header: 'mid 2.55× @ P=0.5'\n(b) L2691 表内 summary cell strong text: '~2.55× (capture-adjusted base; range 2.0-3.0×)'\n(c) L2691 同 cell 内展开式: 'Total: 1.66+0.75+0.083+0.035+0.006 = 2.53× (mid P=0.5)'\n(d) L2696 SST footnote: 'E[MOIC] ~2.55× mid'\n(e) v5.md changelog table L36: 'Total: 2.54× (mid)'\n\n精确计算 (无 rounding):\n  Bull: 0.35 × 0.5 × 9.0 + 0.35 × 0.5 × 0.5 = 1.575 + 0.0875 = 1.6625\n  Base: 0.35 × 0.5 × 3.8 + 0.35 × 0.5 × 0.5 = 0.665 + 0.0875 = 0.7525\n  Bear-A: 0.125 × 0.6 × 0.77 + 0.125 × 0.4 × 0.5 = 0.05775 + 0.025 = 0.08275\n  Bear-B: 0.125 × 0.6 × 0.13 + 0.125 × 0.4 × 0.5 = 0.00975 + 0.025 = 0.03475\n  True Bear: 0.05 × 1.0 × 0.12 = 0.006\n  Total: 2.5385\n\n精确值 → 标准 round-to-2dp = 2.54×. 显示为 2.55× 是 over-rounding (2.5385 不进位到 2.55), 显示为 2.53× 是 sum-of-rounded-inputs 截断 error (1.66+0.75+0.083+0.035+0.006 = 2.534 → 2.53).\n\n影响: 同一 SST cell 内 2.53 vs 2.55 ~0.8% gap, 跨文件 v5.md 2.54 加入后 reader 看到 3 个不同 mid 数字. 报告自我宣称 'Single Source of Truth', 但 SST cell 内部数学展开 (2.53) 与 SST cell 顶层 headline (2.55) 不齐. 这是 round-5 新引入的 micro-inconsistency, 不在 round-4 issues 中.\n\n核验:\n  grep -n '2.55' v5.report.html → L2678 / L2691 (headline) / L2696\n  grep -nF '= 2.53× (mid P=0.5)' v5.report.html → L2691 (展开式)\n  v5.md L36 → '2.54× (mid)'\n  My recompute: 2.5385 → 应统一标 2.54×",
+      "what_would_resolve": "三处统一改 2.55× → 2.54×: L2678 header / L2691 summary cell headline / L2696 SST footnote; 表内展开式 L2691 改 '= 2.53× (mid P=0.5)' 为 '= 2.5385 ≈ 2.54× (mid P=0.5)' 以避免 sum-of-rounded-inputs 错觉. v5.md 已正确显示 2.54×, 是 HTML 滞后."
+    },
+    {
+      "id": "n5.i2",
+      "severity": "moderate",
+      "title": "Bear-B 行 sunk-residual 0.5× 高于 capture-conditional MOIC 0.13× — 概念 inversion: 智元 '失败' (sunk 0.5×) 优于 '成功' (capture 0.13×)",
+      "attacks_claim": "LBC-4 (sunk-fund residual prior calibration)",
+      "detail": "Round-5 引入的 sunk-fund residual prior 是 '0.5× MOIC if 智元 loses to peer in same macro scenario' (L2691 / L2696 引文). 5 行中 4 行 (Bull/Base/Bear-A/True Bear) capture-conditional MOIC 都 ≥ 0.5×, sunk 是下行 anchor 合理. 但 Bear-B 行:\n\n  L2689 Bear-B row: capture-conditional MOIC = 0.13× ($0.5B exit / $3.9B entry, 含 ~3× control premium)\n  Sunk residual = 0.5× (uniform across rows)\n  → 0.5 > 0.13, 即 '智元 失败' (peer 拿走 macro upside, 智元 sunk equity recap) 比 '智元 成功' (Bear-B exit) 多 4× 倍\n\n语义错误: PE 模型里 'capture-conditional MOIC < sunk' 意味着 '智元 应该希望自己输', 这违反 dominance principle. 在 Bear-B macro (港股 IPO 失败 + distressed M&A) 下, 智元 真正失败 (输给 peer) 的退出值应该 ≤ Bear-B '成功' 退出值 (因为 peer 也面临同样 distressed macro 环境, 输给 peer 不会得到比成功更高的 recap).\n\n数量影响: Bear-B 行 0.125 × 0.4 × 0.5 = 0.025 contribution to E[MOIC]; 若改 sunk = min(0.5, capture_MOIC) = 0.13 (即不允许 inversion), 则 contribution 降至 0.125 × 0.4 × 0.13 = 0.0065, E[MOIC] mid 从 2.5385 降到 2.5200 (-0.7%); 仍在发布的 2.0-3.0× range 内. Quantitatively 小, 但 conceptually 显示 sunk-residual 没经过 row-level sanity check.\n\n类似检查 Bear-A 行: capture 0.77 > sunk 0.5, OK (sunk 是下行); Bull/Base 也 capture >> sunk, OK.\n\n核验:\n  L2689 'Bear-B...0.13× (conditional)'\n  L2691 'Bear-B: 0.125×0.6×0.13 + 0.125×0.4×0.5 = 0.010 + 0.025 = 0.035'\n  Sunk side (0.025) 是 capture side (0.010) 的 2.5× — Bear-B 行 sunk-residual 主导 contribution, 但这是 model artifact 不是 economic truth",
+      "what_would_resolve": "二选一: (a) 显式 cap: 'sunk = min(0.5, capture-conditional MOIC) per row', 重算 Bear-B sunk = 0.13×, 总 E[MOIC] mid 降至 ~2.52× (仍 round to 2.5×); (b) row-specific sunk priors: Bear-A sunk = 0.3 (peer 也低), Bear-B sunk = 0.1 (peer macro 已 distressed, 智元 输给 peer 几乎清零). 任一选都要在 L2696 SST footnote 显式注明 sunk-residual 不是 uniform 0.5× across rows."
+    },
+    {
+      "id": "n5.i3",
+      "severity": "moderate",
+      "title": "L499 KPI 段 '双轨平行 是基准情景（40%）' 仍为旧值; round-5 r4-i22 fix 漏扫此行",
+      "attacks_claim": "LBC-3 (SST 35% propagation completeness)",
+      "detail": "Round-5 i22 fix 只改了 §6.3 Bifurcation 卡片 L1801 ('40%' → '35%'). 但同一报告 L499 '关键判断 12 条' 第 2 条仍写:\n\n  L499: '2. \"双轨平行\"是基准情景（40%）'\n\n这是 round-3 / round-4 SST 已统一为 35% 后的残留. r4-i22 fix scope 不全, '40%' 在执行摘要也出现.\n\n核验:\n  grep -n '基准情景（40%' v5.report.html → L499 (1 hit)\n  对比同 KPI 段 L481 已写 'Bifurcation（30-40%；中点 35%，基准）' — 即同段内 L481 用 35% 中点, L499 用 40% top, 段内 mid-vs-top 不一致\n  对比 SST L1833: 'China-led 35% + Bifurcation 主干 27.5% + Other 5% = P(N,N) 67.5%' — 35% canonical\n  对比 L4555 chartScenarioProb: 'Bifurcation 双轨平行（基准 30-40%，中点 35%）' — 35% canonical\n\n影响: PE reader 执行摘要 KPI 段第 2 条看到 '基准情景（40%）', §6.3 卡片看到 '35%', §A.5 / charts 看到 '35%' — 内部 +5pp 矛盾. 与 r4-i22 触发的 fix 类型完全相同 (40% → 35%), 只是 line 不同, 同一 round-5 cycle 应该一并 sweep.\n\n这是 propagation completeness 残留, 不是新的 conceptual error.",
+      "what_would_resolve": "L499 一字修正: '\"双轨平行\"是基准情景（40%）' → '\"双轨平行\"是基准情景（35%）'. 5 字符改动. 或写成 '基准情景（30-40%；中点 35%）' 与 L481 一致."
+    },
+    {
+      "id": "n5.i4",
+      "severity": "minor",
+      "title": "E[IRR] derivation method 从 round-4 linear (Σ p×IRR = 23.6%) 切到 round-5 MOIC-backout (E[MOIC]^(1/5) = 20.6%); SST footnote 未 disclose 方法变更",
+      "attacks_claim": "LBC-4 (E[IRR] methodology disclosure)",
+      "detail": "Round-4 published E[IRR] = 23.6% via linear probability-weighted: 0.35×55 + 0.35×31 + 0.125×(-5) + 0.125×(-33) + 0.05×(-35) = 23.6% (这是 arithmetic average of IRRs).\n\nRound-5 published E[IRR] = 21% mid via MOIC back-out: 2.54×^(1/5) - 1 = 20.5% ≈ 21% (L2691 显式标注 '2.53×^(1/5) − 1 = 20.6% nominal').\n\n这两个方法给出不同答案 (Jensen's inequality: IRR is concave in MOIC). 若 round-5 用 linear method 应用 capture-adjusted, 我重算:\n  Bull: 0.35 × (0.5×55% + 0.5×(-12.94%)) = 7.36%  [sunk IRR = 0.5^(1/5)-1 = -12.94%]\n  Base: 0.35 × (0.5×31% + 0.5×(-12.94%)) = 3.16%\n  Bear-A: 0.125 × (0.6×(-5%) + 0.4×(-12.94%)) = -1.02%\n  Bear-B: 0.125 × (0.6×(-33%) + 0.4×(-12.94%)) = -3.12%\n  True Bear: 0.05 × (-35%) = -1.75%\n  Linear E[IRR] capture-adjusted = 4.62% (mid)\n\nMOIC-backout E[IRR] = 20.5% (published)\nLinear E[IRR] = 4.6% (if Round-4 method retained)\n\n方法切换 16pp gap. 不是 math error (MOIC-backout 是经济学上更合理的 expected-portfolio-IRR), 但 SST footnote L2696 没 disclose 'IRR derivation method 从 round-4 linear-avg 切到 round-5 geometric MOIC-backout'. 一个 careful reader 用 round-4 method 复算 capture-adjusted 会得到 4.6% 而不是 21%, 自然质疑.\n\n此外 L2769 还写: 'capture-adjusted Base contribution to portfolio = 0.35×0.5×31% ≈ 5.4% (mid)' — 这是 linear method (只算 capture side, 不含 sunk side). 如果 reader 把 5 行 linear Base contribution 加起来 ≠ 21% (实际 = 4.6%). 也就是 SST cell 内同时混用 linear 和 geometric, reader 复算两个都失败.\n\n核验:\n  Round-4 published E[IRR] linear: 0.35*55 + 0.35*31 + 0.125*(-5) + 0.125*(-33) + 0.05*(-35) = 23.6 ✓\n  Round-5 published E[IRR] MOIC-backout: 2.53^0.2 - 1 = 20.6% ✓\n  Round-5 L2769 'Base contribution 5.4%' = 0.35×0.5×31% = 5.425% ✓ (linear capture-only)\n  Round-5 SST footnote L2696 没 disclose method shift\n\n影响: 这是方法学透明度问题, 不是数学错误. 标 minor 因为 (i) MOIC-backout 是 PE 实务标准 (more conservative + economic-meaningful), (ii) Round-4 23.6% linear 显式 DEPRECATED as ceiling, (iii) Round-5 在表内一致使用 MOIC-backout. 但 L2769 混用 5.4% linear-style 数字与 21% geometric 数字, 不利 IC 复算.",
+      "what_would_resolve": "L2696 SST footnote 加 1 句: '注: round-4 E[IRR] 23.6% 是 linear probability-weighted IRR (Σ p×IRR_cond); round-5 E[IRR] 21% 是 MOIC-backout (E[MOIC]^(1/5)-1) — 后者 PE 实务更主流, 但与 linear method 因 Jensen inequality 不可直接比较'. L2769 '0.35×0.5×31% ≈ 5.4% Base contribution' 要么删除 (avoid mixing methods), 要么改为 'Base 行 capture-conditional contribution to E[MOIC] = 0.35 × 0.5 × 3.8 = 0.665 (= 26% of total mid 2.54)' 用 MOIC scale."
+    }
+  ],
+  "prior_issue_updates": [
+    {
+      "id": "n4.i1 (§A.5 IC Memo intro L2644 stale 22% / $0.15B)",
+      "status": "resolved",
+      "reasoning": "L2645 改为 'PSR 20× 接近 EV IPO N=3 sample median 24× (round-3 重算)' + 'vs 简化 sanity check $0.17B (Round-4 canonical, see §6.5.1)' + explicit Round-5 tag. grep -nF '简化 sanity check $0.17B' v5.report.html 命中 L2645. 与 L2005 主表 / L2049 解读 warning-box 完全对齐. n4.i1 fix scope 完整."
+    },
+    {
+      "id": "n4.i2 (§6.5.1 unified-WACC g 实际 per-company 不同)",
+      "status": "resolved",
+      "reasoning": "L2040 footnote 重写为 per-company explicit: 'Figure $0.74B (g≈2.15%, W=16%)' / '智元 $0.20B (g=3%, W=16%)' / '宇树 $0.50B (g≈4.3%, W=16%)' + per-company life-cycle rationale. 我用 V = EBIT × df_4yr × [1 + 1/(W-g)] 独立复算: Figure 740.01M ✓ ($0.74B), 智元 206.43M ✓ ($0.20B), 宇树 500.91M ✓ ($0.50B). 三个值精确 reproduce, n4.i2 fix 数学严格. Choice (b) 'explicit per-company g + lifecycle rationale' 比 Choice (a) 'rebuild with uniform g' 选得对 (前者保留 published anchor 不变, 仅补 disclosure). 残留小 caveat: per-company g 是 post-hoc rationalization of pre-existing author's-prior anchors (Figure $0.74B 不是先验 g=2.15% 推导, 而是反推), 但这是 prior-selection 问题不是 math 问题, 不阻塞."
+    },
+    {
+      "id": "n4.i3 (L2032 column header '21%' 跨 row 不一致)",
+      "status": "resolved",
+      "reasoning": "L2033 改为 '下沿 (g=2%; WACC: 智元 21% / 宇树 18%)'. 统一 WACC col 加 'per-row g 见 §6.5.1 footnote'. column header 现 split 显示, 不再 mislabel. 智元 $0.13B 复算 (W=21%, g=2%): V = 43 × 0.4665 × (1+1/0.19) = $126M ✓; 宇树 $0.36B 复算 (W=18%, g=2%): V = 95 × 0.5158 × (1+1/0.16) = $355M ✓. 表内每 cell 用对应 row 的 W 都 reproducible."
+    },
+    {
+      "id": "n3.i8 (DCF 250 × $130K × 80-90% arithmetic) — carry-forward from r4",
+      "status": "unresolved",
+      "reasoning": "v5.md round-6+ carry-forward list 第 7 条仍标 'n3.i8 DCF 250 × $130K × 80-90% arithmetic (under-estimates 92.3%); not cascading'. 我重 grep L1989 仍含 '$15-30M ... 250 台 × $130K × 30-50%... 上沿 $30M 需 80-90% 计提率' — 数学不精确 ($30M / 250 / 130 = 92.3% not 80-90%). 但 [INFERRED] tag 全程在位, 不 cascade 到 SST, 标 unresolved 但不阻 verdict."
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "round": 1,
+  "persona": "pe_partner",
+  "draft_classification": "PE/VC 投资判断报告 (IC 决策辅助；非二级卖方研报)",
+  "load_bearing_claims": [
+    "LBC-1 美强软件 / 中强硬件非对称稳态 (出货 80-95% / BOM 剪刀差 2.8×)",
+    "LBC-2 2030 年度 TAM $30-144 亿 (中位 $75 亿) + 出货 CAGR 69-113%",
+    "LBC-3 三情景 China-led 35% / US-led 15-25% / Bifurcation 40%",
+    "LBC-4 美系一线系统性泡沫 (Figure PSR 790×), 2027-2028 回调 50-70%; 中系 IPO PSR 20-23× ≈ EV IPO 中位, 无系统性泡沫",
+    "LBC-5 中系核心零部件 + 原材料卡点是 PE alpha 主战场 (定价锚 PE 15-25×)"
+  ],
+  "verdict": "block",
+  "verdict_reason": "IC 会先怼第一刀: Figure PSR 790× 的分母自相矛盾——同一张表里 2025 营收 cell 写 [INFERRED] $15-30M, 但 PSR 公式分母用 $50M, 报告核心叙事(美系泡沫严重程度)的最关键数字内部不一致; 第二刀: IC Memo 智元案例的 IRR/MOIC 假设 post-money $7B 但前文反复说 current $2.8B, 2026 enter→2027 IPO 2.5× 自动 markup, 这是 sell-side 数学; 第三刀: 5 个 PE 行动里 ★★★★★ 的'金力永磁特斯拉供应商'已被自己标'未经 Tesla 公开确认', 但优先级评级未相应下调; 退出路径、Tier 2/3 死亡曲线、DCF 敏感性几乎为零。",
+  "issues": [
+    {
+      "id": "i1",
+      "severity": "fatal",
+      "title": "Figure PSR 790× 分子分母自相矛盾——同一张 6.5.1 DCF 表内 cell 与 PSR cell 用了两个不同的 2025 营收",
+      "attacks_claim": "LBC-4",
+      "detail": "§6.5.1 (L1831) 的'2025 营收'格明写: Figure $15-30M [INFERRED] (150 台 × $130K × 30-50% 计提率). 但同表 L1846 '当前 PSR' 格写 790× = $39.5B / $50M, §6.5.2 Comps (L1878) 也是 $39.5B / $50M, §0.1 同样引 790×. $50M 既高于 $15-30M 区间上限 (66% 偏离中位 $22.5M), 也与 §3.5 RaaS 表 (L829 base case 5 万台 × $50K/年 = $2.5B 2030 收入, 隐含 2025 远低于) 不一致. 按表里自己的 [INFERRED] $22.5M 中位, PSR 应为 $39.5B / $22.5M = 1,755×; 按 $15M 下限 PSR = 2,633×; 按 $30M 上限 PSR = 1,317×. 三个数字都比 790× 显著更高, 意味着泡沫论断本身被低估而非高估. 但 PE IC 不会接受'方向对就行'——同一份材料里同一个数字给出两个值, IC 会直接质疑数据治理: 如果连这一个 anchor 数字都对不齐, 还有多少其他数字是 narrative-driven 后填的? 这条对 LBC-4 是直接命中: 整个'美系真泡沫 vs 中系合理'的修订核心论点就建立在 790× 这一个数字上, 而 790× 是错的.",
+      "what_would_resolve": "(a) 二选一确定 Figure 2025 营收 anchor: 要么坚持 [INFERRED] $15-30M 并把 PSR 改成 1,317-2,633× 区间表述; 要么放弃 [INFERRED] 改用某个 Tier-1 来源 (PitchBook / The Information / Bloomberg 私募数据) 的硬数字并去掉 [INFERRED] 标签. (b) 同步修订执行摘要、§3.5、§6.5.1、§6.5.2、§6.5.3、对比 Comps Quartile 几处, 全部用同一个数字. (c) 在 PSR 计算旁加注: 'PSR 对 2025 营收假设极度敏感: ±50% 营收变动→PSR ±50% 同向变动'."
+    },
+    {
+      "id": "i2",
+      "severity": "fatal",
+      "title": "IC Memo 智元 IRR 表的入场估值与正文 current valuation 自相矛盾——5× MOIC 是被 sell-side 假设洗出来的",
+      "attacks_claim": "LBC-4 / A.5",
+      "detail": "A.5 (L2420) Deal Terms 写: 'Pre-IPO 跟投 $200-300M raise、$5-7B post-money'. A.5 (L2429-2432) Returns 表: Bull $35B / Multiple 5.0× / IRR 38%; Base $18B / 2.6× / 21%; Bear $5B / 0.7× / -6%. 但: (1) 5.0× = $35B / $7B 隐含入场 post = $7B, 而执行摘要 (L350)、§6.5.1 (L1844)、§A.1 都一致引用智元 current valuation = $2.8B (¥200 亿+). 从 current $2.8B 到 entry $7B 自动 markup 2.5×—— PE 入股恰好把'IPO 跟投流动性溢价'锁进入场价, 是 sell-side 银行家行为, 不是 PE IC 的 anchor. (2) Bear case Multiple 0.7× = $5B / $7B 意味着即使 US-led + 量产延期, exit 仍 $5B—— 这意味着 worst case '本金不损失 30%'. 但 §6.5.1 同一份报告的 sanity check 给智元 $0.17B (市场 16× sanity); 真 bear case 若 sanity check 是对的, MOIC 应 = $0.17B / $7B = 0.024×, 损失 97.6%. 0.7× 是粉饰过的 bear. (3) 概率加权 MOIC = 0.35×5.0 + 0.40×2.6 + 0.25×0.7 = 1.75 + 1.04 + 0.175 = 2.97× ≈ 3.0×, 算术 OK, 但 inputs 全部偏 bull, 输出'安全合理'是预设答案. PE IC 一秒看穿. 致命的是这恰好是用来 sell IC Memo 'CONDITIONAL PROCEED $20-30M' 建议的底层数学.",
+      "what_would_resolve": "(a) Entry post-money 要么用当前 $2.8B current 加合理的 Series-D / Pre-IPO premium (e.g. 1.3-1.5× → $3.6-4.2B), 要么明确写'Bull/Base/Bear 都是基于 $7B IPO entry, 当前 round 投资 IRR 需另算', 不能混用. (b) Bear 必须包含'量产 yield < 30% + IPO 受阻 + 数据资产估值清零'的真正下行, 给出 MOIC 0.1-0.3× 区间. (c) 概率加权 MOIC 旁同时给一个'下侧 5% (P5) MOIC'数字, 让 IC 看 VaR 而不是 expected value."
+    },
+    {
+      "id": "i3",
+      "severity": "severe",
+      "title": "DCF sanity check 完全缺敏感性分析——永续期占总估值 ~90%, g 和 WACC 各 ±1% 直接改写美系/中系估值倒挂的核心论断",
+      "attacks_claim": "LBC-4",
+      "detail": "§6.5.1 (L1842) Figure 永续期价值 $0.78B / total sanity $0.87B = 89.7% 来自 terminal. 智元永续 $0.15B / total $0.17B = 88.2%. 宇树永续 $0.40B / total $0.46B = 87.0%. 三家全部 ~90% 价值来自 terminal—— 这意味着 g 和 WACC 是真正的 driver, 而 EBIT / 折现因子是装饰. 报告给定 g = 3%, WACC 15/18/16%, 但 0 sensitivity table. PE IC 必算的两种 perturbation: (1) Figure 若 WACC = 12% (考虑到 Figure 是美元资产 + NVIDIA / a16z / Microsoft 等顶级 LP 背书, 12% 比 15% 更现实): perpetuity multiple 从 1/(15%-3%) = 8.33× 变 1/(12%-3%) = 11.1×, terminal value 从 $0.78B → $1.04B, total sanity 从 $0.87B → $1.13B. 市场 vs sanity 比值从 45× 变 35×—— 仍是'真泡沫'但量级缩水 22%. (2) g = 4% (考虑到 humanoid 是 EV+ 级别的世代级机会, 4% 比 3% 更接近 EV/SaaS 类比): Figure terminal 从 8.33× 变 1/(15%-4%) = 9.09×, $0.78B → $0.85B, total $0.87B → $0.94B, 市场比值 42×. (3) 反向: 若智元 WACC 真值 = 22% (考虑 A 股 / 港股流动性折扣 + 中美脱钩风险 premium), terminal 多倍从 1/(18%-3%) = 6.67× 变 1/(22%-3%) = 5.26×, $0.15B → $0.12B, 市场比值从 16× 变 23×—— 这下'中系无泡沫'结论就动摇了, 因为 23× 已接近 Q4 区间. LBC-4 的整个'美系 45× sanity vs 中系 16× sanity'反差是 g/WACC 假设的二阶产物, 不是 fundamentals 的客观比较.",
+      "what_would_resolve": "(a) §6.5.1 加 3×3 敏感性表 (g ∈ {2%, 3%, 4%} × WACC ∈ {12%, 15%, 18%}), 至少对 Figure + 智元两家做. (b) 在结论旁明示: 'sanity check 比值结论对 ±2pp WACC 变动敏感; 中美 WACC 差异 (15% vs 18%) 解释了约 25% 的反差—— 真正 fundamentals 反差为 X×'. (c) 若做不到 (a), 至少诚实写'本 sanity check 不是 fundamentals 比较, 是 with author's WACC prior 的 sanity check'."
+    },
+    {
+      "id": "i4",
+      "severity": "severe",
+      "title": "退出路径分析在 IC-grade 报告里几乎为零——A 股/港股/美股的估值差、CFIUS、流动性折扣、并购买家清单全部缺失",
+      "attacks_claim": "structural",
+      "detail": "PE IC 决策的另一半是 exit, 但这份报告 exit 内容只有: (1) 第四章 6 种打法每条一句话'退出: A 股上市 / 港股 IPO / 战略并购'—— 一句话, 不构成分析. (2) A.4 Q3 (L2228-2238) 全部 exit / 政治风险分析只有这一段: '美元基金应聚焦中国制造但海外销售的零部件 + QFII / 沪深港通 + 二级对冲 + humanoid IRA 出台美系硬件供应商加仓'—— 这是 4 句话写完中美脱钩下的退出策略. (3) A.5 智元 IC Memo Returns 表 (L2429-2432) 只有 exit 估值, 没有 exit channel 假设 (港股 vs A 股 vs CDR vs 红筹), 没有锁定期 / 限售对照、没有 ADR 退市风险定价, 没有 CFIUS 对二级套利通道的影响. 缺失的关键问题: (a) A 股 vs 港股具身板块同公司估值差通常 30-60% (e.g. 宁德时代港股长期较 A 股折价 30%+), 报告引用'宇树 A 股 IPO ¥400 亿 / 智元港股 ¥200 亿'但没换算两个市场流动性折扣; (b) 港股流动性折扣 + 中概股退市风险下美元 LP 真实可分红 IRR 应 -3 到 -5pp; (c) 并购买家清单完全缺失: NVIDIA / SoftBank / 比亚迪 / 吉利 / 上汽 / 美的 / 海尔 是潜在 strategic acquirer, 但报告没列每家 acquirer rationale + checkout size capacity + 历史 deal pattern (e.g. 美的 KUKA, 海尔 Candy); (d) 二级流动性: A 股具身概念板块 2025-2026 涨幅 / 机构持仓集中度未量化, 决定 PE 退出时的接盘量. PE IC 会问: '你给我 5 年 IRR 35%, 但你没告诉我退出渠道、退出时谁接、退出折扣, 我不能下注 10 亿.'",
+      "what_would_resolve": "(a) 新增 §A.6 '退出路径方法论': A 股 IPO vs 港股 IPO vs 美股 ADR vs 战略并购的 ASP 矩阵 (估值倍数 / 锁定期 / 流动性折扣 / 政治风险). (b) 至少 5 家潜在 strategic acquirer 清单: NVIDIA / Microsoft / 比亚迪 / 吉利 / 美的 - 每家估值能力 + 历史相关 deal + rationale 一段. (c) A.4 Q3 答案需重写, 把 4 句话扩充为基于 base rate 的退出 IRR 调整 (e.g. '港股流动性折扣 30% → MOIC × 0.7'). (d) A.5 智元 Returns 表加'退出渠道'一列."
+    },
+    {
+      "id": "i5",
+      "severity": "severe",
+      "title": "Tier-2/3 整机厂死亡曲线缺失——A.4 Q5 名词性提到 70% 淘汰但无具体厂商 runway / 现金 / 估值排序, PE alpha 第二战场是空的",
+      "attacks_claim": "LBC-5 / structural",
+      "detail": "A.4 Q5 (L2268) 给出洗牌结论: '头部 5 家跑出 / 二线 50% 概率被并购 / 三线 (>30 家) 大概率消失'—— 这是断言, 不是分析. 报告 §5.4 '下游整机 44 家厂商'本应是这条结论的依据, 但: (1) 没有 cash runway 表 (各家最近一轮融资额 / 月烧钱率 / 估算剩余 month-of-cash); (2) 没有 2024-2026 已爆雷 / 已减员名单, 即使有公开的人事变动 / 融资困难新闻 (e.g. 部分二线已传闻 layoff); (3) 没有'谁会被并购 / 谁会被清盘'的具体厂商指认, 只有匿名'二线 50%'; (4) 没有并购买家 mapping (e.g. 智元会不会收一些数据采集二线?). 这对 PE 来说是丢掉一整条 alpha 路径: distressed 二线整机厂 0.3-0.5× 价格收购 + 整合人才 / 数据资产 + 注入头部, 是 EV 早期 2018-2020 PE 跑出过的 pattern (e.g. 蔚能数次收购濒死车企). LBC-5 现在的 PE alpha 只有零部件方向, 漏掉了'整机洗牌中的二线 distressed asset 收购' 这个方向, 但 ¥550 亿补贴退坡几乎确定会催生这条赛道.",
+      "what_would_resolve": "(a) §5.4 加 distressed-watch list 表: 至少 10 家 Tier-2/3 名字 (一线 5 之外的傅利叶 / 众擎 / 加速进化 / 月泉 / 它石 / 自变量 / 开普勒 / Astribot / Pudu / 跨维 等), 列估算剩余 runway (months of cash), 最近一轮估值, 主要技术 / 客户资产, 潜在并购买家. (b) 新增 PE 行动 #6 'Distressed M&A 2027 H2 起'到 §0.3. (c) A.4 Q5 答案需补充'三线 30 家具体 list', 不能只说'三线 > 30 家大概率消失'."
+    },
+    {
+      "id": "i6",
+      "severity": "severe",
+      "title": "★★★★★ 一级推荐严重依赖未确认的'金力永磁 / 中研股份 Tesla 独家定点'声明, 优先级评级与已自己承认的不确定性脱节",
+      "attacks_claim": "LBC-5",
+      "detail": "A.2 优先级矩阵 (L2084) 给'基础原材料卡点'最高 ★★★★★ 评级, 代表标的: '金力永磁(披露为 Optimus 供应商*)、中研股份(披露为 PEEK 供应商*)、中复神鹰、宝武镁业 * 未经 Tesla 公开确认独家'. 注释 * 已诚实承认未经独立确认, 但 ★★★★★ 评级未相应下调. A.4 Q9 (L2339) 同样把'金力永磁'列为'3 个押 5 年 IRR > 30%'的 top picks 之一, 注释也写'未经 Tesla 公开确认排他性'. 问题: (a) 金力永磁全公司 2024 营收约 ¥55 亿, 主营钕铁硼磁材 (家电 / 汽车 / 风电 / 节能电梯), 即使 Tesla Optimus 100 万台 × 每台 5kg 高性能钕铁硼 = 5,000 吨, 在金力永磁现有产能 (~30,000 吨) 占 ~17%, 但'独家定点'真伪决定了 5-15× 价差; (b) 投资逻辑'3-5 年享溢价'隐含了'Tesla 独家'+ '稀土卡点不被 MP / Lynas 消解'+ 'Optimus 真兑现 100 万'三层 conditional, 三个里任一失效 IRR 30-40% target 都 break. (c) 这恰好是 PE IC 最早会怼的'你的 ★★★★★ 是建立在公司单方面披露的供应关系上, 而 Tesla 历史上多次否认其供应商'独家'声明 (e.g. 宁德时代 / LG 储能均如此)'. PE 行动 #1 + Q9 top pick 同时依赖这一未证实点, 整个 LBC-5 的 alpha thesis 命悬一线.",
+      "what_would_resolve": "(a) ★★★★★ 评级需在'金力永磁 / 中研股份'两个标的旁加'∗ 评级受 Tesla 独家声明确认与否影响, 若否定则降至 ★★★', 而不是只在注脚标 * . (b) 或者把'★★★★★ 基础原材料卡点'分成两行: '★★★★★ 稀土 / 镁 / 碳纤维上游 (中复神鹰 / 宝武镁业)' + '★★★★ 终端定点未独立确认 (金力永磁 / 中研股份)'. (c) Q9 第二个 pick 需要替换或加强: 给出至少 2 个独立信息源 (e.g. Tesla 10-K 供应商 list, Tesla 投资者电话会议引语, 第三方拆解报告) 否则降到 IRR 20-25% target. (d) IRR 推算需做出'独家失败'敏感性: 若 Tesla 加 2 个供应商, 金力永磁单台价值量 ÷ 3, 整个 thesis 收益 ÷ 2."
+    },
+    {
+      "id": "i7",
+      "severity": "severe",
+      "title": "Comps 板块 EV IPO 中位 22× 用 3 家中国车厂样本, cherry-pick 友善对照——遗漏 Rivian / Lucid 这 2 个 2021 美国 EV IPO 高点 (PSR ~200×)",
+      "attacks_claim": "LBC-4",
+      "detail": "§6.5.2 Comps (L1881-1884) EV IPO 板块只用 3 家: 蔚来 (53×) / 小鹏 (24×) / 理想 (15×), median = 22×, 用来论证'中系智元 20× / 宇树 23× 接近 EV IPO 中位'故无泡沫. 但: (1) 全样本 EV IPO 应包括 Rivian (2021.11 IPO, PSR ~200× LTM, $86B 估值 / 2020 LTM revenue ~$0.001B—— 但 R$1B forward), Lucid (2021.7 SPAC merger, PSR ~150×), Polestar, Fisker 等. 这些都是 2021 EV 高点的 IPO, 用来 类比 humanoid 2026 高点 IPO 显然更对称 (Time-symmetric: 蔚来 IPO 2018 是 EV "early phase", Rivian/Lucid 2021 是 "manic phase", humanoid 2026 更类似 manic phase 不是 early phase). (2) 加入 Rivian / Lucid 后 EV IPO median 跳到 ~30-50×, 智元 / 宇树 PSR 20-23× 反而在 below median, '无泡沫'结论变更强—— 这本身不是坏事, 但'cherry-picked 友善样本得出无泡沫结论'是 IC 会怼的方法论问题. (3) 报告同时引 §6.5 (L1813) '2020 EV 整车 PSR 中位 8×, 2021 蔚来 / 小鹏达 15-20×'—— 这与 §6.5.2 自己列的蔚来 IPO 53× 矛盾 (是 IPO 时点还是 2021 峰值时点 PSR? 这两个一个是 LTM 一个是 NTM 高峰, 不可对照).",
+      "what_would_resolve": "(a) §6.5.2 EV IPO 样本扩到 6-8 家, 加入 Rivian / Lucid / Polestar / Fisker / Tesla IPO 2010, 重算 median 和 quartile, 让样本覆盖整个 EV adoption curve. (b) 明确说明 '本节 PSR 全部用 LTM (or NTM); 不混用'. (c) §6.5 (L1813) '2020 EV 中位 8× / 2021 15-20×'与 §6.5.2 蔚来 IPO 53× 的口径差异需明示."
+    },
+    {
+      "id": "i8",
+      "severity": "severe",
+      "title": "三情景概率 China-led 35% / Bifurcation 40% / US-led 15-25% 仍是 author's prior, 触发条件高度相关 (Tesla 兑现度) 但当成 marginal probability",
+      "attacks_claim": "LBC-3",
+      "detail": "§6.3 三情景的触发条件: China-led = '中国 2027 ramp + 美国无 humanoid IRA'; US-led = 'Tesla 100 万兑现 + humanoid IRA'; Bifurcation = '双方均推动本土化但未完全脱离'. 这三个事件不是 mutually exclusive 也不是 collectively exhaustive: (1) 'Tesla 兑现 + humanoid IRA 不推出'在哪个情景? China-led 还是 Bifurcation? 都说不通—— Tesla 兑现自动消解 China-led, 但没有 IRA 又不算 US-led. (2) 'Tesla 失败 + humanoid IRA 推出'呢? 政策推出但 Tesla 失败, Figure / Apptronik 受益, 中国仍主导出货—— 这不属于现有任何一种. (3) Tesla 100 万兑现与 humanoid IRA 推出之间是高度相关 (政策反应于产业进展), 两者 joint probability 远低于 marginal product. (4) 概率加权回到 IC Memo 智元 Returns: 用 35/40/25 (US-led 取上限 25%), 但 §6.3 卡片说 15-25%—— 取上限粉饰 bear case (因为 US-led 对智元最坏). 若取下限 15%, Bear 概率从 25% 降到 15%, base 升到 50%, 加权 IRR / MOIC 反而上升, 但 IC 会问'你是按区间还是按点估计加权的?'—— 报告应同时给出 P5/P50/P95 三档. (5) Bifurcation 40% 触发条件最模糊('双方均推动本土化但未完全脱离'), 是典型的'剩余概率桶'分配——研究员先定 China 35% + US 25%, 剩 40% 给 Bifurcation, 而不是先评估 Bifurcation 真实概率.",
+      "what_would_resolve": "(a) §6.3 三情景重新表述为 2×2 矩阵: 'Tesla 兑现 (Y/N) × humanoid IRA 推出 (Y/N)' = 4 cells, 每 cell 给一个 conditional 概率 + 一个'对应情景 label'. (b) IC Memo 智元 Returns 表需用 marginal probability (不是 author point estimate)—— 给一个 P5 / P50 / P95 MOIC 三档. (c) 'humanoid IRA' 现在已是 'policy watchlist, 推出概率取决于 Optimus 兑现度'—— 这恰好说明两个事件相关, 应明确写出 'P(IRA | Tesla 兑现) = X%; P(IRA | Tesla 失败) = Y%'."
+    },
+    {
+      "id": "i9",
+      "severity": "moderate",
+      "title": "Q9 '3 个标的押 IRR 30-45%'与正文情景概率不自洽——宇树 IRR 35-45% 假设 IPO ¥400 亿, 但同 IC Memo Bear case 已示 ¥120 亿可能",
+      "attacks_claim": "LBC-5 / A.4",
+      "detail": "Q9 (L2338) 给宇树 IRR 5y target 35-45%. 但: (1) 报告 §6.5.1 sanity check 给宇树 $0.46B (¥3.2B), §6.5.2 给 23× LTM PSR 接近 EV IPO 中位—— 这意味着 fair value 在 ¥120-400 亿区间, 而不是确定 ¥400 亿. (2) IC Memo 智元 Bear $5B 对应'量产 < 10K + IRA 出台', 同样情景下宇树 Bear 估值应在 ¥150-200 亿 (PSR 9-12×, 等同 EV IPO Q2 区间). (3) IRR 35-45% 隐含 5y MOIC 4.5-6×, 需要 enter ¥250 亿 (Pre-IPO 跟投) → exit ¥1,000-1,500 亿—— 这是 Apple / Tesla 级别的 long-term 估值, 不是合规人形整机厂的合理终局. (4) Q9 答案与 IC Memo Bull case ($35B 智元 = ¥250 亿 → ¥2,450 亿) 之间也不互洽: 两家可比公司 (智元和宇树) bull case 估值数量级差异 1.5-2×, 但他们 2030 出货假设 (12 万 vs 14 万)、ASP ($12K vs $8.5K)、毛利 (30% vs 35%) 都说宇树 ≤ 智元. PE IC 会问'为什么你的 top-3 picks 之一 (宇树) 5y target IRR 高于另一个 IC Memo 标的 (智元 Base 21%) 而 fundamentals 更弱?'",
+      "what_would_resolve": "(a) Q9 宇树 IRR target 改为 base-case-conditional: 'P50 IRR ~25% / P95 ~45%' 加权后中性 35%. (b) Q9 三个 picks 各加一个 entry / exit 数字: enter ¥X 亿 → exit P50 ¥Y 亿 → IRR Z%. (c) Q9 与 IC Memo 智元 Returns 表对齐: 两家可比公司 bull/base/bear 应有可比的 PSR multiple 假设."
+    },
+    {
+      "id": "i10",
+      "severity": "moderate",
+      "title": "Tesla Optimus 失败下游联动分析缺失——'Tesla 失败对 Figure 双刃剑'是一句话, 但 5 个 PE 行动里没有 '如果 Tesla 失败你做什么'的 if-then",
+      "attacks_claim": "LBC-3 / LBC-4",
+      "detail": "Q2 (L2217) 一句话: 'Tesla 失败对 Figure / Apptronik 估值是双刃剑 (一方面承接需求, 一方面整个 narrative 破裂)'. 但: (1) Tesla 失败是 §0.3 监测点 ②, 是核心变量, 不能用一句'双刃剑'打发. (2) 5 个 PE 行动里 ③ '谨慎进入美系一线' (L416)—— 如果 Tesla 失败, 美系一线是估值崩盘还是承接需求? 行动建议没有 if-then. (3) Tesla 失败的下游链: (a) Optimus 100 万产能预算转移到 Figure / Apptronik / Agility, 但 Figure 当前产能仅 ~150 台/年, scaling 困难, 整个'美系'的总出货上限被打掉; (b) 美系真泡沫 narrative 加强, Figure $39B 估值预计回调 50-70%; (c) 中系受益但稀土卡点压力降低 (因为 Optimus 是稀土最大单一买家). 这三条链路应是 5 个 PE 行动之外的 conditional 行动. (4) §A.3 决策树 (L2127) 三个 'Y/N' 节点都是情景层面, 没有 Tesla 兑现度这个直接 trigger.",
+      "what_would_resolve": "(a) 新增 §A.3 决策树第二层: 'IF Tesla Optimus 2026 Q3 量产 < 1 万 THEN: 美系一线减仓 (Figure / Apptronik 估值下调 -50%), 中系硬件加仓 (金力永磁估值下调 -20%, 但相对优势上升), 仿真/数据基础设施加仓 (NVIDIA Isaac 议价权下降)'. (b) §0.3 PE 行动 ⑤ 监测点 ② 旁加 'Tesla 失败下行动手册: 详见 §A.3.2'."
+    },
+    {
+      "id": "i11",
+      "severity": "moderate",
+      "title": "宁德时代 + 智元 + 千寻'中州基地全球首条电池厂规模化人形产线'当事实使用——但 2025.12 仅启动, 'first / scale / 规模化'三个限定词都未独立验证",
+      "attacks_claim": "LBC-2",
+      "detail": "关键判断 #12 (L400) + A.3 投资逻辑均引用此 anchor. 但: (1) 'global first 电池厂规模化人形产线'是公司新闻稿口径, 2025.12 启动到 2026.05 仅 5 个月, 是否真正达到'规模化'(年产 > 5,000 台?) 缺独立 industry-tracker 验证. (2) 这条 anchor 用来支撑'中州基地具身机器人产线 = 中国电池厂 + 机器人协同范式雏形'—— 而'范式雏形'是 narrative-grade 说法, 不是 fact. (3) 若实际产能 < 1,000 台 (PoC 级别), 那 #12 应被列为'监测项'而不是'关键判断'. PE IC 会问'你说'global first'但 Tesla Fremont / Texas 也是电池 + 机器人协同, 怎么定义 first?'",
+      "what_would_resolve": "(a) #12 加产能限定 '截至 2026.05 年化设计产能 X 台; 实际爬坡至 Y 月份达到 Z'. (b) 或将 #12 从'关键判断'降为'2026 H2 监测项' (与 §0.3 监测点 ③ '中国 550 亿+ 补贴落地节奏'同级)."
+    },
+    {
+      "id": "i12",
+      "severity": "minor",
+      "title": "Top 6 出货 sum-check: 5,500 + 5,168 + 1,500 + 1,200 + 800 + 700 = 14,868, 占 1.8 万 = 82.6%, 与文中 '80-95%' 接近但 KPI 卡 '80-95%'是中国份额不是 Top 6 份额——容易混淆",
+      "attacks_claim": "LBC-1",
+      "detail": "L4316 chart data 显示 Top 6 出货 = 14,868 台. (1) Top 6 / 1.8 万 = 82.6%, 与 KPI 卡 (L319) '80-95% 中国全球出货占比'数值近似. (2) 但 '80-95%' 的语义是中国 vs 全球, 不是 Top 6 vs 全球. (3) Top 6 都是中国厂商, 但中国全部厂商出货远大于 Top 6 (smaller players + 教科机 + 二线 OEM), 中国总出货应 ≥ 14,868. (4) 1.8 万全球 - 14,868 中国 Top 6 = 3,132 给所有其他玩家 (含美国 Figure 150 / Apptronik / Agility / 1X / Tesla / Boston Dynamics + 中国 Tier 2+3 30+ 家), 数学算下来美国总出货可能 < 500 台, 这与'美强软件、中强硬件'里中强硬件量化一致, 但报告没把这层 sum 关系明示. PE IC 不容易被错算, 但'80-95% 占比'数字是 LBC-1 的核心 KPI, 来源 sum-check 没做.",
+      "what_would_resolve": "(a) 在 chart 注或 KPI 卡注脚加 'Top 6 中国厂商累计出货 14,868 台 (82.6%); 中国全部 (含 Tier 2+3 30+ 家) 估算 15,300-17,100 台 (85-95%)'. (b) 明确 IDC 95% / GGII 85% 两个 anchor 是同一年份 / 同一'人形'口径吗 (vs 全口径含机器狗)."
+    }
+  ],
+  "prior_issue_updates": []
+}

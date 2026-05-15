@@ -1,0 +1,105 @@
+{
+  "round": 1,
+  "persona": "industry_expert",
+  "draft_classification": "商业研究 / 产业链格局分析 / PE 投资判断报告（zh-CN，PE/VC 合伙人级 IC 决策辅助材料）",
+  "load_bearing_claims": [
+    "LBC-1 · 美强软件、中强硬件的非对称稳态格局（中国出货 80-95%、BOM 剪刀差 2.8×、估值倒挂）",
+    "LBC-2 · 2030 年度新增出货 25-80 万台 / TAM $30-144 亿（中位 $75 亿）/ CAGR 69-113%",
+    "LBC-3 · 三情景概率 China-led 35% / US-led 15-25% / Bifurcation 40%（基准）",
+    "LBC-4 · 美系一线 PSR 系统性泡沫 + 中系 IPO 估值已对齐 EV IPO 中位",
+    "LBC-5 · 中系核心零部件 + 原材料卡点 = PE alpha 主战场（行星滚柱丝杠 19-22% 卡脖子最严重）"
+  ],
+  "verdict": "block",
+  "verdict_reason": "技术路线判断与玩家盘点存在两条系统性缺陷——Google DeepMind 作为'美系软件层'的事实主导者被结构性缺席、BD Atlas + 现代 OEM 路径未纳入 6 玩家框架——这两条直接动摇 LBC-1/LBC-4 的'美强软件 = Figure/PI/Skild' 论证；再加 GraspVLA / LIBERO 97.1% / VLA-vs-世界模型 三个技术叙事与 2026.05 行业现实脱节，整体不通过。",
+  "issues": [
+    {
+      "id": "i1",
+      "severity": "fatal",
+      "title": "Google DeepMind / Gemini Robotics 1.5 / Gemini Robotics-ER 在'美系软件'叙事中结构性缺席",
+      "attacks_claim": "LBC-1（美强软件 = Figure/PI/Skild/1X）+ LBC-4（美系一线估值泡沫）",
+      "detail": "报告反复用'美系软件'指代 Figure ($39.5B) / PI ($11B) / Skild ($14B) / 1X ($10B)，并在 L1055 计算'美系 4 条路径 5 家公司估值合计 ~$79.5B / 加权 PSR 757×'作为 LBC-4 系统性泡沫的核心证据。然而 2025-2026 美系'软件大脑'最有力的玩家其实是 Google DeepMind 的 Gemini Robotics 1.5 + Gemini Robotics-ER + Gemini Robotics On-Device + Gemini Robotics-Live——Apptronik Apollo 跑 Gemini Robotics（L587 一笔带过）、Boston Dynamics Atlas 跑 Gemini Robotics（L1967 'CES 2026 Atlas 接入 Gemini Robotics' + L715）、Intrinsic（Alphabet 子公司）也走相同路径。Gemini 在 robotic ER (Embodied Reasoning) benchmark 上的公开成绩，是当下与 π0/Helix 同量级 SOTA 候选。\n\n报告把 Google DeepMind 完全排除在'6 玩家路径'（第 4 章 L957-1031）和'全球估值 Top 10'（L1348）之外，仅在第一章人物矩阵 L494 出现一行 Vincent Vanhoucke。这造成两个连锁错误：\n\n(a) '美系软件估值合计 $79.5B / 加权 PSR 757×' 严重低估了真实'美系软件曝光'——一旦把 Alphabet/Google DeepMind 的 robotics 投入按 SOTM 拆分（保守估 $5-20B 资本投入 + 自由现金流补贴），美系软件其实由两个完全不同的估值阶级组成（hype-private vs cash-rich public），LBC-4 的'系统性泡沫'结论应当被拆分为'Figure/PI/Skild/1X 泡沫 + DeepMind/Intrinsic 反而 underpriced'。\n\n(b) PE 行动③'谨慎进入美系一线，2027 后回调时再加仓'（L416-417）的 framing 错了——PE 无法直接投 DeepMind/Intrinsic，但有 Alphabet 二级 + 战略并购 + 整机厂 OEM 锁定（BD-Hyundai、Apptronik-Mercedes）三条间接路径，这些路径在报告里完全没出现。\n\n该问题不是'漏掉一家公司'，是把整张'美系软件竞争图'画错了基本骨架，直接影响 LBC-1（'美强软件'到底强在哪）+ LBC-4（哪部分是泡沫）的可信度。",
+      "what_would_resolve": "(1) 第 4 章新增'路径 ⑦：基础模型供应商（DeepMind/Intrinsic/OpenAI）→ 整机 OEM 绑定'独立路径；(2) §6.5 估值 quartile 表中明示'Google DeepMind robotics 不可直投但是美系软件 SOTA 实际占比 ≥ Figure/PI 合计'，并把'美系软件加权 PSR 757×' 改为'美系私募一线 PSR 757× vs Alphabet robotics implied multiple ~公开 SOTM 测算'两栏对比；(3) 执行摘要 L350 '美强软件' 改为'美系软件 = (a) Big Tech 基础模型层 (Gemini/OpenAI/Anthropic) + (b) 私募整机/大脑层 (Figure/PI/Skild/1X)' 两层叙事，避免把私募一线等同于美系软件全貌。"
+    },
+    {
+      "id": "i2",
+      "severity": "fatal",
+      "title": "Boston Dynamics × Hyundai Atlas Electric 路径被忽视——直接破坏 '6 玩家分化' 框架的完整性",
+      "attacks_claim": "结构性 / LBC-1 + LBC-4",
+      "detail": "L715 (Autonomy 评分卡) 给 BD Atlas '2026 整年订单已被绑定' + L1410 '现代汽车 装配 售卖 2026 全部产能给现代+DeepMind，2028 目标 30,000 台/年' + L1492 (Top 20 投资项目第 9) 'Atlas 商用量产 2026 已交付'——这三处披露其实是报告里最 'B-tier+' 的 OEM 锁定数据点之一（与 Figure×BMW 同量级、比 Apptronik×Mercedes 更硬），但 BD 在 6 玩家路径（L957-1031）里完全缺席，在 §6.5 估值与 PE 行动里也找不到。\n\n这造成的问题：(a) BD 由 Hyundai 全资控股，估值不是公开私募一线，但'30,000 台/年 by 2028'若兑现，相当于 LBC-2 中位 50 万年度出货的 6% 单一公司锁定——这是任何 PE IC 应当先问'为什么没列在玩家路径里？'的第一个问题。(b) BD 路径的核心特征'传统机器人巨头 + 整车厂 OEM + DeepMind 软件'是 6 玩家框架（Tesla 垂直整合 / Figure 端到端 / 1X 消费 / PI-Skild 软件层 / 中硬件派 / 中场景派）完全没覆盖的第七种打法，把它合并进 Figure/Apptronik 路径②是错的（Apptronik 是 startup + Mercedes pilot，BD 是 40 年公司 + Hyundai 全资 + 已交付）。(c) BD-Hyundai 的存在意味着 LBC-1 '美系=私募整机+VLA'叙事其实漏了一个'美系=传统机器人+OEM+外购大模型'的稳定分支，这条分支恰好是不在估值泡沫名单上的。\n\n报告自己的 §3 评分卡承认 BD Atlas 是 L2-L3——比 Tesla L0-L1 高、比 Figure '声称 L3 但有争议'更可信。这种不对等待遇直接削弱了'美系一线全在泡沫区'的论证。",
+      "what_would_resolve": "(1) 第 4 章新增'路径 ⑦ · 传统机器人巨头 + OEM 锁定（BD-Hyundai-DeepMind / 现代 RMAC / 30K/yr by 2028）'独立打法；(2) §0.3 PE 行动 #2 / #3 把'美系一线'拆为'私募一线（Figure/PI/Skild/1X，估值泡沫）vs 上市/OEM 锁定（Hyundai/Symbotic/Intuitive Surgical 等，估值可投）'两类；(3) §6.5 在 valuation Top 10 chart 补 Boston Dynamics 隐含估值（按 Hyundai 2021 收购 $1.1B + 之后追加投入 + Atlas Electric 业务线 implied 测算）。"
+    },
+    {
+      "id": "i3",
+      "severity": "severe",
+      "title": "GraspVLA '10 亿帧 0 真机绕开管制' 被反复用作中国仿真路径的 SOTA 证据，但缺独立 benchmark 复核——这正是报告自己在 §3 批判他人的做法",
+      "attacks_claim": "LBC-1（中强硬件 + 弯道超车叙事）+ LBC-3（China-led 35% 触发条件）",
+      "detail": "GraspVLA 在 L617 / L1286 / L1304 / L1022 被列为'仿真合成路径代表 / 中国破局解 / 银河通用 ¥225 亿估值的核心技术叙事'。该模型的 '10 亿帧仿真训练'数字直接来自银河通用对外宣传材料；至今没有任何第三方独立 benchmark（LIBERO / CALVIN / SimplerEnv / RoboArena）公开数据把 GraspVLA 与 π0 / Helix / GR00T N1.6 放在同一测评平面。报告自己在 §2.4 (L657-663) 用 LIBERO / CALVIN / SimplerEnv 数据评估 OpenVLA-OFT / π0 / GR00T N1，但 GraspVLA 一项都没出现——这是结构性 cherry-picking。\n\n更尖锐的是：报告在第三章 (L722) 用同样的标准批评其他公司——'任何省略 MTBF 的 PE pitch deck 都应视为尽调不完整'。把 GraspVLA '10 亿帧 + 全仿真' 当作 '中国弯道超车的机会'（王鹤本人引用 L529, L617），同时不要求 sim-to-real 部署任务完成率 / 第三方 benchmark / 真机迁移泛化误差——是双重标准。\n\n这对 LBC-3 China-led 35% 概率的影响：'China-led 触发条件之一是 2027 仿真路线兑现真实部署 80%'（L624），但目前的证据全部是公司自报，无 falsifiable 测量。把单点 prior 35% 建立在未经独立验证的技术叙事上，PE IC 会立刻指出此处缺一个 falsifiable benchmark gate。\n\n该问题还连带'银河通用 ¥225 亿估值是大基金三期定价'的解读——大基金作为政策性资金，其估值不能反向当成市场对技术的认可。",
+      "what_would_resolve": "(1) §5.3 GraspVLA 行加注 '公司声称、无第三方 benchmark 复核（截至 2026.05）'；(2) §2.2 '中美交叉验证窗口'的'2027 银河通用真机部署 80% 任务完成率' 改为'2026 H2 前要求银河通用公开 LIBERO/CALVIN/SimplerEnv 或同级第三方 benchmark 数据，否则视为风险'；(3) 在 LBC-3 China-led 35% 概率推导附条件：'若 H2 2026 仿真路线没有第三方 benchmark 出现，China-led 概率下调 5-10pp'；(4) 在 LBC-5/A.2 银河通用估值锚上明示'¥225 亿含大基金政策溢价，市场化估值下限可能仅一半'。"
+    },
+    {
+      "id": "i4",
+      "severity": "severe",
+      "title": "'端到端 VLA 派 vs 显式世界模型派' 的二分法在 2026.05 已经过时——主要玩家都在合并这两条线",
+      "attacks_claim": "LBC-3（情景概率推导 + Scaling Law 时间锚）+ LBC-4（技术泡沫的可证伪性）",
+      "detail": "§2.1 (L577-605) 把 PI/Figure/Tesla/Apptronik 归为'端到端 VLA 派'、把 1X/NVIDIA GEAR/LeCun/宇树归为'世界模型派'，并在 L604 设了一个'二选一'催化剂：'若 VLA 在 LIBERO/CALVIN 突破 95% 而世界模型停滞，VLA 一统江湖；若反过来则世界模型获得溢价'。\n\n这个 framing 三个独立问题：\n\n(a) 实际架构已经融合：Helix 02 的 S1/S2 双系统（L585）本身就是'慢推理世界模型 reasoner + 快控制 policy'层级；π0.5 (2025.4) 引入了 hierarchical reasoning + scene tokenization——按报告自己的标准就属于'隐式世界建模'；GR00T N1.6 (NVIDIA, 2025 末) 是世界模型预训练 + VLA 微调的混合。把 PI/Figure 列为'纯端到端 VLA' vs '世界模型派'，相当于把 2024 的论文叙事套在 2026 的产品架构上。\n\n(b) 1X World Model 是数据生成工具不是策略：Eric Jang 的 1X World Model 主要用途是'生成 self-improving 训练数据'，最终 policy 仍是 VLA——把 1X 列为世界模型派'对立面' 误读了 1X 的实际栈。\n\n(c) LeCun → AMI Labs 是研究投资不是机器人产品：把 LeCun 的 V-JEPA2 列为可触发 PE 估值催化剂的'世界模型派' 高估了 AMI Labs 在 2026-2028 的工程化进度——V-JEPA2 至今没有任何 robotics 真机闭环 demo，AMI Labs 2025.11 才成立。\n\nLBC-3 概率推导和 LBC-4 估值催化剂事件都依赖于这个二分法 falsifiable。如果两条路线已经融合，'1-2 年内决定性 benchmark' 不会出现，PE 等待的 catalyst 就不存在——投资节奏需要重新校准。",
+      "what_would_resolve": "(1) §2.1 把'二派对立' 改写为'2026.05 现状是融合趋势 + 三种实现方案（pure VLA / hierarchical S1S2 / world-model-as-data-source）'；(2) 删除 L604 '一统江湖 vs 获得溢价'的 binary catalyst，改为 '2026-2028 关键看 hierarchical reasoning 在真机泛化任务上的提升幅度（≥30% 即视为突破）'；(3) §2.4 Scaling Law 时间锚 '1 亿+ 轨迹 / 30B+ 模型 ~2027-2028' 必须有依据来源（Tedrake/Joel Jang/Jim Fan 谁说的、原文上下文）——目前是孤立断言。"
+    },
+    {
+      "id": "i5",
+      "severity": "severe",
+      "title": "执行摘要 KPI 卡 '97.1% OpenVLA-OFT @ LIBERO' 作为 SOTA 头条数据是误导",
+      "attacks_claim": "结构性 / 误导 PE 读者对技术成熟度的判断",
+      "detail": "L1271 KPI 卡'97.1% OpenVLA-OFT @ LIBERO 当前 SOTA'——这是整个 §5.3 中游 AI 章节的 4 张顶层 KPI 卡之一，与'VLA 范式 / ≤7B 参数 / 2027-2028 GPT 时刻' 并列。但 LIBERO 是一个 2023 提出的 4-suite 简化抓取/操作基准（spatial / object / goal / long），任务集合小、视觉变化窄；到 2025-2026 几乎所有头部 VLA 模型都能跑到 95%+，业界普遍视之为已饱和、不能区分模型能力。\n\n报告自己在 L658 加了'(受限基准)' + L661 '真实环境（光照变化、未见物体）：实测约 30-50%'——也就是说作者知道这个数字 misleading，但仍把它作为 KPI 卡顶层数据展示。这是典型的'demo 当生产力'——一个 PE 读者看到 KPI 卡上'97.1% SOTA' 会形成完全错误的技术成熟度印象，需要往下读到 L658 才能修正。\n\n更严重的是：报告在第 3 章 (L722) 用'未公开 MTBF 即视为尽调不完整'批评行业宣传——但自己在执行摘要把饱和基准当作 SOTA 头条。同样的双重标准。\n\n对 LBC 影响：这个 KPI 卡读起来'技术接近成熟（97%）但 PE 视角看 Scaling Law 在 2027-2028 才到 GPT 时刻'——这两个并置造成认知冲突。真实情况是'当前 benchmark 已饱和说明它失去区分度，真实部署仍 30-50%，所以 PE 时间锚应当继续看 RoboArena/SimplerEnv 等下一代 benchmark 而非 LIBERO'。",
+      "what_would_resolve": "(1) §5.3 顶层 KPI 卡 '97.1% LIBERO' 替换为 '30-50%（真实环境光照变化 / 未见物体）' + 副标'LIBERO 等 2023 基准已饱和，下一代 benchmark RoboArena / SimplerEnv / Open-X 评估中'；(2) 全文 LIBERO 数字出现处统一加 'benchmark 饱和，区分度有限' 标签；(3) 第一章 L458 '当前 SOTA OpenVLA-OFT @ LIBERO 97.1%' 移到脚注，正文用真实部署 30-50% 作为主数据。"
+    },
+    {
+      "id": "i6",
+      "severity": "moderate",
+      "title": "金力永磁 / 中研股份的 'Tesla Optimus 供应商' 措辞虽已软化，但仍承担过多估值权重",
+      "attacks_claim": "LBC-5（中系核心零部件 + 原材料卡点 = PE alpha 主战场）",
+      "detail": "v1.md 的 S7 已声明措辞软化为'公司披露 Tesla 供应商，未经 Tesla 公开确认排他性'——验证 L899-902 / L2050 / L2084 / L2339 确实已加 '*' 脚注。但表述软化只解决了一半问题：另一半是这些公司在 LBC-5 PE 行动 #1（L408-410）+ 附录 A.2 优先级矩阵★★★★★（L2084）中仍处在'最高优先级原材料卡点'的最上层。\n\n如果剥离'Tesla 独供溢价'（报告 L902 自己声称 PE 估值上限剪 30%），金力永磁的核心 thesis 退化为'中国稀土永磁产能扩产 4 万吨/年 + 中国稀土 92% 全球控制'——这是稀土主题型 beta 投资，不是具身机器人 alpha。但 A.2 仍把它放在和'丝杠 / 灵巧手 / 六维力 / IMU' 等真正具身专属零部件相同的优先级。这造成 LBC-5 '具身 alpha 主战场' 的语义被稀释——稀土永磁本质是稀土主题，不是具身主题。\n\n第二个连带问题：稀土卡点的对冲叙事（MP Materials $400M DoD 资金 / Lynas Texas 厂 2026 投产）在 L2299 自我提出但 L2302 回答仅给了 '3-5 年窗口' 的时间承认，没量化 MP/Lynas 2026-2028 产能爬坡曲线 vs 中国稀土禁运假设的具体兑现节奏。这导致'稀土 92% 中国控制可持续' 假设没有可验证的对冲检验。",
+      "what_would_resolve": "(1) A.2 优先级矩阵把'稀土永磁卡点'拆为'具身专属 alpha (低，因为占 BOM 仅 0.5%) + 稀土主题 beta (高，3-5 年窗口)' 两栏；(2) 补一个稀土对冲表：MP Materials Mountain Pass Phase II + Lynas Texas + 韩国回收 在 2026/2027/2028 的产能 vs 中国稀土年化出口管制概率，量化对冲风险曲线；(3) LBC-5 '丝杠 19-22% 国产化率是最严重卡脖子' 与稀土永磁解耦——前者是具身独占 + 高 alpha，后者是稀土行业 + beta + 时效性。"
+    },
+    {
+      "id": "i7",
+      "severity": "moderate",
+      "title": "Tesla 'Optimus VLA' 与 PI/Figure 并列归入'端到端 VLA 派' 缺乏技术依据",
+      "attacks_claim": "LBC-3 / 第二章技术分类的严谨性",
+      "detail": "L586 把 Tesla Optimus 列为端到端 VLA 派四家代表之一（与 PI π0、Figure Helix、Apptronik Apollo 并列）。但 Tesla 至今没有公开任何 Optimus 大模型架构论文或技术报告，外界仅能看到 Musk 推文 + demo 视频。把它放在'端到端 VLA 派'与 π0/Helix/Apollo 同级，相当于把推文当架构。\n\n更严重的是：Tesla 在自动驾驶领域 (FSD v12) 确实跑端到端，但'Optimus 也用同一栈'是推断，并非披露事实。从公开技术沟通看，Tesla 内部叫法是 'Optimus AI'（不公开是否真的是 VLA 范式还是 imitation learning + RL 混合）。\n\n这对报告的连锁影响：(a) 第二章把 Tesla 与 PI/Figure 同列在'端到端 VLA 派'造成 LBC-3 'US-led 情景 = VLA 路线赢' 的因果链失真——如果 Optimus 不是 VLA 而是别的架构，那么'Tesla 100 万兑现 → US-led 触发'与'VLA 一统江湖' 不应捆绑；(b) §6.3 三情景推演的 US-led 触发条件混淆了'Tesla 量产兑现' + 'VLA 路线胜出' 两件不同的事，决策树不清。",
+      "what_would_resolve": "(1) L586 改为'Tesla Optimus（架构未公开，外界推断可能采用端到端策略学习）'；(2) §6.3 US-led 触发条件拆为两个独立 gate：(a) Tesla 量产兑现 (b) VLA 范式在 SOTA 真机部署任务完成率 ≥ 80% — 不再把两者绑定。"
+    },
+    {
+      "id": "i8",
+      "severity": "moderate",
+      "title": "宇树作为'中系板块估值锚'的合理性——60% 营收非人形",
+      "attacks_claim": "LBC-1 + LBC-4（中系 IPO 估值已对齐 EV IPO 中位 22-23×）",
+      "detail": "报告在多处把宇树 IPO 当作'中系具身板块估值锚'（L1015 '宇树 IPO 是中国具身板块估值锚'、§6.5 PSR comps 把宇树列入中系一线 Quartile 表）。但报告同时在 L713 + L1011 承认'王兴兴公开承认 G1 营收占 60%（机器狗 + 教育为主）'、L1804 '真正的中系纯人形 PSR 锚需要等智元/银河通用 IPO'。\n\n这是自相矛盾。宇树营收结构看是机器狗 + 消费 + 教育 + 工业小批量为主——类似 iRobot/大疆而非具身 AGI 玩家。把 PE 15-25× / PSR 22-23× 用宇树定锚，会让真正的具身玩家（智元、银河通用）估值受'非人形锚'拖累。LBC-4 '中系 IPO 估值已对齐 EV IPO 中位 22-23×' 在使用宇树 PSR 时实际上是对'消费机器人 + 教育 + 工业'综合估值，不是纯人形估值。\n\n报告 §6.5 (L1801-1810) 已加了'人形 vs 全口径 PSR 拆分'警示框，但 LBC-1 + PE 行动 #2 仍把宇树作为 IPO 跟投上限 ¥250 亿的依据，没有把'纯人形 segment 估值贡献 ≤ 40%'这个事实反映到上限里。",
+      "what_would_resolve": "(1) §6.5 宇树 PSR 拆为'机器狗 + 教育（占 60% 营收，PSR 应对标 iRobot 5-8×）+ 人形（占 40% 营收，PSR 对标早期 EV 22×）'加权综合估值，得出公允 IPO 上限范围；(2) PE 行动 #2 跟投上限 ¥250 亿 拆为'宇树（综合）¥250 亿 vs 智元/银河通用（纯人形）IPO 估值上限将更低'两组锚。"
+    },
+    {
+      "id": "i9",
+      "severity": "moderate",
+      "title": "Genesis '430,000× 实时速度 + MIT-led' 是营销数字，未做技术 caveat",
+      "attacks_claim": "§5.3 仿真平台 + LBC-3 仿真路径触发条件",
+      "detail": "L461 / L617 / L1325 三处用 'Genesis 430,000× 实时速度（MIT-led 开源）' 作为'仿真黑马'+'中国仿真合成路径绕开管制' 的关键证据。但这个数字仅在 Genesis 2024.12 首发论文上为单 GPU 简化刚体 + 极小场景设置下的吞吐峰值，业界（包括 NVIDIA Isaac Lab、SAPIEN、MuJoCo XLA 团队）有公开反驳指出在标准复杂操作场景下吞吐与 Isaac Lab 相比并无 100,000× 优势。把 430,000× 当作'黑马 vs NVIDIA Isaac 独占'的判断依据，重蹈了报告 §3 自己批评的'demo 当生产力' 错误。\n\n此外 'MIT-led' 描述不准确——Genesis 是 CMU/Stanford/UCSD/MIT 等多机构合作项目，第一作者所在机构其实是 CMU + Stanford。这种小错误叠加 430,000× 这个明显是营销级数字，会让 IC 读者立刻怀疑整章中游 AI 的复核严谨度。",
+      "what_would_resolve": "(1) Genesis 三处提及加'峰值数字，标准操作场景 vs Isaac Lab 加速比为 ~10-100×，非全场景'caveat；(2) 'MIT-led' 改为'多机构开源（CMU/Stanford/UCSD/MIT 等）'；(3) §5.3 仿真平台格局重新评估'NVIDIA Isaac 独占' vs 'Genesis 黑马' 二元判断，加入第三种可能性'Genesis + Isaac Lab + SAPIEN 三家共存，没有任一家 dominant'。"
+    },
+    {
+      "id": "i10",
+      "severity": "minor",
+      "title": "v1.md 声称'27 款 VLA 模型对比' 但 HTML 表只有 8 行",
+      "attacks_claim": "结构性诚实度",
+      "detail": "v1.md L92 + L159 两处声称'27 款 VLA 模型对比'，但 v1.report.html L1280-1289 的 VLA 对比表只列了 RT-2 / OpenVLA-7B / π0/π0.5 / Helix / GR00T N1 / GO-1 / GraspVLA / SmolVLA 共 8 款。要么表格不全（缺 RT-1 / RDT / RoboFlamingo / OpenVLA-OFT / Octo / NeuralMP / Pi0-FAST / OpenHelix / Helix02 / Apollo VLA / Optimus 等 19 款），要么 v1.md 文案夸大。这是细节但 IC 读者会注意到。",
+      "what_would_resolve": "要么补全 VLA 对比表到 ≥20 行（并加'本表覆盖 2023-2026 主要开源/公开 VLA 模型'说明），要么 v1.md 改为'代表 8 款 VLA 模型对比'。"
+    },
+    {
+      "id": "i11",
+      "severity": "minor",
+      "title": "BOM 剪刀差 2.8× 是静态测算，未含 2024.12 中国稀土出口管制 + 2025 美对华 GPU 禁运的真实跨境成本",
+      "attacks_claim": "LBC-1（BOM 剪刀差 2.8×）",
+      "detail": "L324 KPI 卡 + L356 引文 '$46K 中国链 vs $130K 美国链 (MS Humanoid 100)' 是 2025 年 6 月 Morgan Stanley 报告的快照测算。但报告自己在 L1105 / L2050 / L2296 都承认 2024.12 中国对稀土/镁/PEEK 的出口管制 + 2025 美对华 GPU 禁运 + 关税升级——这些都意味着真实把'中国链 $46K BOM' 跨境部署到美国工厂的实际到岸成本远高于 $46K（关税 + 合规 + 反审查供应链冗余）。报告以静态 BOM 数字支持 LBC-1 '美强软件、中强硬件' 稳态格局，但稳态本身被中美双向反制持续侵蚀。",
+      "what_would_resolve": "在 L324 / L356 BOM 数字附近加 '原 MS 静态测算，2026 跨境到岸成本因关税 + 合规估增 15-30%，2027 双向反制深化下剪刀差实际收窄到 1.8-2.2×'；并把这个收窄反映到 LBC-3 Bifurcation 基准 (BOM 重合度 < 30%) 的概率推导中。"
+    }
+  ],
+  "prior_issue_updates": []
+}

@@ -1,0 +1,168 @@
+{
+  "round": 2,
+  "persona": "numerical_auditor",
+  "draft_classification": "商业研究 / PE 视角具身智能产业链报告 v2 (中文)",
+  "load_bearing_claims": [
+    "LBC-1 美强软件中强硬件 — BOM 剪刀差 2.8-4.1× (区间已修正)",
+    "LBC-2 2030 TAM $30-144 亿 (中位 $75 亿) + 出货 CAGR 69-113%",
+    "LBC-3 三情景概率 China-led 30-40% / US-led 15-25% / Bifurcation 35-45% / Other 5% — 中点 35/20/40/5 = 100%",
+    "LBC-4 Figure LTM PSR 1,300-2,600× (中点 1,750×) = 系统性泡沫；中系 20-23× 接近 EV IPO N=3 sample median 24× 无泡沫",
+    "LBC-5 中系核心零部件 + 稀土永磁卡点是 PE alpha 主战场"
+  ],
+  "verdict": "block",
+  "verdict_reason": "5 处 round-2 修订只改了 narrative 没改 source-of-truth 表格/JSON: (a) Comps 表 L1930 Figure 行仍写 '790× ($39.5B/$50M)', (b) Symbotic 行 L1940 仍 4.5×, (c) 工业 median rowspan 仍 3.5×, (d) EV IPO median rowspan 仍 22×, (e) DCF 表 L1883 仍写 150 台. 'narrative 已修正' 但 'table-of-record 未同步' = round-1 critique 的核心证据反而被保留在原位.",
+  "issues": [
+    {
+      "id": "n2.i1",
+      "severity": "severe",
+      "title": "Comps 表 L1930 Figure 行仍写 '790× ($39.5B/$50M)' — round-2 修订只改 narrative, source-of-truth table 未同步",
+      "attacks_claim": "LBC-4",
+      "detail": "L1930 (§6.5.2 Comps Quartile 对照表 Figure AI 行) 原文逐字:\n  '<td><strong>790×</strong> ($39.5B/$50M)</td>'\n\n但同一报告其他 12+ 处全部改为 '1,300-2,600× ($39B / [INFERRED] $15-30M, 中点 1,750×)': L318 (KPI), L327-328 (KPI 卡), L373 (§0.1 narrative), L856 (§3.5), L1898 (DCF 表 LTM PSR 行), L1907 (Figure 解读 box), L1953 (Comps box bullet ①).\n\n这是 round-1 i1 fatal issue 的核心证据所在 — Builder response 声称 'C: PSR ~1,300-2,600× 替代 790×; 全文同步'，但实际把 Comps 表本身 (table-of-record) 留在了原位. 重算: 39000/50 = 780× (即 790×), 39000/22.5 = 1733×, 39000/15 = 2600×. Comps 表内 790× 与同表 L1898 LTM PSR 1,300-2,600× 互相打脸 (同一表内两个 PSR 数字).\n\nResolution 状态: round-1 i1 标 resolved 是错的 — narrative resolved, table cell unresolved.",
+      "what_would_resolve": "将 L1930 的 <td>790× ($39.5B/$50M)</td> 改为 <td>~1,300-2,600× ($39B / [INFERRED] $15-30M; 中点 1,750×)</td>, NTM 200× 也需同步调整 (200× 是用 $50M / 39500 × 200 反算的, 应重算)."
+    },
+    {
+      "id": "n2.i2",
+      "severity": "severe",
+      "title": "Comps 表 L1940 Symbotic LTM EV/Sales 仍 4.5×; L1937 median rowspan 仍 3.5× — 与 L1956 narrative 'Symbotic 4.5×→13×, 工业 median 修正 8.1×' 矛盾",
+      "attacks_claim": "LBC-4",
+      "detail": "L1940 原文: '<td>Symbotic（仓储自动化）</td><td>2025</td><td>4.5×</td><td>3.5×</td>...'\nL1937 原文 ABB 行: '<td>2.8×</td><td>2.7×</td><td rowspan=\"4\">3.5×</td>' — 板块 median 仍标 3.5×.\nL1941: Intuitive Surgical 14× 仍归在 '工业自动化龙头' 板块.\n\n但 L1956 narrative 又说: '工业自动化 median 修正 8.1× (Symbotic 4.5×→13×), Intuitive Surgical 仍应单列医疗机器人'.\n\n重算 (Symbotic 修正后): median[2.8, 3.2, 13, 14] = (3.2+13)/2 = 8.1× ✓\n但表格本身仍是 median[2.8, 3.2, 4.5, 14] = (3.2+4.5)/2 = 3.85× (原本即非 3.5× — 这个 round-1 i9 错误也未修复, 表格仍标 3.5×).\n\n下游影响 (L1955): '宇树 ... 接近 Symbotic / Intuitive 模式' — 若 Symbotic 真值 ~13× LTM, 那么宇树 23× 不是 '接近' 而是 '溢价 77%'; 工业自动化板块从 3.5× 锚跳到 8.1×, '中系 23× 远高于工业 7×' 的对照强度被打掉.\n\nResolution 状态: round-1 i2 + i9 标 resolved/conceded — narrative resolved, 但 Comps 表 cell unresolved.",
+      "what_would_resolve": "(a) L1940 Symbotic LTM 4.5× → 13× (~$30B / FY25 $2.25B); NTM 3.5× → ~10×; (b) L1937 工业自动化 median rowspan 3.5× → 8.1×; (c) 把 Intuitive Surgical L1941 单列为 '可比板块 2b: 医疗机器人' 独立 row 或加 [tag]; (d) L1955 narrative '接近 Symbotic / Intuitive 模式' 重写."
+    },
+    {
+      "id": "n2.i3",
+      "severity": "severe",
+      "title": "EV IPO 板块 median rowspan L1934 仍 22× — narrative 改为 24×, 表格未改",
+      "attacks_claim": "LBC-4",
+      "detail": "L1934 原文 (蔚来行): '<td>53×</td><td>15×</td><td rowspan=\"3\">22×</td>...'\n\n但 L1898, L1907, L1911, L1915, L1953, L1954, L1955, L1956 全部改为 'EV IPO N=3 sample median 24×'.\n\n重算: median[15, 24, 53] = 24× ✓ (24× 在正中间)\n表格内 22× 既不是 median 也不是 mean (mean = 30.67); 来源不明.\n\n下游影响 (L1935 小鹏行 '+9%'): 小鹏 24× vs median 22× 给 '+9%', 但若 median 24× 则 0%. L1936 理想 -32% 应改为 -38%.\n\nResolution 状态: round-1 i5 标 resolved (C: median 22×→24×, 智元/宇树 -17%/-4%) — narrative resolved, 表 cell 22× 未改, 同表内 vs Median 溢价 列 (+9%/-32%) 未重算.",
+      "what_would_resolve": "(a) L1934-1936 rowspan 22× → 24×; (b) 小鹏 +9% → 0%, 理想 -32% → -37.5%; (c) 蔚来 +141% → +120.8%; (d) 报告内 12+ 处 '中位 22×' 写法已统一改 24×, 表格 cell 也需同步."
+    },
+    {
+      "id": "n2.i4",
+      "severity": "severe",
+      "title": "DCF 表 L1883 Figure 2025 营收仍写 '150 台 × $130K × 30-50%' 与 L374 limitation note '250 台 (DP023)' 矛盾; chartShipmentTop10 已用 250",
+      "attacks_claim": "LBC-4",
+      "detail": "L1883 原文: '$15-30M [INFERRED]（... 按 <strong>150 台</strong> × $130K BOM × 30-50% 计提率估算 ...）'\nL1884: '~150 台 (Tech360 2026.1)'\n\n但 L374 (limitation note): '按 <strong>250 台</strong>（DP023）× $130K BOM × 30-50% 计提率反推 $15-30M.'\nL856 (§3.5): '当前 2025 营收 [INFERRED] $15-30M (<strong>250 台</strong> × $130K × 30-50% 计提率)'\nchartShipmentTop10 L4567: 'Figure AI (<strong>~250</strong>, DP023)'\n\n算术: 150 × $130K × 30-50% = $5.85-9.75M, 不可能反推 $15-30M. 250 × $130K × 30-50% = $9.75-16.25M, 上限仍只 $16M, 不到 $30M 上沿. 真正反推 $30M 上沿需要 250 × $130K × 92% 计提率 (= $30M) 或 350 台 × $130K × 65% — DP140 累计 350+ 台 (2026.05) 可能更合理.\n\n即同一报告内: 出货数 150 (DCF 表) vs 250 (limitation/narrative/chart) vs 350 (DP140) 三个数字; 反推 $15-30M 营收的算术 only 在 250 台 + 30-50% 区间下勉强成立, 表格仍写 150 是 round-1 i8 未修复的残留.\n\nResolution 状态: round-1 i8 标 conceded (C: 150 台 → 250 台 同步, chart Figure ~250 加入) — chart resolved, 但 DCF 表 row 1883/1884 未改.",
+      "what_would_resolve": "(a) L1883 '150 台' → '250 台 (DP023)'; (b) L1884 '~150 台' → '~250 台 (DP023; 累计 350+ DP140 截至 2026.05)'; (c) 说明 '$15-30M 反推区间 ≈ 250 × $130K × 30-50%'."
+    },
+    {
+      "id": "n2.i5",
+      "severity": "severe",
+      "title": "DCF 3×3 g/WACC 敏感性表 (round-2 承诺) 不存在; 引用的 '$0.68-1.61B / 31-58×' 自洽性破裂",
+      "attacks_claim": "LBC-4",
+      "detail": "Response 声称 '§6.5.1 新增 3×3 g/WACC 敏感性表 (Figure $0.68-1.61B / 28-65× 区间)' (numerical.i14 + pe.i3) 并在 v2.report.html §6.5.1 L1920-1945 落地.\n\ngrep 验证: 全文 search '28-65' / '0.68-1.61' / 'g=2' / 'WACC=12' — 仅在 narrative 字符串中出现一次 (L1907 '$0.68-1.61B 详 3×3 表') 和 L892 (28-65×; 该值与 L1907 31-58× 矛盾). 实际 3×3 表不存在. 唯一一个 sensitivity-table 是 §6.5.3 Unit Economics 5 行表 (L1995, numerical i13).\n\n算术自洽性破裂:\n  Claimed: $0.87B base, $0.68-1.61B 区间 → market 31-58× sanity\n  Verified: 39000/870 = 44.8× ✓ (45× base 一致)\n  Verified: 39000/680 = 57.4× ✓ (58× upper 一致)\n  Verified: 39000/1610 = 24.2× ✗ (claim 31×, off by 30%)\n  → 要么上沿 sensitivity $1.61B 错, 要么 31× 错. 若以 $1.61B 上沿为准, 比值区间应该是 24-58×, 不是 31-58×.\n\nDCF 数学再算 (W=12%, g=4%, EBIT $163M, 4 yr df): 163×0.6355 + 163/(0.12-0.04)×0.6355 = 103.6 + 1294.6 = $1.40B (我算的, 不是 1.61). 若 1.61B 是用别的 EBIT (比如不含 R&D 8% 反算) 那就更乱 — Builder 没列假设, 读者无法 verify.\n\nResolution 状态: round-1 i14 标 conceded (C: 见 pe.i3 — §6.5.1 3×3 g/WACC 敏感性表) — 表格根本没建, 引用的数字不自洽.",
+      "what_would_resolve": "(a) 在 §6.5.1 真正建 3×3 g/WACC 矩阵 (g=2/3/4% × WACC=12/15/18%, 9 个 cell, 显式列出 EBIT 公式), 同 §6.5.3 Unit Economics 表格式; (b) 重新校准 $1.61B 上沿 — 我的 W=12%/g=4% 算出 $1.40B; 若 Builder 算出 $1.61B 需明示 EBIT 与折现假设; (c) 上沿对应比值若是 $1.40B → 28×, 若 $1.61B → 24×, 不应是 31× (除非用 different 上沿)."
+    },
+    {
+      "id": "n2.i6",
+      "severity": "moderate",
+      "title": "data_points.json DP098 仍写 '日均 >¥5 亿', HTML L2089 改为 '日均 ¥2.5 亿' — JSON source-of-truth 未同步",
+      "attacks_claim": "LBC 周边 KPI #5",
+      "detail": "data/data_points.json DP098 原文: '国内具身累计融资额 (截至 2026.05 初) ¥373 亿，日均 >¥5 亿' (confidence: medium).\n\n但 HTML L355-356 KPI: '中国具身累计融资 (近 ~150 天) ~¥2.5 亿/日'\nL2089 Timeline: '国内具身近 ~150 天累计融资 ¥373 亿（自 2025.12 中旬至 2026.5 初, ~150 天 × 日均 ¥2.5 亿 = ¥373 亿; 非 2026 YTD; v1 标 YTD 误导, 已修正）'\n\n算术验证: \n  2025.12.15 → 2026.05.12 = 148 天; 148 × 2.5亿 = ¥370亿 ≈ ¥373亿 ✓ (HTML 自洽)\n  但 JSON '日均 >¥5亿' × 148 天 = ¥740亿 ≠ ¥373亿 — JSON 内部算术错.\n\n下游: HTML 把 'YTD' 改为 '~150天' 修正了 round-1 i4 的口径 misleading 问题, 算术也对齐了; 但 data_points.json source-of-truth 没改, 任何下游 agent / readers 看 JSON 还是会读到 '日均 >¥5亿'. 双源不一致.\n\nL2089 另一处验证: '2026.4 单月日均 ¥5.8 亿创新高（174 亿/30 天），高于 2026.2 月度 ¥160 亿（5.7 亿/28 天）' — 5.8×30=174 ✓; 160/28=5.71 ✓; '新高' 成立 (174>160).\n\nResolution 状态: round-1 i4 标 conceded (C: KPI '日均 ¥2.5 亿; YTD 标 v1 误导, 已修正') — HTML resolved, JSON 源未改.",
+      "what_would_resolve": "(a) 修改 data/data_points.json DP098 fact 字段: '日均 >¥5亿' → '近 150 天日均 ¥2.5亿 (~2025.12 中旬至 2026.5 初); 2026.4 单月日均 ¥5.8亿创新高'; (b) confidence medium → high (148天 × 2.5 = 370 与 373 在 1% 误差内自洽)."
+    },
+    {
+      "id": "n2.i7",
+      "severity": "moderate",
+      "title": "$39.5B vs $39B 仍并存 — KPI / chartValuationTop10 / L1005 / L1388 / L4287 / L1930 仍 $39.5B, L1896 声明 PSR 计算用 $39B 但 5 处 $39.5B 未改",
+      "attacks_claim": "LBC-1, LBC-4",
+      "detail": "L1896 (DCF 表 当前市场估值 row) 显式声明: '$39B (post-money 2025.9 Series C; data_points.json DP009 high conf; HTML 部分 KPI 处仍写 $39.5B = 395 亿美元同义)'.\n\n但 grep 结果 $39.5B 残留 5 处:\n  L1005: PE 估值 'Figure $39.5B'\n  L1388: chartValuationTop10 subtitle 'Figure $39.5B vs 智元 $2.8B = 14×'\n  L1930: Comps 表 Figure 行 '790× ($39.5B/$50M)'\n  L4287: 估值表 'Figure AI 估值 $39.5B'\n  L4553: chartValuationTop10 数据 'data: [39.5, 14.0, ...]'\n\n影响: PSR 计算 $39.5B/$15M=2,633× vs $39B/$15M=2,600× (中点 $39.5B/$22.5M=1,756 vs $39B/$22.5M=1,733×). 0.5B 差异本身小 (1.3%), 但 chart 数据 39.5 + 表格 $39.5B 与 narrative $39B 双轨制使读者无法确定 'official' 数字.\n\ndata_points.json DP009 写 '$39B' (high confidence, cross-validated 4 sources) — JSON source 是 $39B, HTML 应统一为 $39B.\n\nResolution 状态: round-1 i7 标 conceded (C: 显式标注 $39B vs $39.5B 同义; PSR 计算用 $39B) — 仅做了 'declaration', 没做 'global replace'.",
+      "what_would_resolve": "(a) 全文 sed 's/\\$39.5B/\\$39B/g' 一致化; (b) chartValuationTop10 L4553 data: [39.0, 14.0, ...] L4287 估值表 $39.5B → $39B; (c) 或保留 $39.5B 但标 'rounding artifact, official $39B per DP009' 一句话.\n\n注: 39.5 亿美元的来源应该来自媒体口径四舍五入 (post-money $39B 是公司口径)."
+    },
+    {
+      "id": "n2.i8",
+      "severity": "moderate",
+      "title": "L892 '智元 ¥225 亿 → sanity $0.17B' — 225亿是银河通用, 不是智元 (¥200亿+)",
+      "attacks_claim": "LBC-4",
+      "detail": "L892 (§3.6 投资动作变更表): '整机估值锚下移 2-4×：Figure DCF $39B → sanity $0.87B（市场 ~45× sanity，对 g/WACC ±2pp 敏感 28-65×，详 §6.5.1）；<strong>智元 ¥225 亿</strong> → sanity $0.17B；宇树 ¥400 亿 IPO → sanity $0.46B'\n\n但 L373 / L1896 / L434 / L1053 全部写: 智元 Pre-IPO '¥200 亿+ = $2.8B', 银河通用 '¥225 亿 (大基金首投, 含政策溢价)'.\n\n所以 L892 ¥225 亿 是 '银河通用' 数字, 与文字中 '智元' 不匹配. 智元 sanity check $0.17B 来自 §6.5.1 DCF 表 L1895 (智元 $0.17B), 该表 L1896 智元为 '¥200 亿+ = $2.8B' — 跟 ¥225 亿不一致.\n\n影响: 一处 mis-attribution 误导读者; 也连带影响 round-1 i12 (估值时点漂移) — Builder 已说明智元两个时点 ($2.8B Pre-IPO vs $4-7B IPO 后), L892 ¥225 亿 是第三个时点, 不在已 documented 两个时点内.\n\n另: L892 写 '28-65× 敏感' vs L1907 写 '31-58× 敏感' — 同一数 (Figure sensitivity 比值区间) 两处不一致.\n\nResolution 状态: round-1 i7/i12 标 resolved — 部分 resolved, 但 L892 残留 v1 旧数字混淆.",
+      "what_would_resolve": "(a) L892 '智元 ¥225 亿' → '智元 ¥200 亿+ ($2.8B Pre-IPO)' (与 §6.5.1 + §0.1 一致); (b) L892 '28-65×' → '31-58×' (与 L1907 一致) 或同时修复 L1907 (见 n2.i5)."
+    },
+    {
+      "id": "n2.i9",
+      "severity": "moderate",
+      "title": "chartPSRComparison 2024 Figure PSR = 200× 缺数据基础; 2024.02 Figure 估值 $2.6B (DP129), 2024 营收 [UNDISCLOSED]",
+      "attacks_claim": "LBC-4",
+      "detail": "L4731 chartPSRComparison: '具身美系一线 PSR (Figure $39B / [INFERRED] $15-30M)' 数据 [2024=200, 2025=1750, 2026E=1200, ...].\n\n但 2024 Figure 估值: data_points.json DP129 '2024.02 估值 $2.6B → 2025.09 $39B (18 个月 15×)'. 2024 营收 [UNDISCLOSED] (Figure 一直未公开). 200× PSR 隐含 $2.6B/营收=200 → 营收 = $13M.\n\n两个问题:\n(1) chart 名称写 'Figure $39B / [INFERRED] $15-30M' 暗示分子分母全用 2025 数, 但数据点是 2024-2028 时间序列, 2024 点应该用 $2.6B (2024.02 估值, 但 chart 用 2024 = 整年, 实际 2024.10 仍 $2.6B 量级) / 2024 营收 [UNDISCLOSED]. Subtitle 仅写 2025 口径, 但数据点是多年, 读者会误以为分子始终 $39B.\n(2) 即使按 $2.6B 估值 / $13M 假设, PSR = 200× 的 $13M 营收没有出处 — 这是 'narrative-justifying-the-chart' 而非 'chart-from-data'.\n\nResolution 状态: 这是 round-2 新引入的 chart 数据点 (round-1 i7 提到 chartPSRComparison y 轴 max 2000, Figure 2025 数据 400→1750; 但 2024=200 这个点 round-1 未触及).",
+      "what_would_resolve": "(a) chart subtitle 或 annotation 说明 '2024 数据点用 Figure 2024.02 估值 $2.6B / 营收 [INFERRED, no public data]'; (b) 或直接 null 掉 2024 数据点 (像 2018-2023 一样), 仅画 2025+; (c) 数据点 2026E-2028E 也需公开假设 — 600 / 300 没有公开 anchor."
+    },
+    {
+      "id": "n2.i10",
+      "severity": "minor",
+      "title": "L1907 Figure 解读 box '完整 DCF 应纳入失败概率 30-40%' — 但 §A.5 IC Memo 失败 P5 概率给 5% (response 称 35/40/20/5)",
+      "attacks_claim": "LBC-4",
+      "detail": "L1907 Figure 解读 + L1897: '完整 DCF 应纳入失败概率 30-40%'.\nL1953 bullet ①: 同样 '失败概率 30-40%'.\n\n但 response-2.md pe_partner.i2 行写: 'Returns 表新增 True Bear / P5 行 (MOIC 0.08-0.15× / IRR -31% to -39%); 概率加权 35/40/20/5'.\n\n两处概率不一致:\n  Figure DCF 失败概率: 30-40% (§6.5)\n  Returns table P5 (True Bear / 失败): 5% (§A.5)\n\n若 §A.5 P5 = 5%, 则 §6.5 DCF '应纳入失败 30-40%' 是 inconsistent 推论 — DCF 假设 30-40% 失败 ≠ IC Memo IRR 加权权重 5% (两者都是 'true bear' 但量化差 6-8×).\n\n可能合理解释: '失败概率 30-40%' 指 'Figure 单标的失败概率', P5 5% 是 'portfolio-wide 极端情景概率'. 但 Builder 未在 v2 明示这两个 30-40% 与 5% 的关系.\n\nResolution 状态: round-1 我没单独发这条, 是 round-2 引入的新数; 检查发现两处概率口径不同步.",
+      "what_would_resolve": "在 §6.5.1 + §A.5 之间显式 reconcile: 单标的失败概率 30-40% (Figure 估值假设) vs 组合 P5 weight 5% (概率加权 IRR). 一句脚注即可."
+    }
+  ],
+  "prior_issue_updates": [
+    {
+      "id": "i1_round_1 (Figure PSR 锚 self-contradicting)",
+      "status": "partial",
+      "reasoning": "Narrative + KPI + DCF row LTM PSR 全部已改 1,300-2,600×; 但 §6.5.2 Comps 表 L1930 Figure 行仍写 '790× ($39.5B/$50M)' (未同步), DCF 表 L1883 仍写 '150 台 × $130K × 30-50%' (n2.i4), $39B/$39.5B 仍并存 (n2.i7). Builder response 标 'C 全文同步' 是 over-claim. 见 n2.i1 / n2.i4 / n2.i7."
+    },
+    {
+      "id": "i2_round_1 (Symbotic 4.5× → 13×)",
+      "status": "partial",
+      "reasoning": "Narrative L1956 '工业自动化 median 修正 8.1× (Symbotic 4.5×→13×)' 已加; 但 Comps 表 L1940 cell 仍 4.5×, median rowspan L1937 仍 3.5×. 'Cell-of-record' 未修订. 见 n2.i2."
+    },
+    {
+      "id": "i3_round_1 (GDP 10× 错位)",
+      "status": "resolved",
+      "reasoning": "L417 关键判断 #8 '0.008% / vs EV 2015 ~0.05%' ✓; L1780 §6.4 narrative '0.0082% / 0.0441-0.0588%' 显式校准 ✓; L920 §3.6 投资变更表 '0.008% / 0.05%' ✓; L360 KPI 卡 '0.008% / EV 2015 ~0.05%' ✓. 重算: 110e8/1.34e14 = 0.00821% ✓, 350e8/6.8e13 = 0.0515% ✓. 全部对齐. L919 一处旧文字 '已超 EV 早期占 GDP 比例' 仍残留, 但同表 L921 立即纠正 '相对量级仅为 EV 2015 高峰 15-20%' — narrative 内部自洽."
+    },
+    {
+      "id": "i4_round_1 (YTD ¥2.5亿 × 132 天 ≠ ¥373亿)",
+      "status": "partial",
+      "reasoning": "HTML L356 + L2089 已改 'YTD 误导, 已修正; 近 ~150 天 (自 2025.12 中旬) × 日均 ¥2.5 亿 ≈ ¥373 亿' — 重算 148天 × 2.5 = ¥370亿 在 1% 误差内自洽 ✓. 但 data_points.json DP098 仍写 '日均 >¥5亿' (未同步), 见 n2.i6. JSON 源未改."
+    },
+    {
+      "id": "i5_round_1 (EV IPO median 22× 应为 24×, N=3 cherry-picked)",
+      "status": "partial",
+      "reasoning": "Narrative (L1898, L1907, L1911, L1915, L1953-1956) 全部改为 'EV IPO N=3 sample median 24×'; 显式承认 sample 限制 + N=5 全口径 (含 Rivian/Lucid manic-phase 175×) median 53×. 但 Comps 表 L1934 rowspan 仍 22×, '+9%/-32%' 列未重算. 见 n2.i3."
+    },
+    {
+      "id": "i6_round_1 (三情景概率不闭合)",
+      "status": "resolved",
+      "reasoning": "L391-394 + L1681-1741 + chartScenarioProb L4358-4361 全部已改: China-led 30-40% (中点 35%) / US-led 15-25% (中点 20%) / Bifurcation 35-45% (中点 40%) / 其他 ~5%; 中点合计 35+20+40+5 = 100 ✓. L1741 显式 '区间总和恒为 100% in any combination, 任何依赖此分布的下游配置在 v2 已改用中点加权'. doughnut chart 数据 [40, 35, 20, 5] 合 100 ✓. 完全修复."
+    },
+    {
+      "id": "i7_round_1 ($39.5B vs $39B)",
+      "status": "partial",
+      "reasoning": "L1896 显式声明 '$39B (DP009 high conf); HTML 部分 KPI 处仍写 $39.5B 同义' — 但全文 5 处 $39.5B 仍存在 (L1005, L1388, L1930, L4287, L4553); 是 'declared 同义' 而非 'global replaced'. 见 n2.i7."
+    },
+    {
+      "id": "i8_round_1 (Figure 150 vs 250 vs 350 台)",
+      "status": "partial",
+      "reasoning": "chartShipmentTop10 L4567 已加 'Figure AI (~250, DP023)' ✓; L374 limitation note '250 台 (DP023)' ✓; L856 §3.5 '250 台' ✓; 但 §6.5.1 DCF 表 L1883/L1884 仍写 '150 台 (Tech360 2026.1)' 未同步. 见 n2.i4."
+    },
+    {
+      "id": "i9_round_1 (工业 median 3.5× 应 3.85× / 8.1×)",
+      "status": "partial",
+      "reasoning": "Narrative L1956 已说 '工业自动化 median 修正 8.1×, Intuitive 单列医疗'; 但 Comps 表 L1937 rowspan 仍 3.5×, Intuitive 仍在工业行 L1941. 同 n2.i2."
+    },
+    {
+      "id": "i10_round_1 (5-10× vs 14× 估值分层)",
+      "status": "resolved",
+      "reasoning": "L373 + L1388 已改 'Pre-IPO 时点 5-14× (Figure $39B/$2.8B = 14×; 智元 IPO 后预期 $4-7B 则 ~5×)'; L1396 narrative '应当 9× 实际 5×' 仍存在但属于另一时点对比 (产能 + ASP + 毛利 framework), 与 'PSR 估值分层' 不冲突. 自洽."
+    },
+    {
+      "id": "i11_round_1 (BOM 2.8× single source MS)",
+      "status": "resolved",
+      "reasoning": "L323-325 KPI '2.8-4.1×'; L373 '若用 Yole $32K vs MS $130K 则 4.1×, 区间 2.8-4.1×; 美国对照口径仅 MS 一家, 非独立多源交叉验证' — 完整修订. 单源限制显式承认 ✓."
+    },
+    {
+      "id": "i12_round_1 (宇树 IPO 时点漂移)",
+      "status": "resolved",
+      "reasoning": "L1896 '宇树 Pre-IPO C 轮 ¥120亿 ($1.7B; chart Top10) / IPO 锚定预计 >¥400亿 = $5.6B' 显式拆两时点; L1855 narrative '真正的中系纯人形 PSR 锚需等智元/银河通用 IPO 才能确立'. 见 n2.i9 chartPSRComparison 单独问题."
+    },
+    {
+      "id": "i13_round_1 (Unit Economics 大量 INFERRED)",
+      "status": "resolved",
+      "reasoning": "§6.5.3 L1995-2005 新增 5 行 sensitivity 表 (base / 50% 续约 / 双班 / 3班7天 / 价格战), LTV 跨度 $125-1,095K, LTV:CAC 1.5-14.6× 显式. L2006 limitation note 承认假设全 [INFERRED]. 完全修复."
+    },
+    {
+      "id": "i14_round_1 (DCF 永续期 90%, 缺敏感性)",
+      "status": "unresolved",
+      "reasoning": "Response 声称 '§6.5.1 3×3 g/WACC 敏感性表 (Figure $0.68-1.61B / 28-65×)'; 实际 grep — 该 3×3 表不存在, 只有 narrative 引用 ('详 3×3 表'). 同时引用的数字 31-58× (L1907) vs 28-65× (L892) 自相矛盾, 算术对应 ($1.61B 对应 24× 而非 31×) 不成立. 见 n2.i5."
+    }
+  ]
+}

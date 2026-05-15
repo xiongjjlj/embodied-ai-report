@@ -1,0 +1,137 @@
+{
+  "round": 3,
+  "persona": "numerical_auditor",
+  "draft_classification": "商业研究 / PE 视角具身智能产业链报告 v3 (中文)",
+  "load_bearing_claims": [
+    "LBC-1 美强软件中强硬件 — BOM 剪刀差 2.8-4.1×",
+    "LBC-2 2030 TAM $30-144 亿 (中位 $75 亿)",
+    "LBC-3 三情景 (中点 35/20/40/5 = 100%); §6.3 2×2 矩阵 P(Y,Y)=15/15/7/63 = 100%",
+    "LBC-4 Figure LTM PSR 1,300-2,600× = 真泡沫; sanity check $0.87B (base) / 敏感性 24-58× / 失败概率 35% folddown → 68×; 中系 20-23× 接近 EV IPO N=3 sample median 24×",
+    "LBC-5 中系核心零部件 + 稀土永磁卡点是 PE alpha 主战场; OEM-locked 美系一档单独"
+  ],
+  "verdict": "block",
+  "verdict_reason": "Round-2 大部分 cell-of-record fixes 真实落地 (Comps 表 / DCF 250 台 / DP098 JSON / $39.5B 全局替换 — 8/10 R2 issues resolved). 但 round-3 引入了 3 处新的 severe 算术不自洽: (a) 3×3 g/WACC 敏感性表 9 cells 中 6 cell 不符合 stated formula, 工作示例自相矛盾 ($1.255B vs cell $1.61B); (b) 章内 §6.3 2×2 矩阵 US-led 30% vs §0.1/chartScenarioProb/§A.5 IC Memo US-led 20% 三处 +10pp gap, 仅 limitation-note 承认未 reconcile; (c) IC Memo Returns 表 cell 标头 'E[IRR] ~29% 名义' 紧邻 inline 计算结果 '26.1% 名义', 同一行 cell 自相矛盾, 下游 portfolio-level ~17% 真实可分红 IRR 隐含用 28% 第三个数. 另发现 narrative 'EV IPO N=2 Rivian/Lucid 175× median' 在 comps 表内无对应数据点支撑 (Rivian LTM ~85,000× / Lucid LTM ~150×, 175× 既非 median 也非 mean).",
+  "issues": [
+    {
+      "id": "n3.i1",
+      "severity": "severe",
+      "title": "§6.5.1.x 3×3 g/WACC sensitivity table — 9 cells 中只有 3 cell 符合 limitation-note 给出的 stated formula; 6 cell 凭空高/低; worked example 自相矛盾",
+      "attacks_claim": "LBC-4",
+      "detail": "L2010-2022 publish 了 3×3 矩阵 (g={2,3,4}% × WACC={12,15,18}%), 9 个 cell 标 $0.55-1.93B. L2023 limitation-note 给出 stated formula: 'cell 公式: EBIT $163M × [df_4yr + 1/(WACC-g) × df_4yr] 其中 df_4yr = 1/(1+WACC)^4' 并以 g=3%,WACC=12% 为例工作示例: 'df=0.6355, 永续因子=1/0.09×0.6355=7.06, EBIT × (0.6355 + 7.06) = $163M × 7.70 = $1.255B'.\n\n但同 cell 的发布值是 $1.61B (24× ratio). 例子里 worked example 给出 $1.255B, cell publishes $1.61B. limitation-note 承认这点并补救: '→ 加 4-yr 折现 cash flow accumulator 后 ~$1.61B (含 ramp 期 cash 简化为 EBIT×4×0.5×df)'.\n重算 accumulator: 163 × 4 × 0.5 × 0.6355 = $0.207B; $1.255B + $0.207B = $1.462B, 仍非 $1.61B (off 10%).\n\n我用 stated formula 重算 9 cell (EBIT*df + EBIT*1/(W-g)*df):\n  g=2,W=12: my $1.139B vs cell $1.40B (off +23%)\n  g=2,W=15: my $0.810B vs cell $0.81B ✓\n  g=2,W=18: my $0.610B vs cell $0.55B (off -10%)\n  g=3,W=12: my $1.255B vs cell $1.61B (off +28%) ← cited in worked example\n  g=3,W=15: my $0.870B vs cell $0.87B ✓ (base)\n  g=3,W=18: my $0.645B vs cell $0.58B (off -10%)\n  g=4,W=12: my $1.398B vs cell $1.93B (off +38%)\n  g=4,W=15: my $0.940B vs cell $0.95B ✓\n  g=4,W=18: my $0.685B vs cell $0.62B (off -10%)\n\nW=15% 列 3 cell 全部精确匹配 stated formula. W=12% 列 3 cell 全部高于 formula 23-38%. W=18% 列 3 cell 全部低于 formula 9-10%.\n\n这说明 W=15% 列 cells 是按 stated formula 算的, W=12%/W=18% 列 6 个 cell 用了完全不同的公式 (可能 ramp adder + accumulator 在不同 W 下不一致或公式有误). limitation-note 的 'EBIT×4×0.5×df' 解释仅在某些 W 下成立, 不全局自洽.\n\n附加: narrative claim '敏感性 $0.68-1.61B / 24-58×' (§6.5.1 L2041, §3.6 L980) 与 3×3 表的 g=3% 行 ($0.58-1.61B / 24-67×) 不一致. $0.68B 不在表内任何 cell. 上沿应是 67× (W=18%/g=3% cell), 不是 58×. 这是 round-2 残留范围数字, narrative 没跟着新表更新.",
+      "what_would_resolve": "(a) 给出 cells 用的真实公式 (列出 ramp / 累积项的具体表达式 + 一两个 worked example reproduce 多个 cells); (b) 修正 $0.68-1.61B / 24-58× 残留为 $0.58-1.61B / 24-67× (与新 3×3 表 g=3% 行一致) — 或如果用其他列, 显式说明 (例如 'g 仅 3% 行 + W 12-18%, 上沿截断 67× 至 58% 因失败概率 35% 后已 capped'); (c) §3.6 L980 / KPI L1965 / §6.5.1 L2041 三处 '24-58×' 同步重新校准."
+    },
+    {
+      "id": "n3.i2",
+      "severity": "severe",
+      "title": "§6.3 2×2 矩阵 US-led 30% vs §0.1/chartScenarioProb/§A.5 US-led 20% — +10pp gap, 三处概率分布互不一致, 显式承认但未 reconcile",
+      "attacks_claim": "LBC-3, LBC-4",
+      "detail": "三处独立 US-led 概率定义不一致:\n  L480 §0.1 卡: 'US-led (15-25%; 中点 20%)'\n  L1825-1826 §6.3 2×2 矩阵: P(Y,Y) 15% + P(Y,N) 15% = US-led 30%\n  L4548 chartScenarioProb: data [40, 35, 20, 5] → US-led 20%\n  L2691 §A.5 IC Memo limitation-note: '§6.3 US-led 20% = §A.5 Bear-A 10% + Bear-B 10%'\n\nL1831 §6.3 limitation-note 承认: 'US-led 30% (= 15% + 15%, 与卡片 15-25% 区间上沿一致; 已上调中点至 25%, 见下)' — 但 (i) 区间上沿是 25% 不是 30%, (ii) §0.1 卡 mid-20%, (iii) chartScenarioProb 用 20%, (iv) §A.5 也按 20%.\n\nv3.md 'Limitations 5' 显式承认: '§6.3 US-led 区间中点 20% vs 新 2×2 matrix US-led 30% 之间有 +10pp 差异. Round-3 在 limitation-note 标注; 真正 reconcile 需要重新校准 P(IRA | Tesla Y) 从 50% 降到 ~33%. 这是 Round-4 候选.'\n\n问题: '承认未 reconcile' 不等于 reconcile. 三处独立计算 (饼图加权 / Returns table E[MOIC] / decision tree A.3.2 P 值) 中, A.3.2 (L2390-2393) 用 §6.3 矩阵 (15/15/7/63), §A.5 Returns 用 §0.1 (35/20/40/5), chartScenarioProb 用 §0.1 (40/35/20/5) — 不同章节用不同概率, 下游推导不可拼接.\n\n下游证据: §A.5 Returns 表 L2687 E[MOIC] = 4.77× 用 0.35/0.40/0.10/0.10/0.05 (US-led=20%); 若用 §6.3 2×2 US-led 30%, 则 E[MOIC] = 0.30×9 + 0.40×3.8 + 0.15×0.77 + 0.15×0.13 + 0 = 2.7 + 1.52 + 0.116 + 0.020 = 4.36× (而不是 4.77×). 不同概率口径下 E[MOIC] 跨度 4.36-4.77×, 大约 9% 差异.\n\n报告 reader 看 §A.3.2 决策树 cell P=15%/15%/7%/63% (US-led 30%) 然后看 §A.5 IRR 加权用 US-led 20%, 会自相矛盾.",
+      "what_would_resolve": "三选一: (a) 重新校准 P(IRA|Tesla Y) 从 50% → 33%, 使 P(Y,Y)=10% + P(Y,N)=20% → US-led 30%; (b) 重新校准 §0.1 卡区间 15-25% 中点改 30%, chartScenarioProb data 改 [P_Bif, P_China, 30, P_other] 总和 100%, §A.5 Returns 加权重算; (c) 显式声明 '§6.3 2×2 matrix 是 different prior, §0.1/chart/A.5 用 main prior; 二者并存 by design; 推导用 main prior, 2×2 matrix 仅做条件展示' (要求 limitation-note 在每个相关章节都标).\n\n当前 v3 只在 limitation-note L1831 单点承认, 大部分 reader 看不到这个 +10pp gap → 容易得出错误推导."
+    },
+    {
+      "id": "n3.i3",
+      "severity": "severe",
+      "title": "§A.5 IC Memo Returns table cell 'E[IRR] ~29% 名义' inline 计算 '= 26.1% 名义' 同 cell 自相矛盾; 下游 'portfolio 真实可分红 ~17%' 用 28% 第三数",
+      "attacks_claim": "LBC-4",
+      "detail": "L2687 Returns 表加权行 cell 内容: '<strong>E[IRR] ~29% 名义</strong>' (cell header) <br/> inline calc: '(0.35×55 + 0.40×31 + 0.10×(-5) + 0.10×(-33) + 0.05×(-35) = 19.25 + 12.4 - 0.5 - 3.3 - 1.75 = 26.1% 名义)'\n\n重算: 0.35×55 + 0.40×31 + 0.10×(-5) + 0.10×(-33) + 0.05×(-35) = 19.25 + 12.4 - 0.5 - 3.3 - 1.75 = 26.1 ✓\n所以 inline calc 算到 26.1% 是对的, 但 cell header 写 ~29%, 同 cell 内自相矛盾 (差 2.9pp, 不在 rounding tolerance).\n\nL2691 术语段落进一步说: '简化加权直接用 4 行 24.6%, 详细 5 行 26.1%, 取整 ~28%; 此版本用 5 行 detail' — 这又给出第四个数 28% 'taken as round-up'. 但 26.1% 标 round-up 一般是 26% 或 27%, 不是 28% (那是 round-up 2 个有效数字).\n\nL2691 还有另一处算术: '名义 IRR 27.3% (= 0.35×55 + 0.40×31 + 0.20×(-19) + 0.05×(-35))'. 重算: 0.35×55 + 0.40×31 + 0.20×(-19) + 0.05×(-35) = 19.25 + 12.4 - 3.8 - 1.75 = 26.1, 不是 27.3 — 又一处算术错误.\n\n下游链:\n  L2762 §A.6.3: '~28% × 0.7 × 0.95 × 0.93 = ~17% portfolio-level 真实可分红 E[IRR]' — 28 × 0.7 × 0.95 × 0.93 = 17.32 ≈ 17 ✓\n  但若用真实 E[IRR] 26.1% 重算: 26.1 × 0.7 × 0.95 × 0.93 = 16.1% (而不是 17%)\n  若用 cell header 29%: 29 × 0.7 × 0.95 × 0.93 = 17.9 (而不是 17%)\n\n所以下游 17% 是用 28% (第三个数 'round-up') 算出来的. 报告内同时存在 29% (cell header) / 26.1% (inline) / 28% ('round-up') / 27.3% (limitation note 错算) 四个数字, 全部声称 'E[IRR] 名义'. PE IC 委员会看到 cell 头 29% 然后下面 26.1%, 然后看 §A.6.3 用 28%, 不可信.",
+      "what_would_resolve": "(a) Cell header L2687 改 'E[IRR] ~26% 名义' 与 inline calc 一致 (或 '~26-27%'); (b) L2691 移除 '名义 IRR 27.3%' 错误算式 (实际算到 26.1, 不是 27.3); (c) L2762 §A.6.3 portfolio 真实 IRR 用 E[IRR]=26.1% 重算: 26.1 × 0.7 × 0.95 × 0.93 = 16.1% (≈ 16%), 修正 ~17% → ~16%; (d) 移除 '取整 ~28%' 这个第三数字, 或显式声明 26.1% → round up 到 28% (但这非常规)."
+    },
+    {
+      "id": "n3.i4",
+      "severity": "moderate",
+      "title": "narrative 'EV IPO N=2 Rivian/Lucid 175× median' 在 Comps 表内无对应支撑 — Rivian LTM 85,000× / Lucid LTM 150×, 175× 既非 median 也非 mean",
+      "attacks_claim": "LBC-4",
+      "detail": "L2041 + L2094 narrative: 'EV IPO N=3 sample median 24× + N=2 Rivian/Lucid 175× + AI 巨头 OpenAI 50×' (重复两次).\n\n但 Comps 表 L2073-2074 (新加 N=5 全口径 板块 1b):\n  Rivian (IPO 2021.11): LTM ~85,000× (footnote A 解释 LTM 接近无穷因为营收近零), NTM ~250×\n  Lucid (IPO 2021.7): LTM ~150×, NTM ~25×\n\n175× 既非 [85000, 150] 的 mean (= 42575×) 也非 median (= 42575×). 175 ≈ (150 + 200)/2, 暗示用某种 Rivian 200× LTM 估值, 但表内 Rivian LTM 是 85,000×.\n\nL2088 footnote A 解释: 'Rivian IPO 2021.11 LTM 营收近零 (production 2021 仅交付 ~920 辆), 故 LTM PSR 接近无穷 — 此处用 NTM ~250× / LTM 估算 ~85,000× 仅作 manic-phase 类比锚, 不应直接平均到 median.'\n\n所以表本身承认 Rivian LTM 不应进 median. 但 narrative 仍然用 'N=2 Rivian/Lucid 175× median' — 哪里来的 175×?\nNTM 口径: (250 + 25)/2 = 137.5 (mean) 或 median 137.5; 仍非 175.\n\n可能是 v2 残留 (round-2 critique 评论曾用 manic-phase 175× 描述 Lucid/Rivian 高位均值, 但具体出处与表内不匹配).\n\n影响有限 (核心论点 Figure 1,300-2,600× 远高于 EV manic phase 仍成立, 任何 175× 或 137× 或 85,000× 都不改变结论), 但 narrative 与表内数据脱节, 给 IC reader 留下 'random number' 印象.",
+      "what_would_resolve": "L2041 + L2094 narrative '175×' 改为 footnote A 一致数: 'NTM 口径 mean 137× / LTM 接近无穷' 或 'Rivian/Lucid 2021 IPO 时 LTM PSR ~150-250×' (区间不取 single 175); 或干脆用 Lucid 150× 单家作为可比锚 (Rivian LTM 不可用因为营收近零)."
+    },
+    {
+      "id": "n3.i5",
+      "severity": "moderate",
+      "title": "chartPSRComparison 2024 Figure 200× / 中系 30× / 2026E-2028E forward 数据点全部无 sourced anchor; 仅 axis annotation 加 EV reference 线",
+      "attacks_claim": "LBC-4",
+      "detail": "L4914-4938 chartPSRComparison 数据:\n  Figure: [null×6, 2024=200, 2025=1750, 2026E=1200, 2027E=600, 2028E=300]\n  中系: [null×6, 2024=30, 2025=22, 2026E=18, 2027E=14, 2028E=10]\n\n2024 Figure 估值 (DP129) 是 $2.6B (2024.02), 2024 营收 [UNDISCLOSED]. 200× PSR 隐含 $2.6B/营收=200 → 营收 $13M [INFERRED]. 此 inferred number 在报告内未见 source.\n2024 中系 30× — 智元 2024 估值约 ¥50-100 亿 (Series B 中后期), 2024 营收 ~¥3-5 亿; PSR 约 ~17-33×. 30× 在 range 内但具体公司未指明.\n\n2026E-2028E forward projection: Figure 1200/600/300, 中系 18/14/10. 这些是 forward 预测值, 报告内未见 model output 或显式假设 (2026 营收假设? PSR multiple compression 假设?).\n\nL4929-4934 加了 3 条 EV reference annotation 线 (y=8 EV LTM median / y=24 EV IPO N=3 / y=53 蔚来 IPO 高位) — 是 v2-new-i7 修复. 但 builder 没解决数据点本身 source 缺失问题. v3.md '54 - N=5 EV IPO median 53× 是 [15, 24, 53, 150, 85000] sorted median' 解释了 N=5 median, 但 chart 数据点用的不是 N=5.\n\nResponse 3 (n2.i9) 自承认 'ACCEPTED + DOCUMENTED. 2024 data point retained but axis annotations now show EV reference anchors... Full removal of 2024 data point not done; documented as limitation.'\n\n问题: 'documented as limitation' 不等于 documented. 我 grep 整个报告 '2024.*200×\\|2024 Figure 200×\\|2024.02.*200×' — 无任何 inline 解释 chart 2024=200 数据点的 source. 仅在 v3.md (内部 dev note, 非 reader-facing) 有提及.",
+      "what_would_resolve": "(a) chartPSRComparison subtitle 或 caption 加 inline 注: '2024 Figure 数据点 = 2024.02 $2.6B / [INFERRED] $13M 2024 营收 = 200×; 中系 2024 = 智元 + 银河通用 加权 [INFERRED]; 2026E-2028E forward 假设 营收 ramp $50M/$200M/$500M + multiple compression 50% YoY'; (b) 或简化: 2024 数据点 null 化, 仅画 2025+ 数据点 (与 chartScenarioProb 一致 — 只画 known anchors)."
+    },
+    {
+      "id": "n3.i6",
+      "severity": "moderate",
+      "title": "智元/宇树 简表 (L2027-2034) 表头 cell '$0.13B' 来自 'g=2%,WACC=21%' — 21% WACC 超出 author's WACC=18% 上限, 来源未说明",
+      "attacks_claim": "LBC-4",
+      "detail": "L2031: '智元 (EBIT $43M) 下沿 (g=2%, WACC=21%) $0.13B / Base (g=3%, WACC=18%) $0.17B / 上沿 (g=4%, WACC=15%) $0.25B / 统一 WACC 16% / g=3% $0.20B'.\n\n问题:\n(1) 'WACC=21%' 来源不明. 报告内 author's WACC 智元 = 18% (L1997), 宇树 = 16%. Figure 3×3 表用 W={12,15,18}%. 智元简表'下沿' WACC 突然跳到 21%, 没有 disclosed 假设 (例如 '21% 反映港股流动性折扣 + 国资增量 risk premium' 或类似).\n\n(2) 智元 base case 18% WACC 与 Figure base 15% WACC 不同; 'fundamentals-only' 反差对比若用不同 WACC 不是 fundamentals-only. L2036 limitation-note 解释 '统一 WACC 16% 让 Figure / 智元 / 宇树 fundamentals-only 反差可见: Figure $0.74B / 智元 $0.20B / 宇树 $0.50B' — 但 author's WACC 列 (Figure 15% / 智元 18% / 宇树 16%) 也算 fundamentals 而 hidden behind WACC 不同. 报告说 'WACC 假设差贡献 27% 反差, fundamentals 73%' — 这个 27%/73% 拆分的算法没列, 不可 verify.\n\n(3) 我用 stated formula 算 智元 base (g=3%, W=18%, EBIT $43M):\n  df = 1/1.18^4 = 0.5158\n  v = 43 × 0.5158 + 43 × 1/(0.18-0.03) × 0.5158 = 22.18 + 147.86 = $170M = $0.17B ✓ 与 cell 一致\n  → 智元 base 用 simple formula (无 ramp adder), 与 Figure 不同 (Figure base $0.87B 用 simple formula, 但 cells 在 W=12/18 列加了 adder).\n  公式应用不一致.\n\n(4) 统一 WACC 16% / g=3% 智元 cell $0.20B:\n  df = 1/1.16^4 = 0.5523\n  v = 43 × 0.5523 + 43 × 1/(0.13) × 0.5523 = 23.7 + 182.6 = $206M = $0.21B (off ~5%)\n  Cell 标 $0.20B — close 但不精确 (rounding 可接受).\n\n影响: 'WACC=21%' 在表内没解释来源; reader 看到 corner 21% / 18% / 16% / 15% 四个不同 WACC, 不知道 PE 行业标准做法 — 给 IC 委员会 'WACC arbitrary' 印象, 削弱 sanity check 可信度.",
+      "what_would_resolve": "(a) L2031 简表 caption / footnote 加: '智元 WACC 上限 21% = 18% base + 港股流动性折扣 200bp + 国资 IPO 时点不确定性 100bp; 宇树 WACC 上限 不超过 18% 因 A 股 IPO 已受理 + 已盈利'; (b) 显式表态 fundamentals-only 反差 73% / WACC 假设差 27% 的算法 — 例如 '统一 WACC 16% 下 Figure/智元 ratio 3.7×; author's WACC 下 5.1×; 比值差 (5.1-3.7)/5.1 = 27% 来自 WACC, 余 73% 来自 EBIT scale'."
+    },
+    {
+      "id": "n3.i7",
+      "severity": "moderate",
+      "title": "Bear-A / Bear-B IRR -5% / -33% 算式正确 (5-year hold), 但 v3.md 'Changelog' 写 'IRR ~28% (从 28% 微调)' — 微调成 26.1%/26%/27% 都不是 28%, changelog 误导",
+      "attacks_claim": "LBC-4",
+      "detail": "v3.md L34 (changelog): 'E[IRR] 名义 26.1% ≈ 27% (从 28% 微调); 真实可分红 ~17% (≠ Base case 31% × 0.7 × 0.95 × 0.93 = 19%)'.\n\n但 HTML L2687 publish: 'E[IRR] ~29% 名义' (header) + 'inline 26.1%' (calc).\n\n所以三处:\n  v3.md changelog: 'E[IRR] 26.1% ≈ 27%' (round-up 1pp)\n  HTML L2687 header: 'E[IRR] ~29% 名义' (round-up 3pp)\n  HTML L2691 term-section: '简化 4 行 24.6%, 详细 5 行 26.1%, 取整 ~28%' (round-up 2pp)\n  HTML L2762 §A.6.3: '~28% × 0.7 × 0.95 × 0.93 = ~17%' (uses 28%)\n\nv3.md changelog 是内部 dev note 不一定 reader-facing, 但 HTML 三处 (29% / 28% / 26.1%) 全部 reader-facing 且互不一致.\n\n'真实可分红 ~17% (≠ Base case 31% × 0.7 × 0.95 × 0.93 = 19%)' 这句声明也微妙错误: 31 × 0.7 × 0.95 × 0.93 = 19.17% ≈ 19% ✓ — 这部分对; 但 '≠' 比较的左边 '17%' 是用 28% 算的 (28 × 0.7 × 0.95 × 0.93 = 17.32 ≈ 17%), 右边 '19%' 是用 31% 算的; 二者数学 separate consistent 但 narrative '~17% (≠ 19%)' 用 ≠ 表达 framework 而不是数字差异. Reader 不易理解 — 应该说 '~17% (= E[IRR] across distribution); Base case 单情景 19% (≠ E[IRR])'.",
+      "what_would_resolve": "全文 (HTML L2687 / L2691 / L2762 / v3.md L34) 选一个 E[IRR] 数字 (建议 26.1%, math 精确), 全部同步. portfolio-level 真实 IRR 重算 26.1 × 0.7 × 0.95 × 0.93 = 16.1% ≈ 16% (而不是 17%). Changelog 表述改为 'E[IRR] 名义 26.1% (v1 误标 28%, v2 误标 29%, v3 统一 26%); 真实 LP 可分红 portfolio-level 16% (= E[IRR] × 流动性 × 退市 × 跨境)'."
+    },
+    {
+      "id": "n3.i8",
+      "severity": "minor",
+      "title": "L1989 DCF 2025 营收 cell 反推算式 '上沿 $30M 需 80-90% 计提率' — 250 × 130 × 0.90 = $29.25M, 不到 $30M 上沿",
+      "attacks_claim": "LBC-4",
+      "detail": "L1989 cell: '$15-30M [INFERRED] (Figure 未公开披露 2025 营收; 按 250 台 (DP023) × $130K BOM × 30-50% 实际销售/RaaS 计提率估算 ≈ $9.75-16.25M, 上沿 $30M 需 80-90% 计提率或 350 台 DP140 cumulative)'.\n\n重算:\n  250 × 130 × 0.30 = $9.75M ✓\n  250 × 130 × 0.50 = $16.25M ✓\n  250 × 130 × 0.80 = $26.00M (低于 $30M)\n  250 × 130 × 0.90 = $29.25M (低于 $30M)\n  250 × 130 × 0.923 = $30.00M (需 92.3% 计提率, 不是 80-90%)\n  350 × 130 × 0.50 = $22.75M (低于 $30M)\n  350 × 130 × 0.66 = $30.03M ≈ $30M (需 350 台 cumulative + 66% 计提率)\n\n所以 cell 写 '上沿 $30M 需 80-90% 计提率' 是 understated — 实际 92% 计提率才达到 $30M, 80-90% 计提率只能反推 $26-29M.\n\n或者用 350 台 cumulative + 50-66% 计提率, 但 cell 把两个路径串联 ('80-90% 计提率或 350 台 DP140 cumulative') 给人印象 350 台 + 任意 50%+ 即可, 不对.\n\n影响: 这是 secondary precision 问题, 核心 $15-30M 范围本身仍然 [INFERRED] (Figure 不公开). 但 cell 内部反推算式不自洽.",
+      "what_would_resolve": "L1989 改 '上沿 $30M 需 ~92% 计提率, 或 350 台 (DP140 cumulative) × $130K × ~66% 计提率, 或 250 台 ASP 升至 $150K+ RaaS 高位'."
+    }
+  ],
+  "prior_issue_updates": [
+    {
+      "id": "n2.i1 (Comps Figure 行 790× → 1,300-2,600×)",
+      "status": "resolved",
+      "reasoning": "L2065 Comps 表 Figure 行 cell 已改 '~1,300-2,600× ($39B / [INFERRED] $15-30M; 中点 ~1,750×)' ✓. NTM 行也已改 '200-400× (2026E forward)'. 同步全文 narrative."
+    },
+    {
+      "id": "n2.i2 (Symbotic 4.5× → 13× / 工业 median 3.5× → 8.1×)",
+      "status": "resolved",
+      "reasoning": "L2079 Symbotic cell '~13× ($30B mkt cap / $2.25B FY25 rev)' ✓; L2077 ABB 行 rowspan 8.1× ✓ (Symbotic + Intuitive 拉高 median). Intuitive 单列为 板块 2b 医疗机器人 L2080-2081 ✓."
+    },
+    {
+      "id": "n2.i3 (EV IPO median 22× → 24×, +9%/-32% 重算)",
+      "status": "resolved",
+      "reasoning": "L2069 蔚来行 rowspan '24× (N=3)' ✓; 蔚来 +121% / 小鹏 0% / 理想 -37.5% ✓ (重算: 53/24-1 = 120.8%, 24/24-1 = 0%, 15/24-1 = -37.5%, 全部正确)."
+    },
+    {
+      "id": "n2.i4 (DCF 表 150 台 → 250 台)",
+      "status": "resolved",
+      "reasoning": "L1990 '~250 台 (DP023; 累计 350+ DP140 截至 2026.05)' ✓; L1989 反推算式更新 (但反推上沿算术不精确, 见 n3.i8 — 不阻塞)."
+    },
+    {
+      "id": "n2.i5 (3×3 g/WACC sensitivity table 不存在 + 算术不自洽)",
+      "status": "partial",
+      "reasoning": "3×3 表 L2010-2022 真实落地 ✓ (不再是 phantom), 9 cell 全部 render + ratio cells 内部自洽 (cell value → ratio 数学正确). 但 cell value 与 stated formula 不一致 — 9 cells 中只 3 cell (W=15% 列) 符合 stated formula, 其余 6 cell 用了未明示公式 (limitation-note 工作示例给 $1.255B 但 cell 是 $1.61B, 自相矛盾). 见 n3.i1."
+    },
+    {
+      "id": "n2.i6 (data_points.json DP098 sync)",
+      "status": "resolved",
+      "reasoning": "data/data_points.json L108 已改 '近 150 天日均 ~¥2.5亿; 2026.4 单月日均 ¥5.8亿创新高'; confidence medium → high ✓. HTML L443-444 KPI / L2230 timeline 一致. 148 天 × 2.5亿 = 370亿 ≈ 373亿 在 1% 误差内."
+    },
+    {
+      "id": "n2.i7 ($39.5B vs $39B)",
+      "status": "resolved",
+      "reasoning": "grep $39.5B 全文仅 3 处残留, 全部 'canonical $39B; media $39.5B 同义' 解释性 context (L1093 / L2002 / L4477). chartValuationTop10 L4743 data [39.0,...] ✓. 全局替换完成."
+    },
+    {
+      "id": "n2.i8 (L892 智元 ¥225亿 → 应为 ¥200亿+ $2.8B)",
+      "status": "resolved",
+      "reasoning": "L980 §3.6 投资动作表已改 '智元 ¥200亿+ ($2.8B Pre-IPO) → sanity $0.17B'; 28-65× → 24-58×. ¥225亿 (= 银河通用) 不再出现在智元相关 narrative."
+    },
+    {
+      "id": "n2.i9 (chartPSRComparison 2024 200× source 不明)",
+      "status": "partial",
+      "reasoning": "Round-2 builder 标 ACCEPTED + DOCUMENTED, 加了 EV reference 线 (y=8/24/53) 是 v2-new-i7 修复, 但 2024 数据点 source 仍未在 reader-facing chart 标注 (v3.md 内部 note 不算). 见 n3.i5."
+    },
+    {
+      "id": "n2.i10 (单标的失败概率 30-40% vs P5 5% 关系)",
+      "status": "resolved",
+      "reasoning": "L2003 §6.5.1 表说: '若纳入失败概率 35% 中点 → sanity ×(1-0.35) = $0.57B, 市场/sanity 跳至 68×'; L2023 limitation-note 同样 explicit. L2691 §A.5 术语段落显式区分 single-standalone failure 30-40% vs portfolio P5 5%. 三处 reconcile 一致."
+    },
+    {
+      "id": "i14_round_1 (DCF 3×3 sensitivity table 不存在 - round-2 unresolved)",
+      "status": "partial",
+      "reasoning": "表 L2010 真实落地, 是 round-3 最大 fix. 但 9 cell 中只有 3 cell (W=15% 列) 符合 stated formula, 其余 6 cell 没有 derive 出来 (worked example $1.255B 但 cell $1.61B 自相矛盾). 见 n3.i1. Round-3 没完全 close 这条."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "round": 3,
+  "aggregate_verdict": "block",
+  "totals_new": {"fatal": 1, "severe": 8, "moderate": 11, "minor": 4},
+  "per_persona": [
+    {"persona": "pe_partner",          "verdict": "block", "prior_R": 6, "prior_P": 4, "prior_U": 1, "new_F": 1, "new_S": 3, "new_M": 3, "new_m": 1},
+    {"persona": "industry_expert",     "verdict": "block", "prior_R": 3, "prior_P": 2, "prior_U": 0, "new_F": 0, "new_S": 2, "new_M": 3, "new_m": 0},
+    {"persona": "numerical_auditor",   "verdict": "block", "prior_R": 8, "prior_P": 2, "prior_U": 0, "new_F": 0, "new_S": 3, "new_M": 4, "new_m": 1},
+    {"persona": "visual_design_expert","verdict": "pass",  "prior_R": 10,"prior_P": 3, "prior_U": 4, "new_F": 0, "new_S": 0, "new_M": 1, "new_m": 2}
+  ],
+  "milestone": "visual_design_expert PASSED. 3 personas remaining.",
+  "fatal_outstanding": [
+    "pe_partner r3-n1: MOIC formula 4.8× and 26.1% IRR, but headers say 4.4× and 29%, with 5 different IRR numbers coexisting across §A.5 / §A.6 / IC Memo"
+  ],
+  "severe_themes_outstanding": [
+    "Number-consistency cascade: US-led probability 30% in §6.3 vs 20% in §0.1/chartScenarioProb/IC Memo (+10pp)",
+    "3×3 g/WACC sensitivity table — 6 of 9 cells don't match stated formula",
+    "5 different IRR numbers across docs",
+    "Bear-B 2-3× distressed control premium implausibility",
+    "chartShipmentTop10 BD '80' units 2025 fabrication (BD commercial launch is 2026 Q1)",
+    "§4 路径 7b cherry-pick reversing BD vs Figure evidence direction",
+    "Rivian/Lucid 175× median unsupported by table",
+    "chartPSRComparison 2024 source absent",
+    "WACC=21% used unjustified in 智元/宇树 table"
+  ],
+  "next_action": "spawn Round 4 builder with focus on number consistency across docs (one source of truth for MOIC/IRR/US-led-prob), kill BD-2025-shipments fabrication, expand sources"
+}

@@ -1,0 +1,83 @@
+{
+  "round": 3,
+  "persona": "industry_expert",
+  "draft_classification": "商业研究 / 产业链格局分析 / PE 投资判断报告 (zh-CN, PE/VC 合伙人级 IC 决策辅助材料 — round-3 修订后)",
+  "load_bearing_claims": [
+    "LBC-1 · 美强软件 (二层拆分: Big Tech 基础模型层 + 私募整机层) / 中强硬件; Apptronik round-3 称已 '整体移至 OEM-locked 桶'",
+    "LBC-2 · 2030 年度 TAM $30-144 亿 (中位 $75 亿); 2025 真实工业部署 < 1,000 台 conceded",
+    "LBC-3 · 三情景中点 China-led 35% / US-led 20% / Bifurcation 40% / Other 5% — 但新 2×2 矩阵给出 US-led = 30% (15+15) 与卡片 20% 中点存在 +10pp 不一致",
+    "LBC-4 · Figure 单家 LTM PSR 1,300-2,600× / 美系一线 pure-play 4 家加权 750-1,500× / 中系 22× 已对齐 EV IPO N=3 中位 24×",
+    "LBC-5 · 中系核心零部件 + 稀土 alpha + 美系 OEM-locked (Apptronik / BD / Symbotic) + Distressed M&A 10 家 per-company subtable"
+  ],
+  "verdict": "block",
+  "verdict_reason": "Round-2 5 条 issues 中 i12 / i13 / i9 / i5 真正 resolved；但 i14 (Apptronik 双桶) 是 '声明 resolved 实际 half-fix' — §0.1 + §4 takeaway ③ + chartValuationTop10 + §A.2 矩阵都把 Apptronik 移出 pure-play 桶, 但 §4 路径 ② 标题 'Figure / Apptronik' 和 §4 6 路径对照表 row ② 'Figure / Apptronik' (L1086, L1168) 仍把 Apptronik 与 Figure 绑定在 pure-play 端到端 VLA bubble 路径 — 矛盾未消除。i15 (Korea 三极) builder 显式 punt 至 Round-4, 但报告 §A.2 仍把 BD-Hyundai 标 '美系 OEM-locked' (L2300) 且 §6.2 投资项目表 L1629 把 'Hyundai RMAC × BD' 国别标 '韩'，'美系' 框架内部继续矛盾。i16 (PSR 四版本) 文字层 resolved, 但 §A.5 IC Memo Returns 表 E[MOIC] cascade 仍依赖 §6.3 US-led 30% 新 matrix vs 卡片 20% 中点 +10pp gap (builder 在 limitation-note 自己承认是 Round-4 候选) — 概率分布的 +10pp 直接影响 P(Bull) 35% 假设, E[IRR] 26% 数值不稳。新引入 1 条 severe + 2 条 moderate: (a) chartShipmentTop10 新增 BD '80' 台 2025 出货是 fabrication — BD Atlas Electric 是 2026 商业揭幕产品, 2025 出货实质为 0 (CES 2026 首发); (b) §4 路径 7b 'BD Atlas L2-L3 高于 Figure' 与 §3.1 评分卡 (Figure 02 L3 + 1,250 累计 hours + 90,000+ 钣金 数据; BD Atlas L2-L3 + [UNDISCLOSED] 吞吐量) 实际证据相反 — 反向 cherry-pick; (c) Path ② 标题与对照表行未同步 i14 fix; (d) Atlas Electric $420K 价格点也是 [INFERRED] 无 source (引用 originofbots.com 一个未知 secondary source)。",
+  "issues": [
+    {
+      "id": "i17",
+      "severity": "severe",
+      "title": "i14 修订未完成 — §4 路径 ② 标题 + 6 路径对照表 row ② 仍把 Apptronik 与 Figure 绑定为 'pure-play 端到端 VLA + B 端 RaaS' 泡沫路径",
+      "attacks_claim": "LBC-1 / LBC-4 (Apptronik 单一桶归属决策的内部一致性)",
+      "detail": "Round-3 在 §0.1 (L461)、§4 takeaway ③ (L1182)、chartValuationTop10 (L4740 'Apptronik (OEM-locked)' + 浅色 #93c5fd)、§A.2 矩阵 (L2299-2300) 都显式把 Apptronik 移出 '美系私募整机一线 pure-play 泡沫桶' 进入 '美系 OEM-locked 桶'；§4 takeaway ③ 把数字从 '5 家 $79.5B' 改为 '4 家 $74B'。\n\n但 §4 路径 ② (L1086) 仍标 '路径 ② · Figure / Apptronik — 端到端 VLA + B 端 RaaS' 把 Apptronik 与 Figure 绑定在同一 pure-play 泡沫路径；L1093 'PE 估值: Figure $39B... Apptronik $5B' 与 Figure 同列。§4 章末 6 路径对照表 (L1168) row ② 'Figure / Apptronik | VLA 软件 + B 端客户绑定 | $1K/月 RaaS - 8 年回本 naive | BotQ 爬产 + capex-light 验证 | 30-40%(estimate 泡沫风险)' 把 Apptronik 与 Figure 共享 '估值泡沫风险 30-40%' 评级。\n\n这是 round-3 builder 在 response 表里声明 'CONCEDED + REVISED: Apptronik moved entirely to OEM-locked bucket' 但执行不完整 — 4 个位置移了 (§0.1 / takeaway / chart / 矩阵), 2 个核心位置未移 (路径 ② 标题 / 对照表 row ②)。\n\n影响：(i) IC 读者从 §4 路径卡 + 对照表读到的 narrative 是 'Apptronik 跟 Figure 一样是 pure-play VLA 泡沫'，但 §0.1 / 章末 takeaway / chart 读到的是 'Apptronik 是非泡沫 OEM-locked'，同一份报告对同一公司给两个矛盾归类。(ii) 6 路径对照表 row ② 失败概率 30-40% (估值泡沫风险) 与 §A.2 OEM-locked ★★★★ '非泡沫' 评分直接矛盾。(iii) §A.3.2 4 行 if-then 矩阵 (L2390) 'IF Tesla Y + IRA Y: 美系一线 +30% / OEM-locked Apptronik/BD/Symbotic +20%' 已经把 Apptronik 单独算在 OEM-locked 列；但同行的 '美系一线' 列又用 Figure/PI/Skild/1X (= 4 家 pure-play) — 这部分逻辑自洽；但路径 ②/对照表 row ② 的 framework 与之相反。",
+      "what_would_resolve": "(1) §4 路径 ② 标题 'Figure / Apptronik' → '路径 ② · Figure — 端到端 VLA + B 端 RaaS' 把 Apptronik 删除; (2) 路径 ② 卡片内 Apptronik 子段移至路径 ⑦ 子路径 7b (与 BD/Symbotic 同列) 或新增子路径 7c; (3) §4 章末 6 路径对照表 row ② 改 'Figure', 失败概率改为 'Figure 30-40%'; 同时新增对照表 row ⑦b 'BD-Hyundai / Apptronik (Mercedes) / Symbotic — OEM-locked + 软件外购 | OEM 整合 | 系统性整合 | 15-25%'; (4) §A.4 Q2 cascade (L2468) Apptronik 估值反应 +20% 解释需补 'Apptronik 不在 Tesla narrative 失败的 pure-play 泡沫桶里' (round-3 已部分写, 但路径 ② 没改时 IC 读者不会信)."
+    },
+    {
+      "id": "i18",
+      "severity": "severe",
+      "title": "chartShipmentTop10 给 BD '80' 台 2025 出货是新 fabrication — BD Atlas Electric 是 2026 CES 商业揭幕产品, 2025 全年出货实质为 0",
+      "attacks_claim": "结构性 / LBC-1 出货格局 (round-3 自己制造的新 fabrication)",
+      "detail": "Round-2 i12 攻击 chartShipmentTop10 把 Apptronik '~300' / 1X '300' 填为 2025 全年出货是 fabrication；round-3 builder 把这两条改为 '[UNDISCLOSED]' + 估算下限 50, 这是正确的修复。\n\n但 round-3 同时新增了第三条 'BD (Atlas Electric, volume mfg 2026.Q1)' 估值 80, 这是新的 fabrication, 重复了 round-2 同样的错误模式：\n\n(1) §3.1 Autonomy 评分卡 L829 自己写 'Boston Dynamics Atlas (新)... CES 2026 商业揭幕；2026 整年订单已被绑定' — 即 Atlas Electric 是 2026 产品, 2025 全年出货为 0 (BD 2025 卖的是上一代液压 Atlas, 已退役)。\n\n(2) §4 路径 7b L1150 自己写 'Boston Dynamics... Atlas Electric 2026 全部产能给现代 + DeepMind, 2028 目标 30,000 台/年' — 即 2026 才开始产能, 2025 = 0。\n\n(3) §6.2 投资项目表 L1619 写 'Boston Dynamics: Atlas 商用量产 2026 / 2026 订单 100% 锁定(现代+DeepMind)' — 同样 2026 起步。\n\n(4) chart 自己的 label 'BD (Atlas Electric, volume mfg 2026.Q1)' — 注意 'volume mfg 2026.Q1' 即 volume manufacturing 从 2026.Q1 开始; 即 2025 还在 pre-production / engineering 样机阶段。\n\n那么把 '80' 台填在 2025 出货柱状图里, 是把 'volume mfg 2026.Q1' 之前的 engineering 样机/dev kits 当作 2025 commercial shipment — 与同报告 §3.1/§4/§6.2 的事实陈述自相矛盾。BD 公开材料 (Boston Dynamics 新闻稿 2025.10 + Hyundai 投资者日) 没有任何 2025 出货数字 — 只有 '2026 全年产能 booked'。\n\n这正是 round-2 i12 攻击的同一错误模式 (selection-bias fix 引入 fabrication-bias)。builder 改对了 Apptronik / 1X (改为 [UNDISCLOSED]) 但同步新增了 BD 80 = 一边修一边制造新错误。chart subtitle 写 'Apptronik / 1X / BD 均 [UNDISCLOSED], 显示为估算下限 50-80' — 但 BD 不是 [UNDISCLOSED], 是 'not yet in production'; 这两个状态不能混为一谈。",
+      "what_would_resolve": "(1) chartShipmentTop10 BD 条目数据 80 → 0 或 'N/A (2026 起量)' 或 [NOT YET IN PRODUCTION]; label 改 'BD Atlas Electric (2026.Q1 量产起点; 2025 = 0)'; (2) chart subtitle 修订: '[UNDISCLOSED] = 公司未披露 2025 出货 (Apptronik / 1X NEO 在 Hayward 投产前)' + '[NOT YET IN PRODUCTION] = 2025 全年无出货 (BD Atlas Electric)'; (3) 或者把 chart 重构为 '2026E 出货预估' 而非 '2025 出货' — 这样 BD 2026 ramp + 1X NEO 2026.4 投产都能合理纳入. 但当前 '2025 实绩 + 加入 2026 才出的产品' 是错误时间口径."
+    },
+    {
+      "id": "i19",
+      "severity": "moderate",
+      "title": "§4 路径 7b 'BD Atlas L2-L3 高于 Figure 声称 L3 但有争议 和 Tesla L0-L1' 与 §3.1 评分卡实际证据相反 (反向 cherry-pick)",
+      "attacks_claim": "LBC-1 / LBC-4 (Big Tech 软件 + OEM 锁定路径的论证强度)",
+      "detail": "§4 路径 7b (L1150) 主张 '§3.1 Autonomy 评分卡 BD Atlas L2-L3 高于 Figure \"声称 L3 但有争议\" 和 Tesla L0-L1'。\n\n回到 §3.1 评分卡 L820-829 看实际证据：\n- Figure 02 L3 in-task ODD (钣金插入) + 1,250 累计运行小时 + 90,000+ 件钣金 + 30,000+ 辆 X3 (有定量证据但有遥操作质疑)\n- BD Atlas (新) L2-L3 in part-sorting ODD + CES 2026 商业揭幕 + 量化吞吐量 [UNDISCLOSED]\n- Tesla Optimus L0-L1 + Musk 自己说 'not in usage in our factories in a material way' (实质 = R&D 阶段)\n\n严格读：BD Atlas autonomy 评级 'L2-L3' 与 Figure 'L3 但有争议' 大致 tied, BD 的优势完全在 'BD 没人喊它 teleop'。但 Figure 02 有 90,000 件钣金、1,250 hours 累计运行的定量证据, BD 只有 'CES 2026 揭幕'(未发生 — 报告 cutoff 2026.05, CES 2026 已过, 但量化吞吐量仍 [UNDISCLOSED])。即 BD '高于' Figure 的论证依赖 '我们假定 BD 没有 teleop 问题', 而 Figure '低于' BD 的论证依赖 '工程师推测有 teleop'。\n\n这是典型 cherry-pick: 用 'BD 的 [UNDISCLOSED] 优于 Figure 的有争议量化数据' 来支撑 LBC-1 (BD-Hyundai 路径作为美系软件 '非泡沫反锚')。报告 §3 第三章自己在 L836 警告 '任何省略 MTBF 的 PE pitch deck 都应视为尽调不完整' — 同样的标准应用到自己的论证上, BD '量化吞吐量 [UNDISCLOSED]' 与 Figure '90,000 件钣金' 比, BD 的 autonomy 论证强度反而更弱。\n\n更进一步：报告把 BD-Hyundai 路径作为 'PE 视角 = 是美系软件不全是泡沫的事实锚' (L1154) 是 round-2 LBC-1 修订的核心新框架；但这条路径的 IC 信心依赖 '$3-5B 隐含估值合理' + 'BD Atlas L2-L3 比 Figure 高' 两条柱子, 第二条柱子 (autonomy 论证) 实际比 Figure 弱。如果 'BD Atlas 比 Figure 高' 不成立 → BD-Hyundai 反锚论证强度也下调一档, LBC-1 (a)/(b) 二层拆分的 PE actionability 降低。",
+      "what_would_resolve": "(1) §4 路径 7b L1150 这句话改 '§3.1 BD Atlas L2-L3 与 Figure \"L3 但有争议\" 大致 tied; BD 优势是 (i) 整车 OEM 现金流补贴 + (ii) 没有 teleop 争议; 劣势是 (iii) 量化吞吐量 [UNDISCLOSED] — 严格 head-to-head 论证强度低于 Figure 1,250 hours 量化证据'; (2) §A.4 加一个 Q&A '为什么 BD 实际证据更稀疏却仍标 OEM-locked ★★★★?' 答案是 'PE actionability = Hyundai 二级可投 + 整车 OEM 现金流; autonomy 评级是次要论据'; (3) chartValuationTop10 BD 浅色 + (implied $3-5B) 已对; 同样需要给 BD-Hyundai autonomy 评级一个 caveat 而不是 cherry-pick 高于 Figure."
+    },
+    {
+      "id": "i20",
+      "severity": "moderate",
+      "title": "§6.3 US-led 新 2×2 matrix 给 30% (15+15), 但卡片 / pie chart / TOC / IC Memo Returns 表仍用 15-25% 中点 20% — +10pp 内部不一致 builder 自己承认 punt 至 Round-4",
+      "attacks_claim": "LBC-3 (三情景概率分布的数字一致性 + IC Memo E[MOIC] 算式稳定性)",
+      "detail": "Round-3 §6.3 修订 (i8 round-2 解决) 新 2×2 matrix 给 4 个 joint cells: P(Y,Y)=15% / P(Y,N)=15% / P(N,Y)=7% / P(N,N)=63% = 100%; mapping 到 named scenarios 时给 US-led = 30% (= 15+15)。\n\n但同一份报告其他位置 US-led 仍标 15-25% / 中点 20%:\n- §0.1 三情景 box L480 'US-led (15-25%；中点 20%)'\n- §3.6 投资动作变更表 L992 'US-led 概率 15-25% (vs v1 25%); Bifurcation 40-50%'\n- §6.3 卡片 L1783 '15-25%' (在 2×2 matrix 旁边的卡片本身, 即 L1788 触发条件描述区也用 15-25%)\n- §6.3 limitation-note L1831 'mapping 到 named scenarios: US-led 30% (= 15% + 15%, 与卡片 15-25% 区间上沿一致; 已上调中点至 25%, 见下)' — builder 自己在 round-3 承认 +10pp gap 是 Round-4 候选\n- §A.3.3 决策树 Q3 L2365 '判断 3: 是否相信 US-led 情景(15-25%)?'\n- chartScenarios pie L4548 'US-led (15-25%，中点 20%)'\n\n这是 round-3 在解决 pe-n3 (2×2 加和 110% bug) 时引入的次生不一致: builder 把 IRA conditional 假设 P(IRA|Tesla Y)=50% 锁定后, US-led 数学上变成 30%, 但 narrative 中点叙事仍是 20%。+10pp 不是小数字 — 在 §A.5 IC Memo Returns 表 (L2632) E[MOIC] cascade 算式里, US-led 触发 Bull case 概率假设 35% 是 P(Bull|US-led)*P(US-led) + 其他 cluster 贡献; 如果 US-led 真是 30% 而非 20%, Bull case 概率上调 +5pp = E[MOIC] 从 4.77× 上调到约 5.2×, E[IRR] 从 26.1% 上调到约 28-29%。\n\nbuilder 在 limitation-note 显式说 'Round-3 在 limitation-note 标注; 真正 reconcile 需要重新校准 P(IRA | Tesla Y) 从 50% 降到 ~33%' (response-3.md L168) — 即承认这是未 reconcile 的 IC blocker, 但仍 ship 至 round-3 让两套数字并存。\n\n这是 pe-n3 修订的副作用而不是 ind-i 系列的原始攻击, 但 industry expert 视角下: LBC-3 概率分布是 LBC-4 估值锚论证的输入参数, 不应留下 +10pp 待 reconcile 还出货。IC 读者读 §A.5 看到 E[MOIC] 4.77× 时不知道下面有个 +10pp 假设漂移。",
+      "what_would_resolve": "(1) builder 选定一个版本并所有位置 sync: 要么 (a) P(IRA|Tesla Y)=33% 维持 US-led 20% 中点, 要么 (b) 把卡片 / pie / TOC / IC Memo / 决策树 Q3 全部上调至 US-led 30% 中点; (2) §A.5 IC Memo Returns 表的 E[MOIC] 算式必须明确依赖 哪个版本 (US-led 20% 还是 30%) — 当前两个版本数字 (4.77× / ~5.2×) 之间没有显式选择; (3) 不接受 'Round-4 punt' 因为这是 round-3 新引入的数学不一致, 应当 Round-3 修复后再 ship."
+    },
+    {
+      "id": "i21",
+      "severity": "minor",
+      "title": "§3.5 价格矩阵 'Atlas Electric ~$420K' 来源是 originofbots.com 二级 site, 与 round-2 round-3 强调的 source quality discipline 不一致",
+      "attacks_claim": "LBC-2 价格区间 (BD 高端价位的 source 可信度)",
+      "detail": "§3.5 价格矩阵 L1527 '④ 高端 $300-500K / Atlas Electric (~$420K)' 是 Atlas Electric 在 BOM/sticker 价位的关键 datapoint, BD 公开没有发布 Atlas Electric sticker 价。引用 (L4195) 是 originofbots.com — 这是 secondary aggregator site, 不是 BD/Hyundai 一手披露; 同报告其他价格点 (Tesla $20K, Figure $30K-50K, Unitree $5,900-$99K, NEO $20K) 都引用一手 (公司公告 / earnings call / 直接报价) — 唯独 Atlas Electric $420K 用 secondary site。\n\n这本身是 minor (价格 $420K 与 BD 公开口径 'high-end' / Hyundai investor materials '$300-500K' tier 大致一致), 但作为新增 datapoint, source quality 与报告其他位置 'IDC / GGII / MS / BofA / company announcement' 标准不一致。round-2 / round-3 反复强调的 'IC 读者验证 source' 标准要求 originofbots.com 数据点 / [INFERRED] / 替换为 BD/Hyundai 公开口径 (Hyundai 2024.12 investor day 或 BD CES 2026 keynote, 取其有 number 的)。",
+      "what_would_resolve": "(1) Atlas Electric $420K → '高端 $300-500K, Hyundai investor day 2024.12 [INFERRED tier]' 或注明 [SECONDARY SOURCE: originofbots.com]; (2) 若保留 $420K, 在 §3.5 BOM 表加 footnote 'BD/Hyundai 一手未披露 sticker 价; $420K = secondary site aggregator'."
+    }
+  ],
+  "prior_issue_updates": [
+    {
+      "id": "i12",
+      "status": "resolved",
+      "reasoning": "chartShipmentTop10 Apptronik / 1X 改 [UNDISCLOSED] + 估算下限 50, label + 浅色 + subtitle 都已修订 (L4757 / L4761 / L4766). 但同时引入了 BD '80' 新 fabrication — 见 new issue i18 (这是 round-3 同步引入的同类型新错误, 不算 i12 unresolved)."
+    },
+    {
+      "id": "i13",
+      "status": "resolved",
+      "reasoning": "chartValuationTop10 (L4740) 新增 'Boston Dynamics (implied $3-5B, Hyundai-owned)' 行, value 4.0 浅灰色 #cbd5e1, 与 Apptronik 同梯队; chart label legend 'Valuation (USD Bn); 浅色 = OEM-locked / implied' 明示 round-2 i13 要求的视觉分层. § 4 takeaway ③ '4 家 $74B 不含 BD-Hyundai' 与 chart 同步."
+    },
+    {
+      "id": "i14",
+      "status": "partial",
+      "reasoning": "§0.1 (L461) + §4 takeaway ③ (L1182) + chartValuationTop10 (L4740 'Apptronik (OEM-locked)') + §A.2 矩阵 (L2299-2300) 把 Apptronik 显式标 'OEM-locked, 非 pure-play 泡沫'; takeaway 数字从 5 家 $79.5B → 4 家 $74B; '4 家 vs 5 家' 计数 / 列表 / 数字三处对齐. 但 §4 路径 ② 标题 L1086 'Figure / Apptronik — 端到端 VLA + B 端 RaaS' 和 §4 6 路径对照表 row ② L1168 'Figure / Apptronik | 30-40% 估值泡沫风险' 仍未同步 — 见 new issue i17. 4 处移了, 2 处未移 → half-fix."
+    },
+    {
+      "id": "i15",
+      "status": "partial",
+      "reasoning": "builder 在 response-3.md L91 + v3.md L52 显式声明 'Korea 三极 留作 Round-4', 即拒绝在 round-3 内 reconcile; §A.6.2 acquirer 表 L2742 列了 Big Tech (美) row 但未列 Korea row (Hyundai + Samsung + LG 投资 Apptronik / POSCO 投资 Persona AI 等). §A.2 OEM-locked 行 L2300 仍标 '美系 OEM-locked' 包含 BD-Hyundai (韩) 和 Apptronik (Mercedes 德 + 美) — 'Korean OEM 介入' 在 v3 LBC-1 note 提了一句但未影响 LBC-3 三情景概率分布. 这是显式 punt, 不是隐性遗漏, 但 i15 的 'LBC-3 三极重新建模' 核心要求未达到."
+    },
+    {
+      "id": "i16",
+      "status": "resolved",
+      "reasoning": "§4 路径 7a (L1149) 'PSR 757×' 已删除, 替换为 '美系私募整机一线 pure-play 加权 PSR ~750-1,500× (中点 ~1,000×; 与 §4 takeaway ③ 同步 ind-i16)'; §6.5.2 (L1954) 'Figure 单家 1,300-2,600× / 4 家 pure-play 加权 750-1,500× (中点 1,000×; 中位 >500×)'; §0.1 / §6.5.1 / chartPSRComparison 全部 sync 至这一对 headline 数字 (Figure 1,300-2,600× / 4 家加权 750-1,500×). 中系 22× / EV IPO 24× 也已 sync (§6.5.2 L2004). 四版本归为两版本 (单家 / 加权) 清晰说明."
+    }
+  ]
+}

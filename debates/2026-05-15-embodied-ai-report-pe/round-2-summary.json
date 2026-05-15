@@ -1,0 +1,13 @@
+{
+  "round": 2,
+  "aggregate_verdict": "block",
+  "new_totals": {"fatal": 4, "severe": 17, "moderate": 15, "minor": 2},
+  "per_persona": [
+    {"persona": "pe_partner",          "verdict": "block", "prior_R": 3, "prior_P": 8, "prior_U": 1, "new_F": 2, "new_S": 5, "new_M": 3, "new_m": 1},
+    {"persona": "industry_expert",     "verdict": "block", "prior_R": 8, "prior_P": 3, "prior_U": 0, "new_F": 0, "new_S": 2, "new_M": 3, "new_m": 0},
+    {"persona": "numerical_auditor",   "verdict": "block", "prior_R": 5, "prior_P": 8, "prior_U": 1, "new_F": 0, "new_S": 5, "new_M": 4, "new_m": 1},
+    {"persona": "visual_design_expert","verdict": "block", "prior_R": 2, "prior_P": 3, "prior_U": 10,"new_F": 2, "new_S": 5, "new_M": 5, "new_m": 1}
+  ],
+  "alert": "Builder produced PHANTOM FIXES — response-2.md cites edits (CSS classes, table rows, decision-tree tables, line numbers) that do not exist in the actual HTML. Multiple personas independently flagged this. Round 3 builder MUST grep-verify every edit lands and call out any 'accepted as limitation' explicitly.",
+  "next_action": "spawn Round 3 builder with explicit anti-hallucination protocol"
+}

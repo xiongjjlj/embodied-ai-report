@@ -1,0 +1,80 @@
+{
+  "round": 4,
+  "persona": "industry_expert",
+  "draft_classification": "商业研究 / 产业链格局分析 / PE 投资判断报告 (zh-CN, PE/VC 合伙人级 IC 决策辅助材料 — round-4 修订后)",
+  "load_bearing_claims": [
+    "LBC-1 · 美强软件 (二层拆分: Big Tech 基础模型层 + 私募整机层) / 中强硬件; round-4 把 Apptronik 整体且一致地移至 OEM-locked 桶, 新建 子路径 7c, §4 路径②标题与 6-路径对照表同步",
+    "LBC-2 · 2030 年度 TAM $30-144 亿 (中位 $75 亿); 2025 真实工业部署 < 1,000 台 conceded",
+    "LBC-3 · 三情景 35/25/35/5 (China-led/US-led/Bifurcation/Other; round-4 SST), 2×2 (P(Tesla Y)=25%, P(IRA|Y)=50%, P(IRA|N)=10%) → 12.5/12.5/7.5/67.5 = 100% reconciled",
+    "LBC-4 · Figure 单家 LTM PSR 1,300-2,600× / 美系一线 pure-play 4 家 (不含 Apptronik) 加权 PSR 750-1,500× / 中系 22× = EV IPO N=3 中位 24×",
+    "LBC-5 · 中系核心零部件 + 稀土 alpha + 美系 OEM-locked (Apptronik 7c / BD-Hyundai 7b / Symbotic) + Distressed M&A 10 家 per-company subtable; Korea = US-led satellite (非独立第三极)"
+  ],
+  "verdict": "block",
+  "verdict_reason": "Round-3 5 条 prior issues 中 i17 / i18 / i19 / i20 真正 resolved (path-② 标题与 6-路径对照表同步, BD 80 → null, 路径 7b 反向 cherry-pick 显式反转, US-led 25% 一致传播); i15 Korea 三极 builder 给了 substantive info-box 论证 (BD = Hyundai 全资 ⊂ US-side / Korean 链 not-full-stack / 监测条件), 接受为 R; i21 Atlas $420K [SECONDARY SOURCE] tag R. 但 round-4 修订引入 2 条新 moderate + 2 条新 minor: (a) §6.3 Bifurcation 卡片 L1800 仍显示 '40%' 而 SST 是 35% — builder 声明 'fully resolved 9 处' 但漏了 §6.3 卡片本身, 与紧邻的 2×2 matrix 主干 27.5% 矛盾; (b) §A.5 Bear-B 行 L2688 内部自相矛盾 — 触发列写 'strategic acquire at 1.3-2× DCF sanity' 但 Exit 估值用 '$0.17B × ~3×', 同一行触发文本与公式文本对 control premium 引用两个不同倍数; (c) chartShipmentTop10 subtitle 在修复 BD 80 fabrication 时新增 '2025 仅 30 单位 Hyundai 内部 pilot' — 这个 30 是无引用新数字, 与 BD/Hyundai 一手披露不可验证 (与 i18 fix 同一 fabrication 模式); (d) §4 路径 7c (Apptronik OEM-locked) 在 path-card 已建立但 6-路径对照表 L1163-1175 仍只有 6 行, 路径 ⑦ 全部子路径都不在 head-to-head 失败概率对照表里 — IC 读者无法在同一张表内看到 'OEM-locked 路径 15-25% 失败率 vs Figure 路径 30-40%'.",
+  "issues": [
+    {
+      "id": "i22",
+      "severity": "moderate",
+      "title": "§6.3 Bifurcation 卡片 L1800 仍显示 '40%' 而 round-4 SST 是 35% — builder 声明 'propagated to 9 locations' 漏掉了 §6.3 主卡片本身, 与紧邻的 2×2 matrix 主干 27.5% + 7.5% = 35% 矛盾",
+      "attacks_claim": "LBC-3 (三情景 SST 35/25/35/5 全报告一致性)",
+      "detail": "Round-4 r3-n2 fix 把 Bifurcation 从 round-3 的 40% 下调到 35% (为了 US-led 从 20% 上调到 25% 而保持 Σ=100%)。response-4.md 列出 propagated locations: §0.2 L480 / §3.6 L992 / §6.3 card L1783 / §6.3 2×2 L1825-1827 / §6.3 limitation L1832 / §A.3.2 cells L2390-2393 / §A.3.3 Q3 L2365 / chartScenarioProb L4554-4556 / data-confidence L4485 — 共 9 个位置. 但 §6.3 三情景 *Bifurcation 卡片本身* (L1797-1812) 显示 '40%' (L1800 `<span class=\"text-3xl font-bold\" style=\"color:#92400e;\">40%</span>`) 大字号粗体, IC 读者一眼看到的视觉锚.\n\n这一卡片正好放在 §6.3 2×2 矩阵 (L1820-1832) 之前, 矩阵 derive 出 'Bifurcation 主干 27.5% + Bifurcation 偏 US 一支 7.5% = 35%', 与卡片大字 40% 直接矛盾 +5pp.\n\n§0.2 L481 已写 'Bifurcation (30-40%；中点 35%, 基准; Round-4 调整：US-led 上调后 Bifurcation 等量下调 5pp 保持 Σ=100%)', 即 builder 明确承认 Bifurcation 已下调到 35%; chartScenarioProb data=[35,35,25,5] 也是 35%; §3.6 L992 'Bifurcation 30-40%' 区间上沿 40% 与中点不冲突, 但 §6.3 卡片用大字 '40%' 而非 '35%' 或 '30-40%' 区间, 是显式数字与 SST 不符.\n\n影响: §6.3 是三情景 framework 的中心定义章节, 卡片大字 40% 是 visual anchor; IC 读者在 §6.3 第一眼看到 'Bifurcation 40%' 然后下面 2×2 算出 35%, 自然会问 '到底哪个对'。builder 在 response-4 强调 'Round-3 +10pp gap fully resolved' 但实际是 round-3 留了 US-led +10pp, round-4 又留了 Bifurcation +5pp.",
+      "what_would_resolve": "(1) §6.3 Bifurcation 卡片 L1800 大字 '40%' → '35%' (与 SST 一致), 或显示区间 '30-40% 中点 35%'; (2) 同时 §0.1 (L526 +) chartScenarios pie L4554 label 'Bifurcation 双轨平行 (基准 30-40%, 中点 35%)' 已写区间, 卡片应同步; (3) builder 在 response-5 verification grep 单独跑一次 `grep -n '40%' debates/...v4.report.html | grep -i bifurcation` 确认 0 残留."
+    },
+    {
+      "id": "i23",
+      "severity": "moderate",
+      "title": "§A.5 Bear-B 行 L2688 触发列 '1.3-2× DCF sanity' 与 Exit 估值列 '$0.17B × ~3×' 内部自相矛盾 — 同一行用两个 control premium 倍数",
+      "attacks_claim": "LBC-5 / Distressed M&A control premium 假设的一致性",
+      "detail": "Round-4 r3-n5 接受 Bear-B / True Bear 拆分, builder 在 L2688 Exit 估值列加 footnote: '$0.5B (= $0.17B DCF sanity × ~3× control premium 假设上限; 注: 典型 distressed M&A control premium 1.3-1.5× — 我方 prior 3× 隐含 国资战投 + 数据资产残值)'. 这部分诚实承认 3× 是 author's prior, 不是市场数据 — OK.\n\n但同一行触发列 (L2688 第 3 个 `<td>`) 仍写 '港股 IPO 失败 + 比亚迪 / 美的 strategic acquire at **1.3-2× DCF sanity**' — 即触发条件描述里 control premium 是 1.3-2×, Exit 估值列里 control premium 是 3×。同一 row, 两个不同 control premium 数字 (1.3-2× vs 3×), IC 读者无法 reconcile。\n\n如果 Bear-B 真的是 'strategic acquire at 1.3-2× DCF sanity', 那 Exit valuation 应是 $0.17B × 1.5 ≈ $0.26B (mid), MOIC = 0.26 / 3.9 = 0.067×, 而不是当前 0.13× (用 3×); 在 E[MOIC] cascade 里 Bear-B 贡献从 0.125 × 0.13 = 0.016 降到 0.125 × 0.067 = 0.008, E[MOIC] 从 4.60× 降到 4.59× — 数字上 cascade 影响小, 但 LBC-5 control premium 假设描述的一致性问题严重。\n\n参照 §A.6.1 退出渠道 ASP 矩阵 L2738 '战略并购 (Strategic M&A): 1.3-2× 公平价值 (control premium)' — 这一行也是 1.3-2×, 即报告的市场参考标准 = 1.3-2×。Bear-B Exit 估值用 3× 不与 §A.6.1 同步: §A.6.1 给出标准 1.3-2×, §A.5 Bear-B 触发列 echo 1.3-2× (与 ASP 矩阵一致), 但 Exit 估值列突然跳到 3× — 触发与估值之间的桥断了。",
+      "what_would_resolve": "(1) Bear-B 行触发列改写 '港股 IPO 失败 + 比亚迪 / 美的 distressed strategic acquire at 3× DCF sanity (= 我方 prior 国资战投 + 数据资产残值; 高于 §A.6.1 标准 control premium 1.3-2×)' 让触发列与估值列用同一个倍数; 或 (2) Exit 估值改为 1.3-2× × $0.17B ≈ $0.22-0.34B (mid $0.28B), MOIC 0.07×, IRR ~-40% — 与 §A.6.1 标准一致; (3) 任选其一, 不可两个倍数并存; (4) 若选 (1), 在 §A.6.1 row '战略并购' 加 footnote '注: 智元 Bear-B 用 3× control premium 是个案 prior, 高于本表标准 1.3-2× — 见 §A.5'."
+    },
+    {
+      "id": "i24",
+      "severity": "minor",
+      "title": "chartShipmentTop10 subtitle 在修复 BD 80 时新增 '2025 仅 30 单位 Hyundai 内部 pilot' — 30 是无引用新数字, 与 BD/Hyundai 一手披露不可验证 (i18 fix 同模式的 mini fabrication)",
+      "attacks_claim": "LBC-1 / 出货格局 source quality",
+      "detail": "Round-3 i18 攻击 chartShipmentTop10 给 BD '80' 是 fabrication; round-4 builder 把数据值 80 → null, 标签 '[NOT YET IN PRODUCTION; 2026.Q1 量产起点]' — 正确修复。\n\n但 chart title text (L4772) 写: 'BD Atlas Electric = NOT YET IN PRODUCTION (null, 不是 80; 2026.Q1 量产起点; **2025 仅 30 单位 Hyundai 内部 pilot**, 非 commercial)'. 这个 '30 单位 Hyundai 内部 pilot' 是新引入的数字, 报告其他位置 (§3.1 评分卡 L820-829 / §4 路径 7b L1150 / §6.2 投资项目表 L1619) 都没有 '30 单位 Hyundai 内部 pilot' 这个 datapoint; 也没有 BD/Hyundai 一手披露的 source citation. BD CES 2026 keynote 和 Hyundai 2025 投资者日材料都没有 '30 internal pilot units' 这个数字 — 这是 builder 自己在 subtitle 里 invent 的具体数字。\n\n这是与 i18 同一 fabrication 模式 (selection-bias fix 引入 fabrication-bias): 修复 80 时新增 30。30 比 80 小, 且明确标 'pilot 非 commercial', 不影响 chart 主视觉 (数据值仍是 null), 因此 severity = minor; 但 'IC 读者验证 source' 标准下任何无引用具体数字都应被剔除或标 [INFERRED]。\n\n参照同图其他位置: Apptronik 已标 [UNDISCLOSED] (而不是 invent '50 pilot units'); 1X Tech 已标 [UNDISCLOSED; NEO 投产 2026.4]。BD 应该用同样标准, '2025 = 0 commercial; pre-production units 数量未公开 [UNDISCLOSED]'。",
+      "what_would_resolve": "(1) chart title L4772 '2025 仅 30 单位 Hyundai 内部 pilot' → '2025 = 0 commercial; pre-production / engineering units 数量未公开 [UNDISCLOSED]'; 或 (2) 若保留 30 数字, 在 chart title 加 source citation (BD 公开 keynote / Hyundai 投资者日具体引用); (3) §3.1 评分卡 / §6.2 投资项目表 同步加 'BD Atlas Electric 2026 量产起点; 2025 pre-production [UNDISCLOSED]'."
+    },
+    {
+      "id": "i25",
+      "severity": "minor",
+      "title": "§4 路径 7c (Apptronik OEM-locked) 在 path-card 已建立但 '6 种路径对照' 表 (L1163-1175) 仍只有 6 行 — IC 读者无法在同一张表内对比 OEM-locked 路径 15-25% vs Figure 路径 30-40% 失败概率",
+      "attacks_claim": "LBC-1 / IC actionability 表格完整性",
+      "detail": "Round-4 i17 fix 在 §4 path-card 区域 (L1086-1156) 建立: 路径 ② = Figure only (Apptronik 移出); 子路径 7a = Big Tech 基础模型层; 子路径 7b = BD-Hyundai-DeepMind; 子路径 7c = Apptronik × Mercedes / Jabil. response 引用 grep `'子路径 7c · Apptronik' report.html` → L1155 验证. 这部分 framework 完整且自洽。\n\n但紧接着的 '6 种路径对照' 表 (L1162-1176) 仍只有 6 行 (Tesla / Figure (Apptronik 移出) / 1X / PI-Skild / 中硬件派 / 中场景派), 路径 ⑦ (子路径 a/b/c) 都不在这个对照表里。表 caption '6 种路径对照' 看似刻意按 6 路径 framework 排, 但 round-2 新增的路径 ⑦ + round-4 新增的 7c 都不进表 — IC 读者在同一张表里看到 path ② Figure 30-40% 失败率, 但看不到 'OEM-locked Apptronik / BD-Hyundai 失败率 15-25%' 在同列对比。\n\n核心 takeaway 第 ⑤ 条 (L1185) '路径 ① ② ③ ④ ⑥ 一起押的总暴露 = \\$90-100B... 路径⑦ (DeepMind 间接 + BD-Hyundai) 是非 Scaling-Law-binding 对冲' — IC 读者读到 '非 Scaling-Law-binding 对冲' 后想知道路径 ⑦ 失败率, 但对照表里找不到, 必须翻回 §4 path-card 文字找。\n\n这是 round-3 i17 'what_would_resolve' 第 (3) 条 '新增对照表 row ⑦b' 没有执行 — builder 只执行了 (1)(2)(3 部分) 修订, 没 add row。Severity = minor 因为信息在 path-card 文字里有, 但 IC dashboard 失了一层 actionability。",
+      "what_would_resolve": "(1) §4 '6 种路径对照' 表 caption 改 '8 种路径对照' (或 '6 路径 + 路径 ⑦ 三子路径'); (2) 添加 3 行: '⑦a Big Tech 基础模型层 | 间接 / 不可直投 | 通过 Alphabet 二级 / 战略并购窗口 | 不可量化失败率 (cap-protected)'; '⑦b BD-Hyundai-DeepMind | 整车 OEM + 外购大模型 | Hyundai 2028 30K/yr 兑现度 | 15-25%'; '⑦c Apptronik × Mercedes / Jabil | OEM-locked + Google 投资 | Mercedes pilot → commercial 2026 H2 | 15-25%'; (3) 三行排在 ① Tesla 之前或 ⑥ 中场景派 之后, 配色与 path-card 一致 (border-top:4px solid #7c3aed)."
+    }
+  ],
+  "prior_issue_updates": [
+    {
+      "id": "i17",
+      "status": "resolved",
+      "reasoning": "§4 路径 ② 标题 L1086 改 'Figure (Apptronik 移至路径 7c)'; 6 路径对照表 row ② L1169 同步; 新增子路径 7c L1155 详细描述 Apptronik × Mercedes / Jabil OEM-locked + Google 战略投资 + 失败率 15-25%; §4 takeaway ③ L1183 '4 家 \\$74B' 排除 Apptronik 与 BD; §A.2 矩阵 L2302 'Apptronik 单列入 OEM-locked 行' + L2303 OEM-locked 行包含 Apptronik. 与 BD-Hyundai (7b) 同级 framing 一致. round-3 half-fix 完整闭合."
+    },
+    {
+      "id": "i18",
+      "status": "resolved",
+      "reasoning": "chartShipmentTop10 BD 数据值 80 → null (L4766 末位); label '[NOT YET IN PRODUCTION; 2026.Q1 量产起点]' (L4763); backgroundColor 灰色 #9ca3af (L4767); chart title 明确 'NOT YET IN PRODUCTION (null, 不是 80; 2026.Q1 量产起点)' (L4772). 主修复完整. (但 subtitle 在修复时新增了 '2025 仅 30 单位 Hyundai 内部 pilot' 无引用数字 — 见 new issue i24 minor, 不算 i18 unresolved.)"
+    },
+    {
+      "id": "i19",
+      "status": "resolved",
+      "reasoning": "§4 路径 7b L1150 显式反转: 'BD Atlas L2-L3 与 Figure \"L3 in-task ODD 但有 teleop 争议\" 大致 tied... 严格 head-to-head 看, BD 量化吞吐量 [UNDISCLOSED] 而 Figure 有 1,250 累计运行小时 + 90,000 件钣金 + 30,000+ 辆 X3 定量证据 — BD 的论证强度实际低于 Figure'. 并明确标 'round-3 路径 7b 文案 \"BD 高于 Figure\" 是反向 cherry-pick, round-4 已修正'. 诚实反转 +保留 BD OEM-locked 路径 actionability (i) OEM 现金流补贴 (ii) 没有 teleop 争议 (iii) 公开量化数据稀疏 三件套并列。"
+    },
+    {
+      "id": "i20",
+      "status": "resolved",
+      "reasoning": "US-led 25% 一致传播到 9 处: §0.2 L480, §3.6 L992, §6.3 卡片 L1783, §6.3 2×2 L1825-1827 (P(Y,Y)+P(Y,N)=25%), §6.3 limitation L1832 SST 声明, §A.3.2 cells L2393-2394, §A.3.3 Q3 L2368, chartScenarioProb L4554-4556 data=[35,35,25,5], data-confidence L4485. SST cell L1832 + L2695 显式说 'Round-3 +10pp gap fully resolved'. (但 Bifurcation 卡片大字 40% L1800 漏改 — 见 new issue i22, 是 round-4 自己引入的次生 +5pp 而不是 i20 unresolved.)"
+    },
+    {
+      "id": "i15",
+      "status": "resolved",
+      "reasoning": "§6.3 L1834 新增 info-box 'Korea-Japan satellite pole', 三条 substantive 论据: (a) BD = Hyundai 全资 ⊂ US-side 整机 OEM 锁定的延伸 (cash from Hyundai \\$50B capex, software from Gemini Robotics US-stack); (b) Korean component supply chain (Samsung 半导体 + LG 电池 + Hyundai 主机厂) not-full-stack — VLA/仿真/数据飞轮三件套 Korea 都没有独立栈; (c) Japan (Sony/Honda/Yaskawa) 同类比 — 集成商 + 部件供应商, 非阵营驱动者. 给出 PE 暴露三路径 (Hyundai 二级 / Samsung-LG 二级 / FTA hedge) 已在 US-led / Bifurcation 情景内覆盖. 监测条件: 若 Korea+日本+Israel 形成第三阵营 (例 Hyundai-Toyota-Samsung 联合 humanoid 标准), LBC-3 需重建. 这是 'argue against' 而非 punt, 论据完整。"
+    },
+    {
+      "id": "i21",
+      "status": "resolved",
+      "reasoning": "§3.5 价格矩阵 L1528 '高端 \\$300-500K tier [SECONDARY SOURCE: originofbots.com \\$420K; BD/Hyundai 一手未披露 sticker; Round-4 ind-i21]'. source quality label 显式标 [SECONDARY SOURCE], 与报告其他价格点的一手 source citation 区分, IC 读者可见 source tier 差异. 这是合理的 'documented + flagged' 处理, 比强行替换为不存在的一手 source 更诚实。"
+    }
+  ]
+}
